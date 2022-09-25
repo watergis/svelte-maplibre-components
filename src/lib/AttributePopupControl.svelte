@@ -11,9 +11,9 @@
 	let selectedFeature: MapGeoJSONFeature | undefined;
 
 	// eslint-disable-next-line
-	function MapIdentifyToolControl() {}
+	function AttributionPopupControl() {}
 
-	MapIdentifyToolControl.prototype.onAdd = function (map: Map) {
+	AttributionPopupControl.prototype.onAdd = function (map: Map) {
 		this.map = map;
 
 		this.controlContainer = document.createElement('div');
@@ -29,7 +29,7 @@
 		return this.controlContainer;
 	};
 
-	MapIdentifyToolControl.prototype.changeButtonCondition = function () {
+	AttributionPopupControl.prototype.changeButtonCondition = function () {
 		if (this.isActive) {
 			this.button.classList.remove('-active');
 			this.isActive = false;
@@ -47,7 +47,7 @@
 		}
 	};
 
-	MapIdentifyToolControl.prototype.onClick = function (e: MapMouseEvent) {
+	AttributionPopupControl.prototype.onClick = function (e: MapMouseEvent) {
 		if (!this.isActive) {
 			queriedFeatures = [];
 			selectedFeature = undefined;
@@ -80,7 +80,7 @@
 		}
 	};
 
-	MapIdentifyToolControl.prototype.onRemove = function () {
+	AttributionPopupControl.prototype.onRemove = function () {
 		if (!this.controlContainer || !this.controlContainer.parentNode || !this.map || !this.button) {
 			return;
 		}
@@ -89,16 +89,16 @@
 		this.map = undefined;
 	};
 
-	/*global MapIdentifyToolControl */
+	/*global AttributionPopupControl */
 	/*eslint no-undef: "error"*/
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
-	let mapIdentifyToolControl: MapIdentifyToolControl = null;
+	let attributionPopupControl: AttributionPopupControl = null;
 
 	$: {
 		if (map) {
-			if (mapIdentifyToolControl !== null && map.hasControl(mapIdentifyToolControl) === false) {
-				map.addControl(mapIdentifyToolControl, 'top-right');
+			if (attributionPopupControl !== null && map.hasControl(attributionPopupControl) === false) {
+				map.addControl(attributionPopupControl, 'top-right');
 			}
 		}
 	}
@@ -106,7 +106,7 @@
 	onMount(async () => {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
-		mapIdentifyToolControl = new MapIdentifyToolControl();
+		attributionPopupControl = new AttributionPopupControl();
 	});
 </script>
 

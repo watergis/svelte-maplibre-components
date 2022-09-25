@@ -1,1 +1,2 @@
-// Reexport your entry components here
+import { default as AttributePopupControl } from './AttributePopupControl.svelte';
+export default AttributePopupControl;

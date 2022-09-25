@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { Map, NavigationControl, AttributionControl } from 'maplibre-gl';
 	import { map } from '$example/stores';
-	import MapIdentifyToolControl from '$lib/MapIdentifyToolControl.svelte';
+	import AttributePopupControl from '$lib';
 
 	let mapContainer: HTMLDivElement;
 
@@ -49,7 +49,7 @@
 
 <div class="map-wrap">
 	<div class="map" id="map" bind:this={mapContainer} />
-	<MapIdentifyToolControl bind:map={$map} {targetLayers} />
+	<AttributePopupControl bind:map={$map} {targetLayers} />
 </div>
 
 <style>

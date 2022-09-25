@@ -2,6 +2,43 @@
 
 This is a svelte component to add attribute popup plugin to maplibre.
 
+## Install
+
+```zsh
+npm i @watergis/svelte-maplibre-attribute-popup
+```
+
+or
+
+```zsh
+yarn add @watergis/svelte-maplibre-attribute-popup
+```
+
+## Usage
+
+See [Example](./src/example).
+
+```svelte
+<script lang="ts">
+    import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
+
+  // create maplibre.Map object
+  let map = new Map();
+
+  // filter layers to show attribute popup
+  // show all layers' attributes if targetLayers is not specified.
+  let targetLayers = [
+    'meter',
+    'flow meter',
+    'valve',
+    'washout',
+  ];
+
+</script>
+
+<AttributePopupControl bind:map={$map} {targetLayers} />
+```
+
 ## create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).

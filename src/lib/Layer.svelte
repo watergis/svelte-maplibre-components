@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import Legend from './Legend.svelte';
 	import Fa from 'svelte-fa';
 	import { faEye } from '@fortawesome/free-solid-svg-icons/faEye';
 	import { faEyeSlash } from '@fortawesome/free-solid-svg-icons/faEyeSlash';
 	import type SpriteLoader from './sprite';
+	const dispatch = createEventDispatcher();
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -17,6 +19,9 @@
 
 	const setVisibility = () => {
 		map.setLayoutProperty(layer.id, 'visibility', checked === true ? 'visible' : 'none');
+		dispatch('visibilityChanged', {
+			layer
+		});
 	};
 </script>
 

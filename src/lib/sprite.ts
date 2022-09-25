@@ -67,7 +67,7 @@ class SpriteLoader {
 			if (Array.isArray(imgKey)) {
 				imgKey = imgKey[imgKey.length - 1];
 			}
-			if (this.sprite.json) {
+			if (this.sprite?.json) {
 				let icon: spritePosition;
 				Object.keys(this.sprite.json).forEach((id) => {
 					if (id === imgKey) {

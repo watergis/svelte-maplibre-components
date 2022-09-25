@@ -12,6 +12,7 @@
 	$: allLayers = style ? style.layers : [];
 	let visibleLayerMap: { [key: string]: LayerSpecification } = {};
 	export let relativeLayers: { [key: string]: string } = {};
+	let invisibleLayerMap: { [key: string]: LayerSpecification } = {};
 
 	$: {
 		if (map) {
@@ -44,19 +45,35 @@
 	const updateLayers = () => {
 		if (!map) return;
 		if (!style) return;
-		visibleLayerMap = {};
-		if (onlyRendered === true) {
-			const features = map.queryRenderedFeatures();
-			allLayers.forEach((layer) => {
-				const filtered = features.filter((f) => f.layer.id === layer.id);
-				if (filtered.length > 0) {
+		setTimeout(() => {
+			visibleLayerMap = {};
+			if (onlyRendered === true) {
+				const features = map.queryRenderedFeatures();
+				allLayers.forEach((layer) => {
+					const filtered = features.filter((f) => f.layer.id === layer.id);
+					if (filtered.length > 0 || invisibleLayerMap[layer.id]) {
+						visibleLayerMap[layer.id] = layer;
+					}
+				});
+			} else {
+				allLayers.forEach((layer) => {
 					visibleLayerMap[layer.id] = layer;
-				}
-			});
+				});
+			}
+			if (Object.keys(invisibleLayerMap).length > 0) {
+				allLayers = map.getStyle().layers;
+			}
+		}, 500);
+	};
+
+	const layerVisibilityChanged = (e: { detail: { layer: LayerSpecification } }) => {
+		const layer: LayerSpecification = e.detail.layer;
+		if (layer.layout?.visibility === undefined || layer.layout?.visibility === 'none') {
+			invisibleLayerMap[layer.id] = layer;
 		} else {
-			allLayers.forEach((layer) => {
-				visibleLayerMap[layer.id] = layer;
-			});
+			if (invisibleLayerMap[layer.id]) {
+				delete invisibleLayerMap[layer.id];
+			}
 		}
 	};
 </script>
@@ -89,21 +106,53 @@
 						{#if onlyRelative === true}
 							{#if relativeLayers[layer.id]}
 								<!-- svelte-ignore a11y-missing-attribute -->
-								<a class="panel-block"><Layer {map} {layer} {spriteLoader} {relativeLayers} /></a>
+								<a class="panel-block"
+									><Layer
+										{map}
+										{layer}
+										{spriteLoader}
+										{relativeLayers}
+										on:visibilityChanged={layerVisibilityChanged}
+									/></a
+								>
 							{/if}
 						{:else}
 							<!-- svelte-ignore a11y-missing-attribute -->
-							<a class="panel-block"><Layer {map} {layer} {spriteLoader} {relativeLayers} /></a>
+							<a class="panel-block"
+								><Layer
+									{map}
+									{layer}
+									{spriteLoader}
+									{relativeLayers}
+									on:visibilityChanged={layerVisibilityChanged}
+								/></a
+							>
 						{/if}
 					{/if}
 				{:else if onlyRelative === true}
 					{#if relativeLayers[layer.id]}
 						<!-- svelte-ignore a11y-missing-attribute -->
-						<a class="panel-block"><Layer {map} {layer} {spriteLoader} {relativeLayers} /></a>
+						<a class="panel-block"
+							><Layer
+								{map}
+								{layer}
+								{spriteLoader}
+								{relativeLayers}
+								on:visibilityChanged={layerVisibilityChanged}
+							/></a
+						>
 					{/if}
 				{:else}
 					<!-- svelte-ignore a11y-missing-attribute -->
-					<a class="panel-block"><Layer {map} {layer} {spriteLoader} {relativeLayers} /></a>
+					<a class="panel-block"
+						><Layer
+							{map}
+							{layer}
+							{spriteLoader}
+							{relativeLayers}
+							on:visibilityChanged={layerVisibilityChanged}
+						/></a
+					>
 				{/if}
 			{/each}
 		{/key}

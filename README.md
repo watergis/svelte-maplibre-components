@@ -2,6 +2,20 @@
 
 This is a svelte component to make layer legend for maplibre-gl
 
+![demo.gif](./demo.gif)
+
+## Install
+
+```zsh
+npm i @watergis/svelte-maplibre-legend
+```
+
+or
+
+```zsh
+yarn add @watergis/svelte-maplibre-legend
+```
+
 ## Usage
 
 See [Example](./src/example).

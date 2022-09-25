@@ -10,12 +10,9 @@
 	export let layer: LayerSpecification;
 	export let spriteLoader: SpriteLoader;
 	export let relativeLayers: { [key: string]: string } = {};
-	let visibility = 'visible';
-	if (layer.layout && layer.layout.visibility === 'none') {
-		visibility = 'none';
-	}
+	let visibility = layer.layout && layer.layout.visibility ? layer.layout.visibility : undefined;
 
-	let checked = visibility === 'visible' ? true : false;
+	let checked = visibility === 'none' ? false : true;
 	$: checked, setVisibility();
 
 	const setVisibility = () => {

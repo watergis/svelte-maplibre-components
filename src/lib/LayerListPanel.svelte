@@ -9,7 +9,7 @@
 	let onlyRelative = true;
 	let spriteLoader: SpriteLoader | undefined;
 
-	let allLayers: LayerSpecification[] = [];
+	$: allLayers = style ? style.layers : [];
 	let visibleLayerMap: { [key: string]: LayerSpecification } = {};
 	export let relativeLayers: { [key: string]: string } = {};
 
@@ -17,16 +17,7 @@
 		if (map) {
 			map.on('moveend', updateLayers);
 			map.on('styledata', updateLayers);
-
 			map.on('load', () => {
-				if (style && !spriteLoader && map.isStyleLoaded()) {
-					const styleUrl = style.sprite;
-					if (!styleUrl) return;
-					const loader = new SpriteLoader(styleUrl);
-					loader.load().then(() => {
-						spriteLoader = loader;
-					});
-				}
 				updateLayers();
 			});
 		}
@@ -41,39 +32,31 @@
 	$: style, handleStyleChanged();
 
 	const handleStyleChanged = async () => {
-		spriteLoader = undefined;
-		await updateLayers();
-	};
-
-	const updateLayers = async () => {
 		if (!map) return;
 		if (!style) return;
-		if (!spriteLoader) {
-			const styleUrl = style.sprite;
-			if (!styleUrl) return;
-			const loader = new SpriteLoader(styleUrl);
-			await loader.load();
-			spriteLoader = loader;
-		}
-
-		allLayers = style.layers;
-		setTimeout(() => {
-			updateVisibleLayers();
-		}, 500);
+		const styleUrl = style.sprite;
+		if (!styleUrl) return;
+		spriteLoader = new SpriteLoader(styleUrl);
+		await spriteLoader.load();
+		updateLayers();
 	};
 
-	const updateVisibleLayers = () => {
-		if (map && map.queryRenderedFeatures) {
-			const visible: { [key: string]: LayerSpecification } = {};
+	const updateLayers = () => {
+		if (!map) return;
+		if (!style) return;
+		visibleLayerMap = {};
+		if (onlyRendered === true) {
 			const features = map.queryRenderedFeatures();
-			for (let feature of features) {
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				visible[feature.layer.id] = feature.layer;
-			}
-			visibleLayerMap = visible;
+			allLayers.forEach((layer) => {
+				const filtered = features.filter((f) => f.layer.id === layer.id);
+				if (filtered.length > 0) {
+					visibleLayerMap[layer.id] = layer;
+				}
+			});
 		} else {
-			visibleLayerMap = {};
+			allLayers.forEach((layer) => {
+				visibleLayerMap[layer.id] = layer;
+			});
 		}
 	};
 </script>

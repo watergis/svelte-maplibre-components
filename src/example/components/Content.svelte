@@ -71,12 +71,4 @@
 		flex-basis: 100%;
 		flex: 1;
 	}
-
-	.main-content {
-		overflow: auto;
-		padding: 0px;
-		height: 100%;
-		width: 100%;
-		box-sizing: border-box;
-	}
 </style>

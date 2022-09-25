@@ -78,7 +78,7 @@
 	};
 </script>
 
-<nav class="panel">
+<header class="legend-header">
 	<div class="tabs is-toggle is-fullwidth m-2">
 		<ul>
 			<li class={onlyRendered ? 'is-active' : ''} on:click={() => (onlyRendered = !onlyRendered)}>
@@ -97,7 +97,9 @@
 			{/if}
 		</ul>
 	</div>
+</header>
 
+<nav class="panel legend-content">
 	{#if spriteLoader}
 		{#key style}
 			{#each allLayers as layer}
@@ -161,4 +163,18 @@
 
 <style lang="scss">
 	@import 'bulma/css/bulma.css';
+
+	.legend-header {
+		position: fixed;
+		top: 0;
+	}
+
+	.legend-content {
+		margin-top: 60px;
+		overflow: auto;
+		padding: 0px;
+		height: 100%;
+		width: 100%;
+		box-sizing: border-box;
+	}
 </style>

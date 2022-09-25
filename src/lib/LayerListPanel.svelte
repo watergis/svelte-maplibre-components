@@ -48,7 +48,6 @@
 	const updateLayers = async () => {
 		if (!map) return;
 		if (!style) return;
-		if (!map.isStyleLoaded()) return;
 		if (!spriteLoader) {
 			const styleUrl = style.sprite;
 			if (!styleUrl) return;

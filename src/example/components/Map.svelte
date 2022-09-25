@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { Map, NavigationControl, AttributionControl } from 'maplibre-gl';
-	import { map } from '../stores';
+	import { map } from '$example/stores';
 
 	let mapContainer: HTMLDivElement;
 

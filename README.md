@@ -4,7 +4,7 @@ This is a svelte component to make layer legend for maplibre-gl
 
 ## Usage
 
-See [Example] (./src/example).
+See [Example](./src/example).
 
 ```svelte
 <script lang="ts">
@@ -13,16 +13,16 @@ See [Example] (./src/example).
   // create maplibre.Map object
   let map = new Map();
 
+  // set style for legend
+  style = map.getStyle()
+
   // to set filter to enable to show only relative layers and alias of layer name
   let relativeLayers: { [key: string]: string } = {
     pipeline: 'Pipeline'
   };
-
-  // this is optional. If you want to update layer legend, just call `updateLayers` function under LayerListPanel.
-  let updateLayers;
 </script>
 
-<LayerListPanel bind:map {relativeLayers} {updateLayers} />
+<LayerListPanel bind:map {style} {relativeLayers} />
 ```
 
 ## create-svelte

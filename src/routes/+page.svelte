@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Content from '../example/components/Content.svelte';
-	import Map from '../example/components/Map.svelte';
+	import Content from '$example/components/Content.svelte';
+	import Map from '$example/components/Map.svelte';
 </script>
 
 <sveltekit:head>

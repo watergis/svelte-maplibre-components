@@ -2,6 +2,17 @@
 	import { Split } from '@geoffcox/svelte-splitter';
 	import LayerListPanel from '$lib/LayerListPanel.svelte';
 	import { map } from '../stores';
+	import type { StyleSpecification } from 'maplibre-gl';
+
+	let style: StyleSpecification;
+
+	$: {
+		if ($map) {
+			$map.on('load', () => {
+				style = $map.getStyle();
+			});
+		}
+	}
 
 	let relativeLayers: { [key: string]: string } = {
 		pipeline: 'Pipeline',
@@ -41,7 +52,7 @@
 <Split initialPrimarySize="30%" minPrimarySize={'300px'} splitterSize="0px">
 	<div slot="primary" class="drawer-content">
 		{#if $map}
-			<LayerListPanel bind:map={$map} {relativeLayers} />
+			<LayerListPanel bind:map={$map} {style} {relativeLayers} />
 		{/if}
 	</div>
 	<div slot="secondary" class="main-content">

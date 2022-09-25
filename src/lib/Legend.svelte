@@ -1,7 +1,9 @@
 <script lang="ts">
 	import type { LayerSpecification, Map } from 'maplibre-gl';
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
 	import LegendSymbol from '@watergis/legend-symbol';
-	import SpriteLoader from './sprite';
+	import type SpriteLoader from './sprite';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -10,13 +12,6 @@
 	$: layer, update();
 
 	const update = async () => {
-		// if (!spriteLoaderObject) {
-		// 	const styleUrl = $map.getStyle().sprite;
-		// 	const loader = new SpriteLoader(styleUrl);
-		// 	await loader.load();
-		// 	spriteLoaderObject.update(() => loader);
-		// }
-
 		const zoom = map.getZoom();
 		const symbol = LegendSymbol({ zoom: zoom, layer: layer });
 		container.innerText = '';

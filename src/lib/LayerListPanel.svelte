@@ -4,10 +4,10 @@
 	import SpriteLoader from './sprite';
 
 	export let map: Map;
-	let style: StyleSpecification;
+	export let style: StyleSpecification;
 	let onlyRendered = true;
 	let onlyRelative = true;
-	let spriteLoader: SpriteLoader;
+	let spriteLoader: SpriteLoader | undefined;
 
 	let allLayers: LayerSpecification[] = [];
 	let visibleLayerMap: { [key: string]: LayerSpecification } = {};
@@ -19,8 +19,8 @@
 			map.on('styledata', updateLayers);
 
 			map.on('load', () => {
-				if (!spriteLoader && map.isStyleLoaded()) {
-					const styleUrl = map.getStyle().sprite;
+				if (style && !spriteLoader && map.isStyleLoaded()) {
+					const styleUrl = style.sprite;
 					if (!styleUrl) return;
 					const loader = new SpriteLoader(styleUrl);
 					loader.load().then(() => {
@@ -38,11 +38,25 @@
 
 	$: onlyRendered, updateLayers();
 	$: onlyRelative, updateLayers();
+	$: style, handleStyleChanged();
 
-	export const updateLayers = () => {
+	const handleStyleChanged = async () => {
+		spriteLoader = undefined;
+		await updateLayers();
+	};
+
+	const updateLayers = async () => {
 		if (!map) return;
+		if (!style) return;
 		if (!map.isStyleLoaded()) return;
-		style = map.getStyle();
+		if (!spriteLoader) {
+			const styleUrl = style.sprite;
+			if (!styleUrl) return;
+			const loader = new SpriteLoader(styleUrl);
+			await loader.load();
+			spriteLoader = loader;
+		}
+
 		allLayers = style.layers;
 		setTimeout(() => {
 			updateVisibleLayers();
@@ -66,7 +80,6 @@
 </script>
 
 <nav class="panel">
-	<!-- <div class="panel-block"> -->
 	<div class="tabs is-toggle is-fullwidth m-2">
 		<ul>
 			<li class={onlyRendered ? 'is-active' : ''} on:click={() => (onlyRendered = !onlyRendered)}>
@@ -85,33 +98,34 @@
 			{/if}
 		</ul>
 	</div>
-	<!-- </div> -->
 
-	{#key style}
-		{#each allLayers as layer}
-			{#if onlyRendered === true}
-				{#if visibleLayerMap[layer.id]}
-					{#if onlyRelative === true}
-						{#if relativeLayers[layer.id]}
+	{#if spriteLoader}
+		{#key style}
+			{#each allLayers as layer}
+				{#if onlyRendered === true}
+					{#if visibleLayerMap[layer.id]}
+						{#if onlyRelative === true}
+							{#if relativeLayers[layer.id]}
+								<!-- svelte-ignore a11y-missing-attribute -->
+								<a class="panel-block"><Layer {map} {layer} {spriteLoader} {relativeLayers} /></a>
+							{/if}
+						{:else}
 							<!-- svelte-ignore a11y-missing-attribute -->
 							<a class="panel-block"><Layer {map} {layer} {spriteLoader} {relativeLayers} /></a>
 						{/if}
-					{:else}
+					{/if}
+				{:else if onlyRelative === true}
+					{#if relativeLayers[layer.id]}
 						<!-- svelte-ignore a11y-missing-attribute -->
 						<a class="panel-block"><Layer {map} {layer} {spriteLoader} {relativeLayers} /></a>
 					{/if}
-				{/if}
-			{:else if onlyRelative === true}
-				{#if relativeLayers[layer.id]}
+				{:else}
 					<!-- svelte-ignore a11y-missing-attribute -->
 					<a class="panel-block"><Layer {map} {layer} {spriteLoader} {relativeLayers} /></a>
 				{/if}
-			{:else}
-				<!-- svelte-ignore a11y-missing-attribute -->
-				<a class="panel-block"><Layer {map} {layer} {spriteLoader} {relativeLayers} /></a>
-			{/if}
-		{/each}
-	{/key}
+			{/each}
+		{/key}
+	{/if}
 </nav>
 
 <style lang="scss">

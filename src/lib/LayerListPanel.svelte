@@ -78,8 +78,8 @@
 	};
 </script>
 
-<header class="legend-header">
-	<div class="tabs is-toggle is-fullwidth m-2">
+<nav class="panel">
+	<div class="tabs is-toggle is-fullwidth m-2 legend-header">
 		<ul>
 			<li class={onlyRendered ? 'is-active' : ''} on:click={() => (onlyRendered = !onlyRendered)}>
 				<!-- svelte-ignore a11y-missing-attribute -->
@@ -97,16 +97,27 @@
 			{/if}
 		</ul>
 	</div>
-</header>
 
-<nav class="panel legend-content">
-	{#if spriteLoader}
-		{#key style}
-			{#each allLayers as layer}
-				{#if onlyRendered === true}
-					{#if visibleLayerMap[layer.id]}
-						{#if onlyRelative === true}
-							{#if relativeLayers[layer.id]}
+	<nav class="panel legend-content">
+		{#if spriteLoader}
+			{#key style}
+				{#each allLayers as layer}
+					{#if onlyRendered === true}
+						{#if visibleLayerMap[layer.id]}
+							{#if onlyRelative === true}
+								{#if relativeLayers[layer.id]}
+									<!-- svelte-ignore a11y-missing-attribute -->
+									<a class="panel-block"
+										><Layer
+											{map}
+											{layer}
+											{spriteLoader}
+											{relativeLayers}
+											on:visibilityChanged={layerVisibilityChanged}
+										/></a
+									>
+								{/if}
+							{:else}
 								<!-- svelte-ignore a11y-missing-attribute -->
 								<a class="panel-block"
 									><Layer
@@ -118,7 +129,9 @@
 									/></a
 								>
 							{/if}
-						{:else}
+						{/if}
+					{:else if onlyRelative === true}
+						{#if relativeLayers[layer.id]}
 							<!-- svelte-ignore a11y-missing-attribute -->
 							<a class="panel-block"
 								><Layer
@@ -130,9 +143,7 @@
 								/></a
 							>
 						{/if}
-					{/if}
-				{:else if onlyRelative === true}
-					{#if relativeLayers[layer.id]}
+					{:else}
 						<!-- svelte-ignore a11y-missing-attribute -->
 						<a class="panel-block"
 							><Layer
@@ -144,34 +155,19 @@
 							/></a
 						>
 					{/if}
-				{:else}
-					<!-- svelte-ignore a11y-missing-attribute -->
-					<a class="panel-block"
-						><Layer
-							{map}
-							{layer}
-							{spriteLoader}
-							{relativeLayers}
-							on:visibilityChanged={layerVisibilityChanged}
-						/></a
-					>
-				{/if}
-			{/each}
-		{/key}
-	{/if}
+				{/each}
+			{/key}
+		{/if}
+	</nav>
 </nav>
 
 <style lang="scss">
 	@import 'bulma/css/bulma.css';
 
-	.legend-header {
-		position: fixed;
-	}
-
 	.legend-content {
-		margin-top: 60px;
+		position: absolute;
 		overflow: auto;
-		padding: 0px;
+		padding-top: 5px;
 		height: 100%;
 		width: 100%;
 		box-sizing: border-box;

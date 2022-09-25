@@ -2,8 +2,27 @@
 	import { onMount } from 'svelte';
 	import { Map, NavigationControl, AttributionControl } from 'maplibre-gl';
 	import { map } from '$example/stores';
+	import MapIdentifyToolControl from '$lib/MapIdentifyToolControl.svelte';
 
 	let mapContainer: HTMLDivElement;
+
+	let targetLayers = [
+		'meter',
+		'flow meter',
+		'valve',
+		'washout',
+		'firehydrant',
+		'tank',
+		'pipeline',
+		'pg-building',
+		'sewer-connection',
+		'sewer_commercial',
+		'sewer_institution',
+		'sewer_public_toilet',
+		'sewer_pipeline',
+		'sewer_treatment_plant',
+		'manhole'
+	];
 
 	onMount(async () => {
 		const map2 = new Map({
@@ -30,6 +49,7 @@
 
 <div class="map-wrap">
 	<div class="map" id="map" bind:this={mapContainer} />
+	<MapIdentifyToolControl bind:map={$map} {targetLayers} />
 </div>
 
 <style>

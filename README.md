@@ -1,8 +1,35 @@
-# create-svelte
+# svelte-maplibre-legend
+
+This is a svelte component to make layer legend for maplibre-gl
+
+## Usage
+
+See [Example] (./src/example).
+
+```svelte
+<script lang="ts">
+  import LayerListPanel from '@watergis/LayerListPanel.svelte';
+
+  // create maplibre.Map object
+  let map = new Map();
+
+  // to set filter to enable to show only relative layers and alias of layer name
+  let relativeLayers: { [key: string]: string } = {
+    pipeline: 'Pipeline'
+  };
+
+  // this is optional. If you want to update layer legend, just call `updateLayers` function under LayerListPanel.
+  let updateLayers;
+</script>
+
+<LayerListPanel bind:map {relativeLayers} {updateLayers} />
+```
+
+## create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-## Creating a project
+### Creating a project
 
 If you're seeing this, you've probably already done this step. Congrats!
 
@@ -14,7 +41,7 @@ npm create svelte@latest
 npm create svelte@latest my-app
 ```
 
-## Developing
+### Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
@@ -25,7 +52,7 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
+### Building
 
 To create a production version of your app:
 

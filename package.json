@@ -1,5 +1,5 @@
 {
-	"name": "svelte-maplibre-legend",
+	"name": "@watergis/svelte-maplibre-legend",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",

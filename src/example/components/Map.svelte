@@ -11,18 +11,18 @@
 			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json',
 			center: { lng: 35.87063, lat: -1.08551 },
 			zoom: 13,
-			hash: false,
+			hash: true,
 			attributionControl: false
 		});
-		// map2.addControl(
-		// 	new NavigationControl({
-		// 		visualizePitch: false,
-		// 		showZoom: true,
-		// 		showCompass: true
-		// 	}),
-		// 	'top-right'
-		// );
-		// map2.addControl(new AttributionControl({ compact: true }), 'bottom-right');
+		map2.addControl(
+			new NavigationControl({
+				visualizePitch: false,
+				showZoom: true,
+				showCompass: true
+			}),
+			'top-right'
+		);
+		map2.addControl(new AttributionControl({ compact: true }), 'bottom-right');
 
 		map.update(() => map2);
 	});

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Split } from '@geoffcox/svelte-splitter';
-	import LayerListPanel from '$lib/LayerListPanel.svelte';
+	import LayerListPanel from '$lib';
 	import { map } from '../stores';
 	import type { StyleSpecification } from 'maplibre-gl';
 

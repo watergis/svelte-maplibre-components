@@ -22,7 +22,7 @@ See [Example](./src/example).
 
 ```svelte
 <script lang="ts">
-  import LayerListPanel from '@watergis/LayerListPanel.svelte';
+  import LayerListPanel from '@watergis/svelte-maplibre-legend';
 
   // create maplibre.Map object
   let map = new Map();

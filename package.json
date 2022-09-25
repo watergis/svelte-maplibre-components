@@ -17,7 +17,7 @@
 		"maplibre",
 		"maplibre-gl-js",
 		"legend"
-	  ],
+	],
 	"author": "Jin IGARASHI",
 	"license": "MIT",
 	"bugs": {

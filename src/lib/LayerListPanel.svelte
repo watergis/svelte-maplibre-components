@@ -23,6 +23,10 @@
 				updateLayers();
 			});
 		}
+
+		if (relativeLayers && Object.keys(relativeLayers).length === 0) {
+			onlyRelative = false;
+		}
 	}
 
 	$: onlyRendered, updateLayers();
@@ -30,7 +34,7 @@
 
 	onMount(async () => {
 		if (!map) return;
-		if (!spriteLoader) {
+		if (!spriteLoader && map.isStyleLoaded()) {
 			const styleUrl = map.getStyle().sprite;
 			spriteLoader = new SpriteLoader(styleUrl);
 			await spriteLoader.load();
@@ -61,18 +65,24 @@
 </script>
 
 <nav class="panel">
-	<div class="panel-block">
-		<label class="checkbox">
-			<input type="checkbox" bind:checked={onlyRendered} />
-			Show only rendered layers
-		</label>
+	<!-- <div class="panel-block"> -->
+	<div class="tabs is-toggle is-fullwidth m-2">
+		<ul>
+			<li class={onlyRendered ? 'is-active' : ''} on:click={() => (onlyRendered = !onlyRendered)}>
+				<a>
+					<span>Show rendered</span>
+				</a>
+			</li>
+			{#if relativeLayers && Object.keys(relativeLayers).length > 0}
+				<li class={onlyRelative ? 'is-active' : ''} on:click={() => (onlyRelative = !onlyRelative)}>
+					<a>
+						<span>Show related</span>
+					</a>
+				</li>
+			{/if}
+		</ul>
 	</div>
-	<div class="panel-block">
-		<label class="checkbox">
-			<input type="checkbox" bind:checked={onlyRelative} />
-			Show only water layers
-		</label>
-	</div>
+	<!-- </div> -->
 
 	{#key style}
 		{#each allLayers as layer}
@@ -80,21 +90,17 @@
 				{#if visibleLayerMap[layer.id]}
 					{#if onlyRelative === true}
 						{#if relativeLayers[layer.id]}
-							<!-- svelte-ignore a11y-missing-attribute -->
 							<a class="panel-block"><Layer {map} {layer} {spriteLoader} {relativeLayers} /></a>
 						{/if}
 					{:else}
-						<!-- svelte-ignore a11y-missing-attribute -->
 						<a class="panel-block"><Layer {map} {layer} {spriteLoader} {relativeLayers} /></a>
 					{/if}
 				{/if}
 			{:else if onlyRelative === true}
 				{#if relativeLayers[layer.id]}
-					<!-- svelte-ignore a11y-missing-attribute -->
 					<a class="panel-block"><Layer {map} {layer} {spriteLoader} {relativeLayers} /></a>
 				{/if}
 			{:else}
-				<!-- svelte-ignore a11y-missing-attribute -->
 				<a class="panel-block"><Layer {map} {layer} {spriteLoader} {relativeLayers} /></a>
 			{/if}
 		{/each}

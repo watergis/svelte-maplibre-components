@@ -24,8 +24,8 @@ class SpriteLoader {
 
 	async load() {
 		const res = await Promise.all([
-			this.loadImage(`${this.spriteUrl}.png`),
-			this.fetchUrl(`${this.spriteUrl}.json`)
+			this.loadImage(`${this.spriteUrl}@2x.png`),
+			this.fetchUrl(`${this.spriteUrl}@2x.json`)
 		]);
 		this.sprite = {
 			image: res[0],

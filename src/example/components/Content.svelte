@@ -3,7 +3,7 @@
 	import LayerListPanel from '$lib/LayerListPanel.svelte';
 	import { map } from '../stores';
 
-	let relativeLayers = {
+	let relativeLayers: { [key: string]: string } = {
 		pipeline: 'Pipeline',
 		pipeline_annotation: 'Pipeline Label',
 		meter: 'Water Meter',
@@ -34,11 +34,15 @@
 		sewer_pipeline: 'Sewer pipeline',
 		sewer_treatment_plant: 'Wastewater treatment plant'
 	};
+
+	// relativeLayers = {}
 </script>
 
 <Split initialPrimarySize="30%" minPrimarySize={'300px'} splitterSize="0px">
 	<div slot="primary" class="drawer-content">
-		<LayerListPanel bind:map={$map} {relativeLayers} />
+		{#if $map}
+			<LayerListPanel bind:map={$map} {relativeLayers} />
+		{/if}
 	</div>
 	<div slot="secondary" class="main-content">
 		<slot />

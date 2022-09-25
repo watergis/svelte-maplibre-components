@@ -1,6 +1,9 @@
 {
 	"name": "@watergis/svelte-maplibre-legend",
 	"version": "0.0.1",
+	"description": "This is a svelte component to make layer legend for maplibre-gl.",
+	"main": "LayerListPanel.svelte",
+	"types": "LayerListPanel.svelte.d.ts",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "svelte-kit sync && svelte-package",

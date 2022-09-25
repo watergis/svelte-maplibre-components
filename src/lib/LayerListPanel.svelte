@@ -166,7 +166,6 @@
 
 	.legend-header {
 		position: fixed;
-		top: 0;
 	}
 
 	.legend-content {

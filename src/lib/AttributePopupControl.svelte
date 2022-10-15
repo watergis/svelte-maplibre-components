@@ -112,7 +112,7 @@
 
 <div bind:this={popupContainer}>
 	{#if queriedFeatures && queriedFeatures.length > 0}
-		<div class="select is-fullwidth mb-2 is-primary">
+		<div class="select is-fullwidth mb-2 is-success">
 			{#if onlyOneFeature}
 				<select bind:value={selectedFeature} class="is-focused" disabled>
 					{#each queriedFeatures as feature}

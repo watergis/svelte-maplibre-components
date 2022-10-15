@@ -4,13 +4,13 @@
 pre-commit:
   parallel: true
   commands:
-    build:
-      run: npm run build
-
-pre-push:
-  parallel: true
-  commands:
     lint:
       run: npm run lint
     format:
       run: npm run format
+
+pre-push:
+  parallel: true
+  commands:
+    build:
+      run: npm run build

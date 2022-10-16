@@ -167,8 +167,6 @@
 </nav>
 
 <style>
-	@import 'bulma/css/bulma.css';
-
 	.legend-content {
 		position: absolute;
 		overflow: auto;

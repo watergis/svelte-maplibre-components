@@ -2,9 +2,6 @@
 	import { createEventDispatcher } from 'svelte';
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import Legend from './Legend.svelte';
-	// import Fa from 'svelte-fa';
-	// import { faEye } from '@fortawesome/free-solid-svg-icons/faEye';
-	// import { faEyeSlash } from '@fortawesome/free-solid-svg-icons/faEyeSlash';
 	import type SpriteLoader from './sprite';
 	const dispatch = createEventDispatcher();
 
@@ -12,15 +9,17 @@
 	export let layer: LayerSpecification;
 	export let spriteLoader: SpriteLoader;
 	export let relativeLayers: { [key: string]: string } = {};
-	let visibility = layer.layout && layer.layout.visibility ? layer.layout.visibility : undefined;
+	let visibility = map.getLayer(layer.id).visibility;
 
 	let checked = visibility === 'none' ? false : true;
 	$: checked, setVisibility();
 
 	const setVisibility = () => {
-		map.setLayoutProperty(layer.id, 'visibility', checked === true ? 'visible' : 'none');
+		const visibility = checked === true ? 'visible' : 'none';
+		map.setLayoutProperty(layer.id, 'visibility', visibility);
 		dispatch('visibilityChanged', {
-			layer
+			layer,
+			visibility
 		});
 	};
 </script>

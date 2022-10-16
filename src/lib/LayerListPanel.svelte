@@ -2,6 +2,7 @@
 	import type { StyleSpecification, LayerSpecification, Map } from 'maplibre-gl';
 	import Layer from './Layer.svelte';
 	import SpriteLoader from './sprite';
+	import { invisibleLayerMap } from './stores';
 
 	export let map: Map;
 	export let style: StyleSpecification;
@@ -12,7 +13,6 @@
 	$: allLayers = style ? style.layers : [];
 	let visibleLayerMap: { [key: string]: LayerSpecification } = {};
 	export let relativeLayers: { [key: string]: string } = {};
-	let invisibleLayerMap: { [key: string]: LayerSpecification } = {};
 
 	$: {
 		if (map) {
@@ -48,10 +48,13 @@
 		setTimeout(() => {
 			visibleLayerMap = {};
 			if (onlyRendered === true) {
+				Object.keys($invisibleLayerMap).forEach((layerId) => {
+					visibleLayerMap[layerId] = $invisibleLayerMap[layerId];
+				});
 				const features = map.queryRenderedFeatures();
 				allLayers.forEach((layer) => {
 					const filtered = features.filter((f) => f.layer.id === layer.id);
-					if (filtered.length > 0 || invisibleLayerMap[layer.id]) {
+					if (filtered.length > 0) {
 						visibleLayerMap[layer.id] = layer;
 					}
 				});
@@ -60,19 +63,19 @@
 					visibleLayerMap[layer.id] = layer;
 				});
 			}
-			if (Object.keys(invisibleLayerMap).length > 0) {
-				allLayers = map.getStyle().layers;
-			}
 		}, 500);
 	};
 
-	const layerVisibilityChanged = (e: { detail: { layer: LayerSpecification } }) => {
+	const layerVisibilityChanged = (e: {
+		detail: { layer: LayerSpecification; visibility: 'visible' | 'none' };
+	}) => {
 		const layer: LayerSpecification = e.detail.layer;
-		if (layer.layout?.visibility === undefined || layer.layout?.visibility === 'none') {
-			invisibleLayerMap[layer.id] = layer;
+		const visibility = e.detail.visibility;
+		if (visibility === 'none') {
+			$invisibleLayerMap[layer.id] = layer;
 		} else {
-			if (invisibleLayerMap[layer.id]) {
-				delete invisibleLayerMap[layer.id];
+			if ($invisibleLayerMap[layer.id]) {
+				delete $invisibleLayerMap[layer.id];
 			}
 		}
 	};

@@ -28,6 +28,7 @@
 	"homepage": "https://github.com/watergis/svelte-maplibre-legend#readme",
 	"devDependencies": {
 		"@arkweid/lefthook": "^0.7.7",
+		"@geoffcox/svelte-splitter": "^1.0.1",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"@sveltejs/package": "next",
@@ -48,11 +49,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@fortawesome/free-solid-svg-icons": "^6.2.0",
-		"@geoffcox/svelte-splitter": "^1.0.1",
 		"@watergis/legend-symbol": "^0.2.2",
 		"bulma": "^0.9.4",
-		"maplibre-gl": "^2.4.0",
-		"svelte-fa": "^3.0.3"
+		"maplibre-gl": "^2.4.0"
 	}
 }

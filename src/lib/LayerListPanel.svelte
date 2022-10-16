@@ -81,6 +81,7 @@
 <nav class="panel">
 	<div class="tabs is-toggle is-fullwidth m-2 legend-header">
 		<ul>
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<li class={onlyRendered ? 'is-active' : ''} on:click={() => (onlyRendered = !onlyRendered)}>
 				<!-- svelte-ignore a11y-missing-attribute -->
 				<a>
@@ -88,6 +89,7 @@
 				</a>
 			</li>
 			{#if relativeLayers && Object.keys(relativeLayers).length > 0}
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<li class={onlyRelative ? 'is-active' : ''} on:click={() => (onlyRelative = !onlyRelative)}>
 					<!-- svelte-ignore a11y-missing-attribute -->
 					<a>
@@ -161,7 +163,7 @@
 	</nav>
 </nav>
 
-<style lang="scss">
+<style>
 	@import 'bulma/css/bulma.css';
 
 	.legend-content {

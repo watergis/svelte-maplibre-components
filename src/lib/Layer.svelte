@@ -2,9 +2,9 @@
 	import { createEventDispatcher } from 'svelte';
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import Legend from './Legend.svelte';
-	import Fa from 'svelte-fa';
-	import { faEye } from '@fortawesome/free-solid-svg-icons/faEye';
-	import { faEyeSlash } from '@fortawesome/free-solid-svg-icons/faEyeSlash';
+	// import Fa from 'svelte-fa';
+	// import { faEye } from '@fortawesome/free-solid-svg-icons/faEye';
+	// import { faEyeSlash } from '@fortawesome/free-solid-svg-icons/faEyeSlash';
 	import type SpriteLoader from './sprite';
 	const dispatch = createEventDispatcher();
 
@@ -28,11 +28,13 @@
 <div class="columns is-vcentered is-mobile">
 	<div class="column .is-marginless is-paddingless">
 		<button class="button is-text is-narrow" on:click={() => (checked = !checked)}>
-			{#if checked}
-				<Fa icon={faEye} scale={1} />
-			{:else}
-				<Fa icon={faEyeSlash} scale={1} />
-			{/if}
+			<span class="icon is-small">
+				{#if checked}
+					<i class="fas fa-eye" />
+				{:else}
+					<i class="fas fa-eye-slash" />
+				{/if}
+			</span>
 		</button>
 	</div>
 	<div class="column is-narrow .is-marginless is-paddingless">
@@ -42,3 +44,12 @@
 		{relativeLayers && relativeLayers[layer.id] ? relativeLayers[layer.id] : layer.id}
 	</div>
 </div>
+
+<style>
+	@import './style/fa/css/all.css';
+
+	.fas:before {
+		display: inline-block;
+		text-decoration: none;
+	}
+</style>

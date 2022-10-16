@@ -13,3 +13,4 @@ package-lock.json
 yarn.lock
 *.md
 .github/*
+src/lib/style

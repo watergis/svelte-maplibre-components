@@ -49,7 +49,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"bulma": "^0.9.4",
 		"maplibre-gl": "^2.4.0"
 	}
 }

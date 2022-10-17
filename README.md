@@ -6,8 +6,9 @@ This repository to manage packages of svelte maplibre components for water appli
 
 The following packages are used in [watergis/sveltekit-watergis-template](https://github.com/watergis/sveltekit-watergis-template).
 
-- `@watergis/svelte-maplibre-legend`
-- `@watergis/svelte-maplibre-attribute-popup`
+- `@watergis/svelte-maplibre-legend` (see [here](./packages/legend))
+- `@watergis/svelte-maplibre-attribute-popup` (see [here](./packages/attribute-popup))
+- `@watergis/svelte-maplibre-search` (see [here](./packages/search))
 
 ## Install
 
@@ -25,12 +26,10 @@ pnpm --filter <package_name> build
 
 ## Release packages
 
+Please create changeset log for every your work.
+
 ```zsh
-cd packages/<pacjage_name>
-pnpm version patch
-cd ../..
-git add .
-git commit -m "v0.0.X for <package_name>"
+pnpm changeset
 ```
 
-The package will be released by Github Actions with changeset automatically.
+Once, the PR is merged into main with changeset log created, the package will be released by Github Actions with changeset automatically.

@@ -16,7 +16,7 @@ pnpm --filter <package_name> install
 ## Development
 
 ```zsh
-pnpm add --filter <package_name> <installed_package>
+pnpm --filter <package_name> add <installed_package>
 pnpm --filter <package_name> dev
 pnpm --filter <package_name> build
 ```

@@ -26,12 +26,10 @@ pnpm --filter <package_name> build
 
 ## Release packages
 
+Please create changeset log for every your work.
+
 ```zsh
-cd packages/<pacjage_name>
-pnpm version patch
-cd ../..
-git add .
-git commit -m "v0.0.X for <package_name>"
+pnpm changeset
 ```
 
-The package will be released by Github Actions with changeset automatically.
+Once, the PR is merged into main with changeset log created, the package will be released by Github Actions with changeset automatically.

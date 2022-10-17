@@ -6,8 +6,9 @@ This repository to manage packages of svelte maplibre components for water appli
 
 The following packages are used in [watergis/sveltekit-watergis-template](https://github.com/watergis/sveltekit-watergis-template).
 
-- `@watergis/svelte-maplibre-legend`
-- `@watergis/svelte-maplibre-attribute-popup`
+- `@watergis/svelte-maplibre-legend` (see [here](./packages/legend))
+- `@watergis/svelte-maplibre-attribute-popup` (see [here](./packages/attribute-popup))
+- `@watergis/svelte-maplibre-search` (see [here](./packages/search))
 
 ## Install
 

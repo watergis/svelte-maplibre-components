@@ -1,0 +1,55 @@
+{
+	"name": "@watergis/svelte-maplibre-legend",
+	"version": "0.0.13",
+	"description": "This is a svelte component to make layer legend for maplibre-gl.",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "svelte-kit sync && svelte-package",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"format": "prettier --plugin-search-dir . --write .",
+		"prepare": "lefthook install"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/watergis/svelte-maplibre-legend.git"
+	},
+	"keywords": [
+		"maplibre",
+		"maplibre-gl-js",
+		"legend"
+	],
+	"author": "Jin IGARASHI",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/watergis/svelte-maplibre-legend/issues"
+	},
+	"homepage": "https://github.com/watergis/svelte-maplibre-legend#readme",
+	"devDependencies": {
+		"@arkweid/lefthook": "^0.7.7",
+		"@geoffcox/svelte-splitter": "^1.0.1",
+		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/kit": "next",
+		"@sveltejs/package": "next",
+		"@typescript-eslint/eslint-plugin": "^5.40.0",
+		"@typescript-eslint/parser": "^5.40.0",
+		"eslint": "^8.25.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-svelte3": "^4.0.0",
+		"prettier": "^2.7.1",
+		"prettier-plugin-svelte": "^2.8.0",
+		"sass": "^1.55.0",
+		"svelte": "^3.52.0",
+		"svelte-check": "^2.9.2",
+		"svelte-preprocess": "^4.10.7",
+		"tslib": "^2.4.0",
+		"typescript": "^4.8.4",
+		"vite": "^3.1.8"
+	},
+	"type": "module",
+	"dependencies": {
+		"@watergis/legend-symbol": "^0.2.2",
+		"maplibre-gl": "^2.4.0"
+	}
+}

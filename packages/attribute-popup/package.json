@@ -13,7 +13,8 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/watergis/svelte-maplibre-attribute-popup.git"
+		"url": "git+https://github.com/watergis/svelte-maplibre-components.git",
+		"directory": "packages/attribute-popup"
 	},
 	"keywords": [
 		"maplibre",
@@ -24,9 +25,9 @@
 	"author": "Jin IGARASHI",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/watergis/svelte-maplibre-attribute-popup/issues"
+		"url": "https://github.com/watergis/svelte-maplibre-components/issues"
 	},
-	"homepage": "https://github.com/watergis/svelte-maplibre-attribute-popup#readme",
+	"homepage": "https://github.com/watergis/svelte-maplibre-components#readme",
 	"devDependencies": {
 		"@arkweid/lefthook": "^0.7.7",
 		"@sveltejs/adapter-auto": "next",

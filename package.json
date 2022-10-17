@@ -6,7 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+		"type": "git",
+		"url": "git+https://github.com/watergis/svelte-maplibre-components.git"
+	},
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Jin IGARASHI",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/watergis/svelte-maplibre-components/issues"
+	},
+	"homepage": "https://github.com/watergis/svelte-maplibre-components#readme",
+  "devDependencies": {
+    "@changesets/cli": "^2.25.0"
+  }
 }

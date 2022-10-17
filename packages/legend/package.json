@@ -13,7 +13,8 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/watergis/svelte-maplibre-legend.git"
+		"url": "git+https://github.com/watergis/svelte-maplibre-components.git",
+		"directory": "packages/legend"
 	},
 	"keywords": [
 		"maplibre",
@@ -23,9 +24,9 @@
 	"author": "Jin IGARASHI",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/watergis/svelte-maplibre-legend/issues"
+		"url": "https://github.com/watergis/svelte-maplibre-components/issues"
 	},
-	"homepage": "https://github.com/watergis/svelte-maplibre-legend#readme",
+	"homepage": "https://github.com/watergis/svelte-maplibre-components#readme",
 	"devDependencies": {
 		"@arkweid/lefthook": "^0.7.7",
 		"@geoffcox/svelte-splitter": "^1.0.1",

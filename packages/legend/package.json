@@ -25,7 +25,7 @@
 	"bugs": {
 		"url": "https://github.com/watergis/svelte-maplibre-components/issues"
 	},
-	"homepage": "https://github.com/watergis/svelte-maplibre-components#readme",
+	"homepage": "https://github.com/watergis/svelte-maplibre-components/tree/main/packages/legend#readme",
 	"devDependencies": {
 		"@arkweid/lefthook": "^0.7.7",
 		"@geoffcox/svelte-splitter": "^1.0.1",

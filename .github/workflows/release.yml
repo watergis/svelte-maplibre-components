@@ -1,8 +1,12 @@
 name: Changesets
 on:
-  push:
+  workflow_run:
+    workflows: [ "build" ]
     branches:
       - main
+    types:
+      - completed
+
 env:
   CI: true
   PNPM_CACHE_FOLDER: .pnpm-store

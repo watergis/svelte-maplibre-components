@@ -34,6 +34,8 @@
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"@sveltejs/package": "next",
+		"@types/fabric": "^4.5.12",
+		"@types/file-saver": "^2.0.5",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
 		"eslint": "^8.16.0",
@@ -50,6 +52,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"fabric": "^5.2.4",
+		"file-saver": "^2.0.5",
+		"jspdf": "^2.5.1",
 		"maplibre-gl": "^2.4.0"
 	}
 }

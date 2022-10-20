@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { Map, NavigationControl, AttributionControl } from 'maplibre-gl';
 	import { map } from '$example/stores';
+	import MapExport from '$lib/MapExport.svelte';
 
 	let mapContainer: HTMLDivElement;
 
@@ -29,10 +30,14 @@
 </script>
 
 <div class="map-wrap">
-	<div class="map" id="map" bind:this={mapContainer} />
+	<div class="map" id="map" bind:this={mapContainer}>
+		<div class="export-container">
+			<MapExport bind:map={$map} showPrintableArea={true} showCrosshair={true} />
+		</div>
+	</div>
 </div>
 
-<style>
+<style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 
 	.map-wrap {
@@ -47,5 +52,12 @@
 		width: 100%;
 		height: 100%;
 		z-index: 1;
+
+		.export-container {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			z-index: 10;
+		}
 	}
 </style>

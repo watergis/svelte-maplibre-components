@@ -9,17 +9,11 @@
 	export let map: Map;
 	export let showPrintableArea = true;
 	export let showCrosshair = true;
+	export let IsCheckedPrintableAreaDefault = true;
+	export let IsCheckedCrosshairDefault = true;
 
-	let IsCheckedPrintableArea = true;
-	let IsCheckedCrosshair = true;
-
-	$: if (!showPrintableArea) {
-		IsCheckedPrintableArea = false;
-	}
-
-	$: if (!showCrosshair) {
-		IsCheckedCrosshair = false;
-	}
+	$: IsCheckedPrintableArea = showPrintableArea === true ? IsCheckedPrintableAreaDefault : false;
+	$: IsCheckedCrosshair = showCrosshair === true ? IsCheckedCrosshairDefault : false;
 
 	let mapGenerator: MapGenerator;
 	let printableArea: PrintableAreaManager | undefined;

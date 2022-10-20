@@ -3,6 +3,7 @@
 	import { Map, NavigationControl, AttributionControl } from 'maplibre-gl';
 	import { map } from '$example/stores';
 	import MapExport from '$lib/MapExport.svelte';
+	import MapExportControl from '$lib/MapExportControl.svelte';
 
 	let mapContainer: HTMLDivElement;
 
@@ -32,9 +33,10 @@
 <div class="map-wrap">
 	<div class="map" id="map" bind:this={mapContainer}>
 		<div class="export-container">
-			<MapExport bind:map={$map} showPrintableArea={true} showCrosshair={true} />
+			<MapExport bind:map={$map} showPrintableArea={false} showCrosshair={false} />
 		</div>
 	</div>
+	<MapExportControl bind:map={$map} />
 </div>
 
 <style lang="scss">

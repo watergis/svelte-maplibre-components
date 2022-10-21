@@ -19,10 +19,10 @@
 	export let showCrosshair = true;
 	export let position: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' = 'top-right';
 
-	let paperSize = Size.A4;
-	let dpi = DPI[96];
-	let format = Format.PNG;
-	let orientation = PageOrientation.Landscape;
+	export let paperSize = Size.A4;
+	export let dpi = DPI[96];
+	export let format = Format.PNG;
+	export let orientation = PageOrientation.Landscape;
 
 	$: paperSize, updatePrintableArea();
 	$: orientation, updatePrintableArea();

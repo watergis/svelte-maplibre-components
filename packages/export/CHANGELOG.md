@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.1
+
+### Patch Changes
+
+- c96ea67: export parameters of export control to allow putting initial value settings
+
 ## 0.1.0
 
 ### Minor Changes

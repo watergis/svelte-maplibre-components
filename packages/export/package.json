@@ -1,6 +1,6 @@
 {
 	"name": "@watergis/svelte-maplibre-export",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "This is a svelte component to add export control plugin to maplibre.",
 	"main": "package/index.js",
 	"files": [

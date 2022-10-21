@@ -2,6 +2,8 @@
 
 This is a svelte component to add export control to maplibre.
 
+![demo.gif](./demo.gif)
+
 ## Install
 
 ```zsh

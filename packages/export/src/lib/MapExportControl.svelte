@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { Map } from 'maplibre-gl';
 	import { onMount } from 'svelte';
+	import { draggable } from '@neodrag/svelte';
+	import type { DragOptions } from '@neodrag/svelte';
 	import { PageOrientation, Size, DPI, Format, Unit } from '$lib/utils/map-generator';
 	import MapExport from './MapExport.svelte';
 	import PrintableAreaManager from '$lib/utils/printable-area-manager';
@@ -26,6 +28,9 @@
 	$: orientation, updatePrintableArea();
 
 	let isExportContainerShown = false;
+	let dragOptions: DragOptions = {
+		bounds: 'parent'
+	};
 
 	// eslint-disable-next-line
 	function MapExportControl() {}
@@ -133,7 +138,8 @@
 </script>
 
 {#if isExportContainerShown}
-	<div class="export-container">
+	<nav class="panel is-success export-container" use:draggable={dragOptions}>
+		<p class="panel-heading">Export tool</p>
 		<MapExport
 			bind:this={mapExportComponent}
 			bind:map
@@ -150,7 +156,7 @@
 				<span>Export</span>
 			</button>
 		</div>
-	</div>
+	</nav>
 {/if}
 
 <style lang="scss">
@@ -206,5 +212,6 @@
 		bottom: 10px;
 		right: 10px;
 		z-index: 10;
+		cursor: grab;
 	}
 </style>

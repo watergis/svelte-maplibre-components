@@ -52,6 +52,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@neodrag/svelte": "^1.2.4",
 		"fabric": "^5.2.4",
 		"file-saver": "^2.0.5",
 		"jspdf": "^2.5.1",

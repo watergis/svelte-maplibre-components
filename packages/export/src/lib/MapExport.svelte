@@ -3,37 +3,17 @@
 	import type { Map } from 'maplibre-gl';
 	import { PageOrientation, Size, DPI, Format, Unit } from '$lib/utils/map-generator';
 	import type MapGenerator from '$lib/utils/map-generator';
-	import PrintableAreaManager from '$lib/utils/printable-area-manager';
-	import CrosshairManager from '$lib/utils/crosshair-manager';
 
 	export let map: Map;
-	export let showPrintableArea = true;
-	export let showCrosshair = true;
-	export let IsCheckedPrintableAreaDefault = true;
-	export let IsCheckedCrosshairDefault = true;
-
-	$: IsCheckedPrintableArea = showPrintableArea === true ? IsCheckedPrintableAreaDefault : false;
-	$: IsCheckedCrosshair = showCrosshair === true ? IsCheckedCrosshairDefault : false;
-
 	let mapGenerator: MapGenerator;
-	let printableArea: PrintableAreaManager | undefined;
-	let crosshairManager: CrosshairManager | undefined;
-	let paperSize = Size.A4;
-	let dpi = DPI[96];
-	let format = Format.PNG;
-	let orientation = PageOrientation.Landscape;
-
-	$: paperSize, updatePrintableArea();
-	$: orientation, updatePrintableArea();
-
-	$: IsCheckedPrintableArea, togglePrintableArea(IsCheckedPrintableArea);
-	$: IsCheckedCrosshair, toggleCrosshair(IsCheckedCrosshair);
+	export let paperSize = Size.A4;
+	export let dpi = DPI[96];
+	export let format = Format.PNG;
+	export let orientation = PageOrientation.Landscape;
 
 	onMount(async () => {
 		const { default: MapGenerator } = await import('./utils/map-generator');
 		mapGenerator = new MapGenerator();
-		togglePrintableArea(IsCheckedPrintableArea);
-		toggleCrosshair(IsCheckedCrosshair);
 	});
 
 	const getActualPaperSize = () => {
@@ -44,7 +24,7 @@
 		return actualPaperSize;
 	};
 
-	const exportMap = () => {
+	export const exportMap = () => {
 		const actualPaperSize = getActualPaperSize();
 		mapGenerator.generate(
 			map,
@@ -56,153 +36,83 @@
 			Unit.mm
 		);
 	};
-
-	const togglePrintableArea = (state: boolean) => {
-		if (state === false) {
-			if (printableArea !== undefined) {
-				printableArea.destroy();
-				printableArea = undefined;
-			}
-		} else {
-			printableArea = new PrintableAreaManager(map);
-			updatePrintableArea();
-		}
-	};
-
-	const updatePrintableArea = () => {
-		if (printableArea === undefined) {
-			return;
-		}
-		const actualPaperSize = getActualPaperSize();
-		printableArea.updateArea(actualPaperSize[0], actualPaperSize[1]);
-	};
-
-	const toggleCrosshair = (state: boolean) => {
-		if (!map) return;
-		if (state === false) {
-			if (crosshairManager !== undefined) {
-				crosshairManager.destroy();
-				crosshairManager = undefined;
-			}
-		} else {
-			crosshairManager = new CrosshairManager(map);
-			crosshairManager.create();
-		}
-	};
 </script>
 
-<div class="export-container">
-	<div class="field">
-		<!-- svelte-ignore a11y-label-has-associated-control -->
-		<label class="label">Paper Size</label>
-		<div class="control has-icons-left">
-			<div class="select is-fullwidth">
-				<select bind:value={paperSize}>
-					{#each Object.keys(Size) as key}
-						<option value={Size[key]}>{key}</option>
-					{/each}
-				</select>
-			</div>
-			<div class="icon is-small is-left">
-				<i class="fas fa-file" />
-			</div>
+<div class="field">
+	<!-- svelte-ignore a11y-label-has-associated-control -->
+	<label class="label">Paper Size</label>
+	<div class="control has-icons-left">
+		<div class="select is-fullwidth">
+			<select bind:value={paperSize}>
+				{#each Object.keys(Size) as key}
+					<option value={Size[key]}>{key}</option>
+				{/each}
+			</select>
+		</div>
+		<div class="icon is-small is-left">
+			<i class="fas fa-file" />
 		</div>
 	</div>
-	<div class="field">
-		<!-- svelte-ignore a11y-label-has-associated-control -->
-		<label class="label">Page Orientation</label>
-		<div class="control">
-			{#each Object.keys(PageOrientation) as key}
-				<label class="radio" style="color:black">
-					<input
-						type="radio"
-						name="orientation"
-						on:click={() => {
-							orientation = PageOrientation[key];
-						}}
-						checked={orientation === PageOrientation[key]}
+</div>
+<div class="field">
+	<!-- svelte-ignore a11y-label-has-associated-control -->
+	<label class="label">Page Orientation</label>
+	<div class="control">
+		{#each Object.keys(PageOrientation) as key}
+			<label class="radio" style="color:black">
+				<input
+					type="radio"
+					name="orientation"
+					on:click={() => {
+						orientation = PageOrientation[key];
+					}}
+					checked={orientation === PageOrientation[key]}
+				/>
+				<div class="icon is-small is-left">
+					<i
+						class="fas {`${
+							PageOrientation[key] === PageOrientation.Landscape ? 'fa-left-right' : 'fa-up-down'
+						}`}"
 					/>
-					<div class="icon is-small is-left">
-						<i
-							class="fas {`${
-								PageOrientation[key] === PageOrientation.Landscape ? 'fa-left-right' : 'fa-up-down'
-							}`}"
-						/>
-					</div>
-					{key}
-				</label>
-			{/each}
+				</div>
+				{key}
+			</label>
+		{/each}
+	</div>
+</div>
+<div class="field">
+	<!-- svelte-ignore a11y-label-has-associated-control -->
+	<label class="label">Format</label>
+	<div class="control has-icons-left">
+		<div class="select is-fullwidth">
+			<select bind:value={format}>
+				{#each Object.keys(Format) as key}
+					<option value={Format[key]}>{key}</option>
+				{/each}
+			</select>
+		</div>
+		<div class="icon is-small is-left">
+			<i class="fas fa-file-pdf" />
 		</div>
 	</div>
-	<div class="field">
-		<!-- svelte-ignore a11y-label-has-associated-control -->
-		<label class="label">Format</label>
-		<div class="control has-icons-left">
-			<div class="select is-fullwidth">
-				<select bind:value={format}>
-					{#each Object.keys(Format) as key}
-						<option value={Format[key]}>{key}</option>
-					{/each}
-				</select>
-			</div>
-			<div class="icon is-small is-left">
-				<i class="fas fa-file-pdf" />
-			</div>
+</div>
+<div class="field">
+	<!-- svelte-ignore a11y-label-has-associated-control -->
+	<label class="label">DPI</label>
+	<div class="control has-icons-left">
+		<div class="select is-fullwidth">
+			<select bind:value={dpi}>
+				{#each Object.keys(DPI) as key}
+					<option value={DPI[key]}>{key}</option>
+				{/each}
+			</select>
 		</div>
-	</div>
-	<div class="field">
-		<!-- svelte-ignore a11y-label-has-associated-control -->
-		<label class="label">DPI</label>
-		<div class="control has-icons-left">
-			<div class="select is-fullwidth">
-				<select bind:value={dpi}>
-					{#each Object.keys(DPI) as key}
-						<option value={DPI[key]}>{key}</option>
-					{/each}
-				</select>
-			</div>
-			<div class="icon is-small is-left">
-				<i class="fas fa-braille" />
-			</div>
+		<div class="icon is-small is-left">
+			<i class="fas fa-braille" />
 		</div>
-	</div>
-
-	{#if showPrintableArea}
-		<div class="field">
-			<div class="control">
-				<label class="checkbox">
-					<input type="checkbox" bind:checked={IsCheckedPrintableArea} />
-					Show printable area
-				</label>
-			</div>
-		</div>
-	{/if}
-	{#if showCrosshair}
-		<div class="field">
-			<div class="control">
-				<label class="checkbox">
-					<input type="checkbox" bind:checked={IsCheckedCrosshair} />
-					Show crosshair
-				</label>
-			</div>
-		</div>
-	{/if}
-
-	<div class="field is-grouped">
-		<button class="button is-success" on:click={exportMap}>
-			<span class="icon">
-				<i class="fas fa-download" />
-			</span>
-			<span>Export</span>
-		</button>
 	</div>
 </div>
 
 <style>
 	@import 'style/fa/css/all.css';
-
-	.export-container {
-		background-color: white;
-		padding: 10px;
-	}
 </style>

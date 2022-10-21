@@ -1,14 +1,31 @@
 <script lang="ts">
 	import type { Map } from 'maplibre-gl';
 	import { onMount } from 'svelte';
+	import { PageOrientation, Size, DPI, Format, Unit } from '$lib/utils/map-generator';
 	import MapExport from './MapExport.svelte';
+	import PrintableAreaManager from '$lib/utils/printable-area-manager';
+	import CrosshairManager from '$lib/utils/crosshair-manager';
 
 	export let map: Map;
 
-	let showPrintableArea = false;
-	let showCrosshair = false;
+	let printableArea: PrintableAreaManager | undefined;
+	let crosshairManager: CrosshairManager | undefined;
 
-	let exportContainer: HTMLDivElement;
+	let mapExportComponent: MapExport;
+
+	export let showPrintableArea = true;
+	export let showCrosshair = true;
+	export let position: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' = 'top-right';
+
+	let paperSize = Size.A4;
+	let dpi = DPI[96];
+	let format = Format.PNG;
+	let orientation = PageOrientation.Landscape;
+
+	$: paperSize, updatePrintableArea();
+	$: orientation, updatePrintableArea();
+
+	let isExportContainerShown = false;
 
 	// eslint-disable-next-line
 	function MapExportControl() {}
@@ -18,47 +35,36 @@
 
 		this.controlContainer = document.createElement('div');
 		this.controlContainer.className = 'mapboxgl-ctrl mapboxgl-ctrl-group';
-		exportContainer.classList.add('maplibregl-export-list');
 		this.button = document.createElement('button');
 		this.button.classList.add('maplibre-ctrl-icon');
-		this.button.classList.add('maplibregl-export-control');
 		this.button.type = 'button';
 		this.button.addEventListener('click', () => {
-			this.button.style.display = 'none';
-			exportContainer.style.display = 'block';
-			showPrintableArea = true;
-			showCrosshair = true;
-		});
-		this.onDocumentClick = this.onDocumentClick.bind(this);
-		document.addEventListener('click', this.onDocumentClick);
-		this.controlContainer.appendChild(this.button);
-		this.controlContainer.appendChild(exportContainer);
-		return this.controlContainer;
-	};
+			isExportContainerShown = !isExportContainerShown;
+			if (isExportContainerShown) {
+				this.button.classList.add('maplibre-ctrl-icon-active');
+			} else {
+				this.button.classList.remove('maplibre-ctrl-icon-active');
+			}
 
-	MapExportControl.prototype.onDocumentClick = function (event: MouseEvent) {
-		console.log(event);
-		if (
-			this.controlContainer &&
-			!this.controlContainer.contains(event.target as Element) &&
-			this.exportContainer &&
-			this.exportButton
-		) {
-			this.button.style.display = 'block';
-			exportContainer.style.display = 'none';
-			showPrintableArea = false;
-			showCrosshair = false;
-		}
+			if (!showPrintableArea) {
+				togglePrintableArea(false);
+			} else {
+				togglePrintableArea(isExportContainerShown);
+			}
+			if (!showCrosshair) {
+				toggleCrosshair(false);
+			} else {
+				toggleCrosshair(isExportContainerShown);
+			}
+		});
+		this.controlContainer.appendChild(this.button);
+		return this.controlContainer;
 	};
 
 	MapExportControl.prototype.onRemove = function () {
 		if (!this.controlContainer || !this.controlContainer.parentNode || !this.map || !this.button) {
 			return;
 		}
-		this.exportButton.removeEventListener('click', this.onDocumentClick);
-		this.controlContainer.parentNode.removeChild(this.controlContainer);
-		document.removeEventListener('click', this.onDocumentClick);
-
 		this.controlContainer.parentNode.removeChild(this.controlContainer);
 		this.map.off('click', this.onClick.bind(this));
 		this.map = undefined;
@@ -73,7 +79,7 @@
 	$: {
 		if (map) {
 			if (mapExportControl !== null && map.hasControl(mapExportControl) === false) {
-				map.addControl(mapExportControl, 'top-right');
+				map.addControl(mapExportControl, position);
 			}
 		}
 	}
@@ -83,16 +89,72 @@
 		// @ts-ignore
 		mapExportControl = new MapExportControl();
 	});
+
+	const getActualPaperSize = () => {
+		let actualPaperSize = [paperSize[0], paperSize[1]];
+		if (orientation !== PageOrientation.Landscape) {
+			actualPaperSize = actualPaperSize.reverse();
+		}
+		return actualPaperSize;
+	};
+
+	const togglePrintableArea = (state: boolean) => {
+		if (state === false) {
+			if (printableArea !== undefined) {
+				printableArea.destroy();
+				printableArea = undefined;
+			}
+		} else {
+			printableArea = new PrintableAreaManager(map);
+			updatePrintableArea();
+		}
+	};
+
+	const updatePrintableArea = () => {
+		if (printableArea === undefined) {
+			return;
+		}
+		const actualPaperSize = getActualPaperSize();
+		printableArea.updateArea(actualPaperSize[0], actualPaperSize[1]);
+	};
+
+	const toggleCrosshair = (state: boolean) => {
+		if (!map) return;
+		if (state === false) {
+			if (crosshairManager !== undefined) {
+				crosshairManager.destroy();
+				crosshairManager = undefined;
+			}
+		} else {
+			crosshairManager = new CrosshairManager(map);
+			crosshairManager.create();
+		}
+	};
 </script>
 
-<div bind:this={exportContainer}>
-	<MapExport bind:map {showPrintableArea} {showCrosshair} />
-</div>
+{#if isExportContainerShown}
+	<div class="export-container">
+		<MapExport
+			bind:this={mapExportComponent}
+			bind:map
+			bind:format
+			bind:paperSize
+			bind:dpi
+			bind:orientation
+		/>
+		<div class="field">
+			<button class="button is-fullwidth is-success" on:click={mapExportComponent?.exportMap}>
+				<span class="icon">
+					<i class="fas fa-download" />
+				</span>
+				<span>Export</span>
+			</button>
+		</div>
+	</div>
+{/if}
 
 <style lang="scss">
-	:global(.maplibregl-export-list) {
-		display: none;
-	}
+	@import 'style/fa/css/all.css';
 
 	:global(.mapboxgl-ctrl-group) {
 		.maplibregl-export-list {
@@ -128,5 +190,21 @@
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: 70%;
+	}
+
+	:global(.maplibre-ctrl-icon-active) {
+		background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg>');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 70%;
+	}
+
+	.export-container {
+		position: absolute;
+		background-color: white;
+		padding: 10px;
+		bottom: 10px;
+		right: 10px;
+		z-index: 10;
 	}
 </style>

@@ -20,7 +20,8 @@ See [Example](./src/example).
 
 ```svelte
 <script lang="ts">
-    import MapExport from '@watergis/svelte-maplibre-export';
+  import MapExportControl from '@watergis/svelte-maplibre-export/MapExportControl.svelte';
+  import MapExportPanel from '@watergis/svelte-maplibre-export/MapExportPanel.svelte';
 
   // create maplibre.Map object
   let map = new Map();
@@ -29,9 +30,14 @@ See [Example](./src/example).
 
 <div class="map" id="map" bind:this={mapContainer}>
     <div class="export-container">
-        <MapExport bind:map={$map} showPrintableArea={true} showCrosshair={true} />
+        <!-- if you would like to use just a part of export tool, use this option -->
+        <MapExportPanel bind:map={$map} showPrintableArea={false} showCrosshair={false} />
     </div>
 </div>
+
+<!-- if you would like to add an export tool as maplibre plugin, use this option -->
+<MapExportControl bind:map={$map} showPrintableArea={true} showCrosshair={true} position='top-right' />
+
 <style>
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
 

@@ -3,4 +3,5 @@ packages:
   - 'packages/legend'
   - 'packages/attribute-popup'
   - 'packages/search'
+  - 'packages/export'
   - 'packages/*'

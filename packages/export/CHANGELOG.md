@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.2
+
+### Patch Changes
+
+- 1655b84: merge MapExport component into both panel and control component
+
 ## 0.1.1
 
 ### Patch Changes

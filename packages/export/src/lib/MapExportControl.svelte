@@ -3,8 +3,7 @@
 	import { onMount } from 'svelte';
 	import { draggable } from '@neodrag/svelte';
 	import type { DragOptions } from '@neodrag/svelte';
-	import { PageOrientation, Size, DPI, Format, Unit } from '$lib/utils/map-generator';
-	import MapExport from './MapExport.svelte';
+	import MapGenerator, { PageOrientation, Size, DPI, Format, Unit } from '$lib/utils/map-generator';
 	import PrintableAreaManager from '$lib/utils/printable-area-manager';
 	import CrosshairManager from '$lib/utils/crosshair-manager';
 
@@ -13,7 +12,7 @@
 	let printableArea: PrintableAreaManager | undefined;
 	let crosshairManager: CrosshairManager | undefined;
 
-	let mapExportComponent: MapExport;
+	let mapGenerator: MapGenerator;
 
 	export let showPrintableArea = true;
 	export let showCrosshair = true;
@@ -90,10 +89,26 @@
 	}
 
 	onMount(async () => {
+		const { default: MapGenerator } = await import('./utils/map-generator');
+		mapGenerator = new MapGenerator();
+
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		mapExportControl = new MapExportControl();
 	});
+
+	const exportMap = () => {
+		const actualPaperSize = getActualPaperSize();
+		mapGenerator.generate(
+			map,
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			actualPaperSize,
+			dpi,
+			format,
+			Unit.mm
+		);
+	};
 
 	const getActualPaperSize = () => {
 		let actualPaperSize = [paperSize[0], paperSize[1]];
@@ -140,16 +155,86 @@
 {#if isExportContainerShown}
 	<nav class="panel is-success export-container" use:draggable={dragOptions}>
 		<p class="panel-heading">Export tool</p>
-		<MapExport
-			bind:this={mapExportComponent}
-			bind:map
-			bind:format
-			bind:paperSize
-			bind:dpi
-			bind:orientation
-		/>
+
 		<div class="field">
-			<button class="button is-fullwidth is-success" on:click={mapExportComponent?.exportMap}>
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label class="label">Paper Size</label>
+			<div class="control has-icons-left">
+				<div class="select is-fullwidth">
+					<select bind:value={paperSize}>
+						{#each Object.keys(Size) as key}
+							<option value={Size[key]}>{key}</option>
+						{/each}
+					</select>
+				</div>
+				<div class="icon is-small is-left">
+					<i class="fas fa-file" />
+				</div>
+			</div>
+		</div>
+		<div class="field">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label class="label">Page Orientation</label>
+			<div class="control">
+				{#each Object.keys(PageOrientation) as key}
+					<label class="radio" style="color:black">
+						<input
+							type="radio"
+							name="orientation"
+							on:click={() => {
+								orientation = PageOrientation[key];
+							}}
+							checked={orientation === PageOrientation[key]}
+						/>
+						<div class="icon is-small is-left">
+							<i
+								class="fas {`${
+									PageOrientation[key] === PageOrientation.Landscape
+										? 'fa-left-right'
+										: 'fa-up-down'
+								}`}"
+							/>
+						</div>
+						{key}
+					</label>
+				{/each}
+			</div>
+		</div>
+		<div class="field">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label class="label">Format</label>
+			<div class="control has-icons-left">
+				<div class="select is-fullwidth">
+					<select bind:value={format}>
+						{#each Object.keys(Format) as key}
+							<option value={Format[key]}>{key}</option>
+						{/each}
+					</select>
+				</div>
+				<div class="icon is-small is-left">
+					<i class="fas fa-file-pdf" />
+				</div>
+			</div>
+		</div>
+		<div class="field">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label class="label">DPI</label>
+			<div class="control has-icons-left">
+				<div class="select is-fullwidth">
+					<select bind:value={dpi}>
+						{#each Object.keys(DPI) as key}
+							<option value={DPI[key]}>{key}</option>
+						{/each}
+					</select>
+				</div>
+				<div class="icon is-small is-left">
+					<i class="fas fa-braille" />
+				</div>
+			</div>
+		</div>
+
+		<div class="field">
+			<button class="button is-fullwidth is-success" on:click={exportMap}>
 				<span class="icon">
 					<i class="fas fa-download" />
 				</span>

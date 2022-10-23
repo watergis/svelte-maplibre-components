@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.5
+
+### Patch Changes
+
+- 76e120e: removed file-saver package from dependencies
+
 ## 0.1.4
 
 ### Patch Changes

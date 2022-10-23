@@ -29,7 +29,7 @@
 	"bugs": {
 		"url": "https://github.com/watergis/svelte-maplibre-components/issues"
 	},
-	"homepage": "https://github.com/watergis/svelte-maplibre-components/tree/main/packages/search#readme",
+	"homepage": "https://github.com/watergis/svelte-maplibre-components/tree/main/packages/export#readme",
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",

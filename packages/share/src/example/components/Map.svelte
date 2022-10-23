@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { Map, NavigationControl, AttributionControl } from 'maplibre-gl';
 	import { map } from '$example/stores';
+	import ShareUrlControl from '$lib/ShareURLControl.svelte';
 
 	let mapContainer: HTMLDivElement;
 
@@ -26,10 +27,17 @@
 
 		map.update(() => map2);
 	});
+
+	let customiseUrl = (url: string): string => {
+		const _url = new URL(url);
+		_url.searchParams.set('customise', 'true');
+		return _url.toString();
+	};
 </script>
 
 <div class="map-wrap">
 	<div class="map" id="map" bind:this={mapContainer} />
+	<ShareUrlControl bind:map={$map} bind:customiseUrl />
 </div>
 
 <style lang="scss">

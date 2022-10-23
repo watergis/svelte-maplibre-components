@@ -2,8 +2,6 @@
 
 This is a svelte component to add share control to maplibre.
 
-![demo.gif](./demo.gif)
-
 ## Install
 
 ```zsh
@@ -22,14 +20,21 @@ See [Example](./src/example).
 
 ```svelte
 <script lang="ts">
-	import MapShareControl from '@watergis/svelte-maplibre-export/MapShareControl.svelte';
+import ShareURLControl from '@watergis/svelte-maplibre-export';
 
-	// create maplibre.Map object
-	let map = new Map();
+// create maplibre.Map object
+let map = new Map();
+
+// if you want to customise URL (like adding another search param)
+let customiseUrl = (url: string): string => {
+    const _url = new URL(url)
+    _url.searchParams.set('customise', 'true')
+    return _url.toString()
+}
 </script>
-
+<ShareUrlControl bind:map={$map} bind:customiseUrl/>
 <style>
-	@import 'https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css';
+@import 'https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css';
 </style>
 ```
 

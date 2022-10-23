@@ -160,12 +160,7 @@
 		height: $height;
 
 		.primary-content {
-			overflow: auto;
-			display: flex;
 			height: 100%;
-			flex-direction: column;
-			flex-basis: 100%;
-			flex: 1;
 			margin: 10px;
 			position: relative;
 

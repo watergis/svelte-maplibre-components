@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.3
+
+### Patch Changes
+
+- 643d43e: removed fabric from dependencies to generate SVG
+
 ## 0.1.2
 
 ### Patch Changes

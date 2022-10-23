@@ -681,6 +681,14 @@ readers do not read off random characters that represent icons */
 	content: '\f338';
 }
 
+.fa-up-down-left-right::before {
+	content: '\f0b2';
+}
+
+.fa-xmark::before {
+	content: '\f00d';
+}
+
 :root,
 :host {
 	--fa-style-family-classic: 'Font Awesome 6 Free';

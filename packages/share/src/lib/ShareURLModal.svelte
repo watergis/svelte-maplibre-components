@@ -56,6 +56,8 @@
 					type="text"
 					placeholder="URL to share"
 					bind:value={url}
+					use:copy={url}
+					on:click={handleCopy}
 					readonly
 				/>
 				<button class="button is-success ml-1" use:copy={url} on:click={handleCopy}>

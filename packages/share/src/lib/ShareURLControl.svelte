@@ -67,33 +67,4 @@
 
 <style lang="scss">
 	@import 'style/fa/css/all.css';
-
-	:global(.mapboxgl-ctrl-group) {
-		.maplibregl-export-list {
-			button {
-				background: none;
-				border: none;
-				cursor: pointer;
-				display: block;
-				font-size: 14px;
-				padding: 8px 8px 6px;
-				text-align: right;
-				width: 100%;
-				height: auto;
-				text-align: center;
-			}
-		}
-	}
-
-	:global(.maplibregl-export-list) button.active {
-		font-weight: bold;
-	}
-
-	:global(.maplibregl-export-list) button:hover {
-		background-color: rgba(0, 0, 0, 0.05);
-	}
-
-	:global(.maplibregl-export-list) button + button {
-		border-top: 1px solid #ddd;
-	}
 </style>

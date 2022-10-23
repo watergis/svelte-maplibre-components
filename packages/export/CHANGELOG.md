@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.4
+
+### Patch Changes
+
+- 1d69862: added close icon in export control. furthermore, drag icon was added to show the panel is draggable
+
 ## 0.1.3
 
 ### Patch Changes

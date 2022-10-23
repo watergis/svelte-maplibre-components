@@ -28,7 +28,6 @@
  */
 
 import { jsPDF } from 'jspdf';
-import { saveAs } from 'file-saver';
 import { Map } from 'maplibre-gl';
 
 export const Format = {
@@ -202,10 +201,16 @@ export default class MapGenerator {
 	 * @param fileName file name
 	 */
 	private toPNG(canvas: HTMLCanvasElement, fileName: string) {
-		canvas.toBlob((blob) => {
-			if (!blob) return;
-			saveAs(blob, fileName);
-		});
+		const a = document.createElement('a');
+		a.href = canvas.toDataURL();
+		a.download = fileName;
+		a.click();
+		a.remove();
+
+		// canvas.toBlob((blob) => {
+		// 	if (!blob) return;
+		// 	saveAs(blob, fileName);
+		// });
 	}
 
 	/**

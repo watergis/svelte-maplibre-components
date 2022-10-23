@@ -30,7 +30,6 @@
 import { jsPDF } from 'jspdf';
 import { saveAs } from 'file-saver';
 import { Map } from 'maplibre-gl';
-import { fabric } from 'fabric';
 
 export const Format = {
 	JPEG: 'jpg',
@@ -268,34 +267,27 @@ export default class MapGenerator {
 	 */
 	private toSVG(canvas: HTMLCanvasElement, fileName: string) {
 		const uri = canvas.toDataURL('image/png');
-		fabric.Image.fromURL(uri, (image) => {
-			const tmpCanvas = new fabric.Canvas('canvas');
-			const pxWidth = Number(this.toPixels(this.width, this.dpi).replace('px', ''));
-			const pxHeight = Number(this.toPixels(this.height, this.dpi).replace('px', ''));
-			image.scaleToWidth(pxWidth);
-			image.scaleToHeight(pxHeight);
 
-			tmpCanvas.add(image);
-			const svg = tmpCanvas.toSVG({
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				x: 0,
-				y: 0,
-				width: pxWidth,
-				height: pxHeight,
-				viewBox: {
-					x: 0,
-					y: 0,
-					width: pxWidth,
-					height: pxHeight
-				}
-			});
-			const a = document.createElement('a');
-			a.href = `data:application/xml,${encodeURIComponent(svg)}`;
-			a.download = fileName;
-			a.click();
-			a.remove();
-		});
+		const pxWidth = Number(this.toPixels(this.width, this.dpi).replace('px', ''));
+		const pxHeight = Number(this.toPixels(this.height, this.dpi).replace('px', ''));
+
+		const svg = `
+		<svg xmlns="http://www.w3.org/2000/svg" 
+			xmlns:xlink="http://www.w3.org/1999/xlink" 
+			version="1.1" 
+			width="${pxWidth}" 
+			height="${pxHeight}" 
+			viewBox="0 0 ${pxWidth} ${pxHeight}" 
+			xml:space="preserve">
+		    <image style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"  
+			xlink:href="${uri}" width="${pxWidth}" height="${pxHeight}"></image>
+		</svg>`;
+
+		const a = document.createElement('a');
+		a.href = `data:application/xml,${encodeURIComponent(svg)}`;
+		a.download = fileName;
+		a.click();
+		a.remove();
 	}
 
 	/**

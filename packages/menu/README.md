@@ -25,14 +25,24 @@ const map = new Map
 </script>
 
 <MenuControl bind:map={$map} position={'top-left'}>
-  <div class="map-wrap" slot="primary">content</div>
-  <div class="map-wrap" slot="secondary">
+  <div slot="primary">content</div>
+  <div slot="secondary">
     <div class="map" id="map" bind:this={mapContainer} />
   </div>
 </MenuControl>
-```
 
-This library relies on Bulma CSS. Please import Bulma CSS from either NPM or CDN. For the Bulma CSS, further information can be found [here](https://bulma.io/documentation/overview/start/)
+<style>
+
+.map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+</style>
+```
 
 ## create-svelte
 

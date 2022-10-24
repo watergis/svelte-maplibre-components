@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 0.1.2
+
+### Patch Changes
+
+- 41a4834: updated style of menu
+
 ## 0.1.1
 
 ### Patch Changes

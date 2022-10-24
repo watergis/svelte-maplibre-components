@@ -139,7 +139,7 @@
 			{#if isMobile}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<span class="span close-icon" on:click={handleClose}>
-					<i class="fas fa-xmark" />
+					<i class="fas fa-xmark fa-lg" />
 				</span>
 			{/if}
 			<slot name="primary" />
@@ -160,25 +160,21 @@
 		height: $height;
 
 		.primary-content {
-			height: 100%;
-			margin: 10px;
 			position: relative;
+			height: $height;
 
 			.close-icon {
 				position: absolute;
-				top: 0px;
-				right: 5px;
+				top: 5px;
+				right: 10px;
 				cursor: pointer;
 				z-index: 10;
 			}
 		}
 
 		.secondary-content {
-			overflow: auto;
-			padding: 0px;
-			height: 100%;
-			width: 100%;
-			box-sizing: border-box;
+			position: relative;
+			height: $height;
 		}
 	}
 </style>

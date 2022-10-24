@@ -30,8 +30,8 @@
 </script>
 
 <MenuControl bind:map={$map} position={'top-left'}>
-	<div class="map-wrap" slot="primary">content</div>
-	<div class="map-wrap" slot="secondary">
+	<div slot="primary">content</div>
+	<div slot="secondary">
 		<div class="map" id="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>
@@ -39,11 +39,6 @@
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 
-	.map-wrap {
-		position: relative;
-		width: 100%;
-		height: calc(100vh);
-	}
 	.map {
 		position: absolute;
 		top: 0;

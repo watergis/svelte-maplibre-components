@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.0.17
+
+### Patch Changes
+
+- 7443333: fixed legend css
+
 ## 0.0.16
 
 ### Patch Changes

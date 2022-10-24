@@ -167,16 +167,13 @@
 </nav>
 
 <style lang="scss">
-	$height: calc(100% - 50px);
+	$height: calc(100% - 70px);
 
 	.legend-content {
 		position: absolute;
 		overflow-x: hidden;
 		overflow-y: auto;
-		padding-top: 5px;
 		height: $height;
 		width: 100%;
-		box-sizing: border-box;
-		padding-bottom: 20px;
 	}
 </style>

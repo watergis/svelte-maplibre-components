@@ -3,7 +3,7 @@
 	import { Map, NavigationControl, AttributionControl } from 'maplibre-gl';
 	import { map } from '$example/stores';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
-	import LayerListPanel from '$lib';
+	import { LegendPanel, LegendHeader } from '$lib';
 	import type { StyleSpecification } from 'maplibre-gl';
 
 	let isMenuShown = true;
@@ -16,6 +16,8 @@
 		}
 	}
 
+	let onlyRendered = true;
+	let onlyRelative = true;
 	let relativeLayers: { [key: string]: string } = {
 		pipeline: 'Pipeline',
 		pipeline_annotation: 'Pipeline Label',
@@ -75,14 +77,19 @@
 
 <MenuControl bind:map={$map} position={'top-right'} bind:isMenuShown>
 	<div slot="primary">
-		<LayerListPanel bind:map={$map} {style} {relativeLayers} />
+		<div class="legend-header">
+			<LegendHeader bind:onlyRendered bind:onlyRelative {relativeLayers} />
+		</div>
+		<div class="legend-content">
+			<LegendPanel bind:map={$map} {style} bind:onlyRendered bind:onlyRelative {relativeLayers} />
+		</div>
 	</div>
 	<div slot="secondary">
 		<div class="map" id="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>
 
-<style>
+<style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 
 	.map {
@@ -92,5 +99,19 @@
 		width: 100%;
 		height: 100%;
 		z-index: 1;
+	}
+
+	.legend-header {
+		padding: 5px;
+	}
+
+	$height: calc(100vh - 52px);
+
+	.legend-content {
+		position: absolute;
+		overflow-x: hidden;
+		overflow-y: auto;
+		height: $height;
+		width: 100%;
 	}
 </style>

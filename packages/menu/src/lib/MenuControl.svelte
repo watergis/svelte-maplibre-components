@@ -13,15 +13,10 @@
 
 	let innerWidth = 0;
 	let innerHeight = 0;
-	let isMobile = innerWidth < 768 ? true : false;
+	$: isMobile = innerWidth < 768 ? true : false;
 	let splitControl: Split;
 	let splitterSize = '0px';
-
-	$: innerWidth, changeDrawerMode();
-	$: innerHeight, changeDrawerMode();
-	const changeDrawerMode = () => {
-		isMobile = innerWidth < 768 ? true : false;
-	};
+	$: isMobile, setSplitControl();
 
 	export let position: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' = 'top-left';
 
@@ -64,8 +59,6 @@
 	}
 
 	onMount(async () => {
-		isMobile = window.matchMedia('only screen and (max-width: 768px)').matches;
-
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		mapMenuControl = new MapMenuControl();

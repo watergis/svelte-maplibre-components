@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.0
+
+### Minor Changes
+
+- 910aab9: separated legend header as a different component to enable to set height of contents flexiblely
+
 ## 0.0.17
 
 ### Patch Changes

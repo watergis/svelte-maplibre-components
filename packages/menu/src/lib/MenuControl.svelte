@@ -96,12 +96,6 @@
 
 	const splitterChanged = () => {
 		resizeMap();
-		const percent = splitControl.getPercent();
-		if (percent === 0) {
-			isMenuShown = false;
-		} else {
-			isMenuShown = true;
-		}
 	};
 
 	const handleClose = () => {

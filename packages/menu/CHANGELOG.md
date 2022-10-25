@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 0.1.3
+
+### Patch Changes
+
+- 9989674: fixed isMobile setting on menu
+
 ## 0.1.2
 
 ### Patch Changes

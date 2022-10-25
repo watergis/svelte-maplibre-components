@@ -22,7 +22,7 @@ See [Example](./src/example).
 
 ```svelte
 <script lang="ts">
-  import LayerListPanel from '@watergis/svelte-maplibre-legend';
+  import { LegendPanel, LegendHeader } from '@watergis/svelte-maplibre-legend';
 
   // create maplibre.Map object
   let map = new Map();
@@ -30,16 +30,38 @@ See [Example](./src/example).
   // set style for legend
   style = map.getStyle()
 
+  let onlyRendered = true
+  let onlyRelative = true
+
   // to set filter to enable to show only relative layers and alias of layer name
   let relativeLayers: { [key: string]: string } = {
     pipeline: 'Pipeline'
   };
 </script>
 
-<LayerListPanel bind:map {style} {relativeLayers} />
+<div class="legend-header">
+  <LegendHeader bind:onlyRendered bind:onlyRelative {relativeLayers} />
+</div>
+<div class="legend-content">
+  <LegendPanel bind:map={$map} {style} bind:onlyRendered bind:onlyRelative {relativeLayers} />
+</div>
 
 <style>
   @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+
+  .legend-header {
+    padding: 5px;
+  }
+
+  $height: calc(100vh - 52px);
+
+  .legend-content {
+    position: absolute;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: $height;
+    width: 100%;
+  }
 </style>
 ```
 

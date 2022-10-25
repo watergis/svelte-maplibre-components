@@ -1,2 +1,4 @@
-import { default as LayerListPanel } from './LayerListPanel.svelte';
-export default LayerListPanel;
+import { default as LegendPanel } from './LegendPanel.svelte';
+import { default as LegendHeader } from './LegendHeader.svelte';
+
+export { LegendPanel, LegendHeader };

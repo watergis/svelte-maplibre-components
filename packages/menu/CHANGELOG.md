@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 0.1.4
+
+### Patch Changes
+
+- b0bdb7e: removed uncessessary code on menu component
+
 ## 0.1.3
 
 ### Patch Changes

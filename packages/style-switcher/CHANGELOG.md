@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-style-switcher
 
+## 0.1.1
+
+### Patch Changes
+
+- c232fb7: fixed styleURL class
+
 ## 0.1.0
 
 ### Minor Changes

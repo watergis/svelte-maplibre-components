@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { createEventDispatcher, onMount } from 'svelte';
-	import StyleUrl from '$lib/style-url';
+	import { createEventDispatcher } from 'svelte';
+	import { StyleUrl } from '$lib/style-url';
 	import type { Map } from 'maplibre-gl';
 	import type { StyleSwitcherOption } from './types';
 
@@ -12,24 +12,6 @@
 	let styleUrl = selectedStyle.uri;
 	$: styleUrl, setStyle();
 	$: selectedStyle, updateStyleSelect();
-
-	onMount(() => {
-		setDefaultStyle();
-	});
-
-	const setDefaultStyle = () => {
-		const styleUrlObj = new StyleUrl();
-		const defaultStyle = styles[0];
-		const styleFromUrl = styleUrlObj.get();
-		let initialStyle = defaultStyle;
-		if (styleFromUrl) {
-			const styleObj = styleUrlObj.getMatchedStyleByTitle(styles, styleFromUrl);
-			if (styleObj) {
-				initialStyle = styleObj;
-			}
-		}
-		selectedStyle = initialStyle;
-	};
 
 	const setStyle = () => {
 		if (!map) return;

@@ -1,6 +1,6 @@
 import type { StyleSwitcherOption } from './types';
 
-export default class StyleUrl {
+export class StyleUrl {
 	private STYLE_PATHNAME = 'style';
 
 	private getUrl() {

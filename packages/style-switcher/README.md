@@ -20,7 +20,7 @@ See [Example](./src/example).
 
 ```svelte
 <script lang="ts">
-import StyleSwitcher, { type StyleSwitcherOption } from '$lib';
+import StyleSwitcher, { StyleUrl, type StyleSwitcherOption } from '$lib';
 
 let styles: StyleSwitcherOption[] = [
     {
@@ -33,6 +33,19 @@ let styles: StyleSwitcherOption[] = [
     }
 ];
 let selectedStyle: StyleSwitcherOption = styles[0];
+
+// to load initial style from URL
+const styleUrlObj = new StyleUrl();
+const defaultStyle = styles[0];
+const styleFromUrl = styleUrlObj.get();
+let initialStyle = defaultStyle;
+if (styleFromUrl) {
+    const styleObj = styleUrlObj.getMatchedStyleByTitle(styles, styleFromUrl);
+    if (styleObj) {
+        initialStyle = styleObj;
+    }
+}
+selectedStyle = initialStyle;
 </script>
 
 <StyleSwitcher bind:map bind:styles bind:selectedStyle />

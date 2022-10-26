@@ -1,4 +1,5 @@
 import { default as StyleSwitcher } from './StyleSwitcher.svelte';
-export default StyleSwitcher;
-export * from './types';
-export * from './style-url';
+import type { StyleSwitcherOption } from './types';
+import { StyleUrl } from './style-url';
+
+export { StyleSwitcher, StyleSwitcherOption, StyleUrl };

@@ -3,7 +3,7 @@
 	import { Map, NavigationControl, AttributionControl } from 'maplibre-gl';
 	import { map } from '$example/stores';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
-	import StyleSwitcher, { StyleUrl, type StyleSwitcherOption } from '$lib';
+	import { StyleSwitcher, StyleUrl, type StyleSwitcherOption } from '$lib';
 
 	let isMenuShown = true;
 	let mapContainer: HTMLDivElement;
@@ -34,16 +34,7 @@
 
 	onMount(async () => {
 		const styleUrlObj = new StyleUrl();
-		const defaultStyle = styles[0];
-		const styleFromUrl = styleUrlObj.get();
-		let initialStyle = defaultStyle;
-		if (styleFromUrl) {
-			const styleObj = styleUrlObj.getMatchedStyleByTitle(styles, styleFromUrl);
-			if (styleObj) {
-				initialStyle = styleObj;
-			}
-		}
-		selectedStyle = initialStyle;
+		selectedStyle = styleUrlObj.getInitialStyle(styles);
 
 		const map2 = new Map({
 			container: mapContainer,

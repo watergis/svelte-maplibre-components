@@ -55,4 +55,19 @@ export class StyleUrl {
 		}
 		return;
 	}
+
+	public getInitialStyle(styles: StyleSwitcherOption[]) {
+		const defaultStyle = styles[0];
+		const styleFromUrl = this.get();
+		let initialStyle = defaultStyle;
+		if (styleFromUrl) {
+			const styleObj = this.getMatchedStyleByTitle(styles, styleFromUrl);
+			if (styleObj) {
+				initialStyle = styleObj;
+			}
+		} else {
+			this.set(initialStyle.title);
+		}
+		return initialStyle;
+	}
 }

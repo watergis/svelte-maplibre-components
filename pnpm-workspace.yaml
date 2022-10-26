@@ -1,8 +1,10 @@
 packages:
   # all packages in subdirs of packages/ and components/
-  - 'packages/legend'
   - 'packages/attribute-popup'
-  - 'packages/search'
   - 'packages/export'
+  - 'packages/legend'
+  - 'packages/menu'
+  - 'packages/search'
   - 'packages/share'
+  - 'packages/style-switcher'
   - 'packages/*'

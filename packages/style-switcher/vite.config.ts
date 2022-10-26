@@ -8,6 +8,12 @@ const config: UserConfig = {
 		alias: {
 			$example: resolve('./src/example')
 		}
+	},
+	server: {
+		fs: {
+			// Allow serving files from one level up to the project root
+			allow: ['..']
+		}
 	}
 };
 

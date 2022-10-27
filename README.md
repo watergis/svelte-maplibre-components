@@ -9,6 +9,7 @@ The following packages are used in [watergis/sveltekit-watergis-template](https:
 - `@watergis/svelte-maplibre-attribute-popup` (see [here](./packages/attribute-popup))
 - `@watergis/svelte-maplibre-export` (see [here](./packages/export))
 - `@watergis/svelte-maplibre-legend` (see [here](./packages/legend))
+- `@watergis/svelte-maplibre-measure` (see [here](./packages/measure))
 - `@watergis/svelte-maplibre-menu` (see [here](./packages/menu))
 - `@watergis/svelte-maplibre-search` (see [here](./packages/search))
 - `@watergis/svelte-maplibre-share` (see [here](./packages/share))

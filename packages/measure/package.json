@@ -24,7 +24,7 @@
 		"maplibre-gl-js",
 		"measure",
 		"elevation",
-		"terrainrgb"
+		"terrain-rgb"
 	],
 	"author": "Jin IGARASHI",
 	"license": "MIT",

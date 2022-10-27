@@ -3,24 +3,20 @@
 	import { Map, NavigationControl, AttributionControl } from 'maplibre-gl';
 	import { map } from '$example/stores';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
-	import type { ElevationOption } from '$lib/types';
-	import MeasurePanel from '$lib/MeasurePanel.svelte';
+	import { MeasurePanel, type MeasureOption } from '$lib';
 
 	let isMenuShown = true;
 
 	let mapContainer: HTMLDivElement;
 
-	let elevationOption: ElevationOption = {
-		url: 'https://narwassco.github.io/narok-terrain/tiles/{z}/{x}/{y}.png',
-		options: {
-			tileSize: 512,
-			font: ['Roboto Medium'],
-			fontSize: 12,
-			fontHalo: 1,
-			mainColor: '#263238',
-			haloColor: '#fff',
-			units: 'kilometers'
-		}
+	let terrainRgbUrl = 'https://narwassco.github.io/narok-terrain/tiles/{z}/{x}/{y}.png';
+	let measureOption: MeasureOption = {
+		tileSize: 512,
+		font: ['Roboto Medium'],
+		fontSize: 12,
+		fontHalo: 1,
+		mainColor: '#263238',
+		haloColor: '#fff'
 	};
 
 	onMount(async () => {
@@ -48,7 +44,16 @@
 
 <MenuControl bind:map={$map} position={'top-right'} bind:isMenuShown>
 	<div slot="primary">
-		<MeasurePanel bind:map={$map} bind:elevationOption />
+		{#if $map}
+			<nav class="panel">
+				<p class="panel-heading">Measure tool with elevation enquiry</p>
+				<div class="panel-block">
+					<div class="container">
+						<MeasurePanel bind:map={$map} bind:measureOption bind:terrainRgbUrl />
+					</div>
+				</div>
+			</nav>
+		{/if}
 	</div>
 	<div slot="secondary">
 		<div class="map" id="map" bind:this={mapContainer} />

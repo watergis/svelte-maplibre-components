@@ -1,4 +1,4 @@
-import type { MeasureControlData } from '$lib/types';
 import { writable } from 'svelte/store';
+import MeasureManager from '../MeasureManager';
 
-export const measureControlData = writable<MeasureControlData>(null);
+export const measureManager = writable<MeasureManager>(undefined);

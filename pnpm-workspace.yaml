@@ -3,6 +3,7 @@ packages:
   - 'packages/attribute-popup'
   - 'packages/export'
   - 'packages/legend'
+  - 'packages/measure'
   - 'packages/menu'
   - 'packages/search'
   - 'packages/share'

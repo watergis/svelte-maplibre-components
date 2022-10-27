@@ -1,2 +1,2 @@
 export type { MeasureControlData } from './measureControlData';
-export type { ElevationOption } from './ElevationOption';
+export type { MeasureOption } from './MeasureOption';

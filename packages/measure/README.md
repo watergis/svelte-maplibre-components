@@ -1,4 +1,4 @@
-# svelte-maplibre-menu
+# svelte-maplibre-measure
 
 This is a svelte component to add measure control for maplibre-gl
 
@@ -17,6 +17,37 @@ yarn add @watergis/svelte-maplibre-measure
 ## Usage
 
 See [Example](./src/example).
+
+```svelte
+<script lang="ts">
+import { MeasurePanel, type MeasureOption} from '$lib';
+
+// create maplibre.Map object
+let map = new Map();
+
+// set URL for your terrain RGB
+let terrainRgbUrl = 'https://narwassco.github.io/narok-terrain/tiles/{z}/{x}/{y}.png'
+
+// set Options
+let measureOption: MeasureOption = {
+    tileSize: 512,
+    font: ['Roboto Medium'],
+    fontSize: 12,
+    fontHalo: 1,
+    mainColor: '#263238',
+    haloColor: '#fff',
+};
+</script>
+
+<!-- You can skip terrainRgbUrl if you don't have terrain RGB data -->
+<MeasurePanel bind:map={$map} bind:measureOption bind:terrainRgbUrl />
+
+<style>
+  @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+</style>
+```
+
+This library relies on Bulma CSS. Please import Bulma CSS from either NPM or CDN. For the Bulma CSS, further information can be found [here](https://bulma.io/documentation/overview/start/)
 
 ## create-svelte
 

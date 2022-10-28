@@ -54,7 +54,7 @@
 	"type": "module",
 	"dependencies": {
 		"@turf/distance": "^6.5.0",
-		"@watergis/terrain-rgb": "^1.1.8",
+		"@watergis/terrain-rgb": "^1.1.9",
 		"maplibre-gl": "^2.4.0"
 	}
 }

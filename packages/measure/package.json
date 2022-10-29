@@ -54,7 +54,9 @@
 	"type": "module",
 	"dependencies": {
 		"@turf/distance": "^6.5.0",
-		"@watergis/terrain-rgb": "^1.1.11",
-		"maplibre-gl": "^2.4.0"
+		"global-mercator": "^3.1.0",
+		"maplibre-gl": "^2.4.0",
+		"png-ts": "^0.0.3",
+		"webp-hero": "^0.0.2"
 	}
 }

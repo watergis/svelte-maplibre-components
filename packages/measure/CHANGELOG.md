@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-measure
 
+## 0.1.3
+
+### Patch Changes
+
+- 90db6ff: now it bundle terrain-rgb package inside
+
 ## 0.1.2
 
 ### Patch Changes

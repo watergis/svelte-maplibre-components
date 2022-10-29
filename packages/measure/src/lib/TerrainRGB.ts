@@ -1,6 +1,6 @@
 import { WebpMachine, loadBinaryData } from 'webp-hero';
-import PNG from 'png-ts';
 import { lngLatToGoogle } from 'global-mercator';
+import PNG from './png';
 
 /**
  * Abstract class for terrain RGB tiles

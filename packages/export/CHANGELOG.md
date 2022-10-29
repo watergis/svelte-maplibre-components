@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.7
+
+### Patch Changes
+
+- 708c5fc: removed unused css
+
 ## 0.1.6
 
 ### Patch Changes

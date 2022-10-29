@@ -1,4 +1,4 @@
-import { TerrainRGB } from '@watergis/terrain-rgb';
+import TerrainRGB from './TerrainRGB';
 import distance from '@turf/distance';
 import { Marker, MapMouseEvent, GeoJSONFeature, Map, LngLat } from 'maplibre-gl';
 import type { MeasureControlData, MeasureOption } from './types';
@@ -111,6 +111,8 @@ class MeasureManager {
 		// @ts-ignore
 		this.map
 			.getSource(SOURCE_LINE)
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
 			.setData(this.geoLineString(this.measureControlData.coordinates));
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore

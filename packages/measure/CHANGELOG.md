@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-measure
 
+## 0.1.4
+
+### Patch Changes
+
+- cb8d12b: now it bundles png-ts inside
+
 ## 0.1.3
 
 ### Patch Changes

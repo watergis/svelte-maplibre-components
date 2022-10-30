@@ -1,6 +1,7 @@
 packages:
   # all packages in subdirs of packages/ and components/
   - 'packages/attribute-popup'
+  - 'packages/collapsible-panel'
   - 'packages/export'
   - 'packages/legend'
   - 'packages/measure'
@@ -8,4 +9,5 @@ packages:
   - 'packages/search'
   - 'packages/share'
   - 'packages/style-switcher'
+  - 'packages/valhalla'
   - 'packages/*'

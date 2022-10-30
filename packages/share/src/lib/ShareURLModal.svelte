@@ -1,14 +1,19 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import { copy } from 'svelte-copy';
 	import type { Map } from 'maplibre-gl';
+	import { onMount } from 'svelte';
 
 	export let map: Map;
 	export let isShareModalShown: boolean;
 
-	let url = '';
+	let url: URL;
+	let urlText = '';
 
 	let textCopyButton = 'Copy';
+
+	onMount(() => {
+		url = new URL(window.location.href);
+	});
 
 	const handleCopy = () => {
 		textCopyButton = 'copied';
@@ -26,14 +31,14 @@
 	};
 
 	const setPageUrl = () => {
-		if (!map) return '';
-		const baseUrl = `${$page.url.protocol}//${$page.url.host}`;
+		if (!map || !url) return '';
+		const baseUrl = `${url.protocol}//${url.host}`;
 		const zoom = `#${map.getZoom().toFixed(2)}`;
 		const lat = `/${map.getCenter().lat.toFixed(6)}`;
 		const lng = `/${map.getCenter().lng.toFixed(6)}`;
 		const bearing = map.getBearing() !== 0 ? `/${map.getBearing().toFixed(1)}` : '';
 		const pitch = map.getPitch() !== 0 ? `/${map.getPitch().toFixed()}` : '';
-		url = customiseUrl(`${baseUrl}${zoom}${lat}${lng}${bearing}${pitch}`);
+		urlText = customiseUrl(`${baseUrl}${zoom}${lat}${lng}${bearing}${pitch}`);
 	};
 
 	const handleClose = () => {
@@ -55,12 +60,12 @@
 					class="input is-success"
 					type="text"
 					placeholder="URL to share"
-					bind:value={url}
-					use:copy={url}
+					bind:value={urlText}
+					use:copy={urlText}
 					on:click={handleCopy}
 					readonly
 				/>
-				<button class="button is-success ml-1" use:copy={url} on:click={handleCopy}>
+				<button class="button is-success ml-1" use:copy={urlText} on:click={handleCopy}>
 					<span class="icon">
 						<i class="fas fa-copy" />
 					</span>

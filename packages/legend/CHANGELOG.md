@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.1
+
+### Patch Changes
+
+- 7d4ce1d: fixed fa icon file path
+
 ## 0.1.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-share
 
+## 0.1.5
+
+### Patch Changes
+
+- 265a243: changed css import method
+
 ## 0.1.4
 
 ### Patch Changes

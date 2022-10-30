@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-valhalla
 
+## 0.0.6
+
+### Patch Changes
+
+- 265a243: changed css import method
+
 ## 0.0.5
 
 ### Patch Changes

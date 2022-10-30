@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.3
+
+### Patch Changes
+
+- 265a243: changed css import method
+
 ## 0.1.2
 
 ### Patch Changes

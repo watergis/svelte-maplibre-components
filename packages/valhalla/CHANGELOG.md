@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-valhalla
 
+## 0.0.5
+
+### Patch Changes
+
+- 754aa25: fixed fa icon css path
+
 ## 0.0.4
 
 ### Patch Changes

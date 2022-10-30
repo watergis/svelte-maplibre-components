@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.8
+
+### Patch Changes
+
+- 754aa25: fixed fa icon css path
+
 ## 0.1.7
 
 ### Patch Changes

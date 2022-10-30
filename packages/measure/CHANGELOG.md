@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-measure
 
+## 0.1.5
+
+### Patch Changes
+
+- 94a6e01: fixed a bug of mapClickListenr
+
 ## 0.1.4
 
 ### Patch Changes

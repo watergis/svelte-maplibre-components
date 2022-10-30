@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-share
 
+## 0.1.3
+
+### Patch Changes
+
+- cb6af9e: removed $app/page in share control
+
 ## 0.1.2
 
 ### Patch Changes

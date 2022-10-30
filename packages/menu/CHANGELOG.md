@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 0.1.6
+
+### Patch Changes
+
+- 265a243: changed css import method
+
 ## 0.1.5
 
 ### Patch Changes

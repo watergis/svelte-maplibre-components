@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.9
+
+### Patch Changes
+
+- 265a243: changed css import method
+
 ## 0.1.8
 
 ### Patch Changes

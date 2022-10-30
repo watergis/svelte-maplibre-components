@@ -1,5 +1,11 @@
 # @watergis/svelte-collapsible-panel
 
+## 0.0.5
+
+### Patch Changes
+
+- 265a243: changed css import method
+
 ## 0.0.4
 
 ### Patch Changes

@@ -20,8 +20,12 @@ See [Example](./src/example).
 
 ```svelte
 <script lang="ts">
-import { ValhallaIsochronePanel, ValhallaRoutingPanel, type RoutingStyle, type ValhallaIsochroneOptions } from '$lib';
-
+import {
+		ValhallaIsochronePanel,
+		ValhallaRoutingPanel,
+		type ValhallaIsochroneOptions,
+		type ValhallaRoutingOptions
+	} from '$lib';
 // create maplibre.Map object
 let map = new Map();
 
@@ -57,7 +61,7 @@ let valhallaIsochroneOptions: ValhallaIsochroneOptions = {
 		fontHaloColor: '#fff'
 	}
 }
-let valhallaRoutingOptions: RoutingStyle = {
+let valhallaRoutingOptions: ValhallaRoutingOptions = {
 	font: ['Roboto Medium'],
 	fontSize: 14,
 	fontHalo: 3,

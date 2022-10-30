@@ -1,7 +1,6 @@
 import type { ValhallaIsochrone } from '../ValhallaIsochrone';
+import type { ValhallaRouting } from '../ValhallaRouting';
 import { writable } from 'svelte/store';
-import { LngLat } from 'maplibre-gl';
 
 export const valhallaControlData = writable<ValhallaIsochrone | undefined>(undefined);
-
-export const valhallaRoutingData = writable<LngLat[]>(undefined);
+export const valhallaRoutingData = writable<ValhallaRouting | undefined>(undefined);

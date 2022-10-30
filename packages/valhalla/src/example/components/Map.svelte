@@ -6,8 +6,8 @@
 	import {
 		ValhallaIsochronePanel,
 		ValhallaRoutingPanel,
-		type RoutingStyle,
-		type ValhallaIsochroneOptions
+		type ValhallaIsochroneOptions,
+		type ValhallaRoutingOptions
 	} from '$lib';
 
 	let isMenuShown = true;
@@ -46,7 +46,7 @@
 			fontHaloColor: '#fff'
 		}
 	};
-	let valhallaRoutingOptions: RoutingStyle = {
+	let valhallaRoutingOptions: ValhallaRoutingOptions = {
 		font: ['Roboto Medium'],
 		fontSize: 14,
 		fontHalo: 3,

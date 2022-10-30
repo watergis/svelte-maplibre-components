@@ -6,15 +6,19 @@ This repository to manage packages of svelte maplibre components for water appli
 
 The following packages are used in [watergis/sveltekit-watergis-template](https://github.com/watergis/sveltekit-watergis-template).
 
-- `@watergis/svelte-maplibre-attribute-popup` (see [here](./packages/attribute-popup))
-- `@watergis/svelte-maplibre-export` (see [here](./packages/export))
-- `@watergis/svelte-maplibre-legend` (see [here](./packages/legend))
-- `@watergis/svelte-maplibre-measure` (see [here](./packages/measure))
-- `@watergis/svelte-maplibre-menu` (see [here](./packages/menu))
-- `@watergis/svelte-maplibre-search` (see [here](./packages/search))
-- `@watergis/svelte-maplibre-share` (see [here](./packages/share))
-- `@watergis/svelte-maplibre-style-switcher` (see [here](./packages/style-switcher))
-- `@watergis/svelte-maplibre-valhalla` (see [here](./packages/valhalla))
+- components for svelte with maplbre
+  - `@watergis/svelte-maplibre-attribute-popup` (see [here](./packages/attribute-popup))
+  - `@watergis/svelte-maplibre-export` (see [here](./packages/export))
+  - `@watergis/svelte-maplibre-legend` (see [here](./packages/legend))
+  - `@watergis/svelte-maplibre-measure` (see [here](./packages/measure))
+  - `@watergis/svelte-maplibre-menu` (see [here](./packages/menu))
+  - `@watergis/svelte-maplibre-search` (see [here](./packages/search))
+  - `@watergis/svelte-maplibre-share` (see [here](./packages/share))
+  - `@watergis/svelte-maplibre-style-switcher` (see [here](./packages/style-switcher))
+  - `@watergis/svelte-maplibre-valhalla` (see [here](./packages/valhalla))
+
+- components for svelte
+  - `@watergis/svelte-collapsible-panel` (see [here](./packages/collapsible-panel))
 
 ## Install
 

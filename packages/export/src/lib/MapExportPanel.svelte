@@ -187,7 +187,7 @@
 </div>
 
 <style>
-	@import 'style/fa/css/all.css';
+	@import './style/fa/css/all.css';
 
 	.export-container {
 		background-color: white;

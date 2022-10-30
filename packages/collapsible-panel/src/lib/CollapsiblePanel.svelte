@@ -32,7 +32,7 @@
 </nav>
 
 <style>
-	@import 'style/fa/css/all.css';
+	@import './style/fa/css/all.css';
 	.header-menu {
 		cursor: pointer;
 	}

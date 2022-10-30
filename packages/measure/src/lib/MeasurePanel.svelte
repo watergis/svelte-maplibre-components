@@ -99,5 +99,5 @@
 {/if}
 
 <style>
-	@import 'style/fa/css/all.css';
+	@import './style/fa/css/all.css';
 </style>

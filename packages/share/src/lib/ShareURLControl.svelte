@@ -66,5 +66,5 @@
 <ShareUrlModal bind:map bind:isShareModalShown bind:customiseUrl />
 
 <style lang="scss">
-	@import 'style/fa/css/all.css';
+	@import './style/fa/css/all.css';
 </style>

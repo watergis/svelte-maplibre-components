@@ -7,6 +7,7 @@
 		type ValhallaIsochroneOptions
 	} from '$lib/ValhallaIsochrone';
 	import { costingOptions } from './constants';
+	import './style/fa/css/all.css';
 
 	export let map: Map;
 	export let url: string;
@@ -214,8 +215,6 @@
 </div>
 
 <style lang="scss">
-	@import './style/fa/css/all.css';
-
 	.transport-select {
 		padding-top: 0.5em;
 		padding-bottom: 0.5em;

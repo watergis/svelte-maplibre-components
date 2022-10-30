@@ -4,6 +4,7 @@
 	import MapGenerator, { PageOrientation, Size, DPI, Format, Unit } from '$lib/utils/map-generator';
 	import PrintableAreaManager from '$lib/utils/printable-area-manager';
 	import CrosshairManager from '$lib/utils/crosshair-manager';
+	import './style/fa/css/all.css';
 
 	export let map: Map;
 	export let showPrintableArea = true;
@@ -187,8 +188,6 @@
 </div>
 
 <style>
-	@import './style/fa/css/all.css';
-
 	.export-container {
 		background-color: white;
 		padding: 10px;

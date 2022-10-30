@@ -3,6 +3,8 @@
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import Legend from './Legend.svelte';
 	import type SpriteLoader from './sprite';
+	import './style/fa/css/all.css';
+
 	const dispatch = createEventDispatcher();
 
 	export let map: Map;
@@ -45,8 +47,6 @@
 </div>
 
 <style>
-	@import './style/fa/css/all.css';
-
 	.fas:before {
 		display: inline-block;
 		text-decoration: none;

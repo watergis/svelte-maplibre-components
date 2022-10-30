@@ -8,6 +8,7 @@
 		type ValhallaTripSummary
 	} from './ValhallaRouting';
 	import { costingOptions } from '$lib/constants';
+	import './style/fa/css/all.css';
 
 	export let map: Map;
 	export let url: string;
@@ -237,7 +238,3 @@
 		</div>
 	{/if}
 {/if}
-
-<style lang="scss">
-	@import './style/fa/css/all.css';
-</style>

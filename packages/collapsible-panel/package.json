@@ -1,6 +1,6 @@
 {
 	"name": "@watergis/svelte-collapsible-panel",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "This is a svelte component for collapsible panel",
 	"main": "package/index.js",
 	"files": [

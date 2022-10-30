@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-share
 
+## 0.1.4
+
+### Patch Changes
+
+- 754aa25: fixed fa icon css path
+
 ## 0.1.3
 
 ### Patch Changes

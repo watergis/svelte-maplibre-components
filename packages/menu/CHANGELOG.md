@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 0.1.5
+
+### Patch Changes
+
+- 754aa25: fixed fa icon css path
+
 ## 0.1.4
 
 ### Patch Changes

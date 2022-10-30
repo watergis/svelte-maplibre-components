@@ -146,7 +146,7 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.40.0
       '@typescript-eslint/parser': ^5.40.0
       '@watergis/legend-symbol': ^0.2.2
-      '@watergis/svelte-maplibre-menu': workspace:^0.1.1
+      '@watergis/svelte-maplibre-menu': workspace:^0.1.5
       eslint: ^8.25.0
       eslint-config-prettier: ^8.5.0
       eslint-plugin-svelte3: ^4.0.0
@@ -193,7 +193,7 @@ importers:
       '@turf/distance': ^6.5.0
       '@typescript-eslint/eslint-plugin': ^5.27.0
       '@typescript-eslint/parser': ^5.27.0
-      '@watergis/svelte-maplibre-menu': workspace:^0.1.4
+      '@watergis/svelte-maplibre-menu': workspace:^0.1.5
       eslint: ^8.16.0
       eslint-config-prettier: ^8.3.0
       eslint-plugin-svelte3: ^4.0.0
@@ -405,7 +405,7 @@ importers:
       '@sveltejs/package': next
       '@typescript-eslint/eslint-plugin': ^5.27.0
       '@typescript-eslint/parser': ^5.27.0
-      '@watergis/svelte-maplibre-menu': workspace:^0.1.4
+      '@watergis/svelte-maplibre-menu': workspace:^0.1.5
       eslint: ^8.16.0
       eslint-config-prettier: ^8.3.0
       eslint-plugin-svelte3: ^4.0.0

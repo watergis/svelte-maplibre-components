@@ -26,6 +26,9 @@ class MeasureManager {
 
 	private measureControlData: MeasureControlData;
 
+	private isMeasure = false;
+	private isClickListenerAdded = false;
+
 	constructor(map: Map, terrainRgbUrl?: string, measureOption?: MeasureOption) {
 		this.map = map;
 		this.terrainRgbUrl = terrainRgbUrl;
@@ -45,8 +48,12 @@ class MeasureManager {
 	measuringOn() {
 		if (this.map) {
 			this.map.getCanvas().style.cursor = 'crosshair';
-			this.map.on('click', this.mapClickListener.bind(this));
+			if (!this.isClickListenerAdded) {
+				this.map.on('click', this.mapClickListener.bind(this));
+				this.isClickListenerAdded = true;
+			}
 			this.map.fire('measure.on');
+			this.isMeasure = true;
 		}
 	}
 
@@ -55,6 +62,7 @@ class MeasureManager {
 			this.map.getCanvas().style.cursor = '';
 			this.map.off('click', this.mapClickListener.bind(this));
 			this.map.fire('measure.off');
+			this.isMeasure = false;
 		}
 	}
 
@@ -70,6 +78,7 @@ class MeasureManager {
 	}
 
 	mapClickListener(event: MapMouseEvent) {
+		if (!this.isMeasure) return;
 		if (!this.map.getSource(SOURCE_LINE) || !this.map.getSource(SOURCE_SYMBOL)) {
 			this.clearFeatures();
 			this.initFeatures();

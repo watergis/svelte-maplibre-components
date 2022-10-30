@@ -45,7 +45,7 @@
 </div>
 
 <style>
-	@import '/style/fa/css/all.css';
+	@import 'style/fa/css/all.css';
 
 	.fas:before {
 		display: inline-block;

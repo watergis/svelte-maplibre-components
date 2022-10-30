@@ -239,5 +239,5 @@
 {/if}
 
 <style lang="scss">
-	@import '/style/fa/css/all.css';
+	@import 'style/fa/css/all.css';
 </style>

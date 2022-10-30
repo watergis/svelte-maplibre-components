@@ -214,7 +214,7 @@
 </div>
 
 <style lang="scss">
-	@import './style/fa/css/all.css';
+	@import 'style/fa/css/all.css';
 
 	.transport-select {
 		padding-top: 0.5em;

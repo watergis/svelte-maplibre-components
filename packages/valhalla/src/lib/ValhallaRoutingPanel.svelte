@@ -237,3 +237,7 @@
 		</div>
 	{/if}
 {/if}
+
+<style lang="scss">
+	@import 'style/fa/css/all.css';
+</style>

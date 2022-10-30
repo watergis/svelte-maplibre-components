@@ -4,6 +4,7 @@
 	import { measureManager } from './stores';
 	import type { MeasureOption } from './types';
 	import MeasureManager from './MeasureManager';
+	import './style/fa/css/all.css';
 
 	export let map: Map;
 	export let terrainRgbUrl: string | undefined = undefined;
@@ -97,7 +98,3 @@
 		</div>
 	{/if}
 {/if}
-
-<style>
-	@import './style/fa/css/all.css';
-</style>

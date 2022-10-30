@@ -2,6 +2,7 @@
 	import type { Map } from 'maplibre-gl';
 	import { onMount } from 'svelte';
 	import { Split } from '@geoffcox/svelte-splitter/src';
+	import './style/fa/css/all.css';
 
 	export let map: Map;
 	export let isMenuShown = false;
@@ -139,8 +140,6 @@
 </div>
 
 <style lang="scss">
-	@import './style/fa/css/all.css';
-
 	$height: calc(100vh);
 
 	.split-container {

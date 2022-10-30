@@ -2,6 +2,7 @@
 	import type { Map } from 'maplibre-gl';
 	import { onMount } from 'svelte';
 	import ShareUrlModal from './ShareURLModal.svelte';
+	import './style/fa/css/all.css';
 
 	export let map: Map;
 
@@ -64,7 +65,3 @@
 </button>
 
 <ShareUrlModal bind:map bind:isShareModalShown bind:customiseUrl />
-
-<style lang="scss">
-	@import './style/fa/css/all.css';
-</style>

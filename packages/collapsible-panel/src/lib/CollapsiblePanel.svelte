@@ -1,4 +1,6 @@
 <script lang="ts">
+	import './style/fa/css/all.css';
+
 	export let title: string;
 
 	export let isPanelOpen = false;
@@ -32,7 +34,6 @@
 </nav>
 
 <style>
-	@import './style/fa/css/all.css';
 	.header-menu {
 		cursor: pointer;
 	}

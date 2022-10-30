@@ -14,6 +14,7 @@ The following packages are used in [watergis/sveltekit-watergis-template](https:
 - `@watergis/svelte-maplibre-search` (see [here](./packages/search))
 - `@watergis/svelte-maplibre-share` (see [here](./packages/share))
 - `@watergis/svelte-maplibre-style-switcher` (see [here](./packages/style-switcher))
+- `@watergis/svelte-maplibre-valhalla` (see [here](./packages/valhalla))
 
 ## Install
 

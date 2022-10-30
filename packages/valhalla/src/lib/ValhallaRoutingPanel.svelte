@@ -62,7 +62,6 @@
 		if (!$valhallaRoutingData) return;
 		if (isRouting === true) {
 			$valhallaRoutingData.addingPointOff();
-			$valhallaRoutingData.clearFeatures();
 		}
 	});
 

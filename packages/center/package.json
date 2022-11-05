@@ -1,7 +1,7 @@
 {
-	"name": "@watergis/svelte-maplibre-export",
-	"version": "0.1.9",
-	"description": "This is a svelte component to add export control plugin to maplibre.",
+	"name": "@watergis/maplibre-center-icon",
+	"version": "0.0.1",
+	"description": "This is a library to add center icon to maplibre",
 	"main": "package/index.js",
 	"files": [
 		"package"
@@ -17,25 +17,23 @@
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/watergis/svelte-maplibre-components.git",
-		"directory": "packages/export"
+		"directory": "packages/center"
 	},
 	"keywords": [
 		"maplibre",
 		"maplibre-gl-js",
-		"export"
+		"center"
 	],
 	"author": "Jin IGARASHI",
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/watergis/svelte-maplibre-components/issues"
 	},
-	"homepage": "https://github.com/watergis/svelte-maplibre-components/tree/main/packages/export#readme",
+	"homepage": "https://github.com/watergis/svelte-maplibre-components/tree/main/packages/center#readme",
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"@sveltejs/package": "next",
-		"@types/fabric": "^4.5.12",
-		"@types/file-saver": "^2.0.5",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
 		"eslint": "^8.16.0",
@@ -43,7 +41,6 @@
 		"eslint-plugin-svelte3": "^4.0.0",
 		"prettier": "^2.6.2",
 		"prettier-plugin-svelte": "^2.7.0",
-		"sass": "^1.55.0",
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.7.1",
 		"svelte-preprocess": "^4.10.6",
@@ -53,8 +50,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@neodrag/svelte": "^1.2.4",
-		"jspdf": "^2.5.1",
 		"maplibre-gl": "^2.4.0"
 	}
 }

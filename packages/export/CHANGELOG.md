@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.10
+
+### Patch Changes
+
+- 36aa7dc: added sass package in export
+
 ## 0.1.9
 
 ### Patch Changes

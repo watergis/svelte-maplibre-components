@@ -23,8 +23,8 @@ export default class CenterIconManager {
 
 	constructor(
 		map: Map | undefined,
-		iconWidth = 10,
-		iconHeight = 10,
+		iconWidth = 20,
+		iconHeight = 20,
 		color = '#000000',
 		lineWidth = 4
 	) {
@@ -64,19 +64,23 @@ export default class CenterIconManager {
 			this.width !== undefined &&
 			this.height !== undefined
 		) {
-			this.svgCanvas.setAttribute('width', `${this.width}px`);
-			this.svgCanvas.setAttribute('height', `${this.height}px`);
+			this.svgCanvas.setAttribute('width', `${this.iconWidth}px`);
+			this.svgCanvas.setAttribute('height', `${this.iconHeight}px`);
 			const halfWidth = this.width / 2;
 			const halfHeight = this.height / 2;
-			this.yLine.setAttribute('x1', `${halfWidth}px`);
-			this.yLine.setAttribute('y1', `${halfHeight - this.iconHeight}px`);
-			this.yLine.setAttribute('x2', `${halfWidth}px`);
-			this.yLine.setAttribute('y2', `${halfHeight + this.iconHeight}px`);
+			const iconHalfWidth = this.iconWidth / 2;
+			const iconHalfHeight = this.iconHeight / 2;
+			this.svgCanvas.style.top = `${halfHeight - iconHalfHeight}px`;
+			this.svgCanvas.style.left = `${halfWidth - iconHalfWidth}px`;
+			this.yLine.setAttribute('x1', `${iconHalfWidth}px`);
+			this.yLine.setAttribute('y1', `0px`);
+			this.yLine.setAttribute('x2', `${iconHalfWidth}px`);
+			this.yLine.setAttribute('y2', `${this.iconHeight}px`);
 
-			this.xLine.setAttribute('x1', `${halfWidth - this.iconWidth}px`);
-			this.xLine.setAttribute('y1', `${halfHeight}px`);
-			this.xLine.setAttribute('x2', `${halfWidth + this.iconWidth}px`);
-			this.xLine.setAttribute('y2', `${halfHeight}px`);
+			this.xLine.setAttribute('x1', `0px`);
+			this.xLine.setAttribute('y1', `${iconHalfHeight}px`);
+			this.xLine.setAttribute('x2', `${this.iconWidth}px`);
+			this.xLine.setAttribute('y2', `${iconHalfHeight}px`);
 		} else {
 			console.error('element value is null');
 		}
@@ -85,27 +89,31 @@ export default class CenterIconManager {
 	private createCanvas(container: HTMLElement) {
 		if (this.width !== undefined && this.height !== undefined) {
 			const canvas = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-			canvas.style.position = 'relative';
-			canvas.setAttribute('width', `${this.width}px`);
-			canvas.setAttribute('height', `${this.height}px`);
+			canvas.style.position = 'absolute';
+			canvas.setAttribute('width', `${this.iconWidth}px`);
+			canvas.setAttribute('height', `${this.iconHeight}px`);
 			const halfWidth = this.width / 2;
 			const halfHeight = this.height / 2;
+			const iconHalfWidth = this.iconWidth / 2;
+			const iconHalfHeight = this.iconHeight / 2;
+			canvas.style.top = `${halfHeight - iconHalfHeight}px`;
+			canvas.style.left = `${halfWidth - iconHalfWidth}px`;
 			this.yLine = canvas.appendChild(
 				this.createLine(
-					halfWidth.toString(),
-					(halfHeight - this.iconHeight).toString(),
-					halfWidth.toString(),
-					(halfHeight + this.iconHeight).toString(),
+					iconHalfWidth.toString(),
+					'0',
+					iconHalfWidth.toString(),
+					this.iconHeight.toString(),
 					this.color,
 					`${this.lineWidth}px`
 				)
 			);
 			this.xLine = canvas.appendChild(
 				this.createLine(
-					(halfWidth - this.iconWidth).toString(),
-					halfHeight.toString(),
-					(halfWidth + this.iconWidth).toString(),
-					halfHeight.toString(),
+					'0',
+					iconHalfHeight.toString(),
+					this.iconWidth.toString(),
+					iconHalfHeight.toString(),
 					this.color,
 					`${this.lineWidth}px`
 				)

@@ -1,5 +1,11 @@
 # @watergis/maplibre-center-icon
 
+## 0.1.1
+
+### Patch Changes
+
+- e3a3ab5: fixed svg settings because there is a conflict with export package
+
 ## 0.1.0
 
 ### Minor Changes

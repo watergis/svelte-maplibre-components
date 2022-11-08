@@ -1,6 +1,6 @@
 {
 	"name": "@watergis/svelte-maplibre-attribute-popup",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"description": "This is a svelte component to add attribute popup plugin to maplibre",
 	"main": "package/index.js",
 	"files": [

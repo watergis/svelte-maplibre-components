@@ -1,6 +1,6 @@
 {
 	"name": "@watergis/svelte-maplibre-valhalla",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"description": "This is a svelte component to add valhalla control plugin to maplibre.",
 	"main": "package/index.js",
 	"files": [
@@ -38,7 +38,7 @@
 		"@sveltejs/package": "next",
 		"@typescript-eslint/eslint-plugin": "^5.42.1",
 		"@typescript-eslint/parser": "^5.42.1",
-		"@watergis/svelte-maplibre-menu": "workspace:^0.1.6",
+		"@watergis/svelte-maplibre-menu": "workspace:^0.1.7",
 		"eslint": "^8.27.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",

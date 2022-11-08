@@ -35,6 +35,15 @@ pnpm --filter <package_name> dev
 pnpm --filter <package_name> build
 ```
 
+If you want to operate for all pacakges,
+
+```bash
+pnpm --filter="./packages/*" update
+pnpm --filter="./packages/*" lint
+pnpm --filter="./packages/*" format
+pnpm --filter="./packages/*" build
+```
+
 ## Release packages
 
 Please create changeset log for every your work.

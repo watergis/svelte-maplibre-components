@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Map, NavigationControl, AttributionControl } from 'maplibre-gl';
-	import { map } from '$example/stores';
+	import { Map } from 'maplibre-gl';
 	import SearchControl, { type SearchOption } from '$lib';
 
 	let mapContainer: HTMLDivElement;
+	let map: Map;
 
 	let searchOption: SearchOption = {
 		url: 'https://narwassco.github.io/vt/meter.geojson',
@@ -23,43 +23,21 @@
 	};
 
 	onMount(async () => {
-		const map2 = new Map({
+		map = new Map({
 			container: mapContainer,
-			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json',
-			center: { lng: 35.87063, lat: -1.08551 },
-			zoom: 13,
-			hash: true,
-			attributionControl: false
+			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
 		});
-		map2.addControl(
-			new NavigationControl({
-				visualizePitch: false,
-				showZoom: true,
-				showCompass: true
-			}),
-			'top-right'
-		);
-		map2.addControl(new AttributionControl({ compact: true }), 'bottom-right');
-
-		map.update(() => map2);
 	});
 </script>
 
-<div class="map-wrap">
-	<div class="map" id="map" bind:this={mapContainer} />
-	{#if $map}
-		<SearchControl bind:map={$map} {searchOption} position="top-left" />
-	{/if}
-</div>
+<div class="map" bind:this={mapContainer} />
+{#if map}
+	<SearchControl bind:map {searchOption} position="top-left" />
+{/if}
 
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 
-	.map-wrap {
-		position: relative;
-		width: 100%;
-		height: calc(100vh);
-	}
 	.map {
 		position: absolute;
 		top: 0;

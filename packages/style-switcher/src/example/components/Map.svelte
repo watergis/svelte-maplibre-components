@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Map, NavigationControl, AttributionControl } from 'maplibre-gl';
-	import { map } from '$example/stores';
+	import { Map } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import { StyleSwitcher, StyleUrl, type StyleSwitcherOption } from '$lib';
 
 	let isMenuShown = true;
 	let mapContainer: HTMLDivElement;
+	let map: Map;
 
 	let styles: StyleSwitcherOption[] = [
 		{
@@ -36,34 +36,19 @@
 		const styleUrlObj = new StyleUrl();
 		selectedStyle = styleUrlObj.getInitialStyle(styles);
 
-		const map2 = new Map({
+		map = new Map({
 			container: mapContainer,
-			style: selectedStyle.uri,
-			center: { lng: 35.87063, lat: -1.08551 },
-			zoom: 13,
-			hash: true,
-			attributionControl: false
+			style: selectedStyle.uri
 		});
-		map2.addControl(
-			new NavigationControl({
-				visualizePitch: false,
-				showZoom: true,
-				showCompass: true
-			}),
-			'top-right'
-		);
-		map2.addControl(new AttributionControl({ compact: true }), 'bottom-right');
-
-		map.update(() => map2);
 	});
 </script>
 
-<MenuControl bind:map={$map} position={'top-right'} bind:isMenuShown>
+<MenuControl bind:map position={'top-right'} bind:isMenuShown>
 	<div slot="primary">
-		<StyleSwitcher bind:map={$map} bind:styles bind:selectedStyle />
+		<StyleSwitcher bind:map bind:styles bind:selectedStyle />
 	</div>
 	<div slot="secondary">
-		<div class="map" id="map" bind:this={mapContainer} />
+		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>
 

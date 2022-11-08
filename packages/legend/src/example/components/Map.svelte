@@ -1,17 +1,19 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Map, NavigationControl, AttributionControl } from 'maplibre-gl';
-	import { map } from '$example/stores';
+	import { Map } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import { LegendPanel, LegendHeader } from '$lib';
 	import type { StyleSpecification } from 'maplibre-gl';
 
+	let mapContainer: HTMLDivElement;
+	let map: Map;
+
 	let isMenuShown = true;
 	let style: StyleSpecification;
 	$: {
-		if ($map) {
-			$map.on('load', () => {
-				style = $map.getStyle();
+		if (map) {
+			map.on('load', () => {
+				style = map.getStyle();
 			});
 		}
 	}
@@ -50,42 +52,25 @@
 		sewer_treatment_plant: 'Wastewater treatment plant'
 	};
 
-	let mapContainer: HTMLDivElement;
-
 	onMount(async () => {
-		const map2 = new Map({
+		map = new Map({
 			container: mapContainer,
-			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json',
-			center: { lng: 35.87063, lat: -1.08551 },
-			zoom: 13,
-			hash: true,
-			attributionControl: false
+			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
 		});
-		map2.addControl(
-			new NavigationControl({
-				visualizePitch: false,
-				showZoom: true,
-				showCompass: true
-			}),
-			'top-right'
-		);
-		map2.addControl(new AttributionControl({ compact: true }), 'bottom-right');
-
-		map.update(() => map2);
 	});
 </script>
 
-<MenuControl bind:map={$map} position={'top-right'} bind:isMenuShown>
+<MenuControl bind:map position={'top-right'} bind:isMenuShown>
 	<div slot="primary">
 		<div class="legend-header">
 			<LegendHeader bind:onlyRendered bind:onlyRelative {relativeLayers} />
 		</div>
 		<div class="legend-content">
-			<LegendPanel bind:map={$map} {style} bind:onlyRendered bind:onlyRelative {relativeLayers} />
+			<LegendPanel bind:map {style} bind:onlyRendered bind:onlyRelative {relativeLayers} />
 		</div>
 	</div>
 	<div slot="secondary">
-		<div class="map" id="map" bind:this={mapContainer} />
+		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>
 
@@ -101,11 +86,11 @@
 		z-index: 1;
 	}
 
+	$height: calc(100vh - 52px);
+
 	.legend-header {
 		padding: 5px;
 	}
-
-	$height: calc(100vh - 52px);
 
 	.legend-content {
 		position: absolute;

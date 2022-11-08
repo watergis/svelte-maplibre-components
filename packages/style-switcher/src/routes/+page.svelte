@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Map from '$example/components/Map.svelte';
+	import Map from '$example/Map.svelte';
 </script>
 
 <sveltekit:head>

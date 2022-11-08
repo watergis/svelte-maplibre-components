@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Map, NavigationControl, AttributionControl } from 'maplibre-gl';
-	import { map } from '$example/stores';
+	import { Map } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import {
 		ValhallaIsochronePanel,
@@ -13,6 +12,7 @@
 	let isMenuShown = true;
 
 	let mapContainer: HTMLDivElement;
+	let map: Map;
 
 	let valhallaUrl = 'https://valhalla.water-gis.com';
 	let valhallaIsochroneOptions: ValhallaIsochroneOptions = {
@@ -57,56 +57,39 @@
 	};
 
 	onMount(async () => {
-		const map2 = new Map({
+		map = new Map({
 			container: mapContainer,
-			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json',
-			center: { lng: 35.87063, lat: -1.08551 },
-			zoom: 13,
-			hash: true,
-			attributionControl: false
+			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
 		});
-		map2.addControl(
-			new NavigationControl({
-				visualizePitch: false,
-				showZoom: true,
-				showCompass: true
-			}),
-			'top-right'
-		);
-		map2.addControl(new AttributionControl({ compact: true }), 'bottom-right');
-
-		map.update(() => map2);
 	});
 </script>
 
-<MenuControl bind:map={$map} position={'top-right'} bind:isMenuShown>
+<MenuControl bind:map position={'top-right'} bind:isMenuShown>
 	<div slot="primary">
-		{#if $map}
-			<div class="tile is-vertical">
-				<div class="tile">
-					<div class="container m-2 p-2">
-						<ValhallaIsochronePanel
-							bind:map={$map}
-							bind:url={valhallaUrl}
-							bind:options={valhallaIsochroneOptions}
-						/>
-					</div>
-				</div>
-
-				<div class="tile">
-					<div class="container m-2 p-2">
-						<ValhallaRoutingPanel
-							bind:map={$map}
-							bind:url={valhallaUrl}
-							bind:options={valhallaRoutingOptions}
-						/>
-					</div>
+		<div class="tile is-vertical">
+			<div class="tile">
+				<div class="container m-2 p-2">
+					<ValhallaIsochronePanel
+						bind:map
+						bind:url={valhallaUrl}
+						bind:options={valhallaIsochroneOptions}
+					/>
 				</div>
 			</div>
-		{/if}
+
+			<div class="tile">
+				<div class="container m-2 p-2">
+					<ValhallaRoutingPanel
+						bind:map
+						bind:url={valhallaUrl}
+						bind:options={valhallaRoutingOptions}
+					/>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div slot="secondary">
-		<div class="map" id="map" bind:this={mapContainer} />
+		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>
 

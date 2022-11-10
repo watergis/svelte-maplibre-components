@@ -1,5 +1,11 @@
 # @watergis/svelte-collapsible-panel
 
+## 0.0.7
+
+### Patch Changes
+
+- 3b6327c: Use bulma.sass instead of CDN
+
 ## 0.0.6
 
 ### Patch Changes

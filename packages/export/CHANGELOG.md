@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.12
+
+### Patch Changes
+
+- 71be6c5: use bulma.sass instead of CDN. make parts smaller
+
 ## 0.1.11
 
 ### Patch Changes

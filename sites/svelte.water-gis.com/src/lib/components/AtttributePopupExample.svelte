@@ -32,18 +32,26 @@
 	});
 </script>
 
-<div class="map" bind:this={mapContainer} />
-<AttributePopupControl bind:map {targetLayers} />
+<div class="container">
+	<div class="map" bind:this={mapContainer} />
+	<AttributePopupControl bind:map {targetLayers} />
+</div>
 
 <style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';
-	@import 'bulma/bulma.sass';
+	// @import 'bulma/bulma.sass';
 
-	$height: calc(50vh);
+	$height: calc(60vh);
 
-	.map {
-		width: 100%;
-		height: $height;
-		z-index: 1;
+	.container {
+		text-align: center;
+
+		.map {
+			display: inline-block;
+			text-align: left;
+			width: 95%;
+			height: $height;
+			z-index: 1;
+		}
 	}
 </style>

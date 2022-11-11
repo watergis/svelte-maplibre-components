@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.5
+
+### Patch Changes
+
+- 47bb80f: Use bulma.sass instead of CDN
+
 ## 0.1.4
 
 ### Patch Changes

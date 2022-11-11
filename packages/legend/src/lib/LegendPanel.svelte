@@ -142,3 +142,7 @@
 		{/key}
 	{/if}
 </nav>
+
+<style lang="scss">
+	@import 'bulma/bulma.sass';
+</style>

@@ -46,7 +46,8 @@
 	</div>
 </div>
 
-<style>
+<style lang="scss">
+	@import 'bulma/bulma.sass';
 	.fas:before {
 		display: inline-block;
 		text-decoration: none;

@@ -47,8 +47,6 @@ See [Example](./src/example).
 </div>
 
 <style>
-  @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
-
   .legend-header {
     padding: 5px;
   }
@@ -64,8 +62,6 @@ See [Example](./src/example).
   }
 </style>
 ```
-
-This library relies on Bulma CSS. Please import Bulma CSS from either NPM or CDN. For the Bulma CSS, further information can be found [here](https://bulma.io/documentation/overview/start/)
 
 ## create-svelte
 

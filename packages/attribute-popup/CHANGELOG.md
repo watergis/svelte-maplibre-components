@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-attribute-popup
 
+## 0.0.9
+
+### Patch Changes
+
+- 8d1f03d: deleted bulma dependency from attribute-popup
+
 ## 0.0.8
 
 ### Patch Changes

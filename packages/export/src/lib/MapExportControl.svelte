@@ -177,9 +177,9 @@
 
 		<div class="field">
 			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label class="label">Paper Size</label>
+			<label class="label is-small">Paper Size</label>
 			<div class="control has-icons-left">
-				<div class="select is-fullwidth">
+				<div class="select is-small is-fullwidth">
 					<select bind:value={paperSize}>
 						{#each Object.keys(Size) as key}
 							<option value={Size[key]}>{key}</option>
@@ -193,7 +193,7 @@
 		</div>
 		<div class="field">
 			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label class="label">Page Orientation</label>
+			<label class="label is-small">Page Orientation</label>
 			<div class="control">
 				{#each Object.keys(PageOrientation) as key}
 					<label class="radio" style="color:black">
@@ -221,9 +221,9 @@
 		</div>
 		<div class="field">
 			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label class="label">Format</label>
+			<label class="label is-small">Format</label>
 			<div class="control has-icons-left">
-				<div class="select is-fullwidth">
+				<div class="select is-small is-fullwidth">
 					<select bind:value={format}>
 						{#each Object.keys(Format) as key}
 							<option value={Format[key]}>{key}</option>
@@ -237,9 +237,9 @@
 		</div>
 		<div class="field">
 			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label class="label">DPI</label>
+			<label class="label is-small">DPI</label>
 			<div class="control has-icons-left">
-				<div class="select is-fullwidth">
+				<div class="select is-small is-fullwidth">
 					<select bind:value={dpi}>
 						{#each Object.keys(DPI) as key}
 							<option value={DPI[key]}>{key}</option>
@@ -253,7 +253,11 @@
 		</div>
 
 		<div class="field">
-			<button class="button is-fullwidth is-success" on:click={exportMap}>
+			<button
+				class="button is-small is-success"
+				style="width: 90%; text-align:center;"
+				on:click={exportMap}
+			>
 				<span class="icon">
 					<i class="fas fa-download" />
 				</span>
@@ -264,6 +268,8 @@
 {/if}
 
 <style lang="scss">
+	@import 'bulma/bulma.sass';
+
 	.maplibre-ctrl-icon {
 		background: url('data:image/svg+xml;charset=UTF-8,<svg id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><g><path d="m422.5 99v-24c0-41.355-33.645-75-75-75h-184c-41.355 0-75 33.645-75 75v24z"/><path d="m118.5 319v122 26 15c0 16.568 13.431 30 30 30h214c16.569 0 30-13.432 30-30v-15-26-122zm177 128h-80c-8.284 0-15-6.716-15-15s6.716-15 15-15h80c8.284 0 15 6.716 15 15s-6.716 15-15 15zm0-64h-80c-8.284 0-15-6.716-15-15s6.716-15 15-15h80c8.284 0 15 6.716 15 15s-6.716 15-15 15z"/><path d="m436.5 129h-361c-41.355 0-75 33.645-75 75v120c0 41.355 33.645 75 75 75h13v-80h-9c-8.284 0-15-6.716-15-15s6.716-15 15-15h24 304 24c8.284 0 15 6.716 15 15s-6.716 15-15 15h-9v80h14c41.355 0 75-33.645 75-75v-120c0-41.355-33.645-75-75-75zm-309 94h-48c-8.284 0-15-6.716-15-15s6.716-15 15-15h48c8.284 0 15 6.716 15 15s-6.716 15-15 15z"/></g></svg>');
 		background-position: center;
@@ -275,7 +281,7 @@
 		background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg>');
 		background-position: center;
 		background-repeat: no-repeat;
-		background-size: 70%;
+		background-size: 40%;
 	}
 
 	.export-container {

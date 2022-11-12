@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-style-switcher
 
+## 0.1.4
+
+### Patch Changes
+
+- c3b5edd: deleted bulma dependencies
+
 ## 0.1.3
 
 ### Patch Changes

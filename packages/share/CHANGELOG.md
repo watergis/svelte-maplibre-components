@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-share
 
+## 0.1.7
+
+### Patch Changes
+
+- 2c40311: use bulma.sass instead of CDN
+
 ## 0.1.6
 
 ### Patch Changes

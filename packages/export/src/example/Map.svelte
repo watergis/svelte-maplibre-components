@@ -19,7 +19,7 @@
 		<MapExportPanel bind:map showPrintableArea={false} showCrosshair={false} />
 	</div>
 </div>
-<MapExportControl bind:map showPrintableArea={true} showCrosshair={true} />
+<MapExportControl bind:map showPrintableArea={true} showCrosshair={true} isShownSetting={true} />
 
 <style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';

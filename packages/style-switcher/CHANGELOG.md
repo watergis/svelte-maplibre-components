@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-style-switcher
 
+## 0.1.5
+
+### Patch Changes
+
+- ed999d2: fixed style of style-swither select box
+
 ## 0.1.4
 
 ### Patch Changes

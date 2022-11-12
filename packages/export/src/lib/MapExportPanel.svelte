@@ -177,17 +177,15 @@
 		</div>
 	</div>
 
-	<div class="field">
-		<button
-			class="button is-small is-success"
-			style="width: 90%; text-align:center;"
-			on:click={exportMap}
-		>
-			<span class="icon">
-				<i class="fas fa-download" />
-			</span>
-			<span>Export</span>
-		</button>
+	<div class="columns m-1 is-mobile">
+		<div class="column is-12 p-0 m-0">
+			<button class="button is-fullwidth is-small is-success p-0 m-0" on:click={exportMap}>
+				<span class="icon">
+					<i class="fas fa-download" />
+				</span>
+				<span>Export</span>
+			</button>
+		</div>
 	</div>
 </div>
 

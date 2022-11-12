@@ -10,8 +10,12 @@
 
 	export let map: Map;
 
+	let innerWidth = 0;
+	$: isMobile = innerWidth < 768 ? true : false;
+
 	let printableArea: PrintableAreaManager | undefined;
 	let crosshairManager: CrosshairManager | undefined;
+	let isShownSetting = true;
 
 	let mapGenerator: MapGenerator;
 	let printButton: HTMLButtonElement;
@@ -30,6 +34,12 @@
 
 	let isExportContainerShown = false;
 	let dragOptions: DragOptions = {};
+
+	onMount(() => {
+		if (isMobile) {
+			isShownSetting = false;
+		}
+	});
 
 	// eslint-disable-next-line
 	function MapExportControl() {}
@@ -155,6 +165,8 @@
 	};
 </script>
 
+<svelte:window bind:innerWidth />
+
 <button class="maplibre-ctrl-icon" bind:this={printButton} />
 
 {#if isExportContainerShown}
@@ -174,95 +186,103 @@
 				<i class="fas fa-xmark" />
 			</span>
 		</div>
-
-		<div class="field">
-			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label class="label is-small">Paper Size</label>
-			<div class="control has-icons-left">
-				<div class="select is-small is-fullwidth">
-					<select bind:value={paperSize}>
-						{#each Object.keys(Size) as key}
-							<option value={Size[key]}>{key}</option>
-						{/each}
-					</select>
-				</div>
-				<div class="icon is-small is-left">
-					<i class="fas fa-file" />
+		{#if isShownSetting}
+			<div class="field">
+				<!-- svelte-ignore a11y-label-has-associated-control -->
+				<label class="label is-small">Paper Size</label>
+				<div class="control has-icons-left">
+					<div class="select is-small is-fullwidth">
+						<select bind:value={paperSize}>
+							{#each Object.keys(Size) as key}
+								<option value={Size[key]}>{key}</option>
+							{/each}
+						</select>
+					</div>
+					<div class="icon is-small is-left">
+						<i class="fas fa-file" />
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="field">
-			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label class="label is-small">Page Orientation</label>
-			<div class="control">
-				{#each Object.keys(PageOrientation) as key}
-					<label class="radio" style="color:black">
-						<input
-							type="radio"
-							name="orientation"
-							on:click={() => {
-								orientation = PageOrientation[key];
-							}}
-							checked={orientation === PageOrientation[key]}
-						/>
-						<div class="icon is-small is-left">
-							<i
-								class="fas {`${
-									PageOrientation[key] === PageOrientation.Landscape
-										? 'fa-left-right'
-										: 'fa-up-down'
-								}`}"
+			<div class="field">
+				<!-- svelte-ignore a11y-label-has-associated-control -->
+				<label class="label is-small">Page Orientation</label>
+				<div class="control">
+					{#each Object.keys(PageOrientation) as key}
+						<label class="radio" style="color:black">
+							<input
+								type="radio"
+								name="orientation"
+								on:click={() => {
+									orientation = PageOrientation[key];
+								}}
+								checked={orientation === PageOrientation[key]}
 							/>
-						</div>
-						{key}
-					</label>
-				{/each}
-			</div>
-		</div>
-		<div class="field">
-			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label class="label is-small">Format</label>
-			<div class="control has-icons-left">
-				<div class="select is-small is-fullwidth">
-					<select bind:value={format}>
-						{#each Object.keys(Format) as key}
-							<option value={Format[key]}>{key}</option>
-						{/each}
-					</select>
-				</div>
-				<div class="icon is-small is-left">
-					<i class="fas fa-file-pdf" />
+							<div class="icon is-small is-left">
+								<i
+									class="fas {`${
+										PageOrientation[key] === PageOrientation.Landscape
+											? 'fa-left-right'
+											: 'fa-up-down'
+									}`}"
+								/>
+							</div>
+							{key}
+						</label>
+					{/each}
 				</div>
 			</div>
-		</div>
-		<div class="field">
-			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label class="label is-small">DPI</label>
-			<div class="control has-icons-left">
-				<div class="select is-small is-fullwidth">
-					<select bind:value={dpi}>
-						{#each Object.keys(DPI) as key}
-							<option value={DPI[key]}>{key}</option>
-						{/each}
-					</select>
-				</div>
-				<div class="icon is-small is-left">
-					<i class="fas fa-braille" />
+			<div class="field">
+				<!-- svelte-ignore a11y-label-has-associated-control -->
+				<label class="label is-small">Format</label>
+				<div class="control has-icons-left">
+					<div class="select is-small is-fullwidth">
+						<select bind:value={format}>
+							{#each Object.keys(Format) as key}
+								<option value={Format[key]}>{key}</option>
+							{/each}
+						</select>
+					</div>
+					<div class="icon is-small is-left">
+						<i class="fas fa-file-pdf" />
+					</div>
 				</div>
 			</div>
-		</div>
-
-		<div class="field">
-			<button
-				class="button is-small is-success"
-				style="width: 90%; text-align:center;"
-				on:click={exportMap}
-			>
-				<span class="icon">
-					<i class="fas fa-download" />
-				</span>
-				<span>Export</span>
-			</button>
+			<div class="field">
+				<!-- svelte-ignore a11y-label-has-associated-control -->
+				<label class="label is-small">DPI</label>
+				<div class="control has-icons-left">
+					<div class="select is-small is-fullwidth">
+						<select bind:value={dpi}>
+							{#each Object.keys(DPI) as key}
+								<option value={DPI[key]}>{key}</option>
+							{/each}
+						</select>
+					</div>
+					<div class="icon is-small is-left">
+						<i class="fas fa-braille" />
+					</div>
+				</div>
+			</div>
+		{/if}
+		<div class="columns m-1 is-mobile">
+			<div class="column is-10 p-0 m-0">
+				<button class="button is-fullwidth is-small is-success p-0 m-0" on:click={exportMap}>
+					<span class="icon">
+						<i class="fas fa-download" />
+					</span>
+					<span>Export</span>
+				</button>
+			</div>
+			<div class="column is-2 p-0 m-0">
+				<button
+					class="button is-fullwidth is-small is-light p-0 m-0"
+					on:click={() => (isShownSetting = !isShownSetting)}
+				>
+					<span class="icon">
+						<i class="fas fa-gear" />
+					</span>
+				</button>
+			</div>
 		</div>
 	</nav>
 {/if}
@@ -292,6 +312,7 @@
 		right: 10px;
 		z-index: 10;
 		cursor: grab;
+		width: 260px;
 	}
 
 	.heading-control {

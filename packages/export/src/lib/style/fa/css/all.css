@@ -677,6 +677,10 @@ readers do not read off random characters that represent icons */
 	content: '\f1c1';
 }
 
+.fa-gear::before {
+	content: '\f013';
+}
+
 .fa-up-down::before {
 	content: '\f338';
 }

@@ -10,12 +10,8 @@
 
 	export let map: Map;
 
-	let innerWidth = 0;
-	$: isMobile = innerWidth < 768 ? true : false;
-
 	let printableArea: PrintableAreaManager | undefined;
 	let crosshairManager: CrosshairManager | undefined;
-	let isShownSetting = true;
 
 	let mapGenerator: MapGenerator;
 	let printButton: HTMLButtonElement;
@@ -28,18 +24,13 @@
 	export let dpi = DPI[96];
 	export let format = Format.PNG;
 	export let orientation = PageOrientation.Landscape;
+	export let isShownSetting = true;
 
 	$: paperSize, updatePrintableArea();
 	$: orientation, updatePrintableArea();
 
 	let isExportContainerShown = false;
 	let dragOptions: DragOptions = {};
-
-	onMount(() => {
-		if (isMobile) {
-			isShownSetting = false;
-		}
-	});
 
 	// eslint-disable-next-line
 	function MapExportControl() {}
@@ -164,8 +155,6 @@
 		}
 	};
 </script>
-
-<svelte:window bind:innerWidth />
 
 <button class="maplibre-ctrl-icon" bind:this={printButton} />
 

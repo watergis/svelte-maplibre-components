@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.14
+
+### Patch Changes
+
+- e870d06: export isShownSetting in export control
+
 ## 0.1.13
 
 ### Patch Changes

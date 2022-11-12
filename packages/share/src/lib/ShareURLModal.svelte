@@ -57,15 +57,20 @@
 		<section class="modal-card-body">
 			<div class="copy-control">
 				<input
-					class="input is-success"
+					class="input is-success is-small pm-0"
 					type="text"
 					placeholder="URL to share"
+					style="cursor:pointer;"
 					bind:value={urlText}
 					use:copy={urlText}
 					on:click={handleCopy}
 					readonly
 				/>
-				<button class="button is-success ml-1" use:copy={urlText} on:click={handleCopy}>
+				<button
+					class="button is-success is-small pm-0 ml-1"
+					use:copy={urlText}
+					on:click={handleCopy}
+				>
 					<span class="icon">
 						<i class="fas fa-copy" />
 					</span>
@@ -74,7 +79,7 @@
 			</div>
 		</section>
 		<footer class="modal-card-foot">
-			<button class="button" on:click={handleClose}>
+			<button class="button is-small pm-0" on:click={handleClose}>
 				<span class="icon">
 					<i class="fas fa-xmark" />
 				</span>
@@ -85,6 +90,7 @@
 </div>
 
 <style lang="scss">
+	@import 'bulma/bulma.sass';
 	.copy-control {
 		display: flex;
 	}

@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.13
+
+### Patch Changes
+
+- fbf2d6b: added setting button in control to enable hiding settings in mobile
+
 ## 0.1.12
 
 ### Patch Changes

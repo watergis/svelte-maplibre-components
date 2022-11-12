@@ -51,9 +51,9 @@
 </script>
 
 {#if map}
-	<div class="columns is-vcentered">
-		<div class="column">
-			<button class="button is-fullwidth is-link" on:click={() => measureStart()}>
+	<div class="columns is-vcentered is-mobile">
+		<div class="column is-9 p-0 m-0 pr-1">
+			<button class="button is-fullwidth is-small is-link p-0 m-0" on:click={() => measureStart()}>
 				<span class="icon is-small">
 					{#if isQuery}
 						<i class="fas fa-stop" />
@@ -70,31 +70,35 @@
 				</span>
 			</button>
 		</div>
-	</div>
-	{#if hasData}
-		<div class="columns is-vcentered pb-3">
-			<div class="column is-half py-0">
-				<button
-					class="button is-fullwidth is-link is-light"
-					on:click={() => $measureManager.clearFeatures()}
-				>
-					<span class="icon is-small">
-						<i class="fas fa-trash" />
-					</span>
-					<span> Clear </span>
-				</button>
-			</div>
-			<div class="column is-half py-0">
-				<button
-					class="button is-fullwidth is-link is-light"
-					on:click={() => $measureManager.downloadGeoJSON()}
-				>
-					<span class="icon is-small">
-						<i class="fas fa-download" />
-					</span>
-					<span> GeoJSON </span>
-				</button>
-			</div>
+		<div class="column is-1 p-0 m-0 pr-1">
+			<button
+				class="button is-fullwidth is-small is-link is-light p-0 m-0 {`${
+					!hasData ? 'is-static' : ''
+				}`}"
+				disabled={!hasData}
+				on:click={() => $measureManager.clearFeatures()}
+			>
+				<span class="icon is-small">
+					<i class="fas fa-trash" />
+				</span>
+			</button>
 		</div>
-	{/if}
+		<div class="column is-1 p-0 m-0">
+			<button
+				class="button is-fullwidth is-small is-link is-light p-0 m-0 {`${
+					!hasData ? 'is-static' : ''
+				}`}"
+				disabled={!hasData}
+				on:click={() => $measureManager.downloadGeoJSON()}
+			>
+				<span class="icon is-small">
+					<i class="fas fa-download" />
+				</span>
+			</button>
+		</div>
+	</div>
 {/if}
+
+<style lang="scss">
+	@import 'bulma/bulma.sass';
+</style>

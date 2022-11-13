@@ -36,13 +36,11 @@
 	};
 </script>
 
-<div class="style-container">
-	<select class="style-select" bind:value={styleUrl}>
-		{#each styles as style}
-			<option value={style.uri}>{style.title}</option>
-		{/each}
-	</select>
-</div>
+<select class="style-select" bind:value={styleUrl}>
+	{#each styles as style}
+		<option value={style.uri}>{style.title}</option>
+	{/each}
+</select>
 
 <style lang="scss">
 	.style-select {

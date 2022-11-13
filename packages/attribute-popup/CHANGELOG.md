@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-attribute-popup
 
+## 0.0.10
+
+### Patch Changes
+
+- 033b2e9: fixed select box css for attribute popup
+
 ## 0.0.9
 
 ### Patch Changes

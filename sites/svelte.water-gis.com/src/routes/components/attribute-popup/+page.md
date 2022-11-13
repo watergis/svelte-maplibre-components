@@ -34,10 +34,12 @@ yarn add @watergis/svelte-maplibre-attribute-popup
 pnpm i @watergis/svelte-maplibre-attribute-popup
 ```
 
-### Example of source code
+### Example
 
 ```svelte
 <script lang="ts">
+  import { onMount } from 'svelte';
+  import { Map, NavigationControl } from 'maplibre-gl';
   import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
 
   // create maplibre.Map object
@@ -52,11 +54,25 @@ pnpm i @watergis/svelte-maplibre-attribute-popup
     'washout',
   ];
 
+  onMount(async () => {
+    map = new Map({
+      container: mapContainer,
+      style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
+    });
+  });
+
 </script>
 
+<div class="map" bind:this={mapContainer} />
 <AttributePopupControl bind:map {targetLayers} />
 
-<style>
-  @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+<style lang="scss">
+  @import 'maplibre-gl/dist/maplibre-gl.css';
+
+  .map {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
 </style>
 ```

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Map } from 'maplibre-gl';
+	import { Map, NavigationControl } from 'maplibre-gl';
 	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
 
 	let mapContainer: HTMLDivElement;
@@ -29,6 +29,9 @@
 			container: mapContainer,
 			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
 		});
+		map.addControl(new NavigationControl({}));
+		map.scrollZoom.disable();
+		map.touchPitch.enable();
 	});
 </script>
 
@@ -39,7 +42,6 @@
 
 <style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';
-	// @import 'bulma/bulma.sass';
 
 	$height: calc(60vh);
 

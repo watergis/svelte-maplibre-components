@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 0.1.8
+
+### Patch Changes
+
+- 99a37d3: fixed 100vh issue in menu control
+
 ## 0.1.7
 
 ### Patch Changes

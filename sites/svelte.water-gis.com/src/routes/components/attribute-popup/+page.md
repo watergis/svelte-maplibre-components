@@ -7,9 +7,9 @@ author: Jin Igarashi
 	import AtttributePopupExample from "$lib/components/AtttributePopupExample.svelte";
 </script>
 
-# @watergis/svelte/maplibre-attribute-popup
+# @watergis/svelte-maplibre-attribute-popup
 
-[@watergis/svelte/maplibre-attribute-popup](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/attribute-popup) is a svelte component to add attribute popup plugin to maplibre.
+[@watergis/svelte-maplibre-attribute-popup](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/attribute-popup) is a svelte component to add attribute popup plugin to maplibre.
 
 ## Demo
 

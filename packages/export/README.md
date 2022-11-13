@@ -41,8 +41,6 @@ See [Example](./src/example).
 <MapExportControl bind:map={$map} showPrintableArea={true} showCrosshair={true} position='top-right' />
 
 <style>
-@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
-
 .export-container {
     position: absolute;
     top: 10px;
@@ -51,8 +49,6 @@ See [Example](./src/example).
 }
 </style>
 ```
-
-This library relies on Bulma CSS. Please import Bulma CSS from either NPM or CDN. For the Bulma CSS, further information can be found [here](https://bulma.io/documentation/overview/start/)
 
 ## create-svelte
 

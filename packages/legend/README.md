@@ -39,33 +39,38 @@ See [Example](./src/example).
   };
 </script>
 
-<div class="legend-header">
-  <LegendHeader bind:onlyRendered bind:onlyRelative {relativeLayers} />
-</div>
-<div class="legend-content">
-  <LegendPanel bind:map={$map} {style} bind:onlyRendered bind:onlyRelative {relativeLayers} />
+<div class="primary-container">
+  <div class="legend-header">
+    <LegendHeader bind:onlyRendered bind:onlyRelative {relativeLayers} />
+  </div>
+  <div class="legend-content">
+    <LegendPanel bind:map={$map} {style} bind:onlyRendered bind:onlyRelative {relativeLayers} />
+  </div>
 </div>
 
 <style>
-  @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+  $height: calc(100vh - 56px);
 
-  .legend-header {
-    padding: 5px;
-  }
+	.primary-container {
+		display: flex;
+		flex-direction: column;
+		position: relative;
 
-  $height: calc(100vh - 52px);
+		.legend-header {
+			padding-left: 0.5rem;
+			padding-top: 0.5rem;
+			padding-bottom: 0.5rem;
+		}
 
-  .legend-content {
-    position: absolute;
-    overflow-x: hidden;
-    overflow-y: auto;
-    height: $height;
-    width: 100%;
-  }
+		.legend-content {
+			overflow-x: hidden;
+			overflow-y: auto;
+			height: $height;
+			width: 100%;
+		}
+	}
 </style>
 ```
-
-This library relies on Bulma CSS. Please import Bulma CSS from either NPM or CDN. For the Bulma CSS, further information can be found [here](https://bulma.io/documentation/overview/start/)
 
 ## create-svelte
 

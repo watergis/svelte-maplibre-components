@@ -1,5 +1,23 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.14
+
+### Patch Changes
+
+- e870d06: export isShownSetting in export control
+
+## 0.1.13
+
+### Patch Changes
+
+- fbf2d6b: added setting button in control to enable hiding settings in mobile
+
+## 0.1.12
+
+### Patch Changes
+
+- 71be6c5: use bulma.sass instead of CDN. make parts smaller
+
 ## 0.1.11
 
 ### Patch Changes

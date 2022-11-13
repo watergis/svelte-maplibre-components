@@ -51,50 +51,144 @@
 </script>
 
 {#if map}
-	<div class="columns is-vcentered">
-		<div class="column">
-			<button class="button is-fullwidth is-link" on:click={() => measureStart()}>
-				<span class="icon is-small">
-					{#if isQuery}
-						<i class="fas fa-stop" />
-					{:else}
-						<i class="fas fa-ruler" />
-					{/if}
-				</span>
-				<span>
-					{#if isQuery}
-						Stop measure
-					{:else}
-						Start measure
-					{/if}
-				</span>
-			</button>
-		</div>
+	<div class="measure-container">
+		<button class="control-button" on:click={() => measureStart()}>
+			<span class="control-icon">
+				{#if isQuery}
+					<i class="fas fa-stop" />
+				{:else}
+					<i class="fas fa-ruler" />
+				{/if}
+			</span>
+			<span>
+				{#if isQuery}
+					Stop measure
+				{:else}
+					Start measure
+				{/if}
+			</span>
+		</button>
+		<button
+			class="setting-button"
+			disabled={!hasData}
+			on:click={() => $measureManager.clearFeatures()}
+		>
+			<span>
+				<i class="fas fa-trash" />
+			</span>
+		</button>
+		<button
+			class="setting-button"
+			disabled={!hasData}
+			on:click={() => $measureManager.downloadGeoJSON()}
+		>
+			<span>
+				<i class="fas fa-download" />
+			</span>
+		</button>
 	</div>
-	{#if hasData}
-		<div class="columns is-vcentered pb-3">
-			<div class="column is-half py-0">
-				<button
-					class="button is-fullwidth is-link is-light"
-					on:click={() => $measureManager.clearFeatures()}
-				>
-					<span class="icon is-small">
-						<i class="fas fa-trash" />
-					</span>
-					<span> Clear </span>
-				</button>
-			</div>
-			<div class="column is-half py-0">
-				<button
-					class="button is-fullwidth is-link is-light"
-					on:click={() => $measureManager.downloadGeoJSON()}
-				>
-					<span class="icon is-small">
-						<i class="fas fa-download" />
-					</span>
-					<span> GeoJSON </span>
-				</button>
-			</div>
-		</div>
-	{/if}
 {/if}
+
+<style lang="scss">
+	.measure-container {
+		display: flex;
+
+		.control-button {
+			align-items: center;
+			background-clip: padding-box;
+			background-color: #485fc7;
+			border: 1px solid transparent;
+			border-radius: 0.25rem;
+			box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+			box-sizing: border-box;
+			color: #fff;
+			cursor: pointer;
+			display: inline-flex;
+			font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica, Arial,
+				sans-serif;
+			font-size: 16px;
+			font-weight: 600;
+			justify-content: center;
+			line-height: 1.25;
+			margin: 0;
+			min-height: 3rem;
+			padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+			position: relative;
+			text-decoration: none;
+			transition: all 250ms;
+			user-select: none;
+			-webkit-user-select: none;
+			touch-action: manipulation;
+			vertical-align: baseline;
+			width: 100%;
+
+			.control-icon {
+				padding-right: 0.5rem;
+			}
+		}
+
+		.control-button:hover,
+		.control-button:focus:enabled {
+			background-color: #596dc5;
+			box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+		}
+
+		.control-button:hover:enabled {
+			transform: translateY(-1px);
+		}
+
+		.control-button:active:enabled {
+			background-color: #596dc5;
+			box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+			transform: translateY(0);
+		}
+
+		.setting-button {
+			align-items: center;
+			background-color: #ffffff;
+			border: 1px solid rgba(0, 0, 0, 0.1);
+			border-radius: 0.25rem;
+			box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+			box-sizing: border-box;
+			color: rgba(0, 0, 0, 0.85);
+			cursor: pointer;
+			display: inline-flex;
+			font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica, Arial,
+				sans-serif;
+			font-size: 16px;
+			font-weight: 600;
+			justify-content: center;
+			line-height: 1.25;
+			margin: 0;
+			min-height: 3rem;
+			padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+			position: relative;
+			text-decoration: none;
+			transition: all 250ms;
+			user-select: none;
+			-webkit-user-select: none;
+			touch-action: manipulation;
+			vertical-align: baseline;
+			width: auto;
+		}
+
+		.setting-button:hover:enabled,
+		.setting-button:focus:enabled {
+			border-color: rgba(0, 0, 0, 0.15);
+			box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+			color: rgba(0, 0, 0, 0.65);
+		}
+
+		.setting-button:hover:enabled {
+			transform: translateY(-1px);
+		}
+
+		.setting-button:active:enabled {
+			background-color: #f0f0f1;
+			border-color: rgba(0, 0, 0, 0.15);
+			box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+			color: rgba(0, 0, 0, 0.65);
+			transform: translateY(0);
+		}
+	}
+</style>

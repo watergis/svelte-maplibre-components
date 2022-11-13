@@ -33,7 +33,9 @@
 	{/if}
 </nav>
 
-<style>
+<style lang="scss">
+	@import 'bulma/bulma.sass';
+
 	.header-menu {
 		cursor: pointer;
 	}

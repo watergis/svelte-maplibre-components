@@ -1,5 +1,18 @@
 # @watergis/svelte-maplibre-measure
 
+## 0.1.10
+
+### Patch Changes
+
+- 992062a: deleted bulma to use normal css for measure control
+
+## 0.1.9
+
+### Patch Changes
+
+- a2ceda9: updated layout and started using bulma.sass instead of CDN
+- 6fa20fe: updated README.md
+
 ## 0.1.8
 
 ### Patch Changes

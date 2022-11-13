@@ -61,9 +61,9 @@
 </script>
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
-	<div slot="primary">
+	<div slot="primary" class="primary-container">
 		<div class="legend-header">
-			<LegendHeader bind:onlyRendered bind:onlyRelative {relativeLayers} />
+			<LegendHeader bind:onlyRendered bind:onlyRelative />
 		</div>
 		<div class="legend-content">
 			<LegendPanel bind:map {style} bind:onlyRendered bind:onlyRelative {relativeLayers} />
@@ -86,17 +86,24 @@
 		z-index: 1;
 	}
 
-	$height: calc(100vh - 52px);
+	$height: calc(100vh - 56px);
 
-	.legend-header {
-		padding: 5px;
-	}
+	.primary-container {
+		display: flex;
+		flex-direction: column;
+		position: relative;
 
-	.legend-content {
-		position: absolute;
-		overflow-x: hidden;
-		overflow-y: auto;
-		height: $height;
-		width: 100%;
+		.legend-header {
+			padding-left: 0.5rem;
+			padding-top: 0.5rem;
+			padding-bottom: 0.5rem;
+		}
+
+		.legend-content {
+			overflow-x: hidden;
+			overflow-y: auto;
+			height: $height;
+			width: 100%;
+		}
 	}
 </style>

@@ -65,28 +65,16 @@
 </script>
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
-	<div slot="primary">
-		<div class="tile is-vertical">
-			<div class="tile">
-				<div class="container m-2 p-2">
-					<ValhallaIsochronePanel
-						bind:map
-						bind:url={valhallaUrl}
-						bind:options={valhallaIsochroneOptions}
-					/>
-				</div>
-			</div>
-
-			<div class="tile">
-				<div class="container m-2 p-2">
-					<ValhallaRoutingPanel
-						bind:map
-						bind:url={valhallaUrl}
-						bind:options={valhallaRoutingOptions}
-					/>
-				</div>
-			</div>
-		</div>
+	<div slot="primary" class="primary-container">
+		<h3>Isochrone tool</h3>
+		<ValhallaIsochronePanel
+			bind:map
+			bind:url={valhallaUrl}
+			bind:options={valhallaIsochroneOptions}
+		/>
+		<hr />
+		<h3>Routing tool</h3>
+		<ValhallaRoutingPanel bind:map bind:url={valhallaUrl} bind:options={valhallaRoutingOptions} />
 	</div>
 	<div slot="secondary">
 		<div class="map" bind:this={mapContainer} />
@@ -103,5 +91,9 @@
 		width: 100%;
 		height: 100%;
 		z-index: 1;
+	}
+
+	.primary-container {
+		margin: 0.5rem;
 	}
 </style>

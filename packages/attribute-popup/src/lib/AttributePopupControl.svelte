@@ -64,8 +64,8 @@
 			layers = map.getStyle().layers.map((layer) => layer.id);
 		}
 		const features: MapGeoJSONFeature[] = this.map.queryRenderedFeatures(e.point, { layers });
-		queriedFeatures = features;
-		selectedFeature = queriedFeatures[0];
+		queriedFeatures = features.filter((f) => Object.keys(f.properties).length > 0);
+		selectedFeature = queriedFeatures.length > 0 ? queriedFeatures[0] : undefined;
 		if (queriedFeatures.length > 0) {
 			popup = new Popup()
 				.setLngLat(e.lngLat)
@@ -112,7 +112,7 @@
 
 <div bind:this={popupContainer}>
 	{#if queriedFeatures && queriedFeatures.length > 0}
-		<div class="select is-fullwidth mb-2 is-success">
+		<div class="popup-select">
 			{#if onlyOneFeature}
 				<select bind:value={selectedFeature} class="is-focused" disabled>
 					{#each queriedFeatures as feature}
@@ -130,17 +130,11 @@
 	{/if}
 	{#if selectedFeature}
 		<div class="popup-table">
-			{#if Object.keys(selectedFeature.properties).length > 0}
-				<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-					{#each Object.keys(selectedFeature.properties) as key}
-						<tr><th>{key}</th><td>{selectedFeature.properties[key]}</td></tr>
-					{/each}
-				</table>
-			{:else}
-				<div class="notification is-info is-light">
-					No attributes in the selected layer '{selectedFeature.sourceLayer}'
-				</div>
-			{/if}
+			<table>
+				{#each Object.keys(selectedFeature.properties) as key}
+					<tr><th>{key}</th><td>{selectedFeature.properties[key]}</td></tr>
+				{/each}
+			</table>
 		</div>
 	{/if}
 </div>
@@ -158,8 +152,54 @@
 		background-color: #ffae00;
 	}
 
+	.popup-select {
+		margin-bottom: 5px;
+
+		select,
+		option {
+			width: 100%;
+			height: 30px;
+			border: rgb(155, 155, 155) 1px inset;
+		}
+
+		select {
+			width: 100%;
+			border-radius: 4px;
+			box-sizing: border-box;
+			-webkit-appearance: none;
+			cursor: pointer;
+			background: #fff
+				url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2211%22%20height%3D%2211%22%20viewBox%3D%220%200%2011%2011%22%3E%3Cpath%20d%3D%22M4.33%208.5L0%201L8.66%201z%22%20fill%3D%22%23666%22%2F%3E%3C%2Fsvg%3E')
+				right 10px center no-repeat;
+			color: #000;
+			padding-left: 0.5rem;
+			/* Firefox hide arrow */
+			-moz-appearance: none;
+			text-indent: 0.01px;
+			text-overflow: '';
+		}
+	}
+
 	.popup-table {
 		max-height: 200px;
 		overflow-y: auto;
+
+		table {
+			border-collapse: collapse;
+			margin: 0 auto;
+		}
+		td,
+		th {
+			border: 1px solid #ccc;
+			margin: 10px;
+			padding: 2px;
+			text-align: left;
+			white-space: pre-wrap;
+		}
+		th {
+			background: #efefef;
+			width: 30%;
+			word-wrap: break-word;
+		}
 	}
 </style>

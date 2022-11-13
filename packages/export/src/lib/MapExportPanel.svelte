@@ -106,7 +106,7 @@
 		<!-- svelte-ignore a11y-label-has-associated-control -->
 		<label class="label">Paper Size</label>
 		<div class="control has-icons-left">
-			<div class="select is-fullwidth">
+			<div class="select is-small is-fullwidth">
 				<select bind:value={paperSize}>
 					{#each Object.keys(Size) as key}
 						<option value={Size[key]}>{key}</option>
@@ -148,7 +148,7 @@
 		<!-- svelte-ignore a11y-label-has-associated-control -->
 		<label class="label">Format</label>
 		<div class="control has-icons-left">
-			<div class="select is-fullwidth">
+			<div class="select is-small is-fullwidth">
 				<select bind:value={format}>
 					{#each Object.keys(Format) as key}
 						<option value={Format[key]}>{key}</option>
@@ -164,7 +164,7 @@
 		<!-- svelte-ignore a11y-label-has-associated-control -->
 		<label class="label">DPI</label>
 		<div class="control has-icons-left">
-			<div class="select is-fullwidth">
+			<div class="select is-small is-fullwidth">
 				<select bind:value={dpi}>
 					{#each Object.keys(DPI) as key}
 						<option value={DPI[key]}>{key}</option>
@@ -177,17 +177,21 @@
 		</div>
 	</div>
 
-	<div class="field ">
-		<button class="button is-fullwidth is-success" on:click={exportMap}>
-			<span class="icon">
-				<i class="fas fa-download" />
-			</span>
-			<span>Export</span>
-		</button>
+	<div class="columns m-1 is-mobile">
+		<div class="column is-12 p-0 m-0">
+			<button class="button is-fullwidth is-small is-success p-0 m-0" on:click={exportMap}>
+				<span class="icon">
+					<i class="fas fa-download" />
+				</span>
+				<span>Export</span>
+			</button>
+		</div>
 	</div>
 </div>
 
-<style>
+<style lang="scss">
+	@import 'bulma/bulma.sass';
+
 	.export-container {
 		background-color: white;
 		padding: 10px;

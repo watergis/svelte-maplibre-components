@@ -1,5 +1,17 @@
 # @watergis/svelte-maplibre-attribute-popup
 
+## 0.0.10
+
+### Patch Changes
+
+- 033b2e9: fixed select box css for attribute popup
+
+## 0.0.9
+
+### Patch Changes
+
+- 8d1f03d: deleted bulma dependency from attribute-popup
+
 ## 0.0.8
 
 ### Patch Changes

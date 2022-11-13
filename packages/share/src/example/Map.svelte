@@ -9,7 +9,8 @@
 	onMount(async () => {
 		map = new Map({
 			container: mapContainer,
-			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
+			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json',
+			hash: true
 		});
 	});
 

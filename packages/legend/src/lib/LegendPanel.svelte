@@ -81,7 +81,7 @@
 	};
 </script>
 
-<nav class="panel">
+<ul class="legend-panel">
 	{#if spriteLoader}
 		{#key style}
 			{#each allLayers as layer}
@@ -89,56 +89,82 @@
 					{#if visibleLayerMap[layer.id]}
 						{#if onlyRelative === true}
 							{#if relativeLayers[layer.id]}
-								<!-- svelte-ignore a11y-missing-attribute -->
-								<a class="panel-block"
-									><Layer
+								<li class="legend-panel-block">
+									<Layer
 										{map}
 										{layer}
 										{spriteLoader}
 										{relativeLayers}
 										on:visibilityChanged={layerVisibilityChanged}
-									/></a
-								>
+									/>
+								</li>
 							{/if}
 						{:else}
-							<!-- svelte-ignore a11y-missing-attribute -->
-							<a class="panel-block"
-								><Layer
+							<li class="legend-panel-block">
+								<Layer
 									{map}
 									{layer}
 									{spriteLoader}
 									{relativeLayers}
 									on:visibilityChanged={layerVisibilityChanged}
-								/></a
-							>
+								/>
+							</li>
 						{/if}
 					{/if}
 				{:else if onlyRelative === true}
 					{#if relativeLayers[layer.id]}
-						<!-- svelte-ignore a11y-missing-attribute -->
-						<a class="panel-block"
-							><Layer
+						<li class="legend-panel-block">
+							<Layer
 								{map}
 								{layer}
 								{spriteLoader}
 								{relativeLayers}
 								on:visibilityChanged={layerVisibilityChanged}
-							/></a
-						>
+							/>
+						</li>
 					{/if}
 				{:else}
-					<!-- svelte-ignore a11y-missing-attribute -->
-					<a class="panel-block"
-						><Layer
+					<li class="legend-panel-block">
+						<Layer
 							{map}
 							{layer}
 							{spriteLoader}
 							{relativeLayers}
 							on:visibilityChanged={layerVisibilityChanged}
-						/></a
-					>
+						/>
+					</li>
 				{/if}
 			{/each}
 		{/key}
 	{/if}
-</nav>
+</ul>
+
+<style lang="scss">
+	.legend-panel {
+		display: block;
+		list-style-type: disc;
+		margin-block-start: 0em;
+		margin-block-end: 0em;
+		margin-inline-start: 0px;
+		margin-inline-end: 0px;
+		padding-inline-start: 1rem;
+
+		.legend-panel-block {
+			display: flex;
+			vertical-align: middle;
+			justify-content: left;
+			align-items: left;
+			margin: 0;
+			padding: 0.2rem;
+			border-bottom: 0.1rem solid rgb(197, 197, 197);
+		}
+
+		.legend-panel-block li {
+			display: block;
+		}
+
+		.legend-panel-block:hover {
+			background-color: rgb(239, 239, 239);
+		}
+	}
+</style>

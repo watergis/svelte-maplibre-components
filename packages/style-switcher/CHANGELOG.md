@@ -1,5 +1,29 @@
 # @watergis/svelte-maplibre-style-switcher
 
+## 0.1.7
+
+### Patch Changes
+
+- f570227: fixed styleswitcher's css layout
+
+## 0.1.6
+
+### Patch Changes
+
+- 4d572ac: fixed style swticher's css
+
+## 0.1.5
+
+### Patch Changes
+
+- ed999d2: fixed style of style-swither select box
+
+## 0.1.4
+
+### Patch Changes
+
+- c3b5edd: deleted bulma dependencies
+
 ## 0.1.3
 
 ### Patch Changes

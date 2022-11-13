@@ -28,7 +28,7 @@
 </script>
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
-	<div slot="primary">
+	<div slot="primary" class="primary-container">
 		<h4>Measure tool with elevation enquiry</h4>
 		<MeasurePanel bind:map bind:measureOption bind:terrainRgbUrl />
 	</div>
@@ -47,5 +47,9 @@
 		width: 100%;
 		height: 100%;
 		z-index: 1;
+	}
+
+	.primary-container {
+		margin: 0.5rem;
 	}
 </style>

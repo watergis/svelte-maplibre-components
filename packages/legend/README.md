@@ -39,27 +39,36 @@ See [Example](./src/example).
   };
 </script>
 
-<div class="legend-header">
-  <LegendHeader bind:onlyRendered bind:onlyRelative {relativeLayers} />
-</div>
-<div class="legend-content">
-  <LegendPanel bind:map={$map} {style} bind:onlyRendered bind:onlyRelative {relativeLayers} />
+<div class="primary-container">
+  <div class="legend-header">
+    <LegendHeader bind:onlyRendered bind:onlyRelative {relativeLayers} />
+  </div>
+  <div class="legend-content">
+    <LegendPanel bind:map={$map} {style} bind:onlyRendered bind:onlyRelative {relativeLayers} />
+  </div>
 </div>
 
 <style>
-  .legend-header {
-    padding: 5px;
-  }
+  $height: calc(100vh - 56px);
 
-  $height: calc(100vh - 52px);
+	.primary-container {
+		display: flex;
+		flex-direction: column;
+		position: relative;
 
-  .legend-content {
-    position: absolute;
-    overflow-x: hidden;
-    overflow-y: auto;
-    height: $height;
-    width: 100%;
-  }
+		.legend-header {
+			padding-left: 0.5rem;
+			padding-top: 0.5rem;
+			padding-bottom: 0.5rem;
+		}
+
+		.legend-content {
+			overflow-x: hidden;
+			overflow-y: auto;
+			height: $height;
+			width: 100%;
+		}
+	}
 </style>
 ```
 

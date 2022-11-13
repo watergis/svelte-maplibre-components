@@ -26,28 +26,48 @@
 	};
 </script>
 
-<div class="columns is-vcentered is-mobile">
-	<div class="column .is-marginless is-paddingless">
-		<button class="button is-text is-narrow" on:click={() => (checked = !checked)}>
-			<span class="icon is-small">
-				{#if checked}
-					<i class="fas fa-eye" />
-				{:else}
-					<i class="fas fa-eye-slash" />
-				{/if}
-			</span>
-		</button>
-	</div>
-	<div class="column is-narrow .is-marginless is-paddingless">
-		<Legend {map} {layer} {spriteLoader} />
-	</div>
-	<div class="column is-narrow .is-marginless pl-2 has-text-left">
+<div class="layer-container">
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<span class="visible-button" on:click={() => (checked = !checked)}>
+		{#if checked}
+			<i class="fas fa-eye" />
+		{:else}
+			<i class="fas fa-eye-slash" />
+		{/if}
+	</span>
+	<div class="legend"><Legend {map} {layer} {spriteLoader} /></div>
+	<div class="layer-name">
 		{relativeLayers && relativeLayers[layer.id] ? relativeLayers[layer.id] : layer.id}
 	</div>
 </div>
 
 <style lang="scss">
-	@import 'bulma/bulma.sass';
+	.layer-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		align-items: center;
+		margin: 0;
+		padding: 0;
+		height: 2.5rem;
+
+		.visible-button {
+			padding-right: 0.5rem;
+			cursor: pointer;
+		}
+
+		.legend {
+			padding-right: 0.5rem;
+		}
+
+		.layer-name {
+			font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica, Arial,
+				sans-serif;
+			font-size: 16px;
+			font-weight: 400;
+		}
+	}
+
 	.fas:before {
 		display: inline-block;
 		text-decoration: none;

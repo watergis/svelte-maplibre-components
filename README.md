@@ -1,5 +1,8 @@
 # svelte-maplibre-components
 
+[![build](https://github.com/watergis/svelte-maplibre-components/actions/workflows/build.yml/badge.svg)](https://github.com/watergis/svelte-maplibre-components/actions/workflows/build.yml)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5e6fddd2-c161-4aa8-9de8-61002eac3e21/deploy-status)](https://app.netlify.com/sites/svelte-maplibre-components/deploys)
+
 This repository to manage packages of svelte maplibre components for water application.
 
 ## Packages to be managed in this repo
@@ -20,6 +23,8 @@ The following packages are used in [watergis/sveltekit-watergis-template](https:
 
 - components for svelte
   - `@watergis/svelte-collapsible-panel` (see [here](./packages/collapsible-panel))
+
+Please visit the documentation on [svelte.water-gis.com](https://svelte.water-gis.com).
 
 ## Install
 

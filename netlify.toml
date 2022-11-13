@@ -1,4 +1,5 @@
 [build]
   base    = "sites/svelte.water-gis.com"
+  publish = "sites/svelte.water-gis.com/build/"
   command = "pnpm build"
   publish = "build"

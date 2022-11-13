@@ -161,6 +161,23 @@
 			height: 30px;
 			border: rgb(155, 155, 155) 1px inset;
 		}
+
+		select {
+			width: 100%;
+			border-radius: 4px;
+			box-sizing: border-box;
+			-webkit-appearance: none;
+			cursor: pointer;
+			background: #fff
+				url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2211%22%20height%3D%2211%22%20viewBox%3D%220%200%2011%2011%22%3E%3Cpath%20d%3D%22M4.33%208.5L0%201L8.66%201z%22%20fill%3D%22%23666%22%2F%3E%3C%2Fsvg%3E')
+				right 10px center no-repeat;
+			color: #000;
+			padding-left: 0.5rem;
+			/* Firefox hide arrow */
+			-moz-appearance: none;
+			text-indent: 0.01px;
+			text-overflow: '';
+		}
 	}
 
 	.popup-table {

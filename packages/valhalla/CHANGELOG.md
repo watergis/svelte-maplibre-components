@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-valhalla
 
+## 0.0.8
+
+### Patch Changes
+
+- 19ab46f: deleted bulma dependency from valhalla control
+
 ## 0.0.7
 
 ### Patch Changes

@@ -8,8 +8,15 @@ pre-commit:
       run: pnpm --filter="./packages/*" lint
     2_format:
       run: pnpm --filter="./packages/*" format
+    3_lint:
+      run: pnpm --filter="./sites/*" lint
+    4_format:
+      run: pnpm --filter="./sites/*" format
 
 pre-push:
+  parallel: true
   commands:
-    build:
+    build-packages:
       run: pnpm --filter="./packages/*" build
+    build-sites:
+      run: pnpm --filter="./sites/*" build

@@ -506,6 +506,7 @@ importers:
       mdsvex: ^0.10.6
       prettier: ^2.7.1
       prettier-plugin-svelte: ^2.8.0
+      prismjs: ^1.29.0
       rehype-autolink-headings: ^6.1.1
       rehype-slug: ^5.1.0
       remark-abbr: ^1.4.1
@@ -522,6 +523,7 @@ importers:
       bulma: 0.9.4
       maplibre-gl: 2.4.0
       mdsvex: 0.10.6_svelte@3.53.1
+      prismjs: 1.29.0
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.87
       '@sveltejs/kit': 1.0.0-next.544_svelte@3.53.1+vite@3.2.3

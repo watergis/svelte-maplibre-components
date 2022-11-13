@@ -11,7 +11,6 @@
 		crossorigin="anonymous"
 		referrerpolicy="no-referrer"
 	/>
-	<script src="/prism/prism.js"></script>
 </svelte:head>
 
 <Header />
@@ -23,5 +22,5 @@
 <Footer />
 
 <style lang="scss">
-	@import '/prism/prism.css';
+	@import 'prismjs/themes/prism-dark.min.css';
 </style>

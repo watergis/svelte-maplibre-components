@@ -38,6 +38,7 @@
 		"@watergis/svelte-maplibre-attribute-popup": "workspace:^0.0.10",
 		"bulma": "^0.9.4",
 		"maplibre-gl": "^2.4.0",
-		"mdsvex": "^0.10.6"
+		"mdsvex": "^0.10.6",
+		"prismjs": "^1.29.0"
 	}
 }

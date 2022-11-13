@@ -244,7 +244,6 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.42.1
       '@typescript-eslint/parser': ^5.42.1
       '@watergis/svelte-maplibre-menu': workspace:^0.1.7
-      bulma: ^0.9.4
       eslint: ^8.27.0
       eslint-config-prettier: ^8.5.0
       eslint-plugin-svelte3: ^4.0.0
@@ -253,7 +252,6 @@ importers:
       pako: ^2.1.0
       prettier: ^2.7.1
       prettier-plugin-svelte: ^2.8.0
-      sass: ^1.56.0
       svelte: ^3.52.0
       svelte-check: ^2.9.2
       svelte-preprocess: ^4.10.7
@@ -274,19 +272,17 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.42.1_2udltptbznfmezdozpdoa2aemq
       '@typescript-eslint/parser': 5.42.1_rmayb2veg2btbq6mbmnyivgasy
       '@watergis/svelte-maplibre-menu': link:../menu
-      bulma: 0.9.4
       eslint: 8.27.0
       eslint-config-prettier: 8.5.0_eslint@8.27.0
       eslint-plugin-svelte3: 4.0.0_3mj2dxwqqdwhca3fosrxvrsvse
       prettier: 2.7.1
       prettier-plugin-svelte: 2.8.0_lrllcp5xtrkmmdzifit4hd52ze
-      sass: 1.56.0
       svelte: 3.52.0
-      svelte-check: 2.9.2_sass@1.56.0+svelte@3.52.0
-      svelte-preprocess: 4.10.7_ngwexh7rjq5fmatf3fnjcyc3qm
+      svelte-check: 2.9.2_svelte@3.52.0
+      svelte-preprocess: 4.10.7_besnmoibwkhwtentvwuriss7pa
       tslib: 2.4.1
       typescript: 4.8.4
-      vite: 3.2.3_sass@1.56.0
+      vite: 3.2.3
 
   packages/menu:
     specifiers:

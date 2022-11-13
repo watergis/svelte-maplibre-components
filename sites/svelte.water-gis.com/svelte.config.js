@@ -12,7 +12,10 @@ const config = {
 	kit: {
 		adapter: adapter()
 	},
-	extensions: ['.svelte', ...mdsvexConfig.extensions]
+	extensions: ['.svelte', ...mdsvexConfig.extensions],
+	onwarn: () => {
+		return;
+	}
 };
 
 export default config;

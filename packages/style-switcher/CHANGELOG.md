@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-style-switcher
 
+## 0.1.6
+
+### Patch Changes
+
+- 4d572ac: fixed style swticher's css
+
 ## 0.1.5
 
 ### Patch Changes

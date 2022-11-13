@@ -114,7 +114,7 @@
 	{/if}
 </button>
 
-<div class="split-container">
+<div class="split-container" style="height:{innerHeight}px">
 	<Split
 		initialPrimarySize="0%"
 		minPrimarySize={isMenuShown ? `${minPrimaryWidth}` : '0px'}
@@ -140,14 +140,10 @@
 </div>
 
 <style lang="scss">
-	$height: calc(100vh);
-
 	.split-container {
-		height: $height;
-
 		.primary-content {
 			position: relative;
-			height: $height;
+			height: 100%;
 
 			.close-icon {
 				position: absolute;
@@ -160,7 +156,7 @@
 
 		.secondary-content {
 			position: relative;
-			height: $height;
+			height: 100%;
 		}
 	}
 </style>

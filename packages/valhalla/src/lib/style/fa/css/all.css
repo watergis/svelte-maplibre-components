@@ -673,8 +673,16 @@ readers do not read off random characters that represent icons */
 	content: '\f554';
 }
 
+.fa-stop::before {
+	content: '\f04d';
+}
+
 .fa-ruler::before {
 	content: '\f545';
+}
+
+.fa-route::before {
+	content: '\f4d7';
 }
 
 .fa-trash::before {

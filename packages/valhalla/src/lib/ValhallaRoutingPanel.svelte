@@ -19,6 +19,7 @@
 	let meansOfTransport = costingOptions[0].value;
 	let tripSummary: ValhallaTripSummary | undefined;
 	let tripData: LngLat[] = [];
+	$: hasData = tripData && tripData.length > 0;
 
 	let errorMessage = '';
 
@@ -89,152 +90,279 @@
 	};
 </script>
 
-<div class="field">
-	<!-- svelte-ignore a11y-label-has-associated-control -->
-	<label class="label">Means of Transport</label>
-	<div class="control">
-		{#each costingOptions as item}
-			<label class="radio" style="color:black">
-				<input
-					type="radio"
-					name="transport-routing"
-					on:click={() => {
-						meansOfTransport = item.value;
-					}}
-					checked={meansOfTransport === item.value}
-				/>
-				<div class="icon is-small is-left pl-3 pr-3">
-					<i class="fas {item.icon}" />
-				</div>
-				{item.label}
-			</label>
-		{/each}
-	</div>
+<!-- svelte-ignore a11y-label-has-associated-control -->
+<label class="control-label">Means of Transport</label>
+<div class="transport-select-container">
+	{#each costingOptions as item}
+		<label class="radio-transport" style="color:black">
+			<input
+				type="radio"
+				name="transport-routing"
+				on:click={() => {
+					meansOfTransport = item.value;
+				}}
+				checked={meansOfTransport === item.value}
+			/>
+			<span class="icon">
+				<i class="fas {item.icon}" />
+			</span>
+			{item.label}
+		</label>
+	{/each}
 </div>
 
-<div class="columns is-vcentered">
-	<div class="column">
-		<button class="button is-fullwidth is-link" on:click={handleAddPoint}>
-			<span class="icon is-small">
-				{#if isRouting}
-					<i class="fas fa-stop" />
-				{:else}
-					<i class="fas fa-route" />
-				{/if}
-			</span>
-			<span>
-				{#if isRouting}
-					Stop routing
-				{:else}
-					Start routing
-				{/if}
-			</span>
-		</button>
-	</div>
+<div class="valhalla-container">
+	<button class="control-button" on:click={handleAddPoint}>
+		<span class="control-icon">
+			{#if isRouting}
+				<i class="fas fa-stop" />
+			{:else}
+				<i class="fas fa-route" />
+			{/if}
+		</span>
+		<span>
+			{#if isRouting}
+				Stop routing
+			{:else}
+				Start routing
+			{/if}
+		</span>
+	</button>
+	<button class="setting-button" disabled={!hasData} on:click={clearFeatures}>
+		<span>
+			<i class="fas fa-trash" />
+		</span>
+	</button>
 </div>
 
 {#if tripData && tripData.length > 0}
-	<div class="columns is-vcentered">
-		<div class="column py-0">
-			<button class="button is-fullwidth is-link is-light" on:click={clearFeatures}>
-				<span class="icon is-small">
-					<i class="fas fa-trash" />
-				</span>
-				<span> Clear </span>
-			</button>
-		</div>
-	</div>
-
-	<div class="field is-horizontal px-3">
-		<div class="field-label is-normal">
-			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label class="label">From</label>
-		</div>
-		<div class="field-body">
-			<div class="field">
-				<div class="columns pt-1">
-					<div class="column is-half px-0">
-						<input
-							class="input is-small"
-							type="text"
-							placeholder="Name"
-							value={`${tripData[0].lng.toFixed(6)}`}
-							readonly
-						/>
-					</div>
-					<div class="column is-half px-0">
-						<input
-							class="input is-small"
-							type="text"
-							placeholder="Name"
-							value={`${tripData[0].lat.toFixed(6)}`}
-							readonly
-						/>
-					</div>
-				</div>
-			</div>
-		</div>
+	<!-- svelte-ignore a11y-label-has-associated-control -->
+	<label class="control-label">From</label>
+	<div class="flex-container">
+		<input
+			class="input-text"
+			type="text"
+			placeholder="Name"
+			value={`${tripData[0].lng.toFixed(6)}`}
+			readonly
+			style="width:50%;"
+		/>
+		<input
+			class="input-text"
+			type="text"
+			placeholder="Name"
+			value={`${tripData[0].lat.toFixed(6)}`}
+			readonly
+			style="width:50%;"
+		/>
 	</div>
 	{#if tripData.length > 1}
-		<div class="field is-horizontal px-3">
-			<div class="field-label is-normal">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label class="label">To</label>
-			</div>
-			<div class="field-body">
-				<div class="field">
-					<div class="columns pt-1 is-mobile">
-						<div class="column is-half px-0">
-							<input
-								class="input is-small"
-								type="text"
-								placeholder="Name"
-								value={`${tripData[tripData.length - 1].lng.toFixed(6)}`}
-								readonly
-							/>
-						</div>
-						<div class="column is-half px-0">
-							<input
-								class="input is-small"
-								type="text"
-								placeholder="Name"
-								value={`${tripData[tripData.length - 1].lat.toFixed(6)}`}
-								readonly
-							/>
-						</div>
-					</div>
-				</div>
-			</div>
+		<!-- svelte-ignore a11y-label-has-associated-control -->
+		<label class="control-label">To</label>
+		<div class="flex-container">
+			<input
+				class="input-text"
+				type="text"
+				placeholder="Name"
+				value={`${tripData[tripData.length - 1].lng.toFixed(6)}`}
+				readonly
+				style="width:50%;"
+			/>
+			<input
+				class="input-text"
+				type="text"
+				placeholder="Name"
+				value={`${tripData[tripData.length - 1].lat.toFixed(6)}`}
+				readonly
+				style="width:50%;"
+			/>
 		</div>
 	{/if}
 
 	{#if tripSummary}
-		<div class="columns px-3 is-mobile">
-			<div class="column is-half px-0">
-				<div class="field">
-					<!-- svelte-ignore a11y-label-has-associated-control -->
-					<label class="label is-small">Length</label>
-					<div class="control">
-						<input class="input is-small" type="text" value={`${tripSummary.length} km`} readonly />
-					</div>
-				</div>
+		<div class="flex-container">
+			<div class="flex-vertical-container" style="width:50%;">
+				<!-- svelte-ignore a11y-label-has-associated-control -->
+				<label class="control-label">Length</label>
+				<input class="input-text" type="text" value={`${tripSummary.length} km`} readonly />
 			</div>
-			<div class="column is-half px-0 is-mobile">
-				<div class="field">
-					<!-- svelte-ignore a11y-label-has-associated-control -->
-					<label class="label is-small">Time</label>
-					<div class="control">
-						<input class="input is-small" type="text" value={`${tripSummary.time} min`} readonly />
-					</div>
-				</div>
+			<div class="flex-vertical-container" style="width:50%;">
+				<!-- svelte-ignore a11y-label-has-associated-control -->
+				<label class="control-label">Time</label>
+				<input class="input-text" type="text" value={`${tripSummary.time} min`} readonly />
 			</div>
 		</div>
 	{/if}
 
 	{#if errorMessage}
-		<div class="notification is-warning">
-			<button class="delete" on:click={() => (errorMessage = '')} />
+		<div class="notification">
 			{errorMessage}
 		</div>
 	{/if}
 {/if}
+
+<style lang="scss">
+	.control-label {
+		font-weight: bold;
+		font-size: 14px;
+	}
+
+	.input-text {
+		display: inline-flex;
+		background-color: #fff;
+		border-color: #dbdbdb;
+		border-radius: 4px;
+		color: #363636;
+		font-size: 0.75rem;
+		-webkit-appearance: none;
+		align-items: center;
+		border: 1px solid #363636;
+		height: 1.5em;
+		justify-content: flex-start;
+		line-height: 1.5;
+		padding-bottom: calc(0.5em - 1px);
+		padding-left: calc(0.75em - 1px);
+		padding-right: calc(0.75em - 1px);
+		padding-top: calc(0.5em - 1px);
+	}
+
+	.transport-select-container {
+		display: flex;
+		margin-bottom: 0.5rem;
+
+		.radio-transport {
+			display: flex;
+
+			.icon {
+				padding-left: 0.5rem;
+				padding-right: 0.5rem;
+			}
+		}
+	}
+
+	.notification {
+		display: flex;
+		height: auto;
+		background-color: #ffe08a;
+		color: rgba(0, 0, 0, 0.7);
+		border-radius: 4px;
+		margin-top: 0.5rem;
+		padding-top: 1.25rem;
+		padding-right: 2.5rem;
+		padding-bottom: 1.25rem;
+		padding-left: 1.5rem;
+		overflow-wrap: break-word;
+	}
+
+	.valhalla-container {
+		display: flex;
+		margin-bottom: 0.5rem;
+
+		.control-button {
+			align-items: center;
+			background-clip: padding-box;
+			background-color: #485fc7;
+			border: 1px solid transparent;
+			border-radius: 0.25rem;
+			box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+			box-sizing: border-box;
+			color: #fff;
+			cursor: pointer;
+			display: inline-flex;
+			font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica, Arial,
+				sans-serif;
+			font-size: 16px;
+			font-weight: 600;
+			justify-content: center;
+			line-height: 1.25;
+			margin: 0;
+			min-height: 3rem;
+			padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+			position: relative;
+			text-decoration: none;
+			transition: all 250ms;
+			user-select: none;
+			-webkit-user-select: none;
+			touch-action: manipulation;
+			vertical-align: baseline;
+			width: 100%;
+
+			.control-icon {
+				padding-right: 0.5rem;
+			}
+		}
+
+		.control-button:hover,
+		.control-button:focus:enabled {
+			background-color: #596dc5;
+			box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+		}
+
+		.control-button:hover:enabled {
+			transform: translateY(-1px);
+		}
+
+		.control-button:active:enabled {
+			background-color: #596dc5;
+			box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+			transform: translateY(0);
+		}
+
+		.setting-button {
+			align-items: center;
+			background-color: #ffffff;
+			border: 1px solid rgba(0, 0, 0, 0.1);
+			border-radius: 0.25rem;
+			box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+			box-sizing: border-box;
+			color: rgba(0, 0, 0, 0.85);
+			cursor: pointer;
+			display: inline-flex;
+			font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica, Arial,
+				sans-serif;
+			font-size: 16px;
+			font-weight: 600;
+			justify-content: center;
+			line-height: 1.25;
+			margin: 0;
+			min-height: 3rem;
+			padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+			position: relative;
+			text-decoration: none;
+			transition: all 250ms;
+			user-select: none;
+			-webkit-user-select: none;
+			touch-action: manipulation;
+			vertical-align: baseline;
+			width: auto;
+		}
+
+		.setting-button:hover:enabled,
+		.setting-button:focus:enabled {
+			border-color: rgba(0, 0, 0, 0.15);
+			box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+			color: rgba(0, 0, 0, 0.65);
+		}
+
+		.setting-button:hover:enabled {
+			transform: translateY(-1px);
+		}
+
+		.setting-button:active:enabled {
+			background-color: #f0f0f1;
+			border-color: rgba(0, 0, 0, 0.15);
+			box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+			color: rgba(0, 0, 0, 0.65);
+			transform: translateY(0);
+		}
+	}
+
+	.flex-container {
+		display: flex;
+	}
+
+	.flex-vertical-container {
+		display: flex;
+		flex-direction: column;
+	}
+</style>

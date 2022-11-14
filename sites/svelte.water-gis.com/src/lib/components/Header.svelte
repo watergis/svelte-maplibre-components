@@ -5,7 +5,8 @@
 		{ name: 'attribute-popup', title: 'svelte-maplbre-attribute-popup' },
 		{ name: 'center-icon', title: 'maplibre-center-icon' },
 		{ name: 'export', title: 'svelte-maplbre-export' },
-		{ name: 'legend', title: 'svelte-maplbre-legend' }
+		{ name: 'legend', title: 'svelte-maplbre-legend' },
+		{ name: 'measure', title: 'svelte-maplbre-measure' }
 	];
 </script>
 

@@ -39,6 +39,7 @@
 		"@watergis/svelte-maplibre-attribute-popup": "^0.0.10",
 		"@watergis/svelte-maplibre-export": "^0.1.14",
 		"@watergis/svelte-maplibre-legend": "^0.1.6",
+		"@watergis/svelte-maplibre-measure": "^0.1.10",
 		"@watergis/svelte-maplibre-menu": "^0.1.8",
 		"bulma": "^0.9.4",
 		"github-markdown-css": "^5.1.0",

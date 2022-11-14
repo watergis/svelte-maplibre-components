@@ -17,7 +17,7 @@ author: Jin Igarashi
 |@watergis/maplibre-center-icon|[doc](./components/center-icon/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/center/)|
 |@watergis/svelte-maplibre-export|[doc](./components/export/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/export)|
 |@watergis/svelte-maplibre-legend|[doc](./components/legend/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/legend)|
-|@watergis/svelte-maplibre-measure||[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/measure)|
+|@watergis/svelte-maplibre-measure|[doc](./components/measure/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/measure)|
 |@watergis/svelte-maplibre-menu||[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/menu)|
 |@watergis/svelte-maplibre-search||[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/search)|
 |@watergis/svelte-maplibre-share||[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/share)|

@@ -7,7 +7,7 @@ author: Jin Igarashi
 	import LegendExample from "$lib/components/LegendExample.svelte";
 </script>
 
-# @watergis/svelte-maplibre-export
+# @watergis/svelte-maplibre-legend
 
 [@watergis/svelte-maplibre-legend](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/legend) is a svelte component to make layer legend for maplibre-gl.
 

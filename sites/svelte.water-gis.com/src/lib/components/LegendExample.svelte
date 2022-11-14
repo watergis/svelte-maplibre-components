@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Map } from 'maplibre-gl';
+	import { Map, NavigationControl } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import { LegendPanel, LegendHeader } from '@watergis/svelte-maplibre-legend';
 	import type { StyleSpecification } from 'maplibre-gl';
@@ -57,6 +57,9 @@
 			container: mapContainer,
 			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
 		});
+		map.addControl(new NavigationControl({}));
+		map.scrollZoom.disable();
+		map.touchPitch.enable();
 	});
 </script>
 

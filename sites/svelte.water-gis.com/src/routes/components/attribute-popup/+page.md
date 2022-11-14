@@ -1,5 +1,5 @@
 ---
-title: @watergis/svelte/maplibre-attribute-popup
+title: @watergis/svelte-maplibre-attribute-popup
 author: Jin Igarashi
 ---
 
@@ -39,9 +39,10 @@ pnpm i @watergis/svelte-maplibre-attribute-popup
 ```svelte
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { Map, NavigationControl } from 'maplibre-gl';
+  import { Map } from 'maplibre-gl';
   import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
 
+  let mapContainer: HTMLDivElement;
   // create maplibre.Map object
   let map = new Map();
 

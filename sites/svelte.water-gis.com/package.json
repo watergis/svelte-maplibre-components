@@ -35,6 +35,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@watergis/maplibre-center-icon": "^0.1.2",
 		"@watergis/svelte-maplibre-attribute-popup": "^0.0.10",
 		"bulma": "^0.9.4",
 		"maplibre-gl": "^2.4.0",

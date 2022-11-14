@@ -24,7 +24,7 @@
 
 	<div id="navbar" class="navbar-menu {`${isMenuOpened ? 'is-active' : ''}`}">
 		<div class="navbar-start">
-			<a class="navbar-item" href="/"> About </a>
+			<a class="navbar-item" href="/"> Getting started </a>
 
 			<div class="navbar-item has-dropdown is-hoverable">
 				<a class="navbar-link"> Components </a>
@@ -33,6 +33,7 @@
 					<a class="navbar-item" href="/components/attribute-popup">
 						svelte-maplbre-attribute-popup
 					</a>
+					<a class="navbar-item" href="/components/center-icon"> maplbre-center-icon </a>
 				</div>
 			</div>
 		</div>

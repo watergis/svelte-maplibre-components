@@ -6,6 +6,9 @@
 export default {
 	extensions: ['.svelte', '.md', '.svx'],
 	smartypants: {
+		quotes: true,
+		ellipses: true,
+		backticks: true,
 		dashes: 'oldschool'
 	}
 	// remarkPlugins: [

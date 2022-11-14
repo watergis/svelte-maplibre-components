@@ -11,6 +11,7 @@
 		crossorigin="anonymous"
 		referrerpolicy="no-referrer"
 	/>
+	<title>maplibre components for svelte</title>
 </svelte:head>
 
 <Header />

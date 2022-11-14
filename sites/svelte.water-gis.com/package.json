@@ -38,6 +38,7 @@
 		"@watergis/maplibre-center-icon": "^0.1.2",
 		"@watergis/svelte-maplibre-attribute-popup": "^0.0.10",
 		"bulma": "^0.9.4",
+		"github-markdown-css": "^5.1.0",
 		"maplibre-gl": "^2.4.0",
 		"mdsvex": "^0.10.6",
 		"prismjs": "^1.29.0"

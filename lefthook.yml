@@ -19,4 +19,4 @@ pre-push:
     build-packages:
       run: pnpm --filter="./packages/*" build
     build-sites:
-      run: pnpm --filter="./sites/*" build
+      run: pnpm --filter="./sites/svelte.water-gis.com" build

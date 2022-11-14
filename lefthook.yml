@@ -18,8 +18,3 @@ pre-push:
   commands:
     build-packages:
       run: pnpm --filter="./packages/*" build
-    build-sites:
-      run: |
-        cd sites/svelte.water-gis.com
-        pnpm install
-        pnpm build

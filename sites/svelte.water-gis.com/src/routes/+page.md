@@ -15,8 +15,8 @@ author: Jin Igarashi
 |---|---|---|
 |@watergis/svelte-maplibre-attribute-popup|[doc](./components/attribute-popup/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/attribute-popup)|
 |@watergis/maplibre-center-icon|[doc](./components/center-icon/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/center/)|
-|@watergis/svelte-maplibre-export||[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/export)|
-|@watergis/svelte-maplibre-legend||[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/legend)|
+|@watergis/svelte-maplibre-export|[doc](./components/export/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/export)|
+|@watergis/svelte-maplibre-legend|[doc](./components/legend/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/legend)|
 |@watergis/svelte-maplibre-measure||[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/measure)|
 |@watergis/svelte-maplibre-menu||[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/menu)|
 |@watergis/svelte-maplibre-search||[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/search)|

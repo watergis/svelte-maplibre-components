@@ -1,5 +1,12 @@
 <script lang="ts">
 	let isMenuOpened = false;
+
+	let components = [
+		{ name: 'attribute-popup', title: 'svelte-maplbre-attribute-popup' },
+		{ name: 'center-icon', title: 'maplibre-center-icon' },
+		{ name: 'export', title: 'svelte-maplbre-export' },
+		{ name: 'legend', title: 'svelte-maplbre-legend' }
+	];
 </script>
 
 <nav class="navbar is-link" role="navigation" aria-label="main navigation">
@@ -30,10 +37,11 @@
 				<a class="navbar-link"> Components </a>
 
 				<div class="navbar-dropdown">
-					<a class="navbar-item" href="/components/attribute-popup">
-						svelte-maplbre-attribute-popup
-					</a>
-					<a class="navbar-item" href="/components/center-icon"> maplbre-center-icon </a>
+					{#each components as component}
+						<a class="navbar-item" href="/components/{component.name}">
+							{component.title}
+						</a>
+					{/each}
 				</div>
 			</div>
 		</div>

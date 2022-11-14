@@ -499,6 +499,10 @@ importers:
       '@typescript-eslint/parser': ^5.42.1
       '@watergis/maplibre-center-icon': ^0.1.2
       '@watergis/svelte-maplibre-attribute-popup': ^0.0.10
+      '@watergis/svelte-maplibre-export': ^0.1.14
+      '@watergis/svelte-maplibre-legend': ^0.1.6
+      '@watergis/svelte-maplibre-measure': ^0.1.10
+      '@watergis/svelte-maplibre-menu': ^0.1.8
       bulma: ^0.9.4
       eslint: ^8.27.0
       eslint-config-prettier: ^8.5.0
@@ -523,6 +527,10 @@ importers:
     dependencies:
       '@watergis/maplibre-center-icon': link:../../packages/center
       '@watergis/svelte-maplibre-attribute-popup': link:../../packages/attribute-popup
+      '@watergis/svelte-maplibre-export': link:../../packages/export
+      '@watergis/svelte-maplibre-legend': link:../../packages/legend
+      '@watergis/svelte-maplibre-measure': link:../../packages/measure
+      '@watergis/svelte-maplibre-menu': link:../../packages/menu
       bulma: 0.9.4
       github-markdown-css: 5.1.0
       maplibre-gl: 2.4.0

@@ -20,8 +20,10 @@
 	let splitControl: Split;
 	let splitterSize = '0px';
 	$: isMobile, setSplitControl();
-	$: height = height > 0 ? height : innerHeight;
-	$: width = width > 0 ? width : innerWidth;
+	$: menuHeight = height > 0 ? height : innerHeight;
+	$: menuWidth = width > 0 ? width : innerWidth;
+	$: innerHeight, () => (menuHeight = innerHeight);
+	$: innerWidth, () => (menuWidth = innerWidth);
 
 	export let position: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' = 'top-left';
 
@@ -118,7 +120,7 @@
 	{/if}
 </button>
 
-<div class="split-container" style="height:{height}px;width:{width}px">
+<div class="split-container" style="height:{menuHeight}px;width:{menuWidth}px">
 	<Split
 		initialPrimarySize="0%"
 		minPrimarySize={isMenuShown ? `${minPrimaryWidth}` : '0px'}

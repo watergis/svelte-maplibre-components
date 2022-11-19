@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 0.1.9
+
+### Patch Changes
+
+- 988211c: exported width and height in menu control
+
 ## 0.1.8
 
 ### Patch Changes

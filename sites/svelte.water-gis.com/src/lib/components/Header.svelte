@@ -6,7 +6,9 @@
 		{ name: 'center-icon', title: 'maplibre-center-icon' },
 		{ name: 'export', title: 'svelte-maplbre-export' },
 		{ name: 'legend', title: 'svelte-maplbre-legend' },
-		{ name: 'measure', title: 'svelte-maplbre-measure' }
+		{ name: 'measure', title: 'svelte-maplbre-measure' },
+		{ name: 'menu', title: 'svelte-maplbre-menu' },
+		{ name: 'search', title: 'svelte-maplbre-search' }
 	];
 </script>
 
@@ -32,14 +34,18 @@
 
 	<div id="navbar" class="navbar-menu {`${isMenuOpened ? 'is-active' : ''}`}">
 		<div class="navbar-start">
-			<a class="navbar-item" href="/"> Getting started </a>
+			<a class="navbar-item" href="/" on:click={() => (isMenuOpened = false)}> Getting started </a>
 
 			<div class="navbar-item has-dropdown is-hoverable">
 				<a class="navbar-link"> Components </a>
 
 				<div class="navbar-dropdown">
 					{#each components as component}
-						<a class="navbar-item" href="/components/{component.name}">
+						<a
+							class="navbar-item"
+							href="/components/{component.name}"
+							on:click={() => (isMenuOpened = false)}
+						>
 							{component.title}
 						</a>
 					{/each}

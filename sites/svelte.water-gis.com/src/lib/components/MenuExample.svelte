@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import { Map, NavigationControl } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
-	import { MeasurePanel, type MeasureOption } from '@watergis/svelte-maplibre-measure';
 
 	let isMenuShown = true;
 
@@ -13,16 +12,6 @@
 
 	$: menuHeight = innerHeight * 0.6;
 	$: menuWidth = innerWidth * 0.95;
-
-	let terrainRgbUrl = 'https://narwassco.github.io/narok-terrain/tiles/{z}/{x}/{y}.png';
-	let measureOption: MeasureOption = {
-		tileSize: 512,
-		font: ['Roboto Medium'],
-		fontSize: 12,
-		fontHalo: 1,
-		mainColor: '#263238',
-		haloColor: '#fff'
-	};
 
 	onMount(async () => {
 		map = new Map({
@@ -39,8 +28,7 @@
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown width={menuWidth} height={menuHeight}>
 	<div slot="primary" class="primary-container">
-		<h4>Measure tool with elevation enquiry</h4>
-		<MeasurePanel bind:map bind:measureOption bind:terrainRgbUrl />
+		<h4>Contents</h4>
 	</div>
 	<div slot="secondary">
 		<div class="map" bind:this={mapContainer} />

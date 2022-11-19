@@ -54,7 +54,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@watergis/legend-symbol": "^0.2.2",
+		"@watergis/legend-symbol": "^0.2.3",
 		"maplibre-gl": "^2.4.0"
 	}
 }

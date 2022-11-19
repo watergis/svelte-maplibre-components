@@ -7,6 +7,11 @@
 
 	let mapContainer: HTMLDivElement;
 	let map: Map;
+	let innerHeight = 0;
+	let innerWidth = 0;
+
+	$: menuHeight = innerHeight * 0.6;
+	$: menuWidth = innerWidth * 0.95;
 
 	let isMenuShown = true;
 	let style: StyleSpecification;
@@ -63,12 +68,14 @@
 	});
 </script>
 
-<MenuControl bind:map position={'top-right'} bind:isMenuShown>
+<svelte:window bind:innerWidth bind:innerHeight />
+
+<MenuControl bind:map position={'top-right'} bind:isMenuShown width={menuWidth} height={menuHeight}>
 	<div slot="primary" class="primary-container">
 		<div class="legend-header">
 			<LegendHeader bind:onlyRendered bind:onlyRelative />
 		</div>
-		<div class="legend-content">
+		<div class="legend-content" style="height:{menuHeight - 56}px">
 			<LegendPanel bind:map {style} bind:onlyRendered bind:onlyRelative {relativeLayers} />
 		</div>
 	</div>
@@ -89,8 +96,6 @@
 		z-index: 1;
 	}
 
-	$height: calc(100vh - 56px);
-
 	.primary-container {
 		display: flex;
 		flex-direction: column;
@@ -105,7 +110,6 @@
 		.legend-content {
 			overflow-x: hidden;
 			overflow-y: auto;
-			height: $height;
 			width: 100%;
 		}
 	}

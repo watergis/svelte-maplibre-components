@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.7
+
+### Patch Changes
+
+- 3a33b83: updated watergis/legend-symbol. Now linedasharray is supported.
+
 ## 0.1.6
 
 ### Patch Changes

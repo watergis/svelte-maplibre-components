@@ -9,6 +9,8 @@
 	export let initialPrimaryWidth = 380;
 	export let minPrimaryWidth = '300px';
 	export let minSecondaryWidth = '50%';
+	export let height = 0;
+	export let width = 0;
 
 	let menuButton: HTMLButtonElement;
 
@@ -18,6 +20,8 @@
 	let splitControl: Split;
 	let splitterSize = '0px';
 	$: isMobile, setSplitControl();
+	$: height = height > 0 ? height : innerHeight;
+	$: width = width > 0 ? width : innerWidth;
 
 	export let position: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' = 'top-left';
 
@@ -114,7 +118,7 @@
 	{/if}
 </button>
 
-<div class="split-container" style="height:{innerHeight}px">
+<div class="split-container" style="height:{height}px;width:{width}px">
 	<Split
 		initialPrimarySize="0%"
 		minPrimarySize={isMenuShown ? `${minPrimaryWidth}` : '0px'}

@@ -8,7 +8,8 @@
 		{ name: 'legend', title: 'svelte-maplbre-legend' },
 		{ name: 'measure', title: 'svelte-maplbre-measure' },
 		{ name: 'menu', title: 'svelte-maplbre-menu' },
-		{ name: 'search', title: 'svelte-maplbre-search' }
+		{ name: 'search', title: 'svelte-maplbre-search' },
+		{ name: 'share', title: 'svelte-maplbre-share' }
 	];
 </script>
 

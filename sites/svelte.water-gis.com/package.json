@@ -42,6 +42,7 @@
 		"@watergis/svelte-maplibre-measure": "^0.1.10",
 		"@watergis/svelte-maplibre-menu": "^0.1.9",
 		"@watergis/svelte-maplibre-search": "^0.1.3",
+		"@watergis/svelte-maplibre-share": "^0.1.7",
 		"bulma": "^0.9.4",
 		"github-markdown-css": "^5.1.0",
 		"maplibre-gl": "^2.4.0",

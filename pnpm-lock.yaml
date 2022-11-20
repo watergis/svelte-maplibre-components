@@ -36,7 +36,7 @@ importers:
     devDependencies:
       '@arkweid/lefthook': 0.7.7
       '@sveltejs/adapter-auto': 1.0.0-next.88
-      '@sveltejs/kit': 1.0.0-next.552_svelte@3.52.0+vite@3.2.3
+      '@sveltejs/kit': 1.0.0-next.553_svelte@3.52.0+vite@3.2.3
       '@sveltejs/package': 1.0.0-next.1_besnmoibwkhwtentvwuriss7pa
       '@typescript-eslint/eslint-plugin': 5.42.1_2udltptbznfmezdozpdoa2aemq
       '@typescript-eslint/parser': 5.42.1_rmayb2veg2btbq6mbmnyivgasy
@@ -76,7 +76,7 @@ importers:
       maplibre-gl: 2.4.0
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.88
-      '@sveltejs/kit': 1.0.0-next.552_svelte@3.52.0+vite@3.2.3
+      '@sveltejs/kit': 1.0.0-next.553_svelte@3.52.0+vite@3.2.3
       '@sveltejs/package': 1.0.0-next.1_besnmoibwkhwtentvwuriss7pa
       '@typescript-eslint/eslint-plugin': 5.42.1_2udltptbznfmezdozpdoa2aemq
       '@typescript-eslint/parser': 5.42.1_rmayb2veg2btbq6mbmnyivgasy
@@ -116,7 +116,7 @@ importers:
       bulma: 0.9.4
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.88
-      '@sveltejs/kit': 1.0.0-next.552_svelte@3.52.0+vite@3.2.3
+      '@sveltejs/kit': 1.0.0-next.553_svelte@3.52.0+vite@3.2.3
       '@sveltejs/package': 1.0.0-next.1_besnmoibwkhwtentvwuriss7pa
       '@typescript-eslint/eslint-plugin': 5.42.1_2udltptbznfmezdozpdoa2aemq
       '@typescript-eslint/parser': 5.42.1_rmayb2veg2btbq6mbmnyivgasy
@@ -164,7 +164,7 @@ importers:
       maplibre-gl: 2.4.0
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.88
-      '@sveltejs/kit': 1.0.0-next.552_svelte@3.52.0+vite@3.2.3
+      '@sveltejs/kit': 1.0.0-next.553_svelte@3.52.0+vite@3.2.3
       '@sveltejs/package': 1.0.0-next.1_besnmoibwkhwtentvwuriss7pa
       '@types/fabric': 4.5.12
       '@types/file-saver': 2.0.5
@@ -215,7 +215,7 @@ importers:
       '@arkweid/lefthook': 0.7.7
       '@geoffcox/svelte-splitter': 1.0.1
       '@sveltejs/adapter-auto': 1.0.0-next.88
-      '@sveltejs/kit': 1.0.0-next.552_svelte@3.52.0+vite@3.2.3
+      '@sveltejs/kit': 1.0.0-next.553_svelte@3.52.0+vite@3.2.3
       '@sveltejs/package': 1.0.0-next.1_besnmoibwkhwtentvwuriss7pa
       '@typescript-eslint/eslint-plugin': 5.42.1_2udltptbznfmezdozpdoa2aemq
       '@typescript-eslint/parser': 5.42.1_rmayb2veg2btbq6mbmnyivgasy
@@ -265,7 +265,7 @@ importers:
       webp-hero: 0.0.2
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.88
-      '@sveltejs/kit': 1.0.0-next.552_svelte@3.52.0+vite@3.2.3
+      '@sveltejs/kit': 1.0.0-next.553_svelte@3.52.0+vite@3.2.3
       '@sveltejs/package': 1.0.0-next.1_besnmoibwkhwtentvwuriss7pa
       '@typescript-eslint/eslint-plugin': 5.42.1_2udltptbznfmezdozpdoa2aemq
       '@typescript-eslint/parser': 5.42.1_rmayb2veg2btbq6mbmnyivgasy
@@ -307,7 +307,7 @@ importers:
       maplibre-gl: 2.4.0
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.88
-      '@sveltejs/kit': 1.0.0-next.552_svelte@3.52.0+vite@3.2.3
+      '@sveltejs/kit': 1.0.0-next.553_svelte@3.52.0+vite@3.2.3
       '@sveltejs/package': 1.0.0-next.1_besnmoibwkhwtentvwuriss7pa
       '@typescript-eslint/eslint-plugin': 5.42.1_2udltptbznfmezdozpdoa2aemq
       '@typescript-eslint/parser': 5.42.1_rmayb2veg2btbq6mbmnyivgasy
@@ -348,7 +348,7 @@ importers:
       simple-svelte-autocomplete: 2.5.0
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.88
-      '@sveltejs/kit': 1.0.0-next.552_svelte@3.52.0+vite@3.2.3
+      '@sveltejs/kit': 1.0.0-next.553_svelte@3.52.0+vite@3.2.3
       '@sveltejs/package': 1.0.0-next.1_besnmoibwkhwtentvwuriss7pa
       '@typescript-eslint/eslint-plugin': 5.42.1_2udltptbznfmezdozpdoa2aemq
       '@typescript-eslint/parser': 5.42.1_rmayb2veg2btbq6mbmnyivgasy
@@ -391,7 +391,7 @@ importers:
       svelte-copy: 1.3.0
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.88
-      '@sveltejs/kit': 1.0.0-next.552_svelte@3.52.0+vite@3.2.3
+      '@sveltejs/kit': 1.0.0-next.553_svelte@3.52.0+vite@3.2.3
       '@sveltejs/package': 1.0.0-next.1_besnmoibwkhwtentvwuriss7pa
       '@typescript-eslint/eslint-plugin': 5.42.1_2udltptbznfmezdozpdoa2aemq
       '@typescript-eslint/parser': 5.42.1_rmayb2veg2btbq6mbmnyivgasy
@@ -433,7 +433,7 @@ importers:
       maplibre-gl: 2.4.0
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.88
-      '@sveltejs/kit': 1.0.0-next.552_svelte@3.52.0+vite@3.2.3
+      '@sveltejs/kit': 1.0.0-next.553_svelte@3.52.0+vite@3.2.3
       '@sveltejs/package': 1.0.0-next.1_besnmoibwkhwtentvwuriss7pa
       '@typescript-eslint/eslint-plugin': 5.42.1_2udltptbznfmezdozpdoa2aemq
       '@typescript-eslint/parser': 5.42.1_rmayb2veg2btbq6mbmnyivgasy
@@ -474,7 +474,7 @@ importers:
       maplibre-gl: 2.4.0
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.88
-      '@sveltejs/kit': 1.0.0-next.552_svelte@3.52.0+vite@3.2.3
+      '@sveltejs/kit': 1.0.0-next.553_svelte@3.52.0+vite@3.2.3
       '@sveltejs/package': 1.0.0-next.1_besnmoibwkhwtentvwuriss7pa
       '@typescript-eslint/eslint-plugin': 5.42.1_2udltptbznfmezdozpdoa2aemq
       '@typescript-eslint/parser': 5.42.1_rmayb2veg2btbq6mbmnyivgasy
@@ -498,12 +498,16 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.43.0
       '@typescript-eslint/parser': ^5.43.0
       '@watergis/maplibre-center-icon': ^0.1.2
+      '@watergis/svelte-collapsible-panel': ^0.0.7
       '@watergis/svelte-maplibre-attribute-popup': ^0.0.10
       '@watergis/svelte-maplibre-export': ^0.1.14
       '@watergis/svelte-maplibre-legend': ^0.1.7
       '@watergis/svelte-maplibre-measure': ^0.1.10
       '@watergis/svelte-maplibre-menu': ^0.1.9
       '@watergis/svelte-maplibre-search': ^0.1.3
+      '@watergis/svelte-maplibre-share': ^0.1.7
+      '@watergis/svelte-maplibre-style-switcher': ^0.1.7
+      '@watergis/svelte-maplibre-valhalla': ^0.0.8
       bulma: ^0.9.4
       eslint: ^8.28.0
       eslint-config-prettier: ^8.5.0
@@ -517,7 +521,6 @@ importers:
       rehype-autolink-headings: ^6.1.1
       rehype-slug: ^5.1.0
       remark-abbr: ^1.4.1
-      remark-github: ^11.2.4
       sass: ^1.56.1
       svelte: ^3.53.1
       svelte-check: ^2.9.2
@@ -527,12 +530,16 @@ importers:
       vite: ^3.2.4
     dependencies:
       '@watergis/maplibre-center-icon': link:../../packages/center
+      '@watergis/svelte-collapsible-panel': link:../../packages/collapsible-panel
       '@watergis/svelte-maplibre-attribute-popup': link:../../packages/attribute-popup
       '@watergis/svelte-maplibre-export': link:../../packages/export
       '@watergis/svelte-maplibre-legend': link:../../packages/legend
       '@watergis/svelte-maplibre-measure': link:../../packages/measure
       '@watergis/svelte-maplibre-menu': link:../../packages/menu
       '@watergis/svelte-maplibre-search': link:../../packages/search
+      '@watergis/svelte-maplibre-share': link:../../packages/share
+      '@watergis/svelte-maplibre-style-switcher': link:../../packages/style-switcher
+      '@watergis/svelte-maplibre-valhalla': link:../../packages/valhalla
       bulma: 0.9.4
       github-markdown-css: 5.1.0
       maplibre-gl: 2.4.0
@@ -540,7 +547,7 @@ importers:
       prismjs: 1.29.0
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.88
-      '@sveltejs/kit': 1.0.0-next.552_svelte@3.53.1+vite@3.2.4
+      '@sveltejs/kit': 1.0.0-next.553_svelte@3.53.1+vite@3.2.4
       '@typescript-eslint/eslint-plugin': 5.43.0_nqj4bdx4ekws7aecttskpih4py
       '@typescript-eslint/parser': 5.43.0_hsf322ms6xhhd4b5ne6lb74y4a
       eslint: 8.28.0
@@ -551,7 +558,6 @@ importers:
       rehype-autolink-headings: 6.1.1
       rehype-slug: 5.1.0
       remark-abbr: 1.4.1
-      remark-github: 11.2.4
       sass: 1.56.1
       svelte: 3.53.1
       svelte-check: 2.9.2_sass@1.56.1+svelte@3.53.1
@@ -968,8 +974,8 @@ packages:
       import-meta-resolve: 2.1.0
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.552_svelte@3.52.0+vite@3.2.3:
-    resolution: {integrity: sha512-Ovsmed98rKt11MEMy0VpQEVqgBT68+NX1jFO2h2RWbOk+g2ewj6fSN6aV37ryQ+uHYmRHLyLTn8j9n3EN8pm5Q==}
+  /@sveltejs/kit/1.0.0-next.553_svelte@3.52.0+vite@3.2.3:
+    resolution: {integrity: sha512-6gUPzmry+j/0uFJnGAJNru3lUpGY12We1Vsom5nDeRaG/Cs2wCwK8gMO2B5taZsHmryIB8zA+v0QCcu5kClmWA==}
     engines: {node: '>=16.14'}
     hasBin: true
     requiresBuild: true
@@ -996,8 +1002,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.552_svelte@3.53.1+vite@3.2.4:
-    resolution: {integrity: sha512-Ovsmed98rKt11MEMy0VpQEVqgBT68+NX1jFO2h2RWbOk+g2ewj6fSN6aV37ryQ+uHYmRHLyLTn8j9n3EN8pm5Q==}
+  /@sveltejs/kit/1.0.0-next.553_svelte@3.53.1+vite@3.2.4:
+    resolution: {integrity: sha512-6gUPzmry+j/0uFJnGAJNru3lUpGY12We1Vsom5nDeRaG/Cs2wCwK8gMO2B5taZsHmryIB8zA+v0QCcu5kClmWA==}
     engines: {node: '>=16.14'}
     hasBin: true
     requiresBuild: true
@@ -1144,12 +1150,6 @@ packages:
       '@types/mapbox__point-geometry': 0.1.2
       '@types/pbf': 3.0.2
     dev: false
-
-  /@types/mdast/3.0.10:
-    resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
-    dependencies:
-      '@types/unist': 2.0.6
-    dev: true
 
   /@types/minimist/1.2.2:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
@@ -2182,11 +2182,6 @@ packages:
   /escape-string-regexp/4.0.0:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
-    dev: true
-
-  /escape-string-regexp/5.0.0:
-    resolution: {integrity: sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==}
-    engines: {node: '>=12'}
     dev: true
 
   /eslint-config-prettier/8.5.0_eslint@8.27.0:
@@ -3229,18 +3224,6 @@ packages:
       vt-pbf: 3.1.3
     dev: false
 
-  /mdast-util-find-and-replace/2.2.1:
-    resolution: {integrity: sha512-SobxkQXFAdd4b5WmEakmkVoh18icjQRxGy5OWTCzgsLRm1Fu/KCtwD1HIQSsmq5ZRjVH0Ehwg6/Fn3xIUk+nKw==}
-    dependencies:
-      escape-string-regexp: 5.0.0
-      unist-util-is: 5.1.1
-      unist-util-visit-parents: 5.1.1
-    dev: true
-
-  /mdast-util-to-string/3.1.0:
-    resolution: {integrity: sha512-n4Vypz/DZgwo0iMHLQL49dJzlp7YtAJP+N07MZHpjPf/5XJuHUWstviF4Mn2jEiR/GNmtnRRqnwsXExk3igfFA==}
-    dev: true
-
   /mdsvex/0.10.6_svelte@3.53.1:
     resolution: {integrity: sha512-aGRDY0r5jx9+OOgFdyB9Xm3EBr9OUmcrTDPWLB7a7g8VPRxzPy4MOBmcVYgz7ErhAJ7bZ/coUoj6aHio3x/2mA==}
     peerDependencies:
@@ -3739,16 +3722,6 @@ packages:
     resolution: {integrity: sha512-h3MuC2ujpaFIvDHVztxiNe7OGEXz6fAaUoaeqJhroyHCZXcspZiOg3iDoRdGLmnGSEO/x6g9nQGBDqgVsjCHKg==}
     dependencies:
       unist-util-visit: 2.0.3
-    dev: true
-
-  /remark-github/11.2.4:
-    resolution: {integrity: sha512-GJjWFpwqdrHHhPWqMbb8+lqFLiHQ9pCzUmXmRrhMFXGpYov5n2ljsZzuWgXlfzArfQYkiKIZczA2I8IHYMHqCA==}
-    dependencies:
-      '@types/mdast': 3.0.10
-      mdast-util-find-and-replace: 2.2.1
-      mdast-util-to-string: 3.1.0
-      unified: 10.1.2
-      unist-util-visit: 4.1.1
     dev: true
 
   /require-directory/2.1.1:

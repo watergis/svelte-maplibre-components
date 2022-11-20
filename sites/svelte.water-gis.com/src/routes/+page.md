@@ -14,18 +14,23 @@ author: Jin Igarashi
 |Component|Document|Github|
 |---|---|---|
 |@watergis/svelte-maplibre-attribute-popup|[doc](./components/attribute-popup/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/attribute-popup)|
-|@watergis/maplibre-center-icon|[doc](./components/center-icon/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/center/)|
 |@watergis/svelte-maplibre-export|[doc](./components/export/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/export)|
 |@watergis/svelte-maplibre-legend|[doc](./components/legend/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/legend)|
 |@watergis/svelte-maplibre-measure|[doc](./components/measure/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/measure)|
 |@watergis/svelte-maplibre-menu|[doc](./components/menu/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/menu)|
 |@watergis/svelte-maplibre-search|[doc](./components/search/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/search)|
-|@watergis/svelte-maplibre-share||[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/share)|
-|@watergis/svelte-maplibre-style-switcher||[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/style-switcher)|
-|@watergis/svelte-maplibre-valhalla||[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/valhalla)|
+|@watergis/svelte-maplibre-share|[doc](./components/share/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/share)|
+|@watergis/svelte-maplibre-style-switcher|[doc](./components/style-switcher/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/style-switcher)|
+|@watergis/svelte-maplibre-valhalla|[doc](./components/valhalla/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/valhalla)|
+
+### components for maplibre
+
+|Component|Document|Github|
+|---|---|---|
+|@watergis/maplibre-center-icon|[doc](./components/center-icon/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/center/)|
 
 ### General components for svelte
 
-|Component|Github|
-|---|---|
-|@watergis/svelte-collapsible-panel|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/collapsible-panel)|
+|Component|Document|Github|
+|---|---|---|
+|@watergis/svelte-collapsible-panel|[doc](./components/collapsible-panel/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/collapsible-panel)|

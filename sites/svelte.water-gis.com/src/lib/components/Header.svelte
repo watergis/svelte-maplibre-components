@@ -3,12 +3,16 @@
 
 	let components = [
 		{ name: 'attribute-popup', title: 'svelte-maplbre-attribute-popup' },
-		{ name: 'center-icon', title: 'maplibre-center-icon' },
 		{ name: 'export', title: 'svelte-maplbre-export' },
 		{ name: 'legend', title: 'svelte-maplbre-legend' },
 		{ name: 'measure', title: 'svelte-maplbre-measure' },
 		{ name: 'menu', title: 'svelte-maplbre-menu' },
-		{ name: 'search', title: 'svelte-maplbre-search' }
+		{ name: 'search', title: 'svelte-maplbre-search' },
+		{ name: 'share', title: 'svelte-maplbre-share' },
+		{ name: 'style-switcher', title: 'svelte-maplbre-style-switcher' },
+		{ name: 'valhalla', title: 'svelte-maplbre-valhalla' },
+		{ name: 'center-icon', title: 'maplibre-center-icon' },
+		{ name: 'collapsible-panel', title: 'svelte-collapsible-panel' }
 	];
 </script>
 

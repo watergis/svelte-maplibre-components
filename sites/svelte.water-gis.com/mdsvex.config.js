@@ -1,7 +1,6 @@
-// import remarkGithub from 'remark-github';
-// import remarkAbbr from 'remark-abbr';
-// import rehypeSlug from 'rehype-slug';
-// import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import remarkAbbr from 'remark-abbr';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 export default {
 	extensions: ['.svelte', '.md', '.svx'],
@@ -10,24 +9,15 @@ export default {
 		ellipses: true,
 		backticks: true,
 		dashes: 'oldschool'
-	}
-	// remarkPlugins: [
-	// 	[
-	// 		remarkGithub,
-	// 		{
-	// 			// Use your own repository
-	// 			repository: 'https://github.com/watergis/svelte-maplibre-components.git'
-	// 		}
-	// 	],
-	// 	remarkAbbr
-	// ]
-	// rehypePlugins: [
-	// 	rehypeSlug,
-	// 	[
-	// 		rehypeAutolinkHeadings,
-	// 		{
-	// 			behavior: 'wrap'
-	// 		}
-	// 	]
-	// ]
+	},
+	remarkPlugins: [remarkAbbr],
+	rehypePlugins: [
+		rehypeSlug,
+		[
+			rehypeAutolinkHeadings,
+			{
+				behavior: 'wrap'
+			}
+		]
+	]
 };

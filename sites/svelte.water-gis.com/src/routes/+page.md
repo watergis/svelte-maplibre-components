@@ -22,7 +22,7 @@ author: Jin Igarashi
 |@watergis/svelte-maplibre-search|[doc](./components/search/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/search)|
 |@watergis/svelte-maplibre-share|[doc](./components/share/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/share)|
 |@watergis/svelte-maplibre-style-switcher|[doc](./components/style-switcher/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/style-switcher)|
-|@watergis/svelte-maplibre-valhalla||[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/valhalla)|
+|@watergis/svelte-maplibre-valhalla|[doc](./components/valhalla/)|[GitHub](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/valhalla)|
 
 ### General components for svelte
 

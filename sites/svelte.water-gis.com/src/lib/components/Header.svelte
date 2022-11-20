@@ -10,7 +10,8 @@
 		{ name: 'menu', title: 'svelte-maplbre-menu' },
 		{ name: 'search', title: 'svelte-maplbre-search' },
 		{ name: 'share', title: 'svelte-maplbre-share' },
-		{ name: 'style-switcher', title: 'svelte-maplbre-style-switcher' }
+		{ name: 'style-switcher', title: 'svelte-maplbre-style-switcher' },
+		{ name: 'valhalla', title: 'svelte-maplbre-valhalla' }
 	];
 </script>
 

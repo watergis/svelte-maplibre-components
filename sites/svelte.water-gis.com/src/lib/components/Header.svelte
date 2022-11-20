@@ -9,7 +9,8 @@
 		{ name: 'measure', title: 'svelte-maplbre-measure' },
 		{ name: 'menu', title: 'svelte-maplbre-menu' },
 		{ name: 'search', title: 'svelte-maplbre-search' },
-		{ name: 'share', title: 'svelte-maplbre-share' }
+		{ name: 'share', title: 'svelte-maplbre-share' },
+		{ name: 'style-switcher', title: 'svelte-maplbre-style-switcher' }
 	];
 </script>
 

@@ -2,7 +2,8 @@
 	import type { Map } from 'maplibre-gl';
 	import { onMount } from 'svelte';
 	import { Split } from '@geoffcox/svelte-splitter/src';
-	import './style/fa/css/all.css';
+	import Fa from 'svelte-fa';
+	import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 	export let map: Map;
 	export let isMenuShown = false;
@@ -114,9 +115,9 @@
 
 <button bind:this={menuButton}>
 	{#if isMenuShown}
-		<i class="fas fa-xmark" />
+		<Fa icon={faXmark} />
 	{:else}
-		<i class="fas fa-bars" />
+		<Fa icon={faBars} />
 	{/if}
 </button>
 

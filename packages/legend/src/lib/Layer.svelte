@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import type { LayerSpecification, Map } from 'maplibre-gl';
+	import Fa from 'svelte-fa';
+	import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 	import Legend from './Legend.svelte';
 	import type SpriteLoader from './sprite';
-	import './style/fa/css/all.css';
 
 	const dispatch = createEventDispatcher();
 
@@ -30,9 +31,9 @@
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<span class="visible-button" on:click={() => (checked = !checked)}>
 		{#if checked}
-			<i class="fas fa-eye" />
+			<Fa icon={faEye} />
 		{:else}
-			<i class="fas fa-eye-slash" />
+			<Fa icon={faEyeSlash} />
 		{/if}
 	</span>
 	<div class="legend"><Legend {map} {layer} {spriteLoader} /></div>

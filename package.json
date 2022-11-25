@@ -27,7 +27,7 @@
   },
   "workspaces": [
     "sites/**",
-    "packages/*"
+    "packages/**"
   ],
   "type": "module"
 }

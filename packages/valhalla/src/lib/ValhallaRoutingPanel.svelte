@@ -8,7 +8,8 @@
 		type ValhallaTripSummary
 	} from './ValhallaRouting';
 	import { costingOptions } from '$lib/constants';
-	import './style/fa/css/all.css';
+	import Fa from 'svelte-fa';
+	import { faStop, faRoute, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 	export let map: Map;
 	export let url: string;
@@ -104,7 +105,7 @@
 				checked={meansOfTransport === item.value}
 			/>
 			<span class="icon">
-				<i class="fas {item.icon}" />
+				<Fa icon={item.icon} />
 			</span>
 			{item.label}
 		</label>
@@ -115,9 +116,9 @@
 	<button class="control-button" on:click={handleAddPoint}>
 		<span class="control-icon">
 			{#if isRouting}
-				<i class="fas fa-stop" />
+				<Fa icon={faStop} />
 			{:else}
-				<i class="fas fa-route" />
+				<Fa icon={faRoute} />
 			{/if}
 		</span>
 		<span>
@@ -130,7 +131,7 @@
 	</button>
 	<button class="setting-button" disabled={!hasData} on:click={clearFeatures}>
 		<span>
-			<i class="fas fa-trash" />
+			<Fa icon={faTrash} />
 		</span>
 	</button>
 </div>

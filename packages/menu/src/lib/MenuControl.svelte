@@ -134,7 +134,7 @@
 			{#if isMobile}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<span class="span close-icon" on:click={handleClose}>
-					<i class="fas fa-xmark fa-lg" />
+					<Fa icon={faXmark} size="lg" />
 				</span>
 			{/if}
 			<slot name="primary" />

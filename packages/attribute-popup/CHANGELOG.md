@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-attribute-popup
 
+## 0.0.11
+
+### Patch Changes
+
+- e0f96f3: Use svelte-fa instead
+
 ## 0.0.10
 
 ### Patch Changes

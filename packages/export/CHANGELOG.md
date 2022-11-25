@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.15
+
+### Patch Changes
+
+- e0f96f3: Use svelte-fa instead
+
 ## 0.1.14
 
 ### Patch Changes

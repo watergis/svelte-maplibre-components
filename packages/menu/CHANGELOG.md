@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 0.1.10
+
+### Patch Changes
+
+- e0f96f3: Use svelte-fa instead
+
 ## 0.1.9
 
 ### Patch Changes

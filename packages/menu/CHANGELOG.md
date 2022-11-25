@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 0.1.11
+
+### Patch Changes
+
+- 56b1069: fixed close icon in mobile
+
 ## 0.1.10
 
 ### Patch Changes

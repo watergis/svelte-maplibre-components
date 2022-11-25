@@ -1,5 +1,11 @@
 # @watergis/svelte-collapsible-panel
 
+## 0.0.8
+
+### Patch Changes
+
+- e0f96f3: Use svelte-fa instead
+
 ## 0.0.7
 
 ### Patch Changes

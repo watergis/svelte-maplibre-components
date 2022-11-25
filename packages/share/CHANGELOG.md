@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-share
 
+## 0.1.8
+
+### Patch Changes
+
+- e0f96f3: Use svelte-fa instead
+
 ## 0.1.7
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-search
 
+## 0.1.4
+
+### Patch Changes
+
+- e0f96f3: Use svelte-fa instead
+
 ## 0.1.3
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @watergis/maplibre-center-icon
 
+## 0.1.3
+
+### Patch Changes
+
+- e0f96f3: Use svelte-fa instead
+
 ## 0.1.2
 
 ### Patch Changes

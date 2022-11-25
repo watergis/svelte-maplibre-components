@@ -1,6 +1,6 @@
 {
 	"name": "@watergis/svelte-maplibre-search",
-	"version": "0.1.3",
+	"version": "0.1.4",
 	"description": "This is a svelte component to add search control plugin to maplibre.",
 	"main": "package/index.js",
 	"files": [

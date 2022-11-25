@@ -53,10 +53,12 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fortawesome/free-solid-svg-icons": "^6.2.1",
 		"@turf/distance": "^6.5.0",
 		"global-mercator": "^3.1.0",
 		"maplibre-gl": "^2.4.0",
 		"pako": "^2.1.0",
+		"svelte-fa": "^3.0.3",
 		"webp-hero": "^0.0.2"
 	}
 }

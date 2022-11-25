@@ -1,5 +1,10 @@
 # svelte-maplibre-legend
 
+![GitHub](https://img.shields.io/github/license/watergis/svelte-maplibre-components)
+![npm](https://img.shields.io/npm/v/@watergis/svelte-maplibre-legend)
+![npm](https://img.shields.io/npm/dt/@watergis/svelte-maplibre-legend)
+![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@watergis/svelte-maplibre-legend)
+
 This is a svelte component to make layer legend for maplibre-gl
 
 ![demo.gif](./demo.gif)

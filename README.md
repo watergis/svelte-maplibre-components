@@ -1,5 +1,7 @@
 # svelte-maplibre-components
 
+![GitHub](https://img.shields.io/github/license/watergis/svelte-maplibre-components)
+![GitHub repo size](https://img.shields.io/github/repo-size/watergis/svelte-maplibre-components)
 [![build](https://github.com/watergis/svelte-maplibre-components/actions/workflows/build.yml/badge.svg)](https://github.com/watergis/svelte-maplibre-components/actions/workflows/build.yml)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5e6fddd2-c161-4aa8-9de8-61002eac3e21/deploy-status)](https://app.netlify.com/sites/svelte-maplibre-components/deploys)
 

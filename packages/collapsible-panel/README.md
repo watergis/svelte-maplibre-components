@@ -1,5 +1,10 @@
 # svelte-collapsible-panel
 
+![GitHub](https://img.shields.io/github/license/watergis/svelte-maplibre-components)
+![npm](https://img.shields.io/npm/v/@watergis/svelte-collapsible-panel)
+![npm](https://img.shields.io/npm/dt/@watergis/svelte-collapsible-panel)
+![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@watergis/svelte-collapsible-panel)
+
 This is a svelte component for collapsible panel
 
 ## Install

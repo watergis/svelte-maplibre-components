@@ -1,5 +1,10 @@
 # maplibre-center-icon
 
+![GitHub](https://img.shields.io/github/license/watergis/svelte-maplibre-components)
+![npm](https://img.shields.io/npm/v/@watergis/maplibre-center-icon)
+![npm](https://img.shields.io/npm/dt/@watergis/maplibre-center-icon)
+![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@watergis/maplibre-center-icon)
+
 This is a library to add center icon to maplibre.
 
 ## Install

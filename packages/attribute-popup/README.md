@@ -1,5 +1,10 @@
 # svelte-maplibre-attribute-popup
 
+![GitHub](https://img.shields.io/github/license/watergis/svelte-maplibre-components)
+![npm](https://img.shields.io/npm/v/@watergis/svelte-maplibre-attribute-popup)
+![npm](https://img.shields.io/npm/dt/@watergis/svelte-maplibre-attribute-popup)
+![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@watergis/svelte-maplibre-attribute-popup)
+
 This is a svelte component to add attribute popup plugin to maplibre.
 
 ## Install

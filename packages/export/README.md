@@ -1,5 +1,10 @@
 # svelte-maplibre-export
 
+![GitHub](https://img.shields.io/github/license/watergis/svelte-maplibre-components)
+![npm](https://img.shields.io/npm/v/@watergis/svelte-maplibre-export)
+![npm](https://img.shields.io/npm/dt/@watergis/svelte-maplibre-export)
+![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@watergis/svelte-maplibre-export)
+
 This is a svelte component to add export control to maplibre.
 
 ![demo.gif](./demo.gif)

@@ -1,5 +1,10 @@
 # svelte-maplibre-valhalla
 
+![GitHub](https://img.shields.io/github/license/watergis/svelte-maplibre-components)
+![npm](https://img.shields.io/npm/v/@watergis/svelte-maplibre-valhalla)
+![npm](https://img.shields.io/npm/dt/@watergis/svelte-maplibre-valhalla)
+![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@watergis/svelte-maplibre-valhalla)
+
 This is a svelte component to add valhalla control for maplibre-gl
 
 ## Install

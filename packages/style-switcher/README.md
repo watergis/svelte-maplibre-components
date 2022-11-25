@@ -1,5 +1,10 @@
 # svelte-maplibre-style-switcher
 
+![GitHub](https://img.shields.io/github/license/watergis/svelte-maplibre-components)
+![npm](https://img.shields.io/npm/v/@watergis/svelte-maplibre-style-switcher)
+![npm](https://img.shields.io/npm/dt/@watergis/svelte-maplibre-style-switcher)
+![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@watergis/svelte-maplibre-style-switcher)
+
 This is a svelte component to add style switch component for maplibre-gl
 
 ## Install

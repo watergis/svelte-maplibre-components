@@ -3,10 +3,21 @@
 	import { onMount } from 'svelte';
 	import { draggable } from '@neodrag/svelte';
 	import type { DragOptions } from '@neodrag/svelte';
+	import Fa from 'svelte-fa';
+	import {
+		faUpDownLeftRight,
+		faXmark,
+		faFile,
+		faLeftRight,
+		faUpDown,
+		faFilePdf,
+		faBraille,
+		faDownload,
+		faGear
+	} from '@fortawesome/free-solid-svg-icons';
 	import MapGenerator, { PageOrientation, Size, DPI, Format, Unit } from '$lib/utils/map-generator';
 	import PrintableAreaManager from '$lib/utils/printable-area-manager';
 	import CrosshairManager from '$lib/utils/crosshair-manager';
-	import './style/fa/css/all.css';
 
 	export let map: Map;
 
@@ -162,7 +173,7 @@
 	<nav class="panel is-success export-container" use:draggable={dragOptions}>
 		<div class="panel-heading heading-control">
 			<span class="icon drag-icon">
-				<i class="fas fa-up-down-left-right" />
+				<Fa icon={faUpDownLeftRight} />
 			</span>
 			Export tool
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -172,7 +183,7 @@
 					isExportContainerShown = !isExportContainerShown;
 				}}
 			>
-				<i class="fas fa-xmark" />
+				<Fa icon={faXmark} />
 			</span>
 		</div>
 		{#if isShownSetting}
@@ -187,9 +198,9 @@
 							{/each}
 						</select>
 					</div>
-					<div class="icon is-small is-left">
-						<i class="fas fa-file" />
-					</div>
+					<span class="icon is-small is-left">
+						<Fa icon={faFile} />
+					</span>
 				</div>
 			</div>
 			<div class="field">
@@ -206,15 +217,12 @@
 								}}
 								checked={orientation === PageOrientation[key]}
 							/>
-							<div class="icon is-small is-left">
-								<i
-									class="fas {`${
-										PageOrientation[key] === PageOrientation.Landscape
-											? 'fa-left-right'
-											: 'fa-up-down'
-									}`}"
+							<span class="icon">
+								<Fa
+									icon={PageOrientation[key] === PageOrientation.Landscape ? faLeftRight : faUpDown}
+									size="sm"
 								/>
-							</div>
+							</span>
 							{key}
 						</label>
 					{/each}
@@ -231,9 +239,9 @@
 							{/each}
 						</select>
 					</div>
-					<div class="icon is-small is-left">
-						<i class="fas fa-file-pdf" />
-					</div>
+					<span class="icon is-small is-left">
+						<Fa icon={faFilePdf} />
+					</span>
 				</div>
 			</div>
 			<div class="field">
@@ -247,9 +255,9 @@
 							{/each}
 						</select>
 					</div>
-					<div class="icon is-small is-left">
-						<i class="fas fa-braille" />
-					</div>
+					<span class="icon is-small is-left">
+						<Fa icon={faBraille} />
+					</span>
 				</div>
 			</div>
 		{/if}
@@ -257,7 +265,7 @@
 			<div class="column is-10 p-0 m-0">
 				<button class="button is-fullwidth is-small is-success p-0 m-0" on:click={exportMap}>
 					<span class="icon">
-						<i class="fas fa-download" />
+						<Fa icon={faDownload} size="sm" />
 					</span>
 					<span>Export</span>
 				</button>
@@ -268,7 +276,7 @@
 					on:click={() => (isShownSetting = !isShownSetting)}
 				>
 					<span class="icon">
-						<i class="fas fa-gear" />
+						<Fa icon={faGear} size="sm" />
 					</span>
 				</button>
 			</div>

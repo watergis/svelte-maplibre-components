@@ -54,8 +54,10 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fortawesome/free-solid-svg-icons": "^6.2.1",
 		"@neodrag/svelte": "^1.2.4",
 		"jspdf": "^2.5.1",
-		"maplibre-gl": "^2.4.0"
+		"maplibre-gl": "^2.4.0",
+		"svelte-fa": "^3.0.3"
 	}
 }

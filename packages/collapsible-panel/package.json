@@ -53,6 +53,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"bulma": "^0.9.4"
+		"@fortawesome/free-solid-svg-icons": "^6.2.1",
+		"bulma": "^0.9.4",
+		"svelte-fa": "^3.0.3"
 	}
 }

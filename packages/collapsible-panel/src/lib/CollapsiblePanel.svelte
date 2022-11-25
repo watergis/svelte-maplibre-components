@@ -1,5 +1,6 @@
 <script lang="ts">
-	import './style/fa/css/all.css';
+	import Fa from 'svelte-fa';
+	import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 
 	export let title: string;
 
@@ -19,9 +20,9 @@
 	<p class="panel-heading p-2 header-menu" on:click={() => (isPanelOpen = !isPanelOpen)}>
 		<span class="panel-icon mt-1">
 			{#if isPanelOpen}
-				<i class="fas fa-angle-down" aria-hidden="true" style="color:white" />
+				<Fa icon={faAngleDown} color="white" />
 			{:else}
-				<i class="fas fa-angle-up" aria-hidden="true" style="color:white" />
+				<Fa icon={faAngleUp} color="white" />
 			{/if}
 		</span>
 		{title}

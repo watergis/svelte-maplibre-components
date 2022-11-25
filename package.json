@@ -25,9 +25,5 @@
   "engines": {
     "pnpm": "^7.0.0"
   },
-  "workspaces": [
-    "sites/**",
-    "packages/**"
-  ],
   "type": "module"
 }

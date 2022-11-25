@@ -1,5 +1,4 @@
 packages:
-  - 'sites/svelte.water-gis.com'
   # all packages in subdirs of packages/ and components/
   - 'packages/attribute-popup'
   - 'packages/center'

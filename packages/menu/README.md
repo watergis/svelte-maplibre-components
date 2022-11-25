@@ -1,5 +1,10 @@
 # svelte-maplibre-menu
 
+![GitHub](https://img.shields.io/github/license/watergis/svelte-maplibre-components)
+![npm](https://img.shields.io/npm/v/@watergis/svelte-maplibre-menu)
+![npm](https://img.shields.io/npm/dt/@watergis/svelte-maplibre-menu)
+![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@watergis/svelte-maplibre-menu)
+
 This is a svelte component to make menu for maplibre-gl
 
 ## Install

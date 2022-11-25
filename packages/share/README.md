@@ -1,4 +1,9 @@
-# svelte-maplibre-export
+# svelte-maplibre-share
+
+![GitHub](https://img.shields.io/github/license/watergis/svelte-maplibre-components)
+![npm](https://img.shields.io/npm/v/@watergis/svelte-maplibre-share)
+![npm](https://img.shields.io/npm/dt/@watergis/svelte-maplibre-share)
+![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@watergis/svelte-maplibre-share)
 
 This is a svelte component to add share control to maplibre.
 

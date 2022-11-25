@@ -1,17 +1,18 @@
+import { faPersonWalking, faBicycle, faCar } from '@fortawesome/free-solid-svg-icons';
 export const costingOptions = [
 	{
 		value: 'pedestrian',
 		label: 'Walking',
-		icon: 'fa-person-walking'
+		icon: faPersonWalking
 	},
 	{
 		value: 'bicycle',
 		label: 'Bicycle',
-		icon: 'fa-bicycle'
+		icon: faBicycle
 	},
 	{
 		value: 'auto',
 		label: 'Car',
-		icon: 'fa-car'
+		icon: faCar
 	}
 ];

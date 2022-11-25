@@ -7,7 +7,8 @@
 		type ValhallaIsochroneOptions
 	} from '$lib/ValhallaIsochrone';
 	import { costingOptions } from './constants';
-	import './style/fa/css/all.css';
+	import Fa from 'svelte-fa';
+	import { faClock, faRuler, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 	export let map: Map;
 	export let url: string;
@@ -87,7 +88,7 @@
 			checked={contourType === ContourType.Time}
 		/>
 		<div class="icon is-small is-left pl-3 pr-3">
-			<i class="fas fa-clock" />
+			<Fa icon={faClock} />
 		</div>
 		{'Time'}
 	</label>
@@ -101,7 +102,7 @@
 			checked={contourType === ContourType.Distance}
 		/>
 		<div class="icon is-small is-left pl-3 pr-3">
-			<i class="fas fa-ruler" />
+			<Fa icon={faRuler} />
 		</div>
 		{'Distance'}
 	</label>
@@ -121,7 +122,7 @@
 				checked={meansOfTransport === item.value}
 			/>
 			<span class="icon">
-				<i class="fas {item.icon}" />
+				<Fa icon={item.icon} />
 			</span>
 			{item.label}
 		</label>
@@ -177,16 +178,16 @@
 	<button class="control-button" on:click={() => calc(contourType)}>
 		<span class="control-icon">
 			{#if contourType === ContourType.Time}
-				<i class="fas fa-clock" />
+				<Fa icon={faClock} />
 			{:else}
-				<i class="fas fa-ruler" />
+				<Fa icon={faRuler} />
 			{/if}
 		</span>
 		<span> Calculate </span>
 	</button>
 	<button class="setting-button" on:click={clear}>
 		<span>
-			<i class="fas fa-trash" />
+			<Fa icon={faTrash} />
 		</span>
 	</button>
 </div>

@@ -2,7 +2,8 @@
 	import type { Map } from 'maplibre-gl';
 	import { onMount } from 'svelte';
 	import ShareUrlModal from './ShareURLModal.svelte';
-	import './style/fa/css/all.css';
+	import Fa from 'svelte-fa';
+	import { faShareNodes } from '@fortawesome/free-solid-svg-icons';
 
 	export let map: Map;
 
@@ -61,7 +62,7 @@
 </script>
 
 <button bind:this={shareButton}>
-	<i class="fas fa-share-nodes" />
+	<Fa icon={faShareNodes} />
 </button>
 
 <ShareUrlModal bind:map bind:isShareModalShown bind:customiseUrl />

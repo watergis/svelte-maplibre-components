@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
 	import type { Map } from 'maplibre-gl';
+	import Fa from 'svelte-fa';
+	import { faStop, faRuler, faTrash, faDownload } from '@fortawesome/free-solid-svg-icons';
 	import { measureManager } from './stores';
 	import type { MeasureOption } from './types';
 	import MeasureManager from './MeasureManager';
-	import './style/fa/css/all.css';
 
 	export let map: Map;
 	export let terrainRgbUrl: string | undefined = undefined;
@@ -55,9 +56,9 @@
 		<button class="control-button" on:click={() => measureStart()}>
 			<span class="control-icon">
 				{#if isQuery}
-					<i class="fas fa-stop" />
+					<Fa icon={faStop} />
 				{:else}
-					<i class="fas fa-ruler" />
+					<Fa icon={faRuler} />
 				{/if}
 			</span>
 			<span>
@@ -74,7 +75,7 @@
 			on:click={() => $measureManager.clearFeatures()}
 		>
 			<span>
-				<i class="fas fa-trash" />
+				<Fa icon={faTrash} />
 			</span>
 		</button>
 		<button
@@ -83,7 +84,7 @@
 			on:click={() => $measureManager.downloadGeoJSON()}
 		>
 			<span>
-				<i class="fas fa-download" />
+				<Fa icon={faDownload} />
 			</span>
 		</button>
 	</div>

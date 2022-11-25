@@ -53,6 +53,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"maplibre-gl": "^2.4.0"
+		"@fortawesome/free-solid-svg-icons": "^6.2.1",
+		"maplibre-gl": "^2.4.0",
+		"svelte-fa": "^3.0.3"
 	}
 }

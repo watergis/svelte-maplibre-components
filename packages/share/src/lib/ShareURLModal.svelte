@@ -2,6 +2,8 @@
 	import { copy } from 'svelte-copy';
 	import type { Map } from 'maplibre-gl';
 	import { onMount } from 'svelte';
+	import Fa from 'svelte-fa';
+	import { faCopy, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 	export let map: Map;
 	export let isShareModalShown: boolean;
@@ -72,7 +74,7 @@
 					on:click={handleCopy}
 				>
 					<span class="icon">
-						<i class="fas fa-copy" />
+						<Fa icon={faCopy} />
 					</span>
 					<span>{textCopyButton}</span>
 				</button>
@@ -81,7 +83,7 @@
 		<footer class="modal-card-foot">
 			<button class="button is-small pm-0" on:click={handleClose}>
 				<span class="icon">
-					<i class="fas fa-xmark" />
+					<Fa icon={faXmark} />
 				</span>
 				<span>Cancel</span>
 			</button>

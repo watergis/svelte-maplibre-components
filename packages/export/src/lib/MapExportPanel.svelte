@@ -1,10 +1,18 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import type { Map } from 'maplibre-gl';
+	import Fa from 'svelte-fa';
+	import {
+		faFile,
+		faLeftRight,
+		faUpDown,
+		faFilePdf,
+		faBraille,
+		faDownload
+	} from '@fortawesome/free-solid-svg-icons';
 	import MapGenerator, { PageOrientation, Size, DPI, Format, Unit } from '$lib/utils/map-generator';
 	import PrintableAreaManager from '$lib/utils/printable-area-manager';
 	import CrosshairManager from '$lib/utils/crosshair-manager';
-	import './style/fa/css/all.css';
 
 	export let map: Map;
 	export let showPrintableArea = true;
@@ -114,7 +122,7 @@
 				</select>
 			</div>
 			<div class="icon is-small is-left">
-				<i class="fas fa-file" />
+				<Fa icon={faFile} />
 			</div>
 		</div>
 	</div>
@@ -133,10 +141,9 @@
 						checked={orientation === PageOrientation[key]}
 					/>
 					<div class="icon is-small is-left">
-						<i
-							class="fas {`${
-								PageOrientation[key] === PageOrientation.Landscape ? 'fa-left-right' : 'fa-up-down'
-							}`}"
+						<Fa
+							icon={PageOrientation[key] === PageOrientation.Landscape ? faLeftRight : faUpDown}
+							size="sm"
 						/>
 					</div>
 					{key}
@@ -156,7 +163,7 @@
 				</select>
 			</div>
 			<div class="icon is-small is-left">
-				<i class="fas fa-file-pdf" />
+				<Fa icon={faFilePdf} />
 			</div>
 		</div>
 	</div>
@@ -172,7 +179,7 @@
 				</select>
 			</div>
 			<div class="icon is-small is-left">
-				<i class="fas fa-braille" />
+				<Fa icon={faBraille} />
 			</div>
 		</div>
 	</div>
@@ -181,7 +188,7 @@
 		<div class="column is-12 p-0 m-0">
 			<button class="button is-fullwidth is-small is-success p-0 m-0" on:click={exportMap}>
 				<span class="icon">
-					<i class="fas fa-download" />
+					<Fa icon={faDownload} size="sm" />
 				</span>
 				<span>Export</span>
 			</button>

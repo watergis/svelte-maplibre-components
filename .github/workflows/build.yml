@@ -48,6 +48,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CNAME: ${{secrets.CNAME}}
         run: |
-         echo "${CNAME}" >> sites/svelte.water-gis.com/build/CNAME
-         git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/watergis/svelte-maplibre-components.git
-         pnpm deploy:ghpages
+          echo "${CNAME}" >> sites/svelte.water-gis.com/build/CNAME
+          git config --global user.name "watergis+githubci"
+          git config --global user.email "watergis+githubci@users.noreply.github.com"
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/watergis/svelte-maplibre-components.git
+          pnpm deploy:ghpages

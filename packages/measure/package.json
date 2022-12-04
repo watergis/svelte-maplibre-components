@@ -33,12 +33,14 @@
 	},
 	"homepage": "https://github.com/watergis/svelte-maplibre-components/tree/main/packages/measure#readme",
 	"devDependencies": {
+		"@esbuild-plugins/node-globals-polyfill": "^0.1.1",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"@sveltejs/package": "next",
 		"@typescript-eslint/eslint-plugin": "^5.44.0",
 		"@typescript-eslint/parser": "^5.44.0",
 		"@watergis/svelte-maplibre-menu": "workspace:^0.1.10",
+		"esbuild": "^0.15.17",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
@@ -55,10 +57,8 @@
 	"dependencies": {
 		"@fortawesome/free-solid-svg-icons": "^6.2.1",
 		"@turf/distance": "^6.5.0",
-		"global-mercator": "^3.1.0",
+		"@watergis/terrain-rgb": "^1.1.12",
 		"maplibre-gl": "^2.4.0",
-		"pako": "^2.1.0",
-		"svelte-fa": "^3.0.3",
-		"webp-hero": "^0.0.2"
+		"svelte-fa": "^3.0.3"
 	}
 }

@@ -19,6 +19,31 @@ or
 yarn add @watergis/svelte-maplibre-measure
 ```
 
+## vite configuration
+
+Add following settings in your vite.config.ts
+
+```ts
+import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
+
+const config: UserConfig = {
+    optimizeDeps: {
+        esbuildOptions: {
+            // Node.js global to browser globalThis
+            define: {
+                global: 'globalThis'
+            },
+            // Enable esbuild polyfill plugins
+            plugins: [
+                NodeGlobalsPolyfillPlugin({
+                    buffer: true
+                })
+            ]
+        }
+    }
+};
+```
+
 ## Usage
 
 See [Example](./src/example).

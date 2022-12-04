@@ -1,6 +1,12 @@
-import TerrainRGB from './TerrainRGB';
+import { TerrainRGB } from '@watergis/terrain-rgb';
 import distance from '@turf/distance';
-import { Marker, MapMouseEvent, GeoJSONFeature, Map, LngLat } from 'maplibre-gl';
+import {
+	Marker,
+	type MapMouseEvent,
+	type GeoJSONFeature,
+	type Map,
+	type LngLat
+} from 'maplibre-gl';
 import type { MeasureControlData, MeasureOption } from './types';
 
 const SOURCE_LINE = 'elev-controls-source-line';

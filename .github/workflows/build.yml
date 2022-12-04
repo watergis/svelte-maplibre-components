@@ -46,10 +46,5 @@ jobs:
           pnpm --filter="./sites/svelte.water-gis.com" build
           echo "${CNAME}" >> sites/svelte.water-gis.com/build/CNAME
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.7
-        env:
-          SKIP_DEPLOY_TO_GHPAGES: ${{secrets.SKIP_DEPLOY_TO_GHPAGES}}
         if: ${{ github.ref == 'refs/heads/main'}}
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: sites/svelte.water-gis.com/build # The folder the action should deploy.
+        run: pnpm deploy

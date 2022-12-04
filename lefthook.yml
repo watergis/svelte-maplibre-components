@@ -18,5 +18,3 @@ pre-push:
   commands:
     build-packages:
       run: pnpm --filter="./packages/*" build
-    build-sites:
-      run: pnpm --filter="./sites/*" build

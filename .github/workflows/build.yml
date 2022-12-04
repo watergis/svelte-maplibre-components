@@ -47,4 +47,4 @@ jobs:
           echo "${CNAME}" >> sites/svelte.water-gis.com/build/CNAME
       - name: Deploy 🚀
         if: ${{ github.ref == 'refs/heads/main'}}
-        run: pnpm deploy
+        run: pnpm deploy:ghpages

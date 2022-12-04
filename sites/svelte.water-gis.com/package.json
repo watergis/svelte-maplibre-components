@@ -47,6 +47,7 @@
 		"@watergis/svelte-maplibre-share": "^0.1.8",
 		"@watergis/svelte-maplibre-style-switcher": "^0.1.8",
 		"@watergis/svelte-maplibre-valhalla": "^0.0.9",
+		"buffer": "^6.0.3",
 		"bulma": "^0.9.4",
 		"github-markdown-css": "^5.1.0",
 		"maplibre-gl": "^2.4.0",

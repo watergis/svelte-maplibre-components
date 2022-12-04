@@ -537,6 +537,7 @@ importers:
       '@watergis/svelte-maplibre-share': ^0.1.8
       '@watergis/svelte-maplibre-style-switcher': ^0.1.8
       '@watergis/svelte-maplibre-valhalla': ^0.0.9
+      buffer: ^6.0.3
       bulma: ^0.9.4
       esbuild: ^0.15.17
       eslint: ^8.29.0
@@ -564,12 +565,13 @@ importers:
       '@watergis/svelte-maplibre-attribute-popup': link:../../packages/attribute-popup
       '@watergis/svelte-maplibre-export': link:../../packages/export
       '@watergis/svelte-maplibre-legend': link:../../packages/legend
-      '@watergis/svelte-maplibre-measure': 0.1.12
+      '@watergis/svelte-maplibre-measure': link:../../packages/measure
       '@watergis/svelte-maplibre-menu': link:../../packages/menu
       '@watergis/svelte-maplibre-search': link:../../packages/search
       '@watergis/svelte-maplibre-share': link:../../packages/share
       '@watergis/svelte-maplibre-style-switcher': link:../../packages/style-switcher
       '@watergis/svelte-maplibre-valhalla': link:../../packages/valhalla
+      buffer: 6.0.3
       bulma: 0.9.4
       github-markdown-css: 5.1.0
       maplibre-gl: 2.4.0
@@ -1470,18 +1472,6 @@ packages:
       '@mapbox/mapbox-gl-style-spec': 13.27.0
     dev: false
 
-  /@watergis/svelte-maplibre-measure/0.1.12:
-    resolution: {integrity: sha512-PHkOzpzGqxZOIocVMTQXa8pV9GNLpaBbpUlzgrlVabNg8MyShh9UtQ+/eidY1A/9xpg9tHRYbRtmE3hshkstyA==}
-    dependencies:
-      '@fortawesome/free-solid-svg-icons': 6.2.1
-      '@turf/distance': 6.5.0
-      '@watergis/terrain-rgb': 1.1.12
-      maplibre-gl: 2.4.0
-      svelte-fa: 3.0.3
-    transitivePeerDependencies:
-      - debug
-    dev: false
-
   /@watergis/terrain-rgb/1.1.12:
     resolution: {integrity: sha512-LbZHMJ4K6ox7HMv/UpfDDWoccJGfXjwQ1jXcIu1eugIS9vCx1miMnQIPVhE/W7P+Zkz4ldTlb7bF+g9x4NJRcw==}
     dependencies:
@@ -1607,6 +1597,10 @@ packages:
     dev: false
     optional: true
 
+  /base64-js/1.5.1:
+    resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+    dev: false
+
   /better-path-resolve/1.0.0:
     resolution: {integrity: sha512-pbnl5XzGBdrFU/wT4jqmJVPn2B6UHPBOhzMQkY/SPUPB6QtUXtmBHBIwCbXJol93mOpGMnQyP/+BB19q04xj7g==}
     engines: {node: '>=4'}
@@ -1648,6 +1642,13 @@ packages:
   /buffer-crc32/0.2.13:
     resolution: {integrity: sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ==}
     dev: true
+
+  /buffer/6.0.3:
+    resolution: {integrity: sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==}
+    dependencies:
+      base64-js: 1.5.1
+      ieee754: 1.2.1
+    dev: false
 
   /bulma/0.9.4:
     resolution: {integrity: sha512-86FlT5+1GrsgKbPLRRY7cGDg8fsJiP/jzTqXXVqiUZZ2aZT8uemEOHlU1CDU+TxklPEZ11HZNNWclRBBecP4CQ==}

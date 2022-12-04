@@ -526,17 +526,17 @@ importers:
       '@sveltejs/kit': next
       '@typescript-eslint/eslint-plugin': ^5.45.0
       '@typescript-eslint/parser': ^5.45.0
-      '@watergis/maplibre-center-icon': ^0.1.3
-      '@watergis/svelte-collapsible-panel': ^0.0.8
-      '@watergis/svelte-maplibre-attribute-popup': ^0.0.11
-      '@watergis/svelte-maplibre-export': ^0.1.15
-      '@watergis/svelte-maplibre-legend': ^0.1.8
-      '@watergis/svelte-maplibre-measure': ^0.1.12
-      '@watergis/svelte-maplibre-menu': ^0.1.11
-      '@watergis/svelte-maplibre-search': ^0.1.4
-      '@watergis/svelte-maplibre-share': ^0.1.8
-      '@watergis/svelte-maplibre-style-switcher': ^0.1.8
-      '@watergis/svelte-maplibre-valhalla': ^0.0.9
+      '@watergis/maplibre-center-icon': workspace:^0.1.3
+      '@watergis/svelte-collapsible-panel': workspace:^0.0.8
+      '@watergis/svelte-maplibre-attribute-popup': workspace:^0.0.11
+      '@watergis/svelte-maplibre-export': workspace:^0.1.15
+      '@watergis/svelte-maplibre-legend': workspace:^0.1.8
+      '@watergis/svelte-maplibre-measure': workspace:^0.1.12
+      '@watergis/svelte-maplibre-menu': workspace:^0.1.11
+      '@watergis/svelte-maplibre-search': workspace:^0.1.4
+      '@watergis/svelte-maplibre-share': workspace:^0.1.8
+      '@watergis/svelte-maplibre-style-switcher': workspace:^0.1.8
+      '@watergis/svelte-maplibre-valhalla': workspace:^0.0.9
       buffer: ^6.0.3
       bulma: ^0.9.4
       esbuild: ^0.15.17

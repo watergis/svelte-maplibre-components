@@ -5,7 +5,7 @@
   "scripts": {
     "prepare": "lefthook install",
     "release": "changeset publish",
-    "deploy:ghpages": "gh-pages -d sites/svelte.water-gis.com/build"
+    "deploy:ghpages": "gh-pages -d sites/svelte.water-gis.com/build -t true"
   },
   "repository": {
     "type": "git",

@@ -38,13 +38,16 @@ jobs:
       - name: build packages
         run: pnpm --filter="./packages/*" build
       - name: build sites
-        env:
-          CNAME: ${{secrets.CNAME}}
         run: |
           pnpm --filter="./sites/svelte.water-gis.com" lint
           pnpm --filter="./sites/svelte.water-gis.com" format
           pnpm --filter="./sites/svelte.water-gis.com" build
-          echo "${CNAME}" >> sites/svelte.water-gis.com/build/CNAME
       - name: Deploy 🚀
         if: ${{ github.ref == 'refs/heads/main'}}
-        run: pnpm deploy:ghpages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CNAME: ${{secrets.CNAME}}
+        run: |
+        echo "${CNAME}" >> sites/svelte.water-gis.com/build/CNAME
+         git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/watergis/svelte-maplibre-components.git
+         pnpm deploy:ghpages

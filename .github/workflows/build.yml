@@ -55,15 +55,15 @@ jobs:
       - name: install dependencies
         run: pnpm install --frozen-lockfile
       - name: lint sites
-        run: pnpm --filter="./sites/*" lint
+        run: pnpm --filter="./sites/svelte.water-gis.com" lint
       - name: format sites
-        run: pnpm --filter="./sites/*" format
+        run: pnpm --filter="./sites/svelte.water-gis.com" format
       - name: build sites
         env:
           CNAME: ${{secrets.CNAME}}
         run: |
-          pnpm --filter="./sites/*" build
-          echo "${CNAME}" >> sites/svelte-water-gis.com/build/CNAME
+          pnpm --filter="./sites/svelte.water-gis.com" build
+          echo "${CNAME}" >> sites/svelte.water-gis.com/build/CNAME
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.7
         env:
@@ -71,4 +71,4 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main'}}
         with:
           branch: gh-pages # The branch the action should deploy to.
-          folder: sites/svelte-water-gis.com/build # The folder the action should deploy.
+          folder: sites/svelte.water-gis.com/build # The folder the action should deploy.

@@ -546,6 +546,7 @@ importers:
       github-markdown-css: ^5.1.0
       maplibre-gl: ^2.4.0
       mdsvex: ^0.10.6
+      pnpm: ^7.18.0
       prettier: ^2.8.0
       prettier-plugin-svelte: ^2.8.1
       prismjs: ^1.29.0
@@ -587,6 +588,7 @@ importers:
       eslint: 8.29.0
       eslint-config-prettier: 8.5.0_eslint@8.29.0
       eslint-plugin-svelte3: 4.0.0_kzv3boqmfymw5ol254gxmp75rq
+      pnpm: 7.18.0
       prettier: 2.8.0
       prettier-plugin-svelte: 2.8.1_3ndnxlh52lolrqe4kgjgbxb3xa
       rehype-autolink-headings: 6.1.1
@@ -3587,6 +3589,12 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       find-up: 4.1.0
+    dev: true
+
+  /pnpm/7.18.0:
+    resolution: {integrity: sha512-igZRB0ip8cn9f1glYzsPTJblxQcidY7/fSfJ++j6GYLT0pqIlijsdW9ZI4Waaxhi22SC4HZHe5vMiSa2IKoIoA==}
+    engines: {node: '>=14.6'}
+    hasBin: true
     dev: true
 
   /postcss/8.4.19:

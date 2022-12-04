@@ -523,6 +523,7 @@ importers:
     specifiers:
       '@esbuild-plugins/node-globals-polyfill': ^0.1.1
       '@sveltejs/adapter-auto': next
+      '@sveltejs/adapter-static': 1.0.0-next.48
       '@sveltejs/kit': next
       '@typescript-eslint/eslint-plugin': ^5.45.0
       '@typescript-eslint/parser': ^5.45.0
@@ -546,7 +547,6 @@ importers:
       github-markdown-css: ^5.1.0
       maplibre-gl: ^2.4.0
       mdsvex: ^0.10.6
-      pnpm: ^7.18.0
       prettier: ^2.8.0
       prettier-plugin-svelte: ^2.8.1
       prismjs: ^1.29.0
@@ -581,6 +581,7 @@ importers:
     devDependencies:
       '@esbuild-plugins/node-globals-polyfill': 0.1.1_esbuild@0.15.17
       '@sveltejs/adapter-auto': 1.0.0-next.90
+      '@sveltejs/adapter-static': 1.0.0-next.48
       '@sveltejs/kit': 1.0.0-next.571_svelte@3.53.1+vite@3.2.4
       '@typescript-eslint/eslint-plugin': 5.45.0_yjegg5cyoezm3fzsmuszzhetym
       '@typescript-eslint/parser': 5.45.0_s5ps7njkmjlaqajutnox5ntcla
@@ -588,7 +589,6 @@ importers:
       eslint: 8.29.0
       eslint-config-prettier: 8.5.0_eslint@8.29.0
       eslint-plugin-svelte3: 4.0.0_kzv3boqmfymw5ol254gxmp75rq
-      pnpm: 7.18.0
       prettier: 2.8.0
       prettier-plugin-svelte: 2.8.1_3ndnxlh52lolrqe4kgjgbxb3xa
       rehype-autolink-headings: 6.1.1
@@ -1034,6 +1034,10 @@ packages:
     resolution: {integrity: sha512-qxH46Oqqn40998wTmnbffONI0HcW/kiZ3OIjZoysjONne+LU4uEsG425MZ2RHDxmR04zxhsdjCAsn6B4du8D7w==}
     dependencies:
       import-meta-resolve: 2.2.0
+    dev: true
+
+  /@sveltejs/adapter-static/1.0.0-next.48:
+    resolution: {integrity: sha512-Z5Z+QZOav6D0KDeU3ReksGERJg/sX1k5OKWWXyQ11OwGErEEwSXHYRUyjaBmZEPeGzpVVGwwMUK8YWJlG/MKeA==}
     dev: true
 
   /@sveltejs/kit/1.0.0-next.571_svelte@3.53.1+vite@3.2.4:
@@ -3589,12 +3593,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       find-up: 4.1.0
-    dev: true
-
-  /pnpm/7.18.0:
-    resolution: {integrity: sha512-igZRB0ip8cn9f1glYzsPTJblxQcidY7/fSfJ++j6GYLT0pqIlijsdW9ZI4Waaxhi22SC4HZHe5vMiSa2IKoIoA==}
-    engines: {node: '>=14.6'}
-    hasBin: true
     dev: true
 
   /postcss/8.4.19:

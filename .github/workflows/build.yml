@@ -37,3 +37,38 @@ jobs:
         run: pnpm --filter="./packages/*" format
       - name: build packages
         run: pnpm --filter="./packages/*" build
+  build-site:
+    name: Build site
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v2.2.4
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: pnpm
+
+      - name: install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: lint sites
+        run: pnpm --filter="./sites/*" lint
+      - name: format sites
+        run: pnpm --filter="./sites/*" format
+      - name: build sites
+        env:
+          CNAME: ${{secrets.CNAME}}
+        run: |
+          pnpm --filter="./sites/*" build
+          echo "${CNAME}" >> sites/svelte-water-gis.com/build/CNAME
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.7
+        env:
+          SKIP_DEPLOY_TO_GHPAGES: ${{secrets.SKIP_DEPLOY_TO_GHPAGES}}
+        if: ${{ github.ref == 'refs/heads/main'}
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: sites/svelte-water-gis.com/build # The folder the action should deploy.

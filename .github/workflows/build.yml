@@ -52,18 +52,16 @@ jobs:
           node-version: 16.x
           cache: pnpm
 
-      - name: install dependencies
-        run: pnpm install --filter="./sites/svelte.water-gis.com" --frozen-lockfile
-      - name: lint sites
-        run: pnpm --filter="./sites/svelte.water-gis.com" lint
-      - name: format sites
-        run: pnpm --filter="./sites/svelte.water-gis.com" format
       - name: build sites
         env:
           CNAME: ${{secrets.CNAME}}
         run: |
-          pnpm --filter="./sites/svelte.water-gis.com" build
-          echo "${CNAME}" >> sites/svelte.water-gis.com/build/CNAME
+          cd sites/svelte.water-gis.com
+          pnpm install --frozen-lockfile
+          pnpm lint
+          pnpm format
+          pnpm build
+          echo "${CNAME}" >> ./build/CNAME
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.7
         env:

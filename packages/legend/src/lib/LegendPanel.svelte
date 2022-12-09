@@ -8,6 +8,8 @@
 	export let style: StyleSpecification;
 	export let onlyRendered = true;
 	export let onlyRelative = true;
+	export let enableLayerOrder = false;
+	export let disableVisibleButton = false;
 	let spriteLoader: SpriteLoader | undefined;
 
 	$: allLayers = style ? style.layers : [];
@@ -32,13 +34,15 @@
 	$: onlyRelative, updateLayers();
 	$: style, handleStyleChanged();
 
-	const handleStyleChanged = async () => {
+	const handleStyleChanged = async (isLoadSprite = true) => {
 		if (!map) return;
 		if (!style) return;
 		const styleUrl = style.sprite;
 		if (!styleUrl) return;
-		spriteLoader = new SpriteLoader(styleUrl);
-		await spriteLoader.load();
+		if (isLoadSprite === true) {
+			spriteLoader = new SpriteLoader(styleUrl);
+			await spriteLoader.load();
+		}
 		updateLayers();
 	};
 
@@ -79,6 +83,11 @@
 			}
 		}
 	};
+
+	const layerOrderChanged = () => {
+		allLayers = map.getStyle().layers;
+		handleStyleChanged(false);
+	};
 </script>
 
 <ul class="legend-panel">
@@ -95,7 +104,10 @@
 										{layer}
 										{spriteLoader}
 										{relativeLayers}
+										bind:enableLayerOrder
+										bind:disableVisibleButton
 										on:visibilityChanged={layerVisibilityChanged}
+										on:layerOrderChanged={layerOrderChanged}
 									/>
 								</li>
 							{/if}
@@ -106,7 +118,10 @@
 									{layer}
 									{spriteLoader}
 									{relativeLayers}
+									bind:enableLayerOrder
+									bind:disableVisibleButton
 									on:visibilityChanged={layerVisibilityChanged}
+									on:layerOrderChanged={layerOrderChanged}
 								/>
 							</li>
 						{/if}
@@ -119,7 +134,10 @@
 								{layer}
 								{spriteLoader}
 								{relativeLayers}
+								bind:enableLayerOrder
+								bind:disableVisibleButton
 								on:visibilityChanged={layerVisibilityChanged}
+								on:layerOrderChanged={layerOrderChanged}
 							/>
 						</li>
 					{/if}
@@ -130,7 +148,10 @@
 							{layer}
 							{spriteLoader}
 							{relativeLayers}
+							bind:enableLayerOrder
+							bind:disableVisibleButton
 							on:visibilityChanged={layerVisibilityChanged}
+							on:layerOrderChanged={layerOrderChanged}
 						/>
 					</li>
 				{/if}
@@ -147,7 +168,7 @@
 		margin-block-end: 0em;
 		margin-inline-start: 0px;
 		margin-inline-end: 0px;
-		padding-inline-start: 1rem;
+		padding-inline-start: 0.5rem;
 
 		.legend-panel-block {
 			display: flex;

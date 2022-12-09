@@ -1,6 +1,10 @@
 <script lang="ts">
 	export let onlyRendered = true;
 	export let onlyRelative = true;
+	export let enableLayerOrder = false;
+	export let isLayerOrderShown = false;
+
+	$: width = isLayerOrderShown ? 33 : 50;
 </script>
 
 <div class="tabs">
@@ -11,7 +15,7 @@
 		checked={onlyRendered}
 		on:click={() => (onlyRendered = !onlyRendered)}
 	/>
-	<label class="tab_item" for="rendered">Show rendered</label>
+	<label class="tab_item" for="rendered" style="width:{width}%">Show rendered</label>
 	<input
 		id="relative"
 		type="checkbox"
@@ -19,7 +23,17 @@
 		checked={onlyRelative}
 		on:click={() => (onlyRelative = !onlyRelative)}
 	/>
-	<label class="tab_item" for="relative">Show related</label>
+	<label class="tab_item" for="relative" style="width:{width}%">Show related</label>
+	{#if isLayerOrderShown}
+		<input
+			id="layerorder"
+			type="checkbox"
+			name="relative_tab"
+			checked={enableLayerOrder}
+			on:click={() => (enableLayerOrder = !enableLayerOrder)}
+		/>
+		<label class="tab_item" for="layerorder" style="width:{width}%">Change order</label>
+	{/if}
 </div>
 
 <style lang="scss">
@@ -31,9 +45,8 @@
 		margin: 0 auto;
 
 		.tab_item {
-			width: 50%;
 			background-color: #f5f5f5;
-			border-color: #b5b5b5;
+			border-color: #787878;
 			line-height: 2.5rem;
 			font-size: 16px;
 			text-align: center;
@@ -45,8 +58,11 @@
 			transition: all 0.2s ease;
 			font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica, Arial,
 				sans-serif;
-			font-size: 16px;
+			font-size: 13px;
 			font-weight: 600;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 		.tab_item:hover {
 			opacity: 0.75;

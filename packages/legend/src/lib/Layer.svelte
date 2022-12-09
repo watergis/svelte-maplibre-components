@@ -2,7 +2,13 @@
 	import { createEventDispatcher } from 'svelte';
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import Fa from 'svelte-fa';
-	import { faEye, faEyeSlash, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faEye,
+		faEyeSlash,
+		faSortUp,
+		faSortDown,
+		faGripVertical
+	} from '@fortawesome/free-solid-svg-icons';
 	import Legend from './Legend.svelte';
 	import type SpriteLoader from './sprite';
 
@@ -88,11 +94,17 @@
 </script>
 
 <div class="layer-container" style={enableLayerOrder ? 'width:100%' : ''}>
+	{#if enableLayerOrder}
+		<span class="draggable-icon has-tooltip-right" data-tooltip="Drag to change order">
+			<Fa icon={faGripVertical} />
+		</span>
+	{/if}
 	{#if !disableVisibleButton}
 		<span
 			tabindex="0"
 			role="button"
-			class="visible-button"
+			class="visible-button has-tooltip-right"
+			data-tooltip="{checked ? 'Hide' : 'Show'} layer"
 			on:click={() => (checked = !checked)}
 			on:keydown={handleKeydownVisibility}
 		>
@@ -103,8 +115,10 @@
 			{/if}
 		</span>
 	{/if}
-	<div class="legend"><Legend {map} {layer} {spriteLoader} /></div>
-	<div class="layer-name">
+	<div class="legend" style="cursor:{enableLayerOrder ? 'grab' : 'default'}">
+		<Legend {map} {layer} {spriteLoader} />
+	</div>
+	<div class="layer-name" style="cursor:{enableLayerOrder ? 'grab' : 'default'}">
 		{relativeLayers && relativeLayers[layer.id] ? relativeLayers[layer.id] : layer.id}
 	</div>
 	{#if enableLayerOrder}
@@ -113,7 +127,8 @@
 				<span
 					tabindex="0"
 					role="button"
-					class="sort-button"
+					class="sort-button has-tooltip-left"
+					data-tooltip="Bring backward in map"
 					on:click={moveBefore}
 					on:keydown={handleKeydownMoveBefore}
 				>
@@ -124,7 +139,8 @@
 				<span
 					tabindex="0"
 					role="button"
-					class="sort-button"
+					class="sort-button has-tooltip-left"
+					data-tooltip="Bring forward in map"
 					on:click={moveAfter}
 					on:keydown={handleKeydownmoveAfter}
 				>
@@ -136,6 +152,8 @@
 </div>
 
 <style lang="scss">
+	@use '@creativebulma/bulma-tooltip/dist/bulma-tooltip.min.css';
+
 	.layer-container {
 		display: flex;
 		align-items: center;
@@ -144,6 +162,12 @@
 		padding: 0;
 		height: 2.5rem;
 
+		.draggable-icon {
+			margin-left: 0.2rem;
+			margin-right: 0.5rem;
+			cursor: grab;
+		}
+
 		.visible-button {
 			padding-right: 0.5rem;
 			cursor: pointer;
@@ -151,6 +175,7 @@
 
 		.legend {
 			padding-right: 0.5rem;
+			vertical-align: middle;
 		}
 
 		.layer-name {
@@ -158,6 +183,7 @@
 				sans-serif;
 			font-size: 16px;
 			font-weight: 400;
+			width: 100%;
 		}
 
 		.layer-order {
@@ -179,5 +205,13 @@
 	.fas:before {
 		display: inline-block;
 		text-decoration: none;
+	}
+
+	[data-tooltip]:hover:before,
+	[data-tooltip]:hover:after,
+	[data-tooltip]:focus:before,
+	[data-tooltip]:focus:after {
+		visibility: visible;
+		opacity: 1;
 	}
 </style>

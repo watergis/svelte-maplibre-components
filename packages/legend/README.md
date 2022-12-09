@@ -37,6 +37,7 @@ See [Example](./src/example).
 
   let onlyRendered = true
   let onlyRelative = true
+  let enableLayerOrder = false;
 
   // to set filter to enable to show only relative layers and alias of layer name
   let relativeLayers: { [key: string]: string } = {
@@ -49,7 +50,7 @@ See [Example](./src/example).
     <LegendHeader bind:onlyRendered bind:onlyRelative {relativeLayers} />
   </div>
   <div class="legend-content">
-    <LegendPanel bind:map={$map} {style} bind:onlyRendered bind:onlyRelative {relativeLayers} />
+    <LegendPanel bind:map={$map} {style} bind:onlyRendered bind:onlyRelative bind:enableLayerOrder {relativeLayers} disableVisibleButton={false}/>
   </div>
 </div>
 

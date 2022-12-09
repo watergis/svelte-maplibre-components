@@ -20,6 +20,7 @@
 
 	let onlyRendered = true;
 	let onlyRelative = true;
+	let enableLayerOrder = false;
 	let relativeLayers: { [key: string]: string } = {
 		pipeline: 'Pipeline',
 		pipeline_annotation: 'Pipeline Label',
@@ -63,10 +64,23 @@
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
 	<div slot="primary" class="primary-container">
 		<div class="legend-header">
-			<LegendHeader bind:onlyRendered bind:onlyRelative />
+			<LegendHeader
+				bind:onlyRendered
+				bind:onlyRelative
+				bind:enableLayerOrder
+				isLayerOrderShown={true}
+			/>
 		</div>
 		<div class="legend-content">
-			<LegendPanel bind:map {style} bind:onlyRendered bind:onlyRelative {relativeLayers} />
+			<LegendPanel
+				bind:map
+				{style}
+				bind:onlyRendered
+				bind:onlyRelative
+				bind:enableLayerOrder
+				{relativeLayers}
+				disableVisibleButton={false}
+			/>
 		</div>
 	</div>
 	<div slot="secondary">

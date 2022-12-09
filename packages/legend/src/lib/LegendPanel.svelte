@@ -8,7 +8,10 @@
 	export let style: StyleSpecification;
 	export let onlyRendered = true;
 	export let onlyRelative = true;
+	export let enableLayerOrder = false;
+	export let disableVisibleButton = false;
 	let spriteLoader: SpriteLoader | undefined;
+	let hovering: boolean | number | undefined = false;
 
 	$: allLayers = style ? style.layers : [];
 	let visibleLayerMap: { [key: string]: LayerSpecification } = {};
@@ -32,13 +35,15 @@
 	$: onlyRelative, updateLayers();
 	$: style, handleStyleChanged();
 
-	const handleStyleChanged = async () => {
+	const handleStyleChanged = async (isLoadSprite = true) => {
 		if (!map) return;
 		if (!style) return;
 		const styleUrl = style.sprite;
 		if (!styleUrl) return;
-		spriteLoader = new SpriteLoader(styleUrl);
-		await spriteLoader.load();
+		if (isLoadSprite === true) {
+			spriteLoader = new SpriteLoader(styleUrl);
+			await spriteLoader.load();
+		}
 		updateLayers();
 	};
 
@@ -79,62 +84,153 @@
 			}
 		}
 	};
+
+	const layerOrderChanged = () => {
+		allLayers = map.getStyle().layers;
+		handleStyleChanged(false);
+	};
+
+	const drop = (event: any, target: number, layer: LayerSpecification) => {
+		event.dataTransfer.dropEffect = 'move';
+		const start = parseInt(event.dataTransfer.getData('text/plain'));
+		const newTracklist = allLayers;
+
+		if (start < target) {
+			newTracklist.splice(target + 1, 0, newTracklist[start]);
+			newTracklist.splice(start, 1);
+		} else {
+			newTracklist.splice(target, 0, newTracklist[start]);
+			newTracklist.splice(start + 1, 1);
+		}
+		allLayers = newTracklist;
+		hovering = undefined;
+
+		const targetLayer = allLayers[target];
+		map.moveLayer(targetLayer.id, layer.id);
+		layerOrderChanged();
+	};
+
+	const dragstart = (event: any, i: number) => {
+		event.dataTransfer.effectAllowed = 'move';
+		event.dataTransfer.dropEffect = 'move';
+		const start = i;
+		event.dataTransfer.setData('text/plain', start);
+	};
+
+	const dragover = (event: any) => {
+		event.preventDefault();
+		event.dataTransfer.dropEffect = 'move';
+	};
 </script>
 
 <ul class="legend-panel">
 	{#if spriteLoader}
 		{#key style}
-			{#each allLayers as layer}
-				{#if onlyRendered === true}
-					{#if visibleLayerMap[layer.id]}
-						{#if onlyRelative === true}
-							{#if relativeLayers[layer.id]}
+			{#key allLayers}
+				{#each allLayers as layer, index (layer.id)}
+					{#if onlyRendered === true}
+						{#if visibleLayerMap[layer.id]}
+							{#if onlyRelative === true}
+								{#if relativeLayers[layer.id]}
+									<div
+										class="list-item"
+										draggable={enableLayerOrder}
+										on:dragstart={(event) => dragstart(event, index)}
+										on:drop|preventDefault={(event) => drop(event, index, layer)}
+										on:dragover={(event) => dragover(event)}
+										on:dragenter={() => (hovering = index)}
+										class:is-active={hovering === index}
+									>
+										<li class="legend-panel-block">
+											<Layer
+												{map}
+												{layer}
+												{spriteLoader}
+												{relativeLayers}
+												bind:enableLayerOrder
+												bind:disableVisibleButton
+												on:visibilityChanged={layerVisibilityChanged}
+												on:layerOrderChanged={layerOrderChanged}
+											/>
+										</li>
+									</div>
+								{/if}
+							{:else}
+								<div
+									class="list-item"
+									draggable={enableLayerOrder}
+									on:dragstart={(event) => dragstart(event, index)}
+									on:drop|preventDefault={(event) => drop(event, index, layer)}
+									on:dragover={(event) => dragover(event)}
+									on:dragenter={() => (hovering = index)}
+									class:is-active={hovering === index}
+								>
+									<li class="legend-panel-block">
+										<Layer
+											{map}
+											{layer}
+											{spriteLoader}
+											{relativeLayers}
+											bind:enableLayerOrder
+											bind:disableVisibleButton
+											on:visibilityChanged={layerVisibilityChanged}
+											on:layerOrderChanged={layerOrderChanged}
+										/>
+									</li>
+								</div>
+							{/if}
+						{/if}
+					{:else if onlyRelative === true}
+						{#if relativeLayers[layer.id]}
+							<div
+								class="list-item"
+								draggable={enableLayerOrder}
+								on:dragstart={(event) => dragstart(event, index)}
+								on:drop|preventDefault={(event) => drop(event, index, layer)}
+								on:dragover={(event) => dragover(event)}
+								on:dragenter={() => (hovering = index)}
+								class:is-active={hovering === index}
+							>
 								<li class="legend-panel-block">
 									<Layer
 										{map}
 										{layer}
 										{spriteLoader}
 										{relativeLayers}
+										bind:enableLayerOrder
+										bind:disableVisibleButton
 										on:visibilityChanged={layerVisibilityChanged}
+										on:layerOrderChanged={layerOrderChanged}
 									/>
 								</li>
-							{/if}
-						{:else}
+							</div>
+						{/if}
+					{:else}
+						<div
+							class="list-item"
+							draggable={enableLayerOrder}
+							on:dragstart={(event) => dragstart(event, index)}
+							on:drop|preventDefault={(event) => drop(event, index, layer)}
+							on:dragover={(event) => dragover(event)}
+							on:dragenter={() => (hovering = index)}
+							class:is-active={hovering === index}
+						>
 							<li class="legend-panel-block">
 								<Layer
 									{map}
 									{layer}
 									{spriteLoader}
 									{relativeLayers}
+									bind:enableLayerOrder
+									bind:disableVisibleButton
 									on:visibilityChanged={layerVisibilityChanged}
+									on:layerOrderChanged={layerOrderChanged}
 								/>
 							</li>
-						{/if}
+						</div>
 					{/if}
-				{:else if onlyRelative === true}
-					{#if relativeLayers[layer.id]}
-						<li class="legend-panel-block">
-							<Layer
-								{map}
-								{layer}
-								{spriteLoader}
-								{relativeLayers}
-								on:visibilityChanged={layerVisibilityChanged}
-							/>
-						</li>
-					{/if}
-				{:else}
-					<li class="legend-panel-block">
-						<Layer
-							{map}
-							{layer}
-							{spriteLoader}
-							{relativeLayers}
-							on:visibilityChanged={layerVisibilityChanged}
-						/>
-					</li>
-				{/if}
-			{/each}
+				{/each}
+			{/key}
 		{/key}
 	{/if}
 </ul>
@@ -147,7 +243,19 @@
 		margin-block-end: 0em;
 		margin-inline-start: 0px;
 		margin-inline-end: 0px;
-		padding-inline-start: 1rem;
+		padding-inline-start: 0.5rem;
+
+		.list-item {
+			display: block;
+		}
+
+		.list-item:not(:last-child) {
+			border-bottom: 1px solid #dbdbdb;
+		}
+
+		.list-item.is-active {
+			background-color: rgb(197, 197, 197);
+		}
 
 		.legend-panel-block {
 			display: flex;

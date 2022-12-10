@@ -1,5 +1,11 @@
 # @watergis/svelte-collapsible-panel
 
+## 0.0.9
+
+### Patch Changes
+
+- 0a32d84: updated dependencies
+
 ## 0.0.8
 
 ### Patch Changes

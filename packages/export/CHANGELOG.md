@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.16
+
+### Patch Changes
+
+- 0a32d84: updated dependencies
+
 ## 0.1.15
 
 ### Patch Changes

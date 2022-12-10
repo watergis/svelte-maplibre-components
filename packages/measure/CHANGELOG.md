@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-measure
 
+## 0.1.13
+
+### Patch Changes
+
+- 0a32d84: updated dependencies
+
 ## 0.1.12
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-style-switcher
 
+## 0.1.9
+
+### Patch Changes
+
+- 0a32d84: updated dependencies
+
 ## 0.1.8
 
 ### Patch Changes

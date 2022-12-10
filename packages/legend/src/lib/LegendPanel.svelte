@@ -12,6 +12,7 @@
 	export let disableVisibleButton = false;
 	let spriteLoader: SpriteLoader | undefined;
 	let hovering: boolean | number | undefined = false;
+	$: isShowLastDropArea = hovering === getLastVisibleIndex();
 
 	$: allLayers = style ? style.layers : [];
 	let visibleLayerMap: { [key: string]: LayerSpecification } = {};
@@ -90,12 +91,12 @@
 		handleStyleChanged(false);
 	};
 
-	const drop = (event: any, target: number, layer: LayerSpecification) => {
+	const drop = (event: any, target: number, layer?: LayerSpecification) => {
 		event.dataTransfer.dropEffect = 'move';
 		const start = parseInt(event.dataTransfer.getData('text/plain'));
 		const newTracklist = allLayers;
 
-		if (start < target) {
+		if (start <= target) {
 			newTracklist.splice(target + 1, 0, newTracklist[start]);
 			newTracklist.splice(start, 1);
 		} else {
@@ -106,7 +107,12 @@
 		hovering = undefined;
 
 		const targetLayer = allLayers[target];
-		map.moveLayer(targetLayer.id, layer.id);
+		if (layer?.id) {
+			map.moveLayer(targetLayer.id, layer.id);
+		} else {
+			const startLayer = map.getStyle().layers[start];
+			map.moveLayer(startLayer.id);
+		}
 		layerOrderChanged();
 	};
 
@@ -120,6 +126,30 @@
 	const dragover = (event: any) => {
 		event.preventDefault();
 		event.dataTransfer.dropEffect = 'move';
+	};
+
+	const getLastVisibleIndex = () => {
+		let lastIndex = 0;
+		allLayers?.forEach((layer, index) => {
+			if (onlyRendered === true) {
+				if (visibleLayerMap[layer.id]) {
+					if (onlyRelative === true) {
+						if (relativeLayers[layer.id]) {
+							lastIndex = index;
+						}
+					} else {
+						lastIndex = index;
+					}
+				}
+			} else if (onlyRelative === true) {
+				if (relativeLayers[layer.id]) {
+					lastIndex = index;
+				}
+			} else {
+				lastIndex = index;
+			}
+		});
+		return lastIndex + 1;
 	};
 </script>
 
@@ -230,6 +260,21 @@
 						</div>
 					{/if}
 				{/each}
+				{#if enableLayerOrder}
+					<div
+						class="list-item"
+						style="height: 40px;"
+						draggable={false}
+						on:drop|preventDefault={(event) => drop(event, getLastVisibleIndex())}
+						on:dragover={(event) => dragover(event)}
+						on:dragenter={() => (hovering = getLastVisibleIndex())}
+						class:is-active={hovering === getLastVisibleIndex()}
+					>
+						{#if isShowLastDropArea}
+							<div class="last-drop-area">Drag to the last</div>
+						{/if}
+					</div>
+				{/if}
 			{/key}
 		{/key}
 	{/if}
@@ -250,11 +295,21 @@
 		}
 
 		.list-item:not(:last-child) {
-			border-bottom: 1px solid #dbdbdb;
+			border-bottom: 0.5px solid rgb(197, 197, 197);
 		}
 
 		.list-item.is-active {
+			border-top: 3px solid rgb(111, 111, 111);
 			background-color: rgb(197, 197, 197);
+		}
+
+		.last-drop-area {
+			font-weight: bold;
+			background-color: #f5f5f5;
+			text-align: center;
+			padding-top: 30px;
+			padding-bottom: 30px;
+			width: 100%;
 		}
 
 		.legend-panel-block {

@@ -1,1 +1,1 @@
-import{_ as r}from"./_page-bf2b9fa2.js";import{default as t}from"../components/pages/components/center-icon/_page.md-15af974d.js";export{t as component,r as shared};
+import{_ as r}from"./_page-7e4796dc.js";import{default as t}from"../components/pages/components/center-icon/_page.md-15af974d.js";export{t as component,r as shared};

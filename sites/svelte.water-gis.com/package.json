@@ -42,7 +42,7 @@
 		"@watergis/svelte-collapsible-panel": "workspace:^0.0.9",
 		"@watergis/svelte-maplibre-attribute-popup": "workspace:^0.0.12",
 		"@watergis/svelte-maplibre-export": "workspace:^0.1.16",
-		"@watergis/svelte-maplibre-legend": "workspace:^0.1.9",
+		"@watergis/svelte-maplibre-legend": "workspace:^0.1.10",
 		"@watergis/svelte-maplibre-measure": "workspace:^0.1.13",
 		"@watergis/svelte-maplibre-menu": "workspace:^0.1.12",
 		"@watergis/svelte-maplibre-search": "workspace:^0.1.5",

@@ -11,6 +11,7 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import Legend from './Legend.svelte';
 	import type SpriteLoader from './sprite';
+	import { isMobile } from 'detect-touch-device';
 
 	const dispatch = createEventDispatcher();
 
@@ -99,9 +100,11 @@
 
 <div
 	class="layer-container"
-	style="cursor:{enableLayerOrder ? 'grab' : 'default'};{enableLayerOrder ? 'width:100%' : ''}"
+	style="cursor:{enableLayerOrder && !isMobile ? 'grab' : 'default'};{enableLayerOrder
+		? 'width:100%'
+		: ''}"
 >
-	{#if enableLayerOrder}
+	{#if enableLayerOrder && !isMobile}
 		<span class="draggable-icon has-tooltip-right" data-tooltip="Drag to change order">
 			<Fa icon={faGripVertical} />
 		</span>

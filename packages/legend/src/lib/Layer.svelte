@@ -11,6 +11,7 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import Legend from './Legend.svelte';
 	import type SpriteLoader from './sprite';
+	import { get } from 'svelte/store';
 
 	const dispatch = createEventDispatcher();
 
@@ -44,6 +45,10 @@
 		const layers = map?.getStyle()?.layers;
 		const index = layers?.findIndex((l) => l.id === layer.id);
 		return index;
+	};
+
+	const getTotalCount = () => {
+		return map?.getStyle()?.layers.length;
 	};
 
 	const checkIsFirstLayer = () => {
@@ -101,6 +106,9 @@
 		<span class="draggable-icon has-tooltip-right" data-tooltip="Drag to change order">
 			<Fa icon={faGripVertical} />
 		</span>
+		<div class="layer-position">
+			{getLayerIndex() + 1}/{getTotalCount()}
+		</div>
 	{/if}
 	{#if !disableVisibleButton}
 		{#if !enableLayerOrder}
@@ -170,7 +178,17 @@
 		.draggable-icon {
 			margin-left: 0.2rem;
 			margin-right: 0.5rem;
-			cursor: grab;
+		}
+
+		.layer-position {
+			font-size: 9px;
+			font-weight: 600;
+			margin-right: 0.3rem;
+			background-color: lightgreen;
+			padding-top: 0.2rem;
+			padding-left: 0.3rem;
+			padding-right: 0.3rem;
+			height: 20px;
 		}
 
 		.visible-button {
@@ -180,6 +198,7 @@
 
 		.legend {
 			padding-right: 0.5rem;
+			padding-top: 0.3rem;
 			vertical-align: middle;
 		}
 

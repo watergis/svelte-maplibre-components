@@ -207,7 +207,7 @@ importers:
       '@typescript-eslint/parser': ^5.46.0
       '@watergis/legend-symbol': ^0.2.3
       '@watergis/svelte-maplibre-menu': workspace:^0.1.12
-      dragdroptouch-bug-fixed: ^1.0.8
+      detect-touch-device: ^1.1.6
       eslint: ^8.29.0
       eslint-config-prettier: ^8.5.0
       eslint-plugin-svelte3: ^4.0.0
@@ -225,7 +225,7 @@ importers:
     dependencies:
       '@fortawesome/free-solid-svg-icons': 6.2.1
       '@watergis/legend-symbol': 0.2.3
-      dragdroptouch-bug-fixed: 1.0.8
+      detect-touch-device: 1.1.6
       maplibre-gl: 2.4.0
       svelte-fa: 3.0.3
     devDependencies:
@@ -2004,6 +2004,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /detect-touch-device/1.1.6:
+    resolution: {integrity: sha512-9DYLJE05EFGI9f8m/GyJtWjw7aMZMBQM2QVy6bb7zX8uC3iorOE3Erdrk3TWCj5FVOlHTfinU0bATTE9GWYebw==}
+    dev: false
+
   /devalue/4.2.0:
     resolution: {integrity: sha512-mbjoAaCL2qogBKgeFxFPOXAUsZchircF+B/79LD4sHH0+NHfYm8gZpQrskKDn5gENGt35+5OI1GUF7hLVnkPDw==}
     dev: true
@@ -2027,10 +2031,6 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
-
-  /dragdroptouch-bug-fixed/1.0.8:
-    resolution: {integrity: sha512-moNgBeWMeUk4zhV3B+a4TZUPmHVJz+cvjWEXENLEU3toVnm3lpS+ZkSwVbBxArDUQ8HSm1qA0UmKWWy1y7nvng==}
-    dev: false
 
   /earcut/2.2.4:
     resolution: {integrity: sha512-/pjZsA1b4RPHbeWZQn66SWS8nZZWLQQ23oE3Eam7aroEFGEvwKAsJfZ9ytiEMycfzXWpca4FA9QIOehf7PocBQ==}

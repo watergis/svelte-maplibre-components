@@ -1,8 +1,4 @@
 <script lang="ts">
-	// to enable drag and drop in mobile
-	// https://github.com/rozek/svelte-drag-drop-touch
-	import DragDropTouch from 'dragdroptouch-bug-fixed';
-
 	import type { StyleSpecification, LayerSpecification, Map } from 'maplibre-gl';
 	import Layer from './Layer.svelte';
 	import SpriteLoader from './sprite';
@@ -96,11 +92,6 @@
 	};
 
 	const drop = (event: any, target: number, layer?: LayerSpecification) => {
-		if (!enableLayerOrder) {
-			event.preventDefault();
-			return;
-		}
-
 		event.dataTransfer.dropEffect = 'move';
 		const start = parseInt(event.dataTransfer.getData('text/plain'));
 		const newTracklist = allLayers;
@@ -126,10 +117,6 @@
 	};
 
 	const dragstart = (event: any, i: number) => {
-		if (!enableLayerOrder) {
-			event.preventDefault();
-			return;
-		}
 		event.dataTransfer.effectAllowed = 'move';
 		event.dataTransfer.dropEffect = 'move';
 		const start = i;
@@ -137,10 +124,6 @@
 	};
 
 	const dragover = (event: any) => {
-		if (!enableLayerOrder) {
-			event.preventDefault();
-			return;
-		}
 		event.preventDefault();
 		event.dataTransfer.dropEffect = 'move';
 	};
@@ -185,14 +168,10 @@
 										on:dragstart={(event) => dragstart(event, index)}
 										on:drop|preventDefault={(event) => drop(event, index, layer)}
 										on:dragover={(event) => dragover(event)}
-										on:dragenter={(event) => {
-											if (!enableLayerOrder) {
-												event.preventDefault();
-												return;
-											}
+										on:dragenter={() => {
 											hovering = index;
 										}}
-										class:is-active={enableLayerOrder ? hovering === index : false}
+										class:is-active={hovering === index}
 									>
 										<li class="legend-panel-block">
 											<Layer
@@ -215,14 +194,10 @@
 									on:dragstart={(event) => dragstart(event, index)}
 									on:drop|preventDefault={(event) => drop(event, index, layer)}
 									on:dragover={(event) => dragover(event)}
-									on:dragenter={(event) => {
-										if (!enableLayerOrder) {
-											event.preventDefault();
-											return;
-										}
+									on:dragenter={() => {
 										hovering = index;
 									}}
-									class:is-active={enableLayerOrder ? hovering === index : false}
+									class:is-active={hovering === index}
 								>
 									<li class="legend-panel-block">
 										<Layer
@@ -247,14 +222,10 @@
 								on:dragstart={(event) => dragstart(event, index)}
 								on:drop|preventDefault={(event) => drop(event, index, layer)}
 								on:dragover={(event) => dragover(event)}
-								on:dragenter={(event) => {
-									if (!enableLayerOrder) {
-										event.preventDefault();
-										return;
-									}
+								on:dragenter={() => {
 									hovering = index;
 								}}
-								class:is-active={enableLayerOrder ? hovering === index : false}
+								class:is-active={hovering === index}
 							>
 								<li class="legend-panel-block">
 									<Layer
@@ -277,14 +248,10 @@
 							on:dragstart={(event) => dragstart(event, index)}
 							on:drop|preventDefault={(event) => drop(event, index, layer)}
 							on:dragover={(event) => dragover(event)}
-							on:dragenter={(event) => {
-								if (!enableLayerOrder) {
-									event.preventDefault();
-									return;
-								}
+							on:dragenter={() => {
 								hovering = index;
 							}}
-							class:is-active={enableLayerOrder ? hovering === index : false}
+							class:is-active={hovering === index}
 						>
 							<li class="legend-panel-block">
 								<Layer
@@ -308,14 +275,10 @@
 						draggable={false}
 						on:drop|preventDefault={(event) => drop(event, getLastVisibleIndex())}
 						on:dragover={(event) => dragover(event)}
-						on:dragenter={(event) => {
-							if (!enableLayerOrder) {
-								event.preventDefault();
-								return;
-							}
+						on:dragenter={() => {
 							hovering = getLastVisibleIndex();
 						}}
-						class:is-active={enableLayerOrder ? hovering === getLastVisibleIndex() : false}
+						class:is-active={hovering === getLastVisibleIndex()}
 					>
 						{#if isShowLastDropArea}
 							<div class="last-drop-area">Drag to the last</div>

@@ -1,4 +1,8 @@
 <script lang="ts">
+	// to enable drag and drop in mobile
+	// https://github.com/rozek/svelte-drag-drop-touch
+	import DragDropTouch from 'dragdroptouch-bug-fixed';
+
 	import type { StyleSpecification, LayerSpecification, Map } from 'maplibre-gl';
 	import Layer from './Layer.svelte';
 	import SpriteLoader from './sprite';
@@ -165,12 +169,6 @@
 		return lastIndex + 1;
 	};
 </script>
-
-<svelte:head>
-	<!-- to enable drag and drop in mobile -->
-	<!-- https://github.com/rozek/svelte-drag-drop-touch -->
-	<script src="https://unpkg.com/svelte-drag-drop-touch"></script>
-</svelte:head>
 
 <ul class="legend-panel">
 	{#if spriteLoader}

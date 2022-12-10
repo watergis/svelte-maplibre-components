@@ -57,6 +57,7 @@
 	"dependencies": {
 		"@fortawesome/free-solid-svg-icons": "^6.2.1",
 		"@watergis/legend-symbol": "^0.2.3",
+		"dragdroptouch-bug-fixed": "^1.0.8",
 		"maplibre-gl": "^2.4.0",
 		"svelte-fa": "^3.0.3"
 	}

@@ -534,7 +534,7 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.46.0
       '@typescript-eslint/parser': ^5.46.0
       '@watergis/maplibre-center-icon': workspace:^0.1.4
-      '@watergis/svelte-collapsible-panel': workspace:^0.0.9
+      '@watergis/svelte-collapsible-panel': workspace:^0.0.10
       '@watergis/svelte-maplibre-attribute-popup': workspace:^0.0.12
       '@watergis/svelte-maplibre-export': workspace:^0.1.16
       '@watergis/svelte-maplibre-legend': workspace:^0.1.10

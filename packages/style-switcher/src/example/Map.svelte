@@ -3,6 +3,7 @@
 	import { Map } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import { StyleSwitcher, StyleUrl, type StyleSwitcherOption } from '$lib';
+	import StyleSwitcherControl from '$lib/StyleSwitcherControl.svelte';
 
 	let isMenuShown = true;
 	let mapContainer: HTMLDivElement;
@@ -44,16 +45,22 @@
 </script>
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
-	<div slot="primary">
+	<div slot="primary" class="contents">
 		<StyleSwitcher bind:map bind:styles bind:selectedStyle />
 	</div>
 	<div slot="secondary">
-		<div class="map" bind:this={mapContainer} />
+		<div class="map" bind:this={mapContainer}>
+			<StyleSwitcherControl bind:map bind:styles bind:selectedStyle position="top-left" />
+		</div>
 	</div>
 </MenuControl>
 
 <style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';
+
+	.contents {
+		margin: 0.5rem;
+	}
 
 	.map {
 		position: absolute;

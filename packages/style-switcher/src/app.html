@@ -6,6 +6,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%sveltekit.head%
 	</head>
+	<style type="text/css">
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			min-height: 100vh;
+			/* mobile viewport bug fix */
+			min-height: -webkit-fill-available;
+		}
+
+		html {
+			overflow-y: hidden !important;
+			height: -webkit-fill-available;
+		}
+	</style>
 	<body>
 		<div>%sveltekit.body%</div>
 	</body>

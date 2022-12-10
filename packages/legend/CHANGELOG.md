@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.10
+
+### Patch Changes
+
+- 8e1c2ee: enable drag and drop to change layer ordering in legend control
+
 ## 0.1.9
 
 ### Patch Changes

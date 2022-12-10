@@ -49,6 +49,7 @@ pnpm i @watergis/svelte-maplibre-legend
 
   let onlyRendered = true;
   let onlyRelative = true;
+  let enableLayerOrder = false;
   let relativeLayers: { [key: string]: string } = {
     pipeline: 'Pipeline',
     pipeline_annotation: 'Pipeline Label',
@@ -93,10 +94,10 @@ pnpm i @watergis/svelte-maplibre-legend
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
   <div slot="primary" class="primary-container">
     <div class="legend-header">
-      <LegendHeader bind:onlyRendered bind:onlyRelative />
+      <LegendHeader bind:onlyRendered bind:onlyRelative bind:enableLayerOrder isLayerOrderShown={true} />
     </div>
-    <div class="legend-content">
-      <LegendPanel bind:map {style} bind:onlyRendered bind:onlyRelative {relativeLayers} />
+    <div class="legend-content" style="height:{menuHeight - 56}px">
+      <LegendPanel bind:map {style} bind:onlyRendered bind:onlyRelative {relativeLayers} bind:enableLayerOrder disableVisibleButton={false} />
     </div>
   </div>
   <div slot="secondary">

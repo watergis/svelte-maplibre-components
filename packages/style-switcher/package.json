@@ -1,6 +1,6 @@
 {
 	"name": "@watergis/svelte-maplibre-style-switcher",
-	"version": "0.1.8",
+	"version": "0.1.9",
 	"description": "This is a svelte component to add style stich component to maplibre.",
 	"main": "package/index.js",
 	"files": [
@@ -36,7 +36,7 @@
 		"@sveltejs/package": "next",
 		"@typescript-eslint/eslint-plugin": "^5.46.0",
 		"@typescript-eslint/parser": "^5.46.0",
-		"@watergis/svelte-maplibre-menu": "workspace:^0.1.11",
+		"@watergis/svelte-maplibre-menu": "workspace:^0.1.12",
 		"eslint": "^8.29.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",

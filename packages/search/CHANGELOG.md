@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-search
 
+## 0.1.5
+
+### Patch Changes
+
+- 0a32d84: updated dependencies
+
 ## 0.1.4
 
 ### Patch Changes

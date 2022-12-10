@@ -1,5 +1,11 @@
 # @watergis/maplibre-center-icon
 
+## 0.1.4
+
+### Patch Changes
+
+- 0a32d84: updated dependencies
+
 ## 0.1.3
 
 ### Patch Changes

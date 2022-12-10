@@ -1,6 +1,6 @@
 {
 	"name": "@watergis/svelte-maplibre-measure",
-	"version": "0.1.12",
+	"version": "0.1.13",
 	"description": "This is a svelte component to add measure control plugin to maplibre.",
 	"main": "package/index.js",
 	"files": [
@@ -39,7 +39,7 @@
 		"@sveltejs/package": "next",
 		"@typescript-eslint/eslint-plugin": "^5.46.0",
 		"@typescript-eslint/parser": "^5.46.0",
-		"@watergis/svelte-maplibre-menu": "workspace:^0.1.11",
+		"@watergis/svelte-maplibre-menu": "workspace:^0.1.12",
 		"esbuild": "^0.16.4",
 		"eslint": "^8.29.0",
 		"eslint-config-prettier": "^8.5.0",

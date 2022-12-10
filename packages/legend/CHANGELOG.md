@@ -1,5 +1,13 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.9
+
+### Patch Changes
+
+- 0a32d84: updated dependencies
+- e0e2eb8: fixed bug of layer order. Improved GUI
+- 77c9bc0: added the feature changing layer ordering by drag and drop in legend plugin
+
 ## 0.1.8
 
 ### Patch Changes

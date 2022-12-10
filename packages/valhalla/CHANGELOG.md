@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-valhalla
 
+## 0.0.10
+
+### Patch Changes
+
+- 0a32d84: updated dependencies
+
 ## 0.0.9
 
 ### Patch Changes

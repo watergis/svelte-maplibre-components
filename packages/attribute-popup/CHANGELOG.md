@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-attribute-popup
 
+## 0.0.12
+
+### Patch Changes
+
+- 0a32d84: updated dependencies
+
 ## 0.0.11
 
 ### Patch Changes

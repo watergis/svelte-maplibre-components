@@ -1,5 +1,12 @@
 # svelte.water-gis.com
 
+## 0.0.4
+
+### Patch Changes
+
+- Updated dependencies [12876b2]
+  - @watergis/svelte-collapsible-panel@0.0.10
+
 ## 0.0.3
 
 ### Patch Changes

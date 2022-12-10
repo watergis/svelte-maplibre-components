@@ -1,5 +1,11 @@
 # @watergis/svelte-collapsible-panel
 
+## 0.0.10
+
+### Patch Changes
+
+- 12876b2: Use hidden property instead of using if statement in collapsible panel
+
 ## 0.0.9
 
 ### Patch Changes

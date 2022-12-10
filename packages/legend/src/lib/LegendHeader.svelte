@@ -21,8 +21,7 @@
 	<label
 		class="tab_item"
 		for="rendered"
-		style="width:calc((100% - {layerOrderTabWidth}px - 10px)/2)"
-		>{onlyRendered ? 'Hide' : 'Shoe'} rendered</label
+		style="width:calc((100% - {layerOrderTabWidth}px - 10px)/2)">Show rendered</label
 	>
 	<input
 		id="relative"
@@ -34,8 +33,7 @@
 	<label
 		class="tab_item"
 		for="relative"
-		style="width:calc((100% - {layerOrderTabWidth}px - 10px)/2)"
-		>{onlyRelative ? 'Hide' : 'Shoe'} related</label
+		style="width:calc((100% - {layerOrderTabWidth}px - 10px)/2)">Show related</label
 	>
 	{#if isLayerOrderShown}
 		<div

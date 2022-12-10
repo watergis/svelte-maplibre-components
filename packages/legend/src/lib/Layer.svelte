@@ -11,7 +11,6 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import Legend from './Legend.svelte';
 	import type SpriteLoader from './sprite';
-	import { get } from 'svelte/store';
 
 	const dispatch = createEventDispatcher();
 
@@ -106,9 +105,6 @@
 		<span class="draggable-icon has-tooltip-right" data-tooltip="Drag to change order">
 			<Fa icon={faGripVertical} />
 		</span>
-		<div class="layer-position">
-			{getLayerIndex() + 1}/{getTotalCount()}
-		</div>
 	{/if}
 	{#if !disableVisibleButton}
 		{#if !enableLayerOrder}
@@ -135,6 +131,9 @@
 		{relativeLayers && relativeLayers[layer.id] ? relativeLayers[layer.id] : layer.id}
 	</div>
 	{#if enableLayerOrder}
+		<div class="layer-position">
+			{getLayerIndex() + 1}/{getTotalCount()}
+		</div>
 		<div class="layer-order">
 			{#if !isFirstLater}
 				<span
@@ -180,17 +179,6 @@
 			margin-right: 0.5rem;
 		}
 
-		.layer-position {
-			font-size: 9px;
-			font-weight: 600;
-			margin-right: 0.3rem;
-			background-color: lightgreen;
-			padding-top: 0.2rem;
-			padding-left: 0.3rem;
-			padding-right: 0.3rem;
-			height: 20px;
-		}
-
 		.visible-button {
 			padding-right: 0.5rem;
 			cursor: pointer;
@@ -210,10 +198,20 @@
 			width: 100%;
 		}
 
+		.layer-position {
+			font-size: 9px;
+			font-weight: 600;
+			margin-right: 0.3rem;
+			background-color: lightgreen;
+			padding-top: 0.2rem;
+			padding-left: 0.3rem;
+			padding-right: 0.3rem;
+			height: 20px;
+		}
+
 		.layer-order {
 			display: flex;
 			flex-direction: column;
-			margin-left: auto;
 			text-align: right;
 			margin-bottom: 10px;
 			padding-right: 0.5rem;

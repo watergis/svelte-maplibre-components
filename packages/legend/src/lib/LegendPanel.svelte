@@ -153,6 +153,12 @@
 	};
 </script>
 
+<sveltekit:head>
+	<!-- to enable drag and drop in mobile -->
+	<!-- https://github.com/rozek/svelte-drag-drop-touch -->
+	<script src="https://unpkg.com/svelte-drag-drop-touch"></script>
+</sveltekit:head>
+
 <ul class="legend-panel">
 	{#if spriteLoader}
 		{#key style}

@@ -93,32 +93,37 @@
 	};
 </script>
 
-<div class="layer-container" style={enableLayerOrder ? 'width:100%' : ''}>
+<div
+	class="layer-container"
+	style="cursor:{enableLayerOrder ? 'grab' : 'default'};{enableLayerOrder ? 'width:100%' : ''}"
+>
 	{#if enableLayerOrder}
 		<span class="draggable-icon has-tooltip-right" data-tooltip="Drag to change order">
 			<Fa icon={faGripVertical} />
 		</span>
 	{/if}
 	{#if !disableVisibleButton}
-		<span
-			tabindex="0"
-			role="button"
-			class="visible-button has-tooltip-right"
-			data-tooltip="{checked ? 'Hide' : 'Show'} layer"
-			on:click={() => (checked = !checked)}
-			on:keydown={handleKeydownVisibility}
-		>
-			{#if checked}
-				<Fa icon={faEye} />
-			{:else}
-				<Fa icon={faEyeSlash} />
-			{/if}
-		</span>
+		{#if !enableLayerOrder}
+			<span
+				tabindex="0"
+				role="button"
+				class="visible-button has-tooltip-right"
+				data-tooltip="{checked ? 'Hide' : 'Show'} layer"
+				on:click={() => (checked = !checked)}
+				on:keydown={handleKeydownVisibility}
+			>
+				{#if checked}
+					<Fa icon={faEye} />
+				{:else}
+					<Fa icon={faEyeSlash} />
+				{/if}
+			</span>
+		{/if}
 	{/if}
-	<div class="legend" style="cursor:{enableLayerOrder ? 'grab' : 'default'}">
+	<div class="legend">
 		<Legend {map} {layer} {spriteLoader} />
 	</div>
-	<div class="layer-name" style="cursor:{enableLayerOrder ? 'grab' : 'default'}">
+	<div class="layer-name">
 		{relativeLayers && relativeLayers[layer.id] ? relativeLayers[layer.id] : layer.id}
 	</div>
 	{#if enableLayerOrder}

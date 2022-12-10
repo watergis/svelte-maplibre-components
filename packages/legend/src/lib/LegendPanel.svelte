@@ -106,7 +106,11 @@
 		hovering = undefined;
 
 		const targetLayer = allLayers[target];
-		map.moveLayer(targetLayer.id, layer.id);
+		if (start < target) {
+			map.moveLayer(layer.id, targetLayer.id);
+		} else {
+			map.moveLayer(targetLayer.id, layer.id);
+		}
 		layerOrderChanged();
 	};
 
@@ -250,10 +254,11 @@
 		}
 
 		.list-item:not(:last-child) {
-			border-bottom: 1px solid #dbdbdb;
+			border-bottom: 0.5px solid rgb(197, 197, 197);
 		}
 
 		.list-item.is-active {
+			border-bottom: 3px solid rgb(111, 111, 111);
 			background-color: rgb(197, 197, 197);
 		}
 

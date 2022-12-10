@@ -27,11 +27,9 @@
 		</span>
 		{title}
 	</p>
-	{#if isPanelOpen}
-		<div class="container m-2">
-			<slot />
-		</div>
-	{/if}
+	<div class="container m-2" hidden={!isPanelOpen}>
+		<slot />
+	</div>
 </nav>
 
 <style lang="scss">

@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.11
+
+### Patch Changes
+
+- f710381: there is an issue of touchevent in mobile. Disabled drag n' drop feature of layer ordering in mobile. only support drag n' drop in Desktop PC.
+
 ## 0.1.10
 
 ### Patch Changes

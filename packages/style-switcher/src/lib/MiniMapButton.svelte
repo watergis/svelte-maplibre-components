@@ -6,6 +6,7 @@
 	export let style: StyleSwitcherOption;
 	export let position: Position;
 	export let isActive = false;
+	export let show = false;
 
 	$: tooltipPosition = ['top-right', 'top-left'].includes(position)
 		? 'has-tooltip-bottom'
@@ -49,7 +50,7 @@
 	};
 </script>
 
-<div class="button-container">
+<div class="button-container" style="position: {show ? 'relative' : 'absolute'}">
 	<div
 		role="button"
 		bind:this={mapContainer}
@@ -66,13 +67,12 @@
 	@use '@creativebulma/bulma-tooltip/dist/bulma-tooltip.min.css';
 
 	.button-container {
-		display: flex;
-		flex-direction: column;
 		box-sizing: border-box;
 		width: 60px;
-		height: 63px;
+		height: 60px;
 		margin: 0.2rem;
 		background-color: rgba(255, 255, 255, 1);
+		z-index: 0;
 
 		.map-button {
 			cursor: pointer;

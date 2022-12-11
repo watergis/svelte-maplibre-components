@@ -45,6 +45,7 @@
 >
 	<div
 		role="button"
+		class="main-button"
 		on:click={handleMainButtonClick}
 		on:keydown={handleKeydown}
 		on:mouseenter={() => (isOptionsShown = true)}
@@ -52,22 +53,30 @@
 		<MiniMapButton bind:style={selectedStyle} bind:position isActive={true} />
 	</div>
 
-	{#if isOptionsShown}
-		<div class="options">
-			{#each styles as style}
-				{#if selectedStyle.title !== style.title}
-					<MiniMapButton bind:style bind:position on:change={handleStyleChanged} />
-				{/if}
-			{/each}
-		</div>
-	{/if}
+	<div class="options" style="margin-left: {isOptionsShown ? '70px' : '0'}">
+		{#each styles as style}
+			{#if selectedStyle.title !== style.title}
+				<MiniMapButton
+					bind:style
+					bind:position
+					bind:show={isOptionsShown}
+					on:change={handleStyleChanged}
+				/>
+			{/if}
+		{/each}
+	</div>
 </div>
 
 <style lang="scss">
 	.button-container {
 		display: flex;
 
+		.main-button {
+			z-index: 1;
+		}
+
 		.options {
+			position: relative;
 			display: flex;
 		}
 	}

@@ -18,7 +18,7 @@
 
 	const handleMainButtonClick = debounce(() => {
 		isOptionsShown = !isOptionsShown;
-	}, 100);
+	}, 300);
 
 	const handleStyleChanged = (e: { detail: { style: StyleSwitcherOption } }) => {
 		const next = e.detail.style;

@@ -1,1 +1,1 @@
-import{_ as r}from"./_page-f58a9c48.js";import{default as t}from"../components/pages/components/attribute-popup/_page.md-b3fc6adb.js";export{t as component,r as shared};
+import{_ as r}from"./_page-2ee1ec03.js";import{default as t}from"../components/pages/components/attribute-popup/_page.md-b3fc6adb.js";export{t as component,r as shared};

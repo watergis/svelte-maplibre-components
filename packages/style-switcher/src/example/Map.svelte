@@ -50,7 +50,7 @@
 	</div>
 	<div slot="secondary">
 		<div class="map" bind:this={mapContainer}>
-			<StyleSwitcherControl bind:map bind:styles bind:selectedStyle position="top-left" />
+			<StyleSwitcherControl bind:map bind:styles bind:selectedStyle position="bottom-left" />
 		</div>
 	</div>
 </MenuControl>

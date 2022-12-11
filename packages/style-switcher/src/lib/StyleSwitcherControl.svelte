@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { Map } from 'maplibre-gl';
 	import type { Position, StyleSwitcherOption } from './types';
-	import MapButton from './MapButton.svelte';
+	import MapButtons from './MapButtons.svelte';
 	import { StyleUrl } from '$lib/style-url';
 
 	export let styles: StyleSwitcherOption[];
@@ -64,5 +64,11 @@
 </script>
 
 <div bind:this={styleSwitcherDiv}>
-	<MapButton bind:map bind:styles bind:selectedStyle bind:position on:change={handleStyleChanged} />
+	<MapButtons
+		bind:map
+		bind:styles
+		bind:selectedStyle
+		bind:position
+		on:change={handleStyleChanged}
+	/>
 </div>

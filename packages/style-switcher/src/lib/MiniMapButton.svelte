@@ -50,38 +50,39 @@
 	};
 </script>
 
-<div class="button-container" style="position: {show ? 'relative' : 'absolute'}">
-	<div
-		role="button"
-		bind:this={mapContainer}
-		class="map-button has-tooltip-text-centered {tooltipPosition}"
-		style="border: {isActive ? '3px solid rgb(255, 119, 0)' : '1px solid gray'}"
-		data-tooltip={style.title}
-		tabindex="0"
-		on:click={handleClick}
-		on:keydown={handleKeydown}
-	/>
-</div>
+<div
+	role="button"
+	bind:this={mapContainer}
+	class="map-button has-tooltip-text-centered {tooltipPosition}"
+	style="border: {isActive ? '3px solid rgb(255, 119, 0)' : '1px solid gray'};position: {show
+		? 'relative'
+		: 'absolute'}"
+	data-tooltip={style.title}
+	tabindex="0"
+	on:click={handleClick}
+	on:keydown={handleKeydown}
+/>
 
 <style lang="scss">
 	@use '@creativebulma/bulma-tooltip/dist/bulma-tooltip.min.css';
 
-	.button-container {
+	.map-button {
 		box-sizing: border-box;
+		cursor: pointer;
 		width: 60px;
 		height: 60px;
-		margin: 0.2rem;
-		background-color: rgba(255, 255, 255, 1);
+		margin: 0.1rem;
 		z-index: 0;
 
-		.map-button {
-			cursor: pointer;
-			width: 100%;
-			height: 100%;
-			border-style: solid;
-			border-color: gray;
-			border-width: 2px;
-			background: white;
+		background: white;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+
+		:global(.maplibregl-canvas) {
+			border-radius: 8px;
+			-moz-border-radius: 8px;
+			-webkit-border-radius: 8px;
 		}
 	}
 </style>

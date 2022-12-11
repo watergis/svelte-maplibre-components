@@ -4,6 +4,7 @@
 	import type { Map } from 'maplibre-gl';
 	import type { Position, StyleSwitcherOption } from './types';
 	import MiniMapButton from './MiniMapButton.svelte';
+	import { debounce } from 'debounce';
 
 	export let styles: StyleSwitcherOption[];
 	export let map: Map;
@@ -15,9 +16,9 @@
 	let mainContainer: HTMLDivElement;
 	let isOptionsShown = false;
 
-	const handleMainButtonClick = () => {
+	const handleMainButtonClick = debounce(() => {
 		isOptionsShown = !isOptionsShown;
-	};
+	}, 100);
 
 	const handleStyleChanged = (e: { detail: { style: StyleSwitcherOption } }) => {
 		const next = e.detail.style;
@@ -25,6 +26,7 @@
 		map.setStyle(next.uri);
 		map.on('styledata', () => {
 			selectedStyle = next;
+			isOptionsShown = false;
 			dispatch('change', {
 				style: next
 			});
@@ -48,12 +50,12 @@
 		class="main-button"
 		on:click={handleMainButtonClick}
 		on:keydown={handleKeydown}
-		on:mouseenter={() => (isOptionsShown = true)}
+		on:mouseenter={handleMainButtonClick}
 	>
 		<MiniMapButton bind:style={selectedStyle} bind:position isActive={true} />
 	</div>
 
-	<div class="options" style="margin-left: {isOptionsShown ? '70px' : '0'}">
+	<div class="options" style="margin-left: {isOptionsShown ? '63px' : '0'}">
 		{#each styles as style}
 			{#if selectedStyle.title !== style.title}
 				<MiniMapButton

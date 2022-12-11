@@ -1,5 +1,12 @@
 # @watergis/svelte-maplibre-style-switcher
 
+## 0.1.11
+
+### Patch Changes
+
+- c4f7e5b: Use deboucne to prevent several click and mouseenter events occurs at once. Also fixed some css for map preview.
+- 56f16c6: put debounce time a bit longer
+
 ## 0.1.10
 
 ### Patch Changes

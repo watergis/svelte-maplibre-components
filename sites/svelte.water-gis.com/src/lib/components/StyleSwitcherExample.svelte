@@ -4,6 +4,7 @@
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import {
 		StyleSwitcher,
+		StyleSwitcherControl,
 		StyleUrl,
 		type StyleSwitcherOption
 	} from '@watergis/svelte-maplibre-style-switcher';
@@ -53,6 +54,7 @@
 	</div>
 	<div slot="secondary">
 		<div class="map" bind:this={mapContainer} />
+		<StyleSwitcherControl bind:map bind:styles bind:selectedStyle position="top-left" />
 	</div>
 </MenuControl>
 

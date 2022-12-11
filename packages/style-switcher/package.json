@@ -31,6 +31,7 @@
 	},
 	"homepage": "https://github.com/watergis/svelte-maplibre-components/tree/main/packages/style-switcher#readme",
 	"devDependencies": {
+		"@creativebulma/bulma-tooltip": "^1.2.0",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"@sveltejs/package": "next",
@@ -42,6 +43,7 @@
 		"eslint-plugin-svelte3": "^4.0.0",
 		"prettier": "^2.8.1",
 		"prettier-plugin-svelte": "^2.9.0",
+		"sass": "^1.56.2",
 		"svelte": "^3.54.0",
 		"svelte-check": "^2.10.2",
 		"svelte-preprocess": "^4.10.7",

@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-style-switcher
 
+## 0.1.10
+
+### Patch Changes
+
+- 6914bee: add maplibre control to switch map style
+
 ## 0.1.9
 
 ### Patch Changes

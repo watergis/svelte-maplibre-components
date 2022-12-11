@@ -3,7 +3,7 @@
 	import { Map } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import { StyleSwitcher, StyleUrl, type StyleSwitcherOption } from '$lib';
-	import StyleSwitcherControl from '$lib/StyleSwitcherControl.svelte';
+	import { StyleSwitcherControl } from '$lib';
 
 	let isMenuShown = true;
 	let mapContainer: HTMLDivElement;

@@ -25,26 +25,30 @@ See [Example](./src/example).
 
 ```svelte
 <script lang="ts">
-import { StyleSwitcher, StyleUrl, type StyleSwitcherOption } from '$lib';
+	import { StyleSwitcher, StyleSwitcherControl, StyleUrl, type StyleSwitcherOption } from '$lib';
 
-let styles: StyleSwitcherOption[] = [
-    {
-        title: 'UNVT Water (OSM)',
-        uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style.json`
-    },
-    {
-        title: 'UNVT Water (Building)',
-        uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style-buildings.json`
-    }
-];
-let selectedStyle: StyleSwitcherOption = styles[0];
+	let styles: StyleSwitcherOption[] = [
+		{
+			title: 'UNVT Water (OSM)',
+			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style.json`
+		},
+		{
+			title: 'UNVT Water (Building)',
+			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style-buildings.json`
+		}
+	];
+	let selectedStyle: StyleSwitcherOption = styles[0];
 
-// to load initial style from URL
-const styleUrlObj = new StyleUrl();
-selectedStyle = styleUrlObj.getInitialStyle(styles);
+	// to load initial style from URL
+	const styleUrlObj = new StyleUrl();
+	selectedStyle = styleUrlObj.getInitialStyle(styles);
 </script>
 
+<!-- control to add select box for map styles -->
 <StyleSwitcher bind:map bind:styles bind:selectedStyle />
+
+<!-- maplibre control to select map styles with a preview -->
+<StyleSwitcherControl bind:map bind:styles bind:selectedStyle position="top-left" />
 ```
 
 ## create-svelte

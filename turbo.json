@@ -1,0 +1,37 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "pipeline": {
+    "svelte.water-gis.com#build": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**"],
+      "outputs": ["build/**"],
+      "outputMode": "new-only"
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**"],
+      "outputs": ["packages/**", ".svelte-kit/**"],
+      "outputMode": "new-only",
+      "env": ["VERCEL", "ENABLE_VC_BUILD"]
+    },
+    "format": {
+      "cache": false,
+      "outputs": [],
+      "outputMode": "new-only"
+    },
+    "lint": {
+      "outputs": [],
+      "outputMode": "new-only"
+    },
+    "precommit": {
+      "dependsOn": ["format", "lint"],
+      "outputs": [],
+      "outputMode": "new-only"
+    },
+    "dev": {
+      "cache": false,
+      "outputMode": "new-only"
+    }
+  },
+  "globalDependencies": [".eslintrc.json", ".prettierrc", "tsconfig.json"]
+}

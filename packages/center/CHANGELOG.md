@@ -1,5 +1,11 @@
 # @watergis/maplibre-center-icon
 
+## 0.1.8
+
+### Patch Changes
+
+- 3cb5f7e: fixed CI to deploy
+
 ## 0.1.7
 
 ### Patch Changes

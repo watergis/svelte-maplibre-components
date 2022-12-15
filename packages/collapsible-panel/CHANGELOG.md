@@ -1,5 +1,11 @@
 # @watergis/svelte-collapsible-panel
 
+## 0.0.14
+
+### Patch Changes
+
+- 3cb5f7e: fixed CI to deploy
+
 ## 0.0.13
 
 ### Patch Changes

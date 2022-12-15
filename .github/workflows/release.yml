@@ -8,11 +8,6 @@ on:
       - completed
 
 env:
-  # To use Turborepo Remote Caching, set the following environment variables for the job.
-  # https://turbo.build/repo/docs/ci/github-actions
-  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-  TURBO_CACHE_KEY: ubuntu-latest-18 # reuse cache key from ci workflow
   CI: true
   PNPM_CACHE_FOLDER: .pnpm-store
 
@@ -40,6 +35,8 @@ jobs:
 
       - name: install dependencies
         run: pnpm install --frozen-lockfile
+      - name: build packages
+        run: pnpm --filter="./packages/*" build
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets

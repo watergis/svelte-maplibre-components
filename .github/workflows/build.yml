@@ -21,8 +21,6 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    env:
-      TURBO_CACHE_KEY: ${{ matrix.os }}-${{ matrix.node-version }}
     steps:
       - name: checkout code repository
         uses: actions/checkout@v2

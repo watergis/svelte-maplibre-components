@@ -10,6 +10,10 @@ on:
   pull_request:
 
 env:
+  # To use Turborepo Remote Caching, set the following environment variables for the job.
+  # https://turbo.build/repo/docs/ci/github-actions
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
   CI: true
   PNPM_CACHE_FOLDER: .pnpm-store
 
@@ -17,6 +21,8 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    env:
+      TURBO_CACHE_KEY: ${{ matrix.os }}-${{ matrix.node-version }}
     steps:
       - name: checkout code repository
         uses: actions/checkout@v2
@@ -26,29 +32,25 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
           cache: pnpm
 
       - name: install dependencies
         run: pnpm install --frozen-lockfile
-      - name: lint packages
-        run: pnpm --filter="./packages/*" lint
-      - name: format packages
-        run: pnpm --filter="./packages/*" format
-      - name: build packages
-        run: pnpm --filter="./packages/*" build
-      - name: build sites
-        run: |
-          pnpm --filter="./sites/svelte.water-gis.com" lint
-          pnpm --filter="./sites/svelte.water-gis.com" format
-          pnpm --filter="./sites/svelte.water-gis.com" build
+      - name: lint packages & sites
+        run: pnpm lint
+      - name: format packages & sites
+        run: pnpm format
+      - name: build packages & sites
+        run: pnpm build
       - name: Deploy 🚀
         if: ${{ github.repository == 'watergis/svelte-maplibre-components' && github.ref == 'refs/heads/main'}}
+        working-directory: ./sites/svelte.water-gis.com
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CNAME: ${{secrets.CNAME}}
         run: |
-          echo "${CNAME}" >> sites/svelte.water-gis.com/build/CNAME
+          echo "${CNAME}" >> build/CNAME
           git config --global user.name "watergis+githubci"
           git config --global user.email "watergis+githubci@users.noreply.github.com"
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/watergis/svelte-maplibre-components.git

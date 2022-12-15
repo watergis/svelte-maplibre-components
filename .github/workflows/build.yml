@@ -45,12 +45,11 @@ jobs:
         run: pnpm build
       - name: Deploy 🚀
         if: ${{ github.repository == 'watergis/svelte-maplibre-components' && github.ref == 'refs/heads/main'}}
-        working-directory: ./sites/svelte.water-gis.com
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CNAME: ${{secrets.CNAME}}
         run: |
-          echo "${CNAME}" >> build/CNAME
+          echo "${CNAME}" >> sites/svelte.water-gis.com/build/CNAME
           git config --global user.name "watergis+githubci"
           git config --global user.email "watergis+githubci@users.noreply.github.com"
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/watergis/svelte-maplibre-components.git

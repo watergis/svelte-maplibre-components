@@ -1,12 +1,6 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
-    "svelte.water-gis.com#build": {
-      "dependsOn": ["^build"],
-      "inputs": ["src/**"],
-      "outputs": ["build/**", ".svelte-kit/**"],
-      "outputMode": "new-only"
-    },
     "build": {
       "dependsOn": ["^build"]
     },

@@ -1,5 +1,22 @@
 # svelte.water-gis.com
 
+## 0.0.7
+
+### Patch Changes
+
+- Updated dependencies [facfff4]
+  - @watergis/svelte-maplibre-attribute-popup@0.0.15
+  - @watergis/maplibre-center-icon@0.1.7
+  - @watergis/svelte-collapsible-panel@0.0.13
+  - @watergis/svelte-maplibre-export@0.1.19
+  - @watergis/svelte-maplibre-legend@0.1.14
+  - @watergis/svelte-maplibre-measure@0.1.16
+  - @watergis/svelte-maplibre-menu@0.1.15
+  - @watergis/svelte-maplibre-search@0.1.8
+  - @watergis/svelte-maplibre-share@0.1.12
+  - @watergis/svelte-maplibre-style-switcher@0.1.14
+  - @watergis/svelte-maplibre-valhalla@0.0.13
+
 ## 0.0.6
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-search
 
+## 0.1.8
+
+### Patch Changes
+
+- facfff4: fixed turbo.json for build
+
 ## 0.1.7
 
 ### Patch Changes

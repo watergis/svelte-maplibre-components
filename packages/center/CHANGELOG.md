@@ -1,5 +1,11 @@
 # @watergis/maplibre-center-icon
 
+## 0.1.7
+
+### Patch Changes
+
+- facfff4: fixed turbo.json for build
+
 ## 0.1.6
 
 ### Patch Changes

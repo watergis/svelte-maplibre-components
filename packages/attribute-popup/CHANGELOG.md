@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-attribute-popup
 
+## 0.0.15
+
+### Patch Changes
+
+- facfff4: fixed turbo.json for build
+
 ## 0.0.14
 
 ### Patch Changes

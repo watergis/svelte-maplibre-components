@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-valhalla
 
+## 0.0.13
+
+### Patch Changes
+
+- facfff4: fixed turbo.json for build
+
 ## 0.0.12
 
 ### Patch Changes

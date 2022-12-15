@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-search
 
+## 0.1.6
+
+### Patch Changes
+
+- 634ef3a: Upgraded sveltekit to v1.0.0
+
 ## 0.1.5
 
 ### Patch Changes

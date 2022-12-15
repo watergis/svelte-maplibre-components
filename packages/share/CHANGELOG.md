@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-share
 
+## 0.1.10
+
+### Patch Changes
+
+- 634ef3a: Upgraded sveltekit to v1.0.0
+
 ## 0.1.9
 
 ### Patch Changes

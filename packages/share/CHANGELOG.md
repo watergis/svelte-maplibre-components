@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-share
 
+## 0.1.11
+
+### Patch Changes
+
+- cf428fe: fixed turbo.json for build
+
 ## 0.1.10
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.18
+
+### Patch Changes
+
+- cf428fe: fixed turbo.json for build
+
 ## 0.1.17
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @watergis/svelte-collapsible-panel
 
+## 0.0.11
+
+### Patch Changes
+
+- 634ef3a: Upgraded sveltekit to v1.0.0
+
 ## 0.0.10
 
 ### Patch Changes

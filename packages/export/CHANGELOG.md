@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.17
+
+### Patch Changes
+
+- 634ef3a: Upgraded sveltekit to v1.0.0
+
 ## 0.1.16
 
 ### Patch Changes

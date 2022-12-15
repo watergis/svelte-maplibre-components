@@ -1,5 +1,11 @@
 # @watergis/maplibre-center-icon
 
+## 0.1.5
+
+### Patch Changes
+
+- 634ef3a: Upgraded sveltekit to v1.0.0
+
 ## 0.1.4
 
 ### Patch Changes

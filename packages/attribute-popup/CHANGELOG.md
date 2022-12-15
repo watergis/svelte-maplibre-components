@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-attribute-popup
 
+## 0.0.13
+
+### Patch Changes
+
+- 634ef3a: Upgraded sveltekit to v1.0.0
+
 ## 0.0.12
 
 ### Patch Changes

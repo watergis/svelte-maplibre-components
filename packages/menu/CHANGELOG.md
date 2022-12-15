@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 0.1.13
+
+### Patch Changes
+
+- 634ef3a: Upgraded sveltekit to v1.0.0
+
 ## 0.1.12
 
 ### Patch Changes

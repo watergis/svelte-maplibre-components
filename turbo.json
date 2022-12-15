@@ -4,15 +4,14 @@
     "svelte.water-gis.com#build": {
       "dependsOn": ["^build"],
       "inputs": ["src/**"],
-      "outputs": ["build/**"],
+      "outputs": ["build/**", ".svelte-kit/**"],
       "outputMode": "new-only"
     },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["src/**"],
       "outputs": ["packages/**", ".svelte-kit/**"],
-      "outputMode": "new-only",
-      "env": ["VERCEL", "ENABLE_VC_BUILD"]
+      "outputMode": "new-only"
     },
     "format": {
       "cache": false,

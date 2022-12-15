@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-style-switcher
 
+## 0.1.15
+
+### Patch Changes
+
+- 3cb5f7e: fixed CI to deploy
+
 ## 0.1.14
 
 ### Patch Changes

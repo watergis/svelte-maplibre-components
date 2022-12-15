@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.20
+
+### Patch Changes
+
+- 3cb5f7e: fixed CI to deploy
+
 ## 0.1.19
 
 ### Patch Changes

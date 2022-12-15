@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-attribute-popup
 
+## 0.0.16
+
+### Patch Changes
+
+- 3cb5f7e: fixed CI to deploy
+
 ## 0.0.15
 
 ### Patch Changes

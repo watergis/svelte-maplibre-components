@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-share
 
+## 0.1.13
+
+### Patch Changes
+
+- 3cb5f7e: fixed CI to deploy
+
 ## 0.1.12
 
 ### Patch Changes

@@ -8,10 +8,7 @@
       "outputMode": "new-only"
     },
     "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["src/**"],
-      "outputs": ["packages/**", ".svelte-kit/**"],
-      "outputMode": "new-only"
+      "dependsOn": ["^build"]
     },
     "format": {
       "cache": false,

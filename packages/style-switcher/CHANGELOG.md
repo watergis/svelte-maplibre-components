@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-style-switcher
 
+## 0.1.13
+
+### Patch Changes
+
+- cf428fe: fixed turbo.json for build
+
 ## 0.1.12
 
 ### Patch Changes

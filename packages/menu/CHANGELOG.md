@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 0.1.14
+
+### Patch Changes
+
+- cf428fe: fixed turbo.json for build
+
 ## 0.1.13
 
 ### Patch Changes

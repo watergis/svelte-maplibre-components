@@ -1,5 +1,11 @@
 # @watergis/svelte-collapsible-panel
 
+## 0.0.12
+
+### Patch Changes
+
+- cf428fe: fixed turbo.json for build
+
 ## 0.0.11
 
 ### Patch Changes

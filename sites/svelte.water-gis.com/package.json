@@ -13,13 +13,11 @@
 		"prebuild": "[[ $CI = true ]] && npx pnpm install -r --store=node_modules/.pnpm-store || echo skiping pnpm install"
 	},
 	"devDependencies": {
-		"@esbuild-plugins/node-globals-polyfill": "^0.1.1",
 		"@sveltejs/adapter-auto": "^1.0.0",
 		"@sveltejs/adapter-static": "^1.0.0",
 		"@sveltejs/kit": "^1.0.0",
 		"@typescript-eslint/eslint-plugin": "^5.46.1",
 		"@typescript-eslint/parser": "^5.46.1",
-		"esbuild": "^0.16.7",
 		"eslint": "^8.29.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",

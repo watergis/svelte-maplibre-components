@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-search
 
+## 0.1.10
+
+### Patch Changes
+
+- 9d5490a: added maxItems, sortItems, matchAllKeywords and sortByMatchedKeywords options in search control
+
 ## 0.1.9
 
 ### Patch Changes

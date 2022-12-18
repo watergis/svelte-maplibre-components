@@ -12,6 +12,7 @@
 	import Legend from './Legend.svelte';
 	import type SpriteLoader from './sprite';
 	import { isMobile } from 'detect-touch-device';
+	import StyleEditor from './StyleEditor.svelte';
 
 	const dispatch = createEventDispatcher();
 
@@ -98,12 +99,7 @@
 	};
 </script>
 
-<div
-	class="layer-container"
-	style="cursor:{enableLayerOrder && !isMobile ? 'grab' : 'default'};{enableLayerOrder
-		? 'width:100%'
-		: ''}"
->
+<div class="layer-container" style="cursor:{enableLayerOrder && !isMobile ? 'grab' : 'default'};">
 	{#if enableLayerOrder && !isMobile}
 		<span class="draggable-icon has-tooltip-right" data-tooltip="Drag to change order">
 			<Fa icon={faGripVertical} />
@@ -163,6 +159,8 @@
 				</span>
 			{/if}
 		</div>
+	{:else if !isMobile}
+		<StyleEditor bind:map bind:layer />
 	{/if}
 </div>
 
@@ -176,6 +174,7 @@
 		margin: 0;
 		padding: 0;
 		height: 2.5rem;
+		width: 100%;
 
 		.draggable-icon {
 			margin-left: 0.2rem;

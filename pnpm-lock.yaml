@@ -205,10 +205,12 @@ importers:
       '@sveltejs/adapter-auto': ^1.0.0
       '@sveltejs/kit': ^1.0.0
       '@sveltejs/package': ^1.0.0
+      '@types/svelte-range-slider-pips': ^2.0.0
       '@typescript-eslint/eslint-plugin': ^5.46.1
       '@typescript-eslint/parser': ^5.46.1
       '@watergis/legend-symbol': ^0.2.3
       '@watergis/svelte-maplibre-menu': workspace:^0.1.16
+      bulma: ^0.9.4
       detect-touch-device: ^1.1.6
       eslint: ^8.29.0
       eslint-config-prettier: ^8.5.0
@@ -220,7 +222,10 @@ importers:
       svelte: ^3.55.0
       svelte-check: ^2.10.2
       svelte-fa: ^3.0.3
+      svelte-popperjs: ^1.3.2
       svelte-preprocess: ^4.10.7
+      svelte-range-slider-pips: ^2.1.1
+      svelte-use-click-outside: ^1.0.0
       tslib: ^2.4.1
       typescript: ^4.9.4
       vite: ^4.0.1
@@ -230,6 +235,9 @@ importers:
       detect-touch-device: 1.1.6
       maplibre-gl: 2.4.0
       svelte-fa: 3.0.3
+      svelte-popperjs: 1.3.2_wbktlcl6xhsncvz2r5eelcs6le
+      svelte-range-slider-pips: 2.1.1
+      svelte-use-click-outside: 1.0.0
     devDependencies:
       '@arkweid/lefthook': 0.7.7
       '@creativebulma/bulma-tooltip': 1.2.0
@@ -237,9 +245,11 @@ importers:
       '@sveltejs/adapter-auto': 1.0.0_@sveltejs+kit@1.0.0
       '@sveltejs/kit': 1.0.0_svelte@3.55.0+vite@4.0.1
       '@sveltejs/package': 1.0.0_niwyv7xychq2ag6arq5eqxbomm
+      '@types/svelte-range-slider-pips': 2.0.0
       '@typescript-eslint/eslint-plugin': 5.46.1_imrg37k3svwu377c6q7gkarwmi
       '@typescript-eslint/parser': 5.46.1_ha6vam6werchizxrnqvarmz2zu
       '@watergis/svelte-maplibre-menu': link:../menu
+      bulma: 0.9.4
       eslint: 8.29.0
       eslint-config-prettier: 8.5.0_eslint@8.29.0
       eslint-plugin-svelte3: 4.0.0_ffnabc34fed75fjymbd45uofx4
@@ -1232,6 +1242,10 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
+  /@popperjs/core/2.11.6:
+    resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
+    dev: false
+
   /@sveltejs/adapter-auto/1.0.0_@sveltejs+kit@1.0.0:
     resolution: {integrity: sha512-yKyPvlLVua1bJ/42FrR3X041mFGdB4GzTZOAEoHUcNBRE5Mhx94+eqHpC3hNvAOiLEDcKfVO0ObyKSu7qldU+w==}
     peerDependencies:
@@ -1428,6 +1442,12 @@ packages:
 
   /@types/semver/7.3.13:
     resolution: {integrity: sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==}
+    dev: true
+
+  /@types/svelte-range-slider-pips/2.0.0:
+    resolution: {integrity: sha512-+Yq3xwyI0ViGZKdrsNpM8Wqa0wCnSBKc8NcRfYGiu22kVJ3Xr0gfiZATWMzZ2mryt/tQR8QgH2B782ogrZS1aw==}
+    dependencies:
+      svelte: 3.55.0
     dev: true
 
   /@types/unist/2.0.6:
@@ -4204,6 +4224,16 @@ packages:
       svelte: 3.55.0
     dev: true
 
+  /svelte-popperjs/1.3.2_wbktlcl6xhsncvz2r5eelcs6le:
+    resolution: {integrity: sha512-fwrErlkvngL876WXRnL3OLlfk/n9YkZwwLxuKRpZOYCJLt1zrwhoKTXS+/sRgDveD/zd6GQ35hV89EOip+NBGA==}
+    peerDependencies:
+      '@popperjs/core': '>=2'
+      svelte: '>=3'
+    dependencies:
+      '@popperjs/core': 2.11.6
+      svelte: 3.55.0
+    dev: false
+
   /svelte-preprocess/4.10.7_niwyv7xychq2ag6arq5eqxbomm:
     resolution: {integrity: sha512-sNPBnqYD6FnmdBrUmBCaqS00RyCsCpj2BG58A1JBswNF7b0OKviwxqVrOL/CKyJrLSClrSeqQv5BXNg2RUbPOw==}
     engines: {node: '>= 9.11.2'}
@@ -4355,6 +4385,14 @@ packages:
       svelte: 3.55.0
       typescript: 4.9.4
     dev: true
+
+  /svelte-range-slider-pips/2.1.1:
+    resolution: {integrity: sha512-fLkhfnyEc4uMOCZCl8IPyC0e9lujrjqdSyrKw28Y8j99YUPZR+pHnSxde7PqhM0ST6eyO4ugh2nFnLZTIoG9aQ==}
+    dev: false
+
+  /svelte-use-click-outside/1.0.0:
+    resolution: {integrity: sha512-tOWeMPxeIoW9RshS0WbogRhdYdbxcJV0ebkzSh1lwR7Ihl0hSZMmB4YyCHHoXJK4xcbxCCFh0AnQ1vkzGZfLVQ==}
+    dev: false
 
   /svelte/3.55.0:
     resolution: {integrity: sha512-uGu2FVMlOuey4JoKHKrpZFkoYyj0VLjJdz47zX5+gVK5odxHM40RVhar9/iK2YFRVxvfg9FkhfVlR0sjeIrOiA==}

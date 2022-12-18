@@ -36,6 +36,7 @@
 			default:
 				break;
 		}
+
 		if (!opacity) {
 			opacity = 1;
 		}
@@ -49,6 +50,7 @@
 	$: layerOpacity, setOpacity();
 
 	const setOpacity = () => {
+		if (!layerOpacity) return;
 		const style = map?.getStyle().layers.find((l) => l.id === layer.id);
 		switch (style?.type) {
 			case 'background':

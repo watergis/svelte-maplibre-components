@@ -6,6 +6,7 @@
 	import { clickOutside } from 'svelte-use-click-outside';
 	import Opacity from './editor-controls/Opacity.svelte';
 	import HillshadeExaggeration from './editor-controls/HillshadeExaggeration.svelte';
+	import ColorPicker from './editor-controls/ColorPicker.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -34,24 +35,115 @@
 
 {#if showTooltip}
 	<div id="tooltip" use:popperContent={extraOpts} use:clickOutside={() => (showTooltip = false)}>
-		{#if layer.type !== 'hillshade'}
-			<div class="field">
-				<label class="label is-small">Opacity</label>
-				<div class="control">
-					<Opacity bind:map bind:layer />
+		<div class="editor-contents">
+			{#if layer.type !== 'hillshade'}
+				<div class="field">
+					<label class="label is-small">Opacity</label>
+					<div class="control">
+						<Opacity bind:map bind:layer />
+					</div>
 				</div>
-			</div>
-		{/if}
+			{/if}
 
-		{#if layer.type === 'hillshade'}
-			<div class="field">
-				<label class="label is-small">Hillshade exaggeration</label>
-				<div class="control">
-					<HillshadeExaggeration bind:map bind:layer />
+			{#if layer.type === 'background'}
+				<div class="field">
+					<label class="label is-small">Background color</label>
+					<div class="control">
+						<ColorPicker bind:map bind:layer propertyName="background-color" />
+					</div>
 				</div>
-			</div>
-		{/if}
-
+			{:else if layer.type === 'fill'}
+				<div class="field">
+					<label class="label is-small">Fill color</label>
+					<div class="control">
+						<ColorPicker bind:map bind:layer propertyName="fill-color" />
+					</div>
+				</div>
+				<div class="field">
+					<label class="label is-small">Fill outline color</label>
+					<div class="control">
+						<ColorPicker bind:map bind:layer propertyName="fill-outline-color" />
+					</div>
+				</div>
+			{:else if layer.type === 'line'}
+				<div class="field">
+					<label class="label is-small">Line color</label>
+					<div class="control">
+						<ColorPicker bind:map bind:layer propertyName="line-color" />
+					</div>
+				</div>
+			{:else if layer.type === 'symbol'}
+				<div class="field">
+					<label class="label is-small">Icon color</label>
+					<div class="control">
+						<ColorPicker bind:map bind:layer propertyName="icon-color" />
+					</div>
+				</div>
+				<div class="field">
+					<label class="label is-small">Icon halo color</label>
+					<div class="control">
+						<ColorPicker bind:map bind:layer propertyName="icon-halo-color" />
+					</div>
+				</div>
+				<div class="field">
+					<label class="label is-small">Text color</label>
+					<div class="control">
+						<ColorPicker bind:map bind:layer propertyName="text-color" />
+					</div>
+				</div>
+				<div class="field">
+					<label class="label is-small">Text halo color</label>
+					<div class="control">
+						<ColorPicker bind:map bind:layer propertyName="text-halo-color" />
+					</div>
+				</div>
+			{:else if layer.type === 'circle'}
+				<div class="field">
+					<label class="label is-small">Circle color</label>
+					<div class="control">
+						<ColorPicker bind:map bind:layer propertyName="circle-color" />
+					</div>
+				</div>
+				<div class="field">
+					<label class="label is-small">Circle stroke color</label>
+					<div class="control">
+						<ColorPicker bind:map bind:layer propertyName="circle-stroke-color" />
+					</div>
+				</div>
+			{:else if layer.type === 'fill-extrusion'}
+				<div class="field">
+					<label class="label is-small">Fill extruction color</label>
+					<div class="control">
+						<ColorPicker bind:map bind:layer propertyName="fill-extrusion-color" />
+					</div>
+				</div>
+			{:else if layer.type === 'hillshade'}
+				<div class="field">
+					<label class="label is-small">Hillshade exaggeration</label>
+					<div class="control">
+						<HillshadeExaggeration bind:map bind:layer />
+					</div>
+				</div>
+				<div class="field">
+					<label class="label is-small">Hillshade accent color</label>
+					<div class="control">
+						<ColorPicker bind:map bind:layer propertyName="hillshade-accent-color" />
+					</div>
+				</div>
+				<div class="field">
+					<label class="label is-small">Hillshade highlight color</label>
+					<div class="control">
+						<ColorPicker bind:map bind:layer propertyName="hillshade-highlight-color" />
+					</div>
+				</div>
+				<div class="field">
+					<label class="label is-small">Hillshade shadow color</label>
+					<div class="control">
+						<ColorPicker bind:map bind:layer propertyName="hillshade-shadow-color" />
+					</div>
+				</div>
+			{/if}
+		</div>
 		<div id="arrow" data-popper-arrow />
 	</div>
 {/if}
@@ -63,6 +155,11 @@
 	.palette-button {
 		cursor: pointer;
 		margin-right: 0.5rem;
+	}
+
+	.editor-contents {
+		height: auto;
+		overflow-y: auto;
 	}
 
 	#tooltip {

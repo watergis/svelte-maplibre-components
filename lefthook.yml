@@ -5,7 +5,7 @@
 pre-commit:
   parallel: true
   commands:
-    lint:
+    lint+format:
       run: pnpm precommit
 
 pre-push:

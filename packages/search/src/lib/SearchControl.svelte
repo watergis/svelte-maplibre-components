@@ -118,7 +118,11 @@
 		showClear={true}
 		showLoadingIndicator={false}
 		labelFunction={(properties) => (properties ? searchOption.format(properties) : '')}
-		maxItemsToShowInList="10"
+		maxItemsToShowInList={searchOption.maxItems ?? 10}
+		localSorting={true}
+		itemSortFunction={searchOption.sortItems}
+		matchAllKeywords={searchOption.matchAllKeywords}
+		sortByMatchedKeywords={searchOption.sortByMatchedKeywords}
 	/>
 </div>
 

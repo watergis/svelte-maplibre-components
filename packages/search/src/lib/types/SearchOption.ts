@@ -5,4 +5,8 @@ export type SearchOption = {
 	place_type: string[];
 	placeholder: string;
 	zoom: number;
+	maxItems?: number;
+	sortItems?: (a: { [key: string]: number }, b: { [key: string]: number }) => number;
+	matchAllKeywords?: boolean;
+	sortByMatchedKeywords?: boolean;
 };

@@ -4,8 +4,13 @@
 	import { faPalette } from '@fortawesome/free-solid-svg-icons';
 	import { createPopperActions } from 'svelte-popperjs';
 	import { clickOutside } from 'svelte-use-click-outside';
-	import Opacity from './editor-controls/Opacity.svelte';
-	import HillshadeExaggeration from './editor-controls/HillshadeExaggeration.svelte';
+	import BackgroundEditor from './editor-panels/BackgroundEditor.svelte';
+	import FillEditor from './editor-panels/FillEditor.svelte';
+	import LineEditor from './editor-panels/LineEditor.svelte';
+	import CircleEditor from './editor-panels/CircleEditor.svelte';
+	import SymbolEditor from './editor-panels/SymbolEditor.svelte';
+	import FillExtrusionEditor from './editor-panels/FillExtrusionEditor.svelte';
+	import HillshadeEditor from './editor-panels/HillshadeEditor.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -34,35 +39,39 @@
 
 {#if showTooltip}
 	<div id="tooltip" use:popperContent={extraOpts} use:clickOutside={() => (showTooltip = false)}>
-		{#if layer.type !== 'hillshade'}
-			<div class="field">
-				<label class="label is-small">Opacity</label>
-				<div class="control">
-					<Opacity bind:map bind:layer />
-				</div>
-			</div>
-		{/if}
-
-		{#if layer.type === 'hillshade'}
-			<div class="field">
-				<label class="label is-small">Hillshade exaggeration</label>
-				<div class="control">
-					<HillshadeExaggeration bind:map bind:layer />
-				</div>
-			</div>
-		{/if}
-
+		<div class="editor-contents">
+			{#if layer.type === 'background'}
+				<BackgroundEditor bind:map bind:layer />
+			{:else if layer.type === 'fill'}
+				<FillEditor bind:map bind:layer />
+			{:else if layer.type === 'line'}
+				<LineEditor bind:map bind:layer />
+			{:else if layer.type === 'symbol'}
+				<SymbolEditor bind:map bind:layer />
+			{:else if layer.type === 'circle'}
+				<CircleEditor bind:map bind:layer />
+			{:else if layer.type === 'fill-extrusion'}
+				<FillExtrusionEditor bind:map bind:layer />
+			{:else if layer.type === 'hillshade'}
+				<HillshadeEditor bind:map bind:layer />
+			{/if}
+		</div>
 		<div id="arrow" data-popper-arrow />
 	</div>
 {/if}
 
 <style lang="scss">
 	@use '@creativebulma/bulma-tooltip/dist/bulma-tooltip.min.css';
-	@import 'bulma/bulma.sass';
 
 	.palette-button {
 		cursor: pointer;
 		margin-right: 0.5rem;
+	}
+
+	.editor-contents {
+		height: auto;
+		overflow-y: auto;
+		padding: 0.5rem;
 	}
 
 	#tooltip {

@@ -4,9 +4,13 @@
 	import { faPalette } from '@fortawesome/free-solid-svg-icons';
 	import { createPopperActions } from 'svelte-popperjs';
 	import { clickOutside } from 'svelte-use-click-outside';
-	import Opacity from './editor-controls/Opacity.svelte';
-	import HillshadeExaggeration from './editor-controls/HillshadeExaggeration.svelte';
-	import ColorPicker from './editor-controls/ColorPicker.svelte';
+	import BackgroundEditor from './editor-panels/BackgroundEditor.svelte';
+	import FillEditor from './editor-panels/FillEditor.svelte';
+	import LineEditor from './editor-panels/LineEditor.svelte';
+	import CircleEditor from './editor-panels/CircleEditor.svelte';
+	import SymbolEditor from './editor-panels/SymbolEditor.svelte';
+	import FillExtrusionEditor from './editor-panels/FillExtrusionEditor.svelte';
+	import HillshadeEditor from './editor-panels/HillshadeEditor.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -36,112 +40,20 @@
 {#if showTooltip}
 	<div id="tooltip" use:popperContent={extraOpts} use:clickOutside={() => (showTooltip = false)}>
 		<div class="editor-contents">
-			{#if layer.type !== 'hillshade'}
-				<div class="field">
-					<label class="label is-small">Opacity</label>
-					<div class="control">
-						<Opacity bind:map bind:layer />
-					</div>
-				</div>
-			{/if}
-
 			{#if layer.type === 'background'}
-				<div class="field">
-					<label class="label is-small">Background color</label>
-					<div class="control">
-						<ColorPicker bind:map bind:layer propertyName="background-color" />
-					</div>
-				</div>
+				<BackgroundEditor bind:map bind:layer />
 			{:else if layer.type === 'fill'}
-				<div class="field">
-					<label class="label is-small">Fill color</label>
-					<div class="control">
-						<ColorPicker bind:map bind:layer propertyName="fill-color" />
-					</div>
-				</div>
-				<div class="field">
-					<label class="label is-small">Fill outline color</label>
-					<div class="control">
-						<ColorPicker bind:map bind:layer propertyName="fill-outline-color" />
-					</div>
-				</div>
+				<FillEditor bind:map bind:layer />
 			{:else if layer.type === 'line'}
-				<div class="field">
-					<label class="label is-small">Line color</label>
-					<div class="control">
-						<ColorPicker bind:map bind:layer propertyName="line-color" />
-					</div>
-				</div>
+				<LineEditor bind:map bind:layer />
 			{:else if layer.type === 'symbol'}
-				<div class="field">
-					<label class="label is-small">Icon color</label>
-					<div class="control">
-						<ColorPicker bind:map bind:layer propertyName="icon-color" />
-					</div>
-				</div>
-				<div class="field">
-					<label class="label is-small">Icon halo color</label>
-					<div class="control">
-						<ColorPicker bind:map bind:layer propertyName="icon-halo-color" />
-					</div>
-				</div>
-				<div class="field">
-					<label class="label is-small">Text color</label>
-					<div class="control">
-						<ColorPicker bind:map bind:layer propertyName="text-color" />
-					</div>
-				</div>
-				<div class="field">
-					<label class="label is-small">Text halo color</label>
-					<div class="control">
-						<ColorPicker bind:map bind:layer propertyName="text-halo-color" />
-					</div>
-				</div>
+				<SymbolEditor bind:map bind:layer />
 			{:else if layer.type === 'circle'}
-				<div class="field">
-					<label class="label is-small">Circle color</label>
-					<div class="control">
-						<ColorPicker bind:map bind:layer propertyName="circle-color" />
-					</div>
-				</div>
-				<div class="field">
-					<label class="label is-small">Circle stroke color</label>
-					<div class="control">
-						<ColorPicker bind:map bind:layer propertyName="circle-stroke-color" />
-					</div>
-				</div>
+				<CircleEditor bind:map bind:layer />
 			{:else if layer.type === 'fill-extrusion'}
-				<div class="field">
-					<label class="label is-small">Fill extruction color</label>
-					<div class="control">
-						<ColorPicker bind:map bind:layer propertyName="fill-extrusion-color" />
-					</div>
-				</div>
+				<FillExtrusionEditor bind:map bind:layer />
 			{:else if layer.type === 'hillshade'}
-				<div class="field">
-					<label class="label is-small">Hillshade exaggeration</label>
-					<div class="control">
-						<HillshadeExaggeration bind:map bind:layer />
-					</div>
-				</div>
-				<div class="field">
-					<label class="label is-small">Hillshade accent color</label>
-					<div class="control">
-						<ColorPicker bind:map bind:layer propertyName="hillshade-accent-color" />
-					</div>
-				</div>
-				<div class="field">
-					<label class="label is-small">Hillshade highlight color</label>
-					<div class="control">
-						<ColorPicker bind:map bind:layer propertyName="hillshade-highlight-color" />
-					</div>
-				</div>
-				<div class="field">
-					<label class="label is-small">Hillshade shadow color</label>
-					<div class="control">
-						<ColorPicker bind:map bind:layer propertyName="hillshade-shadow-color" />
-					</div>
-				</div>
+				<HillshadeEditor bind:map bind:layer />
 			{/if}
 		</div>
 		<div id="arrow" data-popper-arrow />
@@ -150,7 +62,6 @@
 
 <style lang="scss">
 	@use '@creativebulma/bulma-tooltip/dist/bulma-tooltip.min.css';
-	@import 'bulma/bulma.sass';
 
 	.palette-button {
 		cursor: pointer;
@@ -160,6 +71,7 @@
 	.editor-contents {
 		height: auto;
 		overflow-y: auto;
+		padding: 0.5rem;
 	}
 
 	#tooltip {

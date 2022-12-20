@@ -1,5 +1,18 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.16
+
+### Patch Changes
+
+- cc07946: improved color picker control for legend
+- 6ba8ab3: - Added slider components
+  - Added several components to edit circle, fill extrusion, hillshade and line
+- ee99ba4: add color control in style editor
+- a859a84: add palette button to show popup to edit layer style.
+
+  - Opacity slider is added except hillshade type.
+  - Hillshade exaggeration slider is added for hillshade layer.
+
 ## 0.1.15
 
 ### Patch Changes

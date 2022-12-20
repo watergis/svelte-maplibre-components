@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import Opacity from '$lib/editor-controls/Opacity.svelte';
-	import ColorPicker from '$lib/editor-controls/ColorPicker.svelte';
+	import ColorControl from '$lib/editor-controls/ColorControl.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -17,7 +17,7 @@
 <div class="field">
 	<label class="label is-small">Background color</label>
 	<div class="control">
-		<ColorPicker bind:map bind:layer propertyName="background-color" />
+		<ColorControl bind:map bind:layer propertyName="background-color" />
 	</div>
 </div>
 

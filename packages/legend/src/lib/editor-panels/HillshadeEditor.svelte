@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { LayerSpecification, Map } from 'maplibre-gl';
-	import ColorPicker from '$lib/editor-controls/ColorPicker.svelte';
+	import ColorControl from '$lib/editor-controls/ColorControl.svelte';
 	import HillshadeExaggeration from '$lib/editor-controls/HillshadeExaggeration.svelte';
 
 	export let map: Map;
@@ -16,19 +16,19 @@
 <div class="field">
 	<label class="label is-small">Hillshade accent color</label>
 	<div class="control">
-		<ColorPicker bind:map bind:layer propertyName="hillshade-accent-color" />
+		<ColorControl bind:map bind:layer propertyName="hillshade-accent-color" />
 	</div>
 </div>
 <div class="field">
 	<label class="label is-small">Hillshade highlight color</label>
 	<div class="control">
-		<ColorPicker bind:map bind:layer propertyName="hillshade-highlight-color" />
+		<ColorControl bind:map bind:layer propertyName="hillshade-highlight-color" />
 	</div>
 </div>
 <div class="field">
 	<label class="label is-small">Hillshade shadow color</label>
 	<div class="control">
-		<ColorPicker bind:map bind:layer propertyName="hillshade-shadow-color" />
+		<ColorControl bind:map bind:layer propertyName="hillshade-shadow-color" />
 	</div>
 </div>
 

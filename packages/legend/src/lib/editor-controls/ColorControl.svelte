@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Map, LayerSpecification } from 'maplibre-gl';
-	import ColorPicker, { type RgbaColor } from 'svelte-awesome-color-picker';
 	import chroma from 'chroma-js';
+	import ColorPicker from '$lib/util/ColorPicker.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -39,30 +39,15 @@
 	};
 
 	let color: string = getValue();
-	let rgba: RgbaColor;
 
-	$: rgba, setMaplibreColor();
-	const setMaplibreColor = () => {
-		if (!rgba) return;
-		color = chroma([rgba.r, rgba.g, rgba.b, rgba.a]).css();
-
+	const handleColorChanged = (e: { detail: { color: string } }) => {
+		color = e.detail.color;
 		map.setPaintProperty(layer.id, propertyName, color);
 		const newLayer = map.getStyle().layers.find((l) => l.id === layer.id);
 		if (newLayer) {
 			layer = newLayer;
 		}
 	};
-
-	$: color, setPickerColor();
-	const setPickerColor = () => {
-		if (!color) return;
-		const c = chroma(color);
-		const rgb = c.rgb();
-		rgba = { r: rgb[0], g: rgb[1], b: rgb[2], a: c.alpha() };
-	};
 </script>
 
-<ColorPicker bind:rgb={rgba} label="Chose a color" isTextInput={false} isAlpha={true} />
-
-<style lang="scss">
-</style>
+<ColorPicker bind:color on:change={handleColorChanged} />

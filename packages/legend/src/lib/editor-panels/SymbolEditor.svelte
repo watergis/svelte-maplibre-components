@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import Opacity from '$lib/editor-controls/Opacity.svelte';
-	import ColorPicker from '$lib/editor-controls/ColorPicker.svelte';
+	import ColorControl from '$lib/editor-controls/ColorControl.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -21,13 +21,13 @@
 	<div class="field">
 		<label class="label is-small">Icon color</label>
 		<div class="control">
-			<ColorPicker bind:map bind:layer propertyName="icon-color" />
+			<ColorControl bind:map bind:layer propertyName="icon-color" />
 		</div>
 	</div>
 	<div class="field">
 		<label class="label is-small">Icon halo color</label>
 		<div class="control">
-			<ColorPicker bind:map bind:layer propertyName="icon-halo-color" />
+			<ColorControl bind:map bind:layer propertyName="icon-halo-color" />
 		</div>
 	</div>
 {/if}
@@ -36,13 +36,13 @@
 	<div class="field">
 		<label class="label is-small">Text color</label>
 		<div class="control">
-			<ColorPicker bind:map bind:layer propertyName="text-color" />
+			<ColorControl bind:map bind:layer propertyName="text-color" />
 		</div>
 	</div>
 	<div class="field">
 		<label class="label is-small">Text halo color</label>
 		<div class="control">
-			<ColorPicker bind:map bind:layer propertyName="text-halo-color" />
+			<ColorControl bind:map bind:layer propertyName="text-halo-color" />
 		</div>
 	</div>
 {/if}

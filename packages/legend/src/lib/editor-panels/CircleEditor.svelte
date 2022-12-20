@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import Opacity from '$lib/editor-controls/Opacity.svelte';
-	import ColorPicker from '$lib/editor-controls/ColorPicker.svelte';
+	import ColorControl from '$lib/editor-controls/ColorControl.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -17,13 +17,13 @@
 <div class="field">
 	<label class="label is-small">Circle color</label>
 	<div class="control">
-		<ColorPicker bind:map bind:layer propertyName="circle-color" />
+		<ColorControl bind:map bind:layer propertyName="circle-color" />
 	</div>
 </div>
 <div class="field">
 	<label class="label is-small">Circle stroke color</label>
 	<div class="control">
-		<ColorPicker bind:map bind:layer propertyName="circle-stroke-color" />
+		<ColorControl bind:map bind:layer propertyName="circle-stroke-color" />
 	</div>
 </div>
 

@@ -2,6 +2,7 @@
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import ColorControl from '$lib/editor-controls/ColorControl.svelte';
 	import HillshadeExaggeration from '$lib/editor-controls/HillshadeExaggeration.svelte';
+	import HillshadeIlluminationDirection from '$lib/editor-controls/HillshadeIlluminationDirection.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -25,6 +26,14 @@
 		<ColorControl bind:map bind:layer propertyName="hillshade-highlight-color" />
 	</div>
 </div>
+
+<div class="field">
+	<label class="label is-small">Hillshade illumination direction</label>
+	<div class="control">
+		<HillshadeIlluminationDirection bind:map bind:layer />
+	</div>
+</div>
+
 <div class="field">
 	<label class="label is-small">Hillshade shadow color</label>
 	<div class="control">

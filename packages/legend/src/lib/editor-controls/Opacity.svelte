@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Map, LayerSpecification } from 'maplibre-gl';
-	import RangeSlider from 'svelte-range-slider-pips';
+	import Slider from '$lib/util/Slider.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -43,40 +43,37 @@
 		return opacity as number;
 	};
 
-	let layerOpacity = getOpacity();
-	let rangeSliderValues = [layerOpacity * 100];
-
-	$: layerOpacity = rangeSliderValues[0] / 100;
-	$: layerOpacity, setOpacity();
+	let value = getOpacity();
+	$: value, setOpacity();
 
 	const setOpacity = () => {
-		if (!layerOpacity) return;
+		if (!value) return;
 		const style = map?.getStyle().layers.find((l) => l.id === layer.id);
 		switch (style?.type) {
 			case 'background':
-				map.setPaintProperty(layer.id, 'background-opacity', layerOpacity);
+				map.setPaintProperty(layer.id, 'background-opacity', value);
 				break;
 			case 'raster':
-				map.setPaintProperty(layer.id, 'raster-opacity', layerOpacity);
+				map.setPaintProperty(layer.id, 'raster-opacity', value);
 				break;
 			case 'symbol':
-				map.setPaintProperty(layer.id, 'icon-opacity', layerOpacity);
-				map.setPaintProperty(layer.id, 'text-opacity', layerOpacity);
+				map.setPaintProperty(layer.id, 'icon-opacity', value);
+				map.setPaintProperty(layer.id, 'text-opacity', value);
 				break;
 			case 'line':
-				map.setPaintProperty(layer.id, 'line-opacity', layerOpacity);
+				map.setPaintProperty(layer.id, 'line-opacity', value);
 				break;
 			case 'fill':
-				map.setPaintProperty(layer.id, 'fill-opacity', layerOpacity);
+				map.setPaintProperty(layer.id, 'fill-opacity', value);
 				break;
 			case 'circle':
-				map.setPaintProperty(layer.id, 'circle-opacity', layerOpacity);
+				map.setPaintProperty(layer.id, 'circle-opacity', value);
 				break;
 			case 'heatmap':
-				map.setPaintProperty(layer.id, 'heatmap-opacity', layerOpacity);
+				map.setPaintProperty(layer.id, 'heatmap-opacity', value);
 				break;
 			case 'fill-extrusion':
-				map.setPaintProperty(layer.id, 'fill-extrusion-opacity', layerOpacity);
+				map.setPaintProperty(layer.id, 'fill-extrusion-opacity', value);
 				break;
 			default:
 				break;
@@ -84,23 +81,4 @@
 	};
 </script>
 
-<div class="range-slider">
-	<RangeSlider
-		bind:values={rangeSliderValues}
-		float={true}
-		min={0}
-		max={100}
-		step={1}
-		pips
-		first="label"
-		last="label"
-		rest={false}
-		suffix="%"
-	/>
-</div>
-
-<style lang="scss">
-	.range-slider {
-		font-size: 12px;
-	}
-</style>
+<Slider bind:value min={0} max={100} step={1} unit="%" />

@@ -2,14 +2,13 @@
 	import { onMount } from 'svelte';
 	import AutoComplete from 'simple-svelte-autocomplete';
 	import { GeoJSONFeature, Map, Marker } from 'maplibre-gl';
-	import { createEventDispatcher } from 'svelte';
 	import type { SearchOption } from './types';
 
 	export let map: Map;
 	export let searchOption: SearchOption;
 	export let position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' = 'top-left';
+	export let allowFlyTo = false;
 
-	const dispatch = createEventDispatcher();
 	let searchItems: any[] = [];
 	let searchObject: { [key: string]: GeoJSONFeature } = {};
 	let selectedObject: { [key: string]: string } = {};
@@ -46,19 +45,22 @@
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		const coordinates = f.geometry.coordinates;
-		map.flyTo({ center: coordinates, zoom: searchOption.zoom, curve: 1 });
 
 		if (markerSearch) {
 			markerSearch.remove();
 			markerSearch = undefined;
 		}
 		markerSearch = new Marker({
-			draggable: true
+			draggable: false
 		})
 			.setLngLat(coordinates)
 			.addTo(map);
 
-		dispatch('zoomed');
+		if (allowFlyTo) {
+			map.flyTo({ center: coordinates, zoom: searchOption.zoom });
+		} else {
+			map.jumpTo({ center: coordinates, zoom: searchOption.zoom });
+		}
 	};
 
 	let onChange = () => {
@@ -76,35 +78,40 @@
 	// @ts-ignore
 	let searchControl: SearchControl = null;
 
-	onMount(async () => {
-		if (!map) return;
+	onMount(() => {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		searchControl = new SearchControl();
 
-		if (map.hasControl(searchControl) === false) {
-			map.addControl(searchControl, position);
-		}
-
-		const res = await fetch(searchOption.url);
-		const data = await res.json();
-		data.features.forEach((feature: GeoJSONFeature) => {
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			const key = feature.geometry.coordinates.join(',');
-			const temp = JSON.parse(JSON.stringify(feature));
-			temp.properties = {};
-			searchOption.target.forEach((t) => {
-				if (feature.properties[t]) {
-					temp.properties[t] = feature.properties[t];
-				}
+		fetch(searchOption.url)
+			.then((res) => res.json())
+			.then((data) => {
+				data.features.forEach((feature: GeoJSONFeature) => {
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					const key = feature.geometry.coordinates.join(',');
+					const temp = JSON.parse(JSON.stringify(feature));
+					temp.properties = {};
+					searchOption.target.forEach((t) => {
+						if (feature.properties[t]) {
+							temp.properties[t] = feature.properties[t];
+						}
+					});
+					if (Object.keys(temp.properties).length === 0) return;
+					temp.properties.key = key;
+					searchItems.push(temp.properties);
+					searchObject[key] = JSON.parse(JSON.stringify(feature));
+				});
 			});
-			if (Object.keys(temp.properties).length === 0) return;
-			temp.properties.key = key;
-			searchItems.push(temp.properties);
-			searchObject[key] = JSON.parse(JSON.stringify(feature));
-		});
 	});
+
+	$: {
+		if (map) {
+			if (searchControl !== null && map.hasControl(searchControl) === false) {
+				map.addControl(searchControl, position);
+			}
+		}
+	}
 </script>
 
 <div class="data-container" bind:this={searchContainer}>

@@ -35,9 +35,7 @@
 
 <div class="container">
 	<div class="map" bind:this={mapContainer} />
-	{#if map}
-		<SearchControl bind:map {searchOption} position="top-left" />
-	{/if}
+	<SearchControl bind:map {searchOption} position="top-left" />
 </div>
 
 <style lang="scss">

@@ -22,6 +22,7 @@
 	export let relativeLayers: { [key: string]: string } = {};
 	export let enableLayerOrder = false;
 	export let disableVisibleButton = false;
+	export let enableEditing = true;
 	let visibility = map.getLayer(layer.id).visibility;
 
 	let checked = visibility === 'none' ? false : true;
@@ -159,7 +160,7 @@
 				</span>
 			{/if}
 		</div>
-	{:else if !isMobile}
+	{:else if !isMobile && enableEditing === true}
 		<StyleEditor bind:map bind:layer bind:spriteLoader />
 	{/if}
 </div>

@@ -21,6 +21,8 @@
 	let onlyRendered = true;
 	let onlyRelative = true;
 	let enableLayerOrder = false;
+	let enableEditing = true;
+
 	let relativeLayers: { [key: string]: string } = {
 		pipeline: 'Pipeline',
 		pipeline_annotation: 'Pipeline Label',
@@ -80,6 +82,7 @@
 				bind:onlyRendered
 				bind:onlyRelative
 				bind:enableLayerOrder
+				bind:enableEditing
 				{relativeLayers}
 				disableVisibleButton={false}
 			/>

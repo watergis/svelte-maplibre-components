@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-measure
 
+## 0.1.18
+
+### Patch Changes
+
+- 658cd44: fixed example of measure control. removed esbuild from package
+
 ## 0.1.17
 
 ### Patch Changes

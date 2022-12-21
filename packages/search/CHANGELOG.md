@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-search
 
+## 0.1.11
+
+### Patch Changes
+
+- 98194bc: Changed zoom function from flyTo to jumpTo. and improved some logic of first loading control
+
 ## 0.1.10
 
 ### Patch Changes

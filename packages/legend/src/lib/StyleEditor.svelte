@@ -32,7 +32,7 @@
 <span
 	tabindex="0"
 	role="button"
-	class="palette-button has-tooltip-left"
+	class="palette-button has-tooltip-left has-tooltip-arrow"
 	data-tooltip="Change layer style"
 	use:popperRef
 	on:click={() => (showTooltip = !showTooltip)}
@@ -44,7 +44,7 @@
 	<div id="tooltip" use:popperContent={extraOpts} use:clickOutside={() => (showTooltip = false)}>
 		<span
 			role="button"
-			class="close-button has-tooltip-right"
+			class="close-button has-tooltip-right has-tooltip-arrow"
 			data-tooltip="Close popup"
 			on:click={() => (showTooltip = false)}
 		>

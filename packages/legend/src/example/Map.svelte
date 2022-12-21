@@ -21,6 +21,8 @@
 	let onlyRendered = true;
 	let onlyRelative = true;
 	let enableLayerOrder = false;
+	let enableEditing = true;
+
 	let relativeLayers: { [key: string]: string } = {
 		pipeline: 'Pipeline',
 		pipeline_annotation: 'Pipeline Label',
@@ -56,7 +58,9 @@
 	onMount(async () => {
 		map = new Map({
 			container: mapContainer,
-			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
+			// style: 'https://undp-data.github.io/style/style.json'
+			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style-aerial.json'
+			// style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
 		});
 	});
 </script>
@@ -78,6 +82,7 @@
 				bind:onlyRendered
 				bind:onlyRelative
 				bind:enableLayerOrder
+				bind:enableEditing
 				{relativeLayers}
 				disableVisibleButton={false}
 			/>

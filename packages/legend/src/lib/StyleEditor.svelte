@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import Fa from 'svelte-fa';
-	import { faPalette } from '@fortawesome/free-solid-svg-icons';
+	import { faPalette, faXmark } from '@fortawesome/free-solid-svg-icons';
 	import { createPopperActions } from 'svelte-popperjs';
 	import { clickOutside } from 'svelte-use-click-outside';
 	import BackgroundEditor from './editor-panels/BackgroundEditor.svelte';
@@ -11,9 +11,12 @@
 	import SymbolEditor from './editor-panels/SymbolEditor.svelte';
 	import FillExtrusionEditor from './editor-panels/FillExtrusionEditor.svelte';
 	import HillshadeEditor from './editor-panels/HillshadeEditor.svelte';
+	import type SpriteLoader from './sprite';
+	import RasterEditor from './editor-panels/RasterEditor.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
+	export let spriteLoader: SpriteLoader;
 
 	const [popperRef, popperContent] = createPopperActions({
 		placement: 'right',
@@ -29,7 +32,7 @@
 <span
 	tabindex="0"
 	role="button"
-	class="palette-button has-tooltip-left"
+	class="palette-button has-tooltip-left has-tooltip-arrow"
 	data-tooltip="Change layer style"
 	use:popperRef
 	on:click={() => (showTooltip = !showTooltip)}
@@ -39,6 +42,14 @@
 
 {#if showTooltip}
 	<div id="tooltip" use:popperContent={extraOpts} use:clickOutside={() => (showTooltip = false)}>
+		<span
+			role="button"
+			class="close-button has-tooltip-right has-tooltip-arrow"
+			data-tooltip="Close popup"
+			on:click={() => (showTooltip = false)}
+		>
+			<Fa icon={faXmark} size="2x" />
+		</span>
 		<div class="editor-contents">
 			{#if layer.type === 'background'}
 				<BackgroundEditor bind:map bind:layer />
@@ -47,13 +58,15 @@
 			{:else if layer.type === 'line'}
 				<LineEditor bind:map bind:layer />
 			{:else if layer.type === 'symbol'}
-				<SymbolEditor bind:map bind:layer />
+				<SymbolEditor bind:map bind:layer bind:spriteLoader />
 			{:else if layer.type === 'circle'}
 				<CircleEditor bind:map bind:layer />
 			{:else if layer.type === 'fill-extrusion'}
 				<FillExtrusionEditor bind:map bind:layer />
 			{:else if layer.type === 'hillshade'}
 				<HillshadeEditor bind:map bind:layer />
+			{:else if layer.type === 'raster'}
+				<RasterEditor bind:map bind:layer />
 			{/if}
 		</div>
 		<div id="arrow" data-popper-arrow />
@@ -85,6 +98,13 @@
 		padding: 15px;
 		position: relative;
 		z-index: 10;
+
+		.close-button {
+			position: absolute;
+			top: 0.5rem;
+			right: 1rem;
+			cursor: pointer;
+		}
 	}
 
 	#arrow,

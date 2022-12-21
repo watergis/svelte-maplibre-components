@@ -1,24 +1,25 @@
 <script lang="ts">
-	import type { Map, LayerSpecification } from 'maplibre-gl';
 	import Slider from '$lib/util/Slider.svelte';
+	import type { Map, LayerSpecification } from 'maplibre-gl';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
 
 	const getValue = () => {
-		let value = map.getPaintProperty(layer.id, 'hillshade-illumination-direction');
+		let value = map.getLayoutProperty(layer.id, 'text-rotate');
 
 		if (!value) {
-			value = 335;
+			value = 0;
 		}
 		return value as number;
 	};
 
 	let value = getValue();
+
 	$: value, setValue();
 
 	const setValue = () => {
-		map?.setPaintProperty(layer.id, 'hillshade-illumination-direction', value);
+		map?.setLayoutProperty(layer.id, 'text-rotate', value);
 	};
 </script>
 

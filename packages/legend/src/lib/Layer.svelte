@@ -22,6 +22,7 @@
 	export let relativeLayers: { [key: string]: string } = {};
 	export let enableLayerOrder = false;
 	export let disableVisibleButton = false;
+	export let enableEditing = true;
 	let visibility = map.getLayer(layer.id).visibility;
 
 	let checked = visibility === 'none' ? false : true;
@@ -101,7 +102,10 @@
 
 <div class="layer-container" style="cursor:{enableLayerOrder && !isMobile ? 'grab' : 'default'};">
 	{#if enableLayerOrder && !isMobile}
-		<span class="draggable-icon has-tooltip-right" data-tooltip="Drag to change order">
+		<span
+			class="draggable-icon has-tooltip-right has-tooltip-arrow"
+			data-tooltip="Drag to change order"
+		>
 			<Fa icon={faGripVertical} />
 		</span>
 	{/if}
@@ -110,7 +114,7 @@
 			<span
 				tabindex="0"
 				role="button"
-				class="visible-button has-tooltip-right"
+				class="visible-button has-tooltip-right has-tooltip-arrow"
 				data-tooltip="{checked ? 'Hide' : 'Show'} layer"
 				on:click={() => (checked = !checked)}
 				on:keydown={handleKeydownVisibility}
@@ -138,7 +142,7 @@
 				<span
 					tabindex="0"
 					role="button"
-					class="sort-button has-tooltip-left"
+					class="sort-button has-tooltip-left has-tooltip-arrow"
 					data-tooltip="Bring backward in map"
 					on:click={moveBefore}
 					on:keydown={handleKeydownMoveBefore}
@@ -150,7 +154,7 @@
 				<span
 					tabindex="0"
 					role="button"
-					class="sort-button has-tooltip-left"
+					class="sort-button has-tooltip-left has-tooltip-arrow"
 					data-tooltip="Bring forward in map"
 					on:click={moveAfter}
 					on:keydown={handleKeydownmoveAfter}
@@ -159,8 +163,8 @@
 				</span>
 			{/if}
 		</div>
-	{:else if !isMobile}
-		<StyleEditor bind:map bind:layer />
+	{:else if !isMobile && enableEditing === true}
+		<StyleEditor bind:map bind:layer bind:spriteLoader />
 	{/if}
 </div>
 

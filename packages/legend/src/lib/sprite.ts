@@ -11,6 +11,7 @@ export interface spritePosition {
 	x: number;
 	y: number;
 	pixelRatio: number;
+	sdf?: boolean;
 }
 
 class SpriteLoader {
@@ -100,6 +101,28 @@ class SpriteLoader {
 			sprite.height * dpi
 		);
 		return el.toDataURL();
+	}
+
+	isSdf(layer: LayerSpecification) {
+		let isSdf = false;
+		if (layer.layout && layer.layout['icon-image']) {
+			let imgKey = layer.layout['icon-image'];
+			if (Array.isArray(imgKey)) {
+				imgKey = imgKey[imgKey.length - 1];
+			}
+			if (this.sprite?.json) {
+				let icon: spritePosition;
+				Object.keys(this.sprite.json).forEach((id) => {
+					if (id === imgKey) {
+						icon = this.sprite.json[id];
+					}
+				});
+				if (icon?.sdf) {
+					isSdf = icon?.sdf;
+				}
+			}
+		}
+		return isSdf;
 	}
 }
 

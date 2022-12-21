@@ -10,6 +10,7 @@
 	export let onlyRelative = true;
 	export let enableLayerOrder = false;
 	export let disableVisibleButton = false;
+	export let enableEditing = true;
 	let spriteLoader: SpriteLoader | undefined;
 	let hovering: boolean | number | undefined = false;
 	$: isShowLastDropArea = hovering === getLastVisibleIndex();
@@ -181,6 +182,7 @@
 												{relativeLayers}
 												bind:enableLayerOrder
 												bind:disableVisibleButton
+												bind:enableEditing
 												on:visibilityChanged={layerVisibilityChanged}
 												on:layerOrderChanged={layerOrderChanged}
 											/>
@@ -207,6 +209,7 @@
 											{relativeLayers}
 											bind:enableLayerOrder
 											bind:disableVisibleButton
+											bind:enableEditing
 											on:visibilityChanged={layerVisibilityChanged}
 											on:layerOrderChanged={layerOrderChanged}
 										/>
@@ -235,6 +238,7 @@
 										{relativeLayers}
 										bind:enableLayerOrder
 										bind:disableVisibleButton
+										bind:enableEditing
 										on:visibilityChanged={layerVisibilityChanged}
 										on:layerOrderChanged={layerOrderChanged}
 									/>
@@ -261,6 +265,7 @@
 									{relativeLayers}
 									bind:enableLayerOrder
 									bind:disableVisibleButton
+									bind:enableEditing
 									on:visibilityChanged={layerVisibilityChanged}
 									on:layerOrderChanged={layerOrderChanged}
 								/>

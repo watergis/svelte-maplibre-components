@@ -11,9 +11,12 @@
 	import SymbolEditor from './editor-panels/SymbolEditor.svelte';
 	import FillExtrusionEditor from './editor-panels/FillExtrusionEditor.svelte';
 	import HillshadeEditor from './editor-panels/HillshadeEditor.svelte';
+	import type SpriteLoader from './sprite';
+	import RasterEditor from './editor-panels/RasterEditor.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
+	export let spriteLoader: SpriteLoader;
 
 	const [popperRef, popperContent] = createPopperActions({
 		placement: 'right',
@@ -47,13 +50,15 @@
 			{:else if layer.type === 'line'}
 				<LineEditor bind:map bind:layer />
 			{:else if layer.type === 'symbol'}
-				<SymbolEditor bind:map bind:layer />
+				<SymbolEditor bind:map bind:layer bind:spriteLoader />
 			{:else if layer.type === 'circle'}
 				<CircleEditor bind:map bind:layer />
 			{:else if layer.type === 'fill-extrusion'}
 				<FillExtrusionEditor bind:map bind:layer />
 			{:else if layer.type === 'hillshade'}
 				<HillshadeEditor bind:map bind:layer />
+			{:else if layer.type === 'raster'}
+				<RasterEditor bind:map bind:layer />
 			{/if}
 		</div>
 		<div id="arrow" data-popper-arrow />

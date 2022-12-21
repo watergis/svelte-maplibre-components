@@ -56,7 +56,9 @@
 	onMount(async () => {
 		map = new Map({
 			container: mapContainer,
-			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
+			// style: 'https://undp-data.github.io/style/style.json'
+			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style-aerial.json'
+			// style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
 		});
 	});
 </script>

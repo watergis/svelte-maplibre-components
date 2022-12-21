@@ -160,7 +160,7 @@
 			{/if}
 		</div>
 	{:else if !isMobile}
-		<StyleEditor bind:map bind:layer />
+		<StyleEditor bind:map bind:layer bind:spriteLoader />
 	{/if}
 </div>
 

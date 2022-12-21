@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import Fa from 'svelte-fa';
-	import { faPalette } from '@fortawesome/free-solid-svg-icons';
+	import { faPalette, faXmark } from '@fortawesome/free-solid-svg-icons';
 	import { createPopperActions } from 'svelte-popperjs';
 	import { clickOutside } from 'svelte-use-click-outside';
 	import BackgroundEditor from './editor-panels/BackgroundEditor.svelte';
@@ -42,6 +42,14 @@
 
 {#if showTooltip}
 	<div id="tooltip" use:popperContent={extraOpts} use:clickOutside={() => (showTooltip = false)}>
+		<span
+			role="button"
+			class="close-button has-tooltip-right"
+			data-tooltip="Close popup"
+			on:click={() => (showTooltip = false)}
+		>
+			<Fa icon={faXmark} size="2x" />
+		</span>
 		<div class="editor-contents">
 			{#if layer.type === 'background'}
 				<BackgroundEditor bind:map bind:layer />
@@ -90,6 +98,13 @@
 		padding: 15px;
 		position: relative;
 		z-index: 10;
+
+		.close-button {
+			position: absolute;
+			top: 0.5rem;
+			right: 1rem;
+			cursor: pointer;
+		}
 	}
 
 	#arrow,

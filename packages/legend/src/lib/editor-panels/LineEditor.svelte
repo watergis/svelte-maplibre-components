@@ -3,32 +3,20 @@
 	import Opacity from '$lib/editor-controls/Opacity.svelte';
 	import ColorControl from '$lib/editor-controls/ColorControl.svelte';
 	import LineWidth from '$lib/editor-controls/LineWidth.svelte';
+	import FieldControl from '$lib/util/FieldControl.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
 </script>
 
-<div class="field">
-	<label class="label is-small">Opacity</label>
-	<div class="control">
-		<Opacity bind:map bind:layer />
-	</div>
-</div>
+<FieldControl title="Opacity">
+	<Opacity bind:map bind:layer />
+</FieldControl>
 
-<div class="field">
-	<label class="label is-small">Line color</label>
-	<div class="control">
-		<ColorControl bind:map bind:layer propertyName="line-color" />
-	</div>
-</div>
+<FieldControl title="Line color">
+	<ColorControl bind:map bind:layer propertyName="line-color" />
+</FieldControl>
 
-<div class="field">
-	<label class="label is-small">Line width</label>
-	<div class="control">
-		<LineWidth bind:map bind:layer />
-	</div>
-</div>
-
-<style lang="scss">
-	@import 'bulma/bulma.sass';
-</style>
+<FieldControl title="Line width">
+	<LineWidth bind:map bind:layer />
+</FieldControl>

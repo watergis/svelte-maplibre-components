@@ -7,6 +7,7 @@
 	import RasterHueRotate from '$lib/editor-controls/raster/RasterHueRotate.svelte';
 	import RasterSaturation from '$lib/editor-controls/raster/RasterSaturation.svelte';
 	import FieldControl from '$lib/util/FieldControl.svelte';
+	import RasterResampling from '$lib/editor-controls/raster/RasterResampling.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -30,6 +31,10 @@
 
 <FieldControl title="Raster hue rotate">
 	<RasterHueRotate bind:map bind:layer />
+</FieldControl>
+
+<FieldControl title="Raster resampling">
+	<RasterResampling bind:map bind:layer />
 </FieldControl>
 
 <FieldControl title="Raster saturation">

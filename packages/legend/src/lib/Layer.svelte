@@ -28,6 +28,8 @@
 	let checked = visibility === 'none' ? false : true;
 	$: checked, setVisibility();
 
+	$: layerTitle = relativeLayers && relativeLayers[layer.id] ? relativeLayers[layer.id] : layer.id;
+
 	const setVisibility = () => {
 		const visibility = checked === true ? 'visible' : 'none';
 		map.setLayoutProperty(layer.id, 'visibility', visibility);
@@ -131,7 +133,7 @@
 		<Legend {map} {layer} {spriteLoader} />
 	</div>
 	<div class="layer-name">
-		{relativeLayers && relativeLayers[layer.id] ? relativeLayers[layer.id] : layer.id}
+		{layerTitle}
 	</div>
 	{#if enableLayerOrder}
 		<div class="layer-position">

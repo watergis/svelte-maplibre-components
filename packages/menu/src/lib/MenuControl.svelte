@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import { Split } from '@geoffcox/svelte-splitter/src';
 	import Fa from 'svelte-fa';
-	import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+	import { faBars, faXmark, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 	export let map: Map;
 	export let isMenuShown = false;
@@ -70,6 +70,7 @@
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		mapMenuControl = new MapMenuControl();
+		setSplitControl();
 	});
 
 	const resizeMap = () => {
@@ -134,7 +135,7 @@
 			{#if isMobile}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<span class="span close-icon" on:click={handleClose}>
-					<Fa icon={faXmark} size="lg" />
+					<Fa icon={faCircleXmark} size="2x" color="#1c1c1c" />
 				</span>
 			{/if}
 			<slot name="primary" />
@@ -154,8 +155,8 @@
 
 			.close-icon {
 				position: absolute;
-				top: 5px;
-				right: 10px;
+				top: 0.5rem;
+				right: 0.6rem;
 				cursor: pointer;
 				z-index: 10;
 			}

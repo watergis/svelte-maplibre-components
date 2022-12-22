@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import Fa from 'svelte-fa';
-	import { faPalette, faXmark } from '@fortawesome/free-solid-svg-icons';
+	import { faPalette, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 	import { createPopperActions } from 'svelte-popperjs';
 	import { clickOutside } from 'svelte-use-click-outside';
 	import BackgroundEditor from './editor-panels/BackgroundEditor.svelte';
@@ -48,7 +48,7 @@
 			data-tooltip="Close popup"
 			on:click={() => (showTooltip = false)}
 		>
-			<Fa icon={faXmark} size="2x" />
+			<Fa icon={faCircleXmark} size="2x" color="#1c1c1c" />
 		</span>
 		<div class="editor-contents">
 			{#if layer.type === 'background'}
@@ -102,7 +102,7 @@
 		.close-button {
 			position: absolute;
 			top: 0.5rem;
-			right: 1rem;
+			right: 0.6rem;
 			cursor: pointer;
 		}
 	}

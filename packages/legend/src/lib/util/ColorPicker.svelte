@@ -126,5 +126,17 @@
 		width: 280px;
 		position: relative;
 		z-index: 10;
+
+		:global(.picker) {
+			cursor: pointer;
+		}
+
+		:global(.slider) {
+			cursor: pointer;
+		}
+
+		:global(.alpha) {
+			cursor: pointer;
+		}
 	}
 </style>

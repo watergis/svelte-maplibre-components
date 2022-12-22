@@ -2,8 +2,8 @@
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import Opacity from '$lib/editor-controls/Opacity.svelte';
 	import ColorControl from '$lib/editor-controls/ColorControl.svelte';
-	import CircleRadius from '$lib/editor-controls/CircleRadius.svelte';
-	import CircleStrokeWidth from '$lib/editor-controls/CircleStrokeWidth.svelte';
+	import CircleRadius from '$lib/editor-controls/circle/CircleRadius.svelte';
+	import CircleStrokeWidth from '$lib/editor-controls/circle/CircleStrokeWidth.svelte';
 	import FieldControl from '$lib/util/FieldControl.svelte';
 
 	export let map: Map;

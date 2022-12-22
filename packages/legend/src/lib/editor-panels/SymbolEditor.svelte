@@ -3,13 +3,13 @@
 	import Opacity from '$lib/editor-controls/Opacity.svelte';
 	import ColorControl from '$lib/editor-controls/ColorControl.svelte';
 	import type SpriteLoader from '$lib/sprite';
-	import IconHaloWidth from '$lib/editor-controls/IconHaloWidth.svelte';
-	import IconHaloBlur from '$lib/editor-controls/IconHaloBlur.svelte';
-	import IconSize from '$lib/editor-controls/IconSize.svelte';
-	import TextHaloWidth from '$lib/editor-controls/TextHaloWidth.svelte';
-	import TextHaloBlur from '$lib/editor-controls/TextHaloBlur.svelte';
-	import TextSize from '$lib/editor-controls/TextSize.svelte';
-	import TextRotate from '$lib/editor-controls/TextRotate.svelte';
+	import IconHaloWidth from '$lib/editor-controls/symbol/IconHaloWidth.svelte';
+	import IconHaloBlur from '$lib/editor-controls/symbol/IconHaloBlur.svelte';
+	import IconSize from '$lib/editor-controls/symbol/IconSize.svelte';
+	import TextHaloWidth from '$lib/editor-controls/symbol/TextHaloWidth.svelte';
+	import TextHaloBlur from '$lib/editor-controls/symbol/TextHaloBlur.svelte';
+	import TextSize from '$lib/editor-controls/symbol/TextSize.svelte';
+	import TextRotate from '$lib/editor-controls/symbol/TextRotate.svelte';
 	import FieldControl from '$lib/util/FieldControl.svelte';
 
 	export let map: Map;

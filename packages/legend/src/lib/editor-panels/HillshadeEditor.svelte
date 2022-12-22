@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import ColorControl from '$lib/editor-controls/ColorControl.svelte';
-	import HillshadeExaggeration from '$lib/editor-controls/HillshadeExaggeration.svelte';
-	import HillshadeIlluminationDirection from '$lib/editor-controls/HillshadeIlluminationDirection.svelte';
+	import HillshadeExaggeration from '$lib/editor-controls/hillshade/HillshadeExaggeration.svelte';
+	import HillshadeIlluminationDirection from '$lib/editor-controls/hillshade/HillshadeIlluminationDirection.svelte';
 	import FieldControl from '$lib/util/FieldControl.svelte';
 
 	export let map: Map;

@@ -2,7 +2,7 @@
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import Opacity from '$lib/editor-controls/Opacity.svelte';
 	import ColorControl from '$lib/editor-controls/ColorControl.svelte';
-	import LineWidth from '$lib/editor-controls/LineWidth.svelte';
+	import LineWidth from '$lib/editor-controls/line/LineWidth.svelte';
 	import FieldControl from '$lib/util/FieldControl.svelte';
 
 	export let map: Map;

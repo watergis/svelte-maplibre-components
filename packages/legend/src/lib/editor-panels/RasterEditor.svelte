@@ -1,11 +1,11 @@
 <script lang="ts">
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import Opacity from '$lib/editor-controls/Opacity.svelte';
-	import RasterBrightnessMax from '$lib/editor-controls/RasterBrightnessMax.svelte';
-	import RasterBrightnessMin from '$lib/editor-controls/RasterBrightnessMin.svelte';
-	import RasterContrast from '$lib/editor-controls/RasterContrast.svelte';
-	import RasterHueRotate from '$lib/editor-controls/RasterHueRotate.svelte';
-	import RasterSaturation from '$lib/editor-controls/RasterSaturation.svelte';
+	import RasterBrightnessMax from '$lib/editor-controls/raster/RasterBrightnessMax.svelte';
+	import RasterBrightnessMin from '$lib/editor-controls/raster/RasterBrightnessMin.svelte';
+	import RasterContrast from '$lib/editor-controls/raster/RasterContrast.svelte';
+	import RasterHueRotate from '$lib/editor-controls/raster/RasterHueRotate.svelte';
+	import RasterSaturation from '$lib/editor-controls/raster/RasterSaturation.svelte';
 	import FieldControl from '$lib/util/FieldControl.svelte';
 
 	export let map: Map;

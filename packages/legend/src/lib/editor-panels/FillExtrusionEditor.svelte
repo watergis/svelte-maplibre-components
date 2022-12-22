@@ -2,8 +2,8 @@
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import Opacity from '$lib/editor-controls/Opacity.svelte';
 	import ColorControl from '$lib/editor-controls/ColorControl.svelte';
-	import FillExtrusionHeight from '$lib/editor-controls/FillExtrusionHeight.svelte';
-	import FillExtrusionBase from '$lib/editor-controls/FillExtrusionBase.svelte';
+	import FillExtrusionHeight from '$lib/editor-controls/fill-extrusion/FillExtrusionHeight.svelte';
+	import FillExtrusionBase from '$lib/editor-controls/fill-extrusion/FillExtrusionBase.svelte';
 	import FieldControl from '$lib/util/FieldControl.svelte';
 
 	export let map: Map;

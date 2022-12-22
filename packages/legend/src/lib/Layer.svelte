@@ -100,11 +100,11 @@
 	};
 </script>
 
-<div class="layer-container" style="cursor:{enableLayerOrder && !isMobile ? 'grab' : 'default'};">
-	{#if enableLayerOrder && !isMobile}
+<div class="layer-container" style="cursor:{enableLayerOrder ? 'grab' : 'default'};">
+	{#if enableLayerOrder}
 		<span
 			class="draggable-icon has-tooltip-right has-tooltip-arrow"
-			data-tooltip="Drag to change order"
+			data-tooltip="{isMobile ? 'Long press & drag' : 'Drag'} to change order"
 		>
 			<Fa icon={faGripVertical} />
 		</span>

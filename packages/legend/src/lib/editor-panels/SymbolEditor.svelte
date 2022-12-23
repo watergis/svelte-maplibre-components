@@ -11,6 +11,7 @@
 	import TextSize from '$lib/editor-controls/symbol/TextSize.svelte';
 	import TextRotate from '$lib/editor-controls/symbol/TextRotate.svelte';
 	import FieldControl from '$lib/util/FieldControl.svelte';
+	import HeatmapGenerator from '$lib/editor-controls/heatmap/HeatmapGenerator.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -19,6 +20,10 @@
 	let iconImage = map.getLayoutProperty(layer.id, 'icon-image');
 	let textField = map.getLayoutProperty(layer.id, 'text-field');
 </script>
+
+<FieldControl title="Heatmap">
+	<HeatmapGenerator bind:map bind:layer />
+</FieldControl>
 
 <FieldControl title="Opacity">
 	<Opacity bind:map bind:layer />

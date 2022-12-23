@@ -212,6 +212,7 @@ importers:
       '@watergis/legend-symbol': ^0.2.3
       '@watergis/svelte-maplibre-menu': workspace:^0.1.16
       bulma: ^0.9.4
+      bulma-switch: ^2.0.4
       chroma-js: ^2.4.2
       detect-touch-device: ^1.1.6
       eslint: ^8.29.0
@@ -256,6 +257,7 @@ importers:
       '@typescript-eslint/parser': 5.46.1_ha6vam6werchizxrnqvarmz2zu
       '@watergis/svelte-maplibre-menu': link:../menu
       bulma: 0.9.4
+      bulma-switch: 2.0.4
       eslint: 8.29.0
       eslint-config-prettier: 8.5.0_eslint@8.29.0
       eslint-plugin-svelte3: 4.0.0_ffnabc34fed75fjymbd45uofx4
@@ -1938,6 +1940,10 @@ packages:
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
+
+  /bulma-switch/2.0.4:
+    resolution: {integrity: sha512-kMu4H0Pr0VjvfsnT6viRDCgptUq0Rvy7y7PX6q+IHg1xUynsjszPjhAdal5ysAlCG5HNO+5YXxeiu92qYGQolw==}
+    dev: true
 
   /bulma/0.9.4:
     resolution: {integrity: sha512-86FlT5+1GrsgKbPLRRY7cGDg8fsJiP/jzTqXXVqiUZZ2aZT8uemEOHlU1CDU+TxklPEZ11HZNNWclRBBecP4CQ==}

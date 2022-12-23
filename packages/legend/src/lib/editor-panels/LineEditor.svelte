@@ -6,10 +6,16 @@
 	import FieldControl from '$lib/util/FieldControl.svelte';
 	import LineBlur from '$lib/editor-controls/line/LineBlur.svelte';
 	import LineDashArray from '$lib/editor-controls/line/LineDashArray.svelte';
+	import HeatmapGenerator from '$lib/editor-controls/heatmap/HeatmapGenerator.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
 </script>
+
+<FieldControl title="Heatmap">
+	<!-- svelte-ignore missing-declaration -->
+	<HeatmapGenerator bind:map bind:layer />
+</FieldControl>
 
 <FieldControl title="Opacity">
 	<Opacity bind:map bind:layer />

@@ -2,6 +2,7 @@
 	import type { Map, LayerSpecification } from 'maplibre-gl';
 	import chroma from 'chroma-js';
 	import ColorPicker from '$lib/util/ColorPicker.svelte';
+	import { getColorFromExpression } from '$lib/util/getColorFromExpression';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -20,20 +21,6 @@
 		| 'hillshade-accent-color'
 		| 'hillshade-highlight-color'
 		| 'hillshade-shadow-color';
-
-	const getColorFromExpression = (value: any) => {
-		if (value && Array.isArray(value)) {
-			if (value[0] === 'rgb') {
-				value = chroma(value.splice(1, 3)).css();
-			} else if (value[0] === 'rgba') {
-				value = chroma(value.splice(1, 4)).css();
-			} else if (value[0] === 'match') {
-				const values = value[value.length - 1];
-				value = getColorFromExpression(values);
-			}
-		}
-		return value;
-	};
 
 	const getValue = () => {
 		let value = map.getPaintProperty(layer.id, propertyName);

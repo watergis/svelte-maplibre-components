@@ -13,6 +13,7 @@
 	import HillshadeEditor from './editor-panels/HillshadeEditor.svelte';
 	import type SpriteLoader from './sprite';
 	import RasterEditor from './editor-panels/RasterEditor.svelte';
+	import HeatmapEditor from './editor-panels/HeatmapEditor.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -67,6 +68,8 @@
 				<HillshadeEditor bind:map bind:layer />
 			{:else if layer.type === 'raster'}
 				<RasterEditor bind:map bind:layer />
+			{:else if layer.type === 'heatmap'}
+				<HeatmapEditor bind:map bind:layer />
 			{/if}
 		</div>
 		<div id="arrow" data-popper-arrow />
@@ -93,8 +96,8 @@
 		border: 1px solid #ccc;
 		box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
 		font-size: 13px;
-		width: 300px;
-		max-width: 350px;
+		width: 250px;
+		max-width: 300px;
 		padding: 15px;
 		position: relative;
 		z-index: 10;

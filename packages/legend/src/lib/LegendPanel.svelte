@@ -26,6 +26,10 @@
 			map.on('load', () => {
 				updateLayers();
 			});
+			map.on('style:changed', () => {
+				allLayers = map.getStyle().layers;
+				handleStyleChanged(false);
+			});
 		}
 
 		if (relativeLayers && Object.keys(relativeLayers).length === 0) {

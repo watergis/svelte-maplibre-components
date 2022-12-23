@@ -1,6 +1,6 @@
 {
 	"name": "@watergis/svelte-maplibre-legend",
-	"version": "0.1.16",
+	"version": "0.1.17",
 	"description": "This is a svelte component to make layer legend for maplibre-gl.",
 	"main": "package/index.js",
 	"files": [
@@ -41,7 +41,7 @@
 		"@types/svelte-range-slider-pips": "^2.0.0",
 		"@typescript-eslint/eslint-plugin": "^5.46.1",
 		"@typescript-eslint/parser": "^5.46.1",
-		"@watergis/svelte-maplibre-menu": "workspace:^0.1.16",
+		"@watergis/svelte-maplibre-menu": "workspace:^0.1.17",
 		"bulma": "^0.9.4",
 		"bulma-switch": "^2.0.4",
 		"eslint": "^8.29.0",

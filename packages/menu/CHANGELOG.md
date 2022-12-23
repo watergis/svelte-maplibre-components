@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 0.1.17
+
+### Patch Changes
+
+- 8572d28: Changed close icon on mobile to circleXmark. fixed some behaviour of initial openning in mobile
+
 ## 0.1.16
 
 ### Patch Changes

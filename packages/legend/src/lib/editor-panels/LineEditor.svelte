@@ -13,7 +13,6 @@
 </script>
 
 <FieldControl title="Heatmap">
-	<!-- svelte-ignore missing-declaration -->
 	<HeatmapGenerator bind:map bind:layer />
 </FieldControl>
 

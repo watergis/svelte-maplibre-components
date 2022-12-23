@@ -1,5 +1,19 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.17
+
+### Patch Changes
+
+- 1443de4: - Check whether icon-image is SFD icon in order to disable icon color editor
+  - Added several new properties for symbol editor
+  - Added raster editor properties
+- 2919fde: create heatmap from symbol or line layer
+- fb7897e: support additional layer type of heatmap, fill-extrusion, raster and heatmap, and background to show appropriate icon in legend
+- 6e19de2: - refactor: created FieldControl
+  - refactor: created folder for each layer type
+  - refactor: changed close icon
+  - feat: added LineBlur, LineDashArray, RasterResampling
+
 ## 0.1.16
 
 ### Patch Changes

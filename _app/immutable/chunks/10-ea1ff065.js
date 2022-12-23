@@ -1,1 +1,1 @@
-import{_ as r}from"./_page-bf2b9fa2.js";import{default as t}from"../components/pages/components/search/_page.md-fda0ca07.js";export{t as component,r as universal};
+import{_ as r}from"./_page-f58a9c48.js";import{default as t}from"../components/pages/components/search/_page.md-fda0ca07.js";export{t as component,r as universal};

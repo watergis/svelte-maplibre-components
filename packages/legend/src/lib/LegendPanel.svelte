@@ -174,99 +174,35 @@
 		}
 		return isRelative;
 	};
+
+	const showOnList = (layerId: string) => {
+		let isShow = false;
+		if (onlyRendered === true) {
+			if (visibleLayerMap[layerId]) {
+				if (onlyRelative === true) {
+					if (isRelativeLayer(layerId)) {
+						isShow = true;
+					}
+				} else {
+					isShow = true;
+				}
+			}
+		} else if (onlyRelative === true) {
+			if (isRelativeLayer(layerId)) {
+				isShow = true;
+			}
+		} else {
+			isShow = true;
+		}
+		return isShow;
+	};
 </script>
 
 <ul class="legend-panel">
 	{#if spriteLoader}
 		{#key style}
 			{#each allLayers as layer, index (layer.id)}
-				{#if onlyRendered === true}
-					{#if visibleLayerMap[layer.id]}
-						{#if onlyRelative === true}
-							{#if isRelativeLayer(layer.id)}
-								<div
-									class="list-item"
-									draggable={enableLayerOrder}
-									on:dragstart={(event) => dragstart(event, index)}
-									on:drop|preventDefault={(event) => drop(event, index, layer)}
-									on:dragover={(event) => dragover(event)}
-									on:dragenter={() => {
-										hovering = index;
-									}}
-									class:is-active={hovering === index}
-								>
-									<li class="legend-panel-block">
-										<Layer
-											{map}
-											{layer}
-											{spriteLoader}
-											{relativeLayers}
-											bind:enableLayerOrder
-											bind:disableVisibleButton
-											bind:enableEditing
-											on:visibilityChanged={layerVisibilityChanged}
-											on:layerOrderChanged={layerOrderChanged}
-										/>
-									</li>
-								</div>
-							{/if}
-						{:else}
-							<div
-								class="list-item"
-								draggable={enableLayerOrder}
-								on:dragstart={(event) => dragstart(event, index)}
-								on:drop|preventDefault={(event) => drop(event, index, layer)}
-								on:dragover={(event) => dragover(event)}
-								on:dragenter={() => {
-									hovering = index;
-								}}
-								class:is-active={hovering === index}
-							>
-								<li class="legend-panel-block">
-									<Layer
-										{map}
-										{layer}
-										{spriteLoader}
-										{relativeLayers}
-										bind:enableLayerOrder
-										bind:disableVisibleButton
-										bind:enableEditing
-										on:visibilityChanged={layerVisibilityChanged}
-										on:layerOrderChanged={layerOrderChanged}
-									/>
-								</li>
-							</div>
-						{/if}
-					{/if}
-				{:else if onlyRelative === true}
-					{#if isRelativeLayer(layer.id)}
-						<div
-							class="list-item"
-							draggable={enableLayerOrder}
-							on:dragstart={(event) => dragstart(event, index)}
-							on:drop|preventDefault={(event) => drop(event, index, layer)}
-							on:dragover={(event) => dragover(event)}
-							on:dragenter={() => {
-								hovering = index;
-							}}
-							class:is-active={hovering === index}
-						>
-							<li class="legend-panel-block">
-								<Layer
-									{map}
-									{layer}
-									{spriteLoader}
-									{relativeLayers}
-									bind:enableLayerOrder
-									bind:disableVisibleButton
-									bind:enableEditing
-									on:visibilityChanged={layerVisibilityChanged}
-									on:layerOrderChanged={layerOrderChanged}
-								/>
-							</li>
-						</div>
-					{/if}
-				{:else}
+				{#if showOnList(layer.id)}
 					<div
 						class="list-item"
 						draggable={enableLayerOrder}

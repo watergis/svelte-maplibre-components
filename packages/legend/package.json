@@ -42,6 +42,7 @@
 		"@typescript-eslint/eslint-plugin": "^5.46.1",
 		"@typescript-eslint/parser": "^5.46.1",
 		"@watergis/svelte-maplibre-menu": "workspace:^0.1.17",
+		"@watergis/svelte-maplibre-style-switcher": "workspace:^0.1.15",
 		"bulma": "^0.9.4",
 		"bulma-switch": "^2.0.4",
 		"eslint": "^8.29.0",

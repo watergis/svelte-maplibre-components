@@ -211,6 +211,7 @@ importers:
       '@typescript-eslint/parser': ^5.46.1
       '@watergis/legend-symbol': ^0.2.3
       '@watergis/svelte-maplibre-menu': workspace:^0.1.17
+      '@watergis/svelte-maplibre-style-switcher': workspace:^0.1.15
       bulma: ^0.9.4
       bulma-switch: ^2.0.4
       chroma-js: ^2.4.2
@@ -256,6 +257,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.46.1_imrg37k3svwu377c6q7gkarwmi
       '@typescript-eslint/parser': 5.46.1_ha6vam6werchizxrnqvarmz2zu
       '@watergis/svelte-maplibre-menu': link:../menu
+      '@watergis/svelte-maplibre-style-switcher': link:../style-switcher
       bulma: 0.9.4
       bulma-switch: 2.0.4
       eslint: 8.29.0

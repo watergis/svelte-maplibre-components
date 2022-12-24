@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import Fa from 'svelte-fa';
-	import { faPalette, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+	import { faPalette, faCircleXmark, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 	import { createPopperActions } from 'svelte-popperjs';
 	import { clickOutside } from 'svelte-use-click-outside';
 	import BackgroundEditor from './editor-panels/BackgroundEditor.svelte';
@@ -15,10 +15,12 @@
 	import RasterEditor from './editor-panels/RasterEditor.svelte';
 	import HeatmapEditor from './editor-panels/HeatmapEditor.svelte';
 	import Help from './util/Help.svelte';
+	import ManualEditor from './editor-panels/ManualEditor.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
 	export let spriteLoader: SpriteLoader;
+	let showManualEditor = false;
 
 	const [popperRef, popperContent] = createPopperActions({
 		placement: 'right',
@@ -46,18 +48,30 @@
 	<div id="tooltip" use:popperContent={extraOpts} use:clickOutside={() => (showTooltip = false)}>
 		<p class="title">
 			{layer.type} editor
+
+			<span
+				role="button"
+				class="manual-edit-button has-tooltip-right has-tooltip-arrow"
+				data-tooltip="Manual editor"
+				on:click={() => (showManualEditor = !showManualEditor)}
+			>
+				<Fa icon={faPenToSquare} size="lg" />
+			</span>
+
 			<Help bind:layerType={layer.type} />
 		</p>
 		<span
 			role="button"
-			class="close-button has-tooltip-right has-tooltip-arrow"
+			class="close-button has-tooltip-bottom has-tooltip-arrow"
 			data-tooltip="Close popup"
 			on:click={() => (showTooltip = false)}
 		>
 			<Fa icon={faCircleXmark} size="2x" color="#1c1c1c" />
 		</span>
 		<div class="editor-contents">
-			{#if layer.type === 'background'}
+			{#if showManualEditor}
+				<ManualEditor bind:map bind:layer />
+			{:else if layer.type === 'background'}
 				<BackgroundEditor bind:map bind:layer />
 			{:else if layer.type === 'fill'}
 				<FillEditor bind:map bind:layer />
@@ -113,12 +127,20 @@
 			font-size: medium;
 			font-weight: bold;
 			text-transform: capitalize;
-			border-bottom: 1px solid gray;
+			border-bottom: 2px solid gray;
 		}
 
 		.editor-contents {
 			max-height: 90vh;
 			overflow-y: auto;
+		}
+
+		.manual-edit-button {
+			color: #1c1c1c;
+
+			&:hover {
+				color: hsl(204, 86%, 53%);
+			}
 		}
 
 		.close-button {

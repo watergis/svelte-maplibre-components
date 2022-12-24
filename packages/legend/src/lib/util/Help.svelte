@@ -31,7 +31,7 @@
 </script>
 
 <a class="help" href={url} target="_blank" rel="noreferrer" role="button">
-	<Fa icon={faCircleQuestion} size="lg" />
+	<Fa icon={faCircleQuestion} size="sm" />
 </a>
 
 <style lang="scss">

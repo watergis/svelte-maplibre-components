@@ -127,7 +127,7 @@
 			font-size: medium;
 			font-weight: bold;
 			text-transform: capitalize;
-			border-bottom: 1px solid gray;
+			border-bottom: 2px solid gray;
 		}
 
 		.editor-contents {

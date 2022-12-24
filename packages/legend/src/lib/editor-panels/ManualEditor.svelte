@@ -6,49 +6,34 @@
 	export let map: Map;
 	export let layer: LayerSpecification;
 
-	let layerStyleJson = JSON.stringify(layer, null, 4);
+	let layerLayoutStyleJson = JSON.stringify(layer.layout, null, 4);
+	let layerPaintStyleJson = JSON.stringify(layer.paint, null, 4);
 
 	let errorMessage: string;
 
 	const handleSave = () => {
-		errorMessage = '';
-		try {
-			const layerStyle = JSON.parse(layerStyleJson);
-			// layer = layerStyle
-			if (layerStyle.filter) {
-				map.setFilter(layerStyle.filter);
-			}
-			if (layerStyle.layout) {
-				Object.keys(layerStyle.layout).forEach((prop) => {
-					map.setLayoutProperty(layer.id, prop, layerStyle.layout[prop]);
-				});
-			}
-			if (layerStyle.paint) {
-				Object.keys(layerStyle.paint).forEach((prop) => {
-					map.setPaintProperty(layer.id, prop, layerStyle.paint[prop]);
-				});
-			}
-			layer = layerStyle;
-		} catch (err) {
-			if (err instanceof Error) {
-				errorMessage = err.message;
-			} else {
-				throw err;
+		const layoutStyle = JSON.parse(layerLayoutStyleJson);
+		if (layoutStyle) {
+			const keys = Object.keys(layoutStyle);
+			for (const prop of keys) {
+				map.setLayoutProperty(layer.id, prop, layoutStyle[prop]);
 			}
 		}
+		layer.layout = layoutStyle;
+
+		const paintStyle = JSON.parse(layerPaintStyleJson);
+		if (paintStyle) {
+			const keys = Object.keys(paintStyle);
+			for (const prop of keys) {
+				map.setPaintProperty(layer.id, prop, paintStyle[prop]);
+			}
+		}
+		layer.paint = paintStyle;
 	};
 
 	const handleFormat = () => {
-		errorMessage = '';
-		try {
-			layerStyleJson = JSON.stringify(JSON.parse(layerStyleJson), null, 4);
-		} catch (err) {
-			if (err instanceof Error) {
-				errorMessage = err.message;
-			} else {
-				throw err;
-			}
-		}
+		layerLayoutStyleJson = JSON.stringify(JSON.parse(layerLayoutStyleJson), null, 4);
+		layerPaintStyleJson = JSON.stringify(JSON.parse(layerPaintStyleJson), null, 4);
 	};
 </script>
 
@@ -72,15 +57,17 @@
 	</span>
 </div>
 
-{#if errorMessage}
-	<div class="notification is-danger p-1 mx-0 my-2">{errorMessage}</div>
-{/if}
+<p class="editor-title">Layout editor</p>
 
-<textarea class="manual-editor" bind:value={layerStyleJson} />
+<textarea class="manual-editor" bind:value={layerLayoutStyleJson} />
+
+<p class="editor-title">Paint editor</p>
+
+<textarea class="manual-editor" bind:value={layerPaintStyleJson} />
 
 <style lang="scss">
 	@use '@creativebulma/bulma-tooltip/dist/bulma-tooltip.min.css';
-	@import 'bulma/bulma.sass';
+	// @import 'bulma/bulma.sass';
 
 	.menu-buttons {
 		padding-bottom: 0.5rem;
@@ -96,11 +83,19 @@
 		}
 	}
 
+	.editor-title {
+		font-size: small;
+		font-weight: bold;
+		border-bottom: 2px solid gray;
+		margin: 0;
+		margin-bottom: 0.5rem;
+	}
+
 	.manual-editor {
 		min-width: 100%;
 		max-width: 100%;
-		min-height: 100px;
-		max-height: 500px;
+		height: 200px;
+		max-height: 40vh;
 		overflow-y: scroll;
 		// resize: none;
 	}

@@ -1,5 +1,13 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.19
+
+### Patch Changes
+
+- 3e2c0c6: fixed bug of closing popup immediately after changing style anything.
+- 52a4f0f: add help button to open maplibre spec page
+- 829369b: add manual style editor
+
 ## 0.1.18
 
 ### Patch Changes

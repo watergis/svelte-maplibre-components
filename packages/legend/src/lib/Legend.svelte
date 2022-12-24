@@ -1,7 +1,5 @@
 <script lang="ts">
 	import type { LayerSpecification, Map } from 'maplibre-gl';
-	import chroma from 'chroma-js';
-
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
 	import LegendSymbol from '@watergis/legend-symbol';
@@ -20,6 +18,8 @@
 		let image = document.createElement('img');
 		image.src = url;
 		image.addEventListener('load', () => URL.revokeObjectURL(url), { once: true });
+		image.height = 24;
+		image.width = 24;
 		return image;
 	};
 
@@ -106,7 +106,7 @@
 					Object.keys(symbol.attributes).forEach((k) => {
 						svgIcon.setAttribute(k, symbol.attributes[k]);
 						let group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-						symbol.children.forEach((child) => {
+						symbol.children.forEach((child: { element: any; attributes: { [x: string]: any } }) => {
 							var c = document.createElementNS('http://www.w3.org/2000/svg', child.element);
 							Object.keys(child.attributes).forEach((k2) => {
 								c.setAttributeNS(null, k2, child.attributes[k2]);

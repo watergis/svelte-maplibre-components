@@ -3,6 +3,7 @@
 	import Layer from './Layer.svelte';
 	import SpriteLoader from './sprite';
 	import { invisibleLayerMap } from './stores';
+	import { distinct } from './util/distinct';
 
 	export let map: Map;
 	export let style: StyleSpecification;
@@ -23,11 +24,8 @@
 		if (map) {
 			map.on('moveend', updateLayers);
 			map.on('styledata', updateLayers);
-			map.on('load', () => {
-				updateLayers();
-			});
+			map.on('load', updateLayers);
 			map.on('style:changed', () => {
-				allLayers = map.getStyle().layers;
 				handleStyleChanged(false);
 			});
 		}
@@ -41,40 +39,48 @@
 	$: onlyRelative, updateLayers();
 	$: style, handleStyleChanged();
 
-	const handleStyleChanged = async (isLoadSprite = true) => {
+	const handleStyleChanged = (isLoadSprite = true) => {
 		if (!map) return;
 		if (!style) return;
 		const styleUrl = style.sprite;
 		if (!styleUrl) return;
 		if (isLoadSprite === true) {
 			spriteLoader = new SpriteLoader(styleUrl);
-			await spriteLoader.load();
+			spriteLoader.load().then(updateLayers);
+		} else {
+			updateLayers();
 		}
-		updateLayers();
 	};
 
 	const updateLayers = () => {
 		if (!map) return;
 		if (!style) return;
-		setTimeout(() => {
-			visibleLayerMap = {};
-			if (onlyRendered === true) {
-				Object.keys($invisibleLayerMap).forEach((layerId) => {
-					visibleLayerMap[layerId] = $invisibleLayerMap[layerId];
-				});
-				const features = map.queryRenderedFeatures();
-				allLayers.forEach((layer) => {
-					const filtered = features.filter((f) => f.layer.id === layer.id);
-					if (filtered.length > 0) {
+		visibleLayerMap = {};
+		const all = map.getStyle().layers;
+		if (onlyRendered === true) {
+			Object.keys($invisibleLayerMap).forEach((layerId) => {
+				visibleLayerMap[layerId] = $invisibleLayerMap[layerId];
+			});
+			const features = map.queryRenderedFeatures();
+			const ids = features.map((f) => f.layer.id).filter(distinct);
+			const zoom = map.getZoom();
+			all.forEach((layer) => {
+				const minzoom = layer.minzoom ?? 0;
+				const maxzoom = layer.maxzoom ?? 24;
+				if (ids.indexOf(layer.id) !== -1) {
+					visibleLayerMap[layer.id] = layer;
+				} else if (['heatmap', 'hillshade'].includes(layer.type)) {
+					if (zoom >= minzoom && zoom <= maxzoom) {
 						visibleLayerMap[layer.id] = layer;
 					}
-				});
-			} else {
-				allLayers.forEach((layer) => {
-					visibleLayerMap[layer.id] = layer;
-				});
-			}
-		}, 500);
+				}
+			});
+		} else {
+			all.forEach((layer) => {
+				visibleLayerMap[layer.id] = layer;
+			});
+		}
+		allLayers = [...all];
 	};
 
 	const layerVisibilityChanged = (e: {
@@ -156,6 +162,18 @@
 		});
 		return lastIndex + 1;
 	};
+
+	const isRelativeLayer = (layerId: string) => {
+		let isRelative = false;
+		if (relativeLayers[layerId]) {
+			isRelative = true;
+		} else {
+			if (layerId.indexOf('heatmap') > 0 && relativeLayers[layerId.replace('heatmap', '').trim()]) {
+				isRelative = true;
+			}
+		}
+		return isRelative;
+	};
 </script>
 
 <ul class="legend-panel">
@@ -164,9 +182,37 @@
 			{#key allLayers}
 				{#each allLayers as layer, index (layer.id)}
 					{#if onlyRendered === true}
-						{#if visibleLayerMap[layer.id]}
-							{#if onlyRelative === true}
-								{#if relativeLayers[layer.id]}
+						{#key visibleLayerMap}
+							{#if visibleLayerMap[layer.id]}
+								{#if onlyRelative === true}
+									{#if isRelativeLayer(layer.id)}
+										<div
+											class="list-item"
+											draggable={enableLayerOrder}
+											on:dragstart={(event) => dragstart(event, index)}
+											on:drop|preventDefault={(event) => drop(event, index, layer)}
+											on:dragover={(event) => dragover(event)}
+											on:dragenter={() => {
+												hovering = index;
+											}}
+											class:is-active={hovering === index}
+										>
+											<li class="legend-panel-block">
+												<Layer
+													{map}
+													{layer}
+													{spriteLoader}
+													{relativeLayers}
+													bind:enableLayerOrder
+													bind:disableVisibleButton
+													bind:enableEditing
+													on:visibilityChanged={layerVisibilityChanged}
+													on:layerOrderChanged={layerOrderChanged}
+												/>
+											</li>
+										</div>
+									{/if}
+								{:else}
 									<div
 										class="list-item"
 										draggable={enableLayerOrder}
@@ -193,36 +239,10 @@
 										</li>
 									</div>
 								{/if}
-							{:else}
-								<div
-									class="list-item"
-									draggable={enableLayerOrder}
-									on:dragstart={(event) => dragstart(event, index)}
-									on:drop|preventDefault={(event) => drop(event, index, layer)}
-									on:dragover={(event) => dragover(event)}
-									on:dragenter={() => {
-										hovering = index;
-									}}
-									class:is-active={hovering === index}
-								>
-									<li class="legend-panel-block">
-										<Layer
-											{map}
-											{layer}
-											{spriteLoader}
-											{relativeLayers}
-											bind:enableLayerOrder
-											bind:disableVisibleButton
-											bind:enableEditing
-											on:visibilityChanged={layerVisibilityChanged}
-											on:layerOrderChanged={layerOrderChanged}
-										/>
-									</li>
-								</div>
 							{/if}
-						{/if}
+						{/key}
 					{:else if onlyRelative === true}
-						{#if relativeLayers[layer.id]}
+						{#if isRelativeLayer(layer.id)}
 							<div
 								class="list-item"
 								draggable={enableLayerOrder}

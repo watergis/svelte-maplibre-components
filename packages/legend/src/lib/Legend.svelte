@@ -1,7 +1,5 @@
 <script lang="ts">
 	import type { LayerSpecification, Map } from 'maplibre-gl';
-	import chroma from 'chroma-js';
-
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
 	import LegendSymbol from '@watergis/legend-symbol';

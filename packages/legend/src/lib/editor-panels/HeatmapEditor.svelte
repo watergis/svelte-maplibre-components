@@ -10,18 +10,30 @@
 	export let layer: LayerSpecification;
 </script>
 
-<FieldControl title="Opacity">
+<FieldControl
+	title="Opacity"
+	help={{ type: 'paint', layerType: 'heatmap', property: 'heatmap-opacity' }}
+>
 	<Opacity bind:map bind:layer />
 </FieldControl>
 
-<FieldControl title="Heatmap intensity">
+<FieldControl
+	title="Heatmap intensity"
+	help={{ type: 'paint', layerType: 'heatmap', property: 'heatmap-intensity' }}
+>
 	<HeatmapIntensity bind:map bind:layer />
 </FieldControl>
 
-<FieldControl title="Heatmap radius">
+<FieldControl
+	title="Heatmap radius"
+	help={{ type: 'paint', layerType: 'heatmap', property: 'heatmap-radius' }}
+>
 	<HeatmapRadius bind:map bind:layer />
 </FieldControl>
 
-<FieldControl title="Heatmap weight">
+<FieldControl
+	title="Heatmap weight"
+	help={{ type: 'paint', layerType: 'heatmap', property: 'heatmap-weight' }}
+>
 	<HeatmapWeight bind:map bind:layer />
 </FieldControl>

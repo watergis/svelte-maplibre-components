@@ -13,30 +13,51 @@
 	export let layer: LayerSpecification;
 </script>
 
-<FieldControl title="Opacity">
+<FieldControl
+	title="Opacity"
+	help={{ type: 'paint', layerType: 'raster', property: 'raster-opacity' }}
+>
 	<Opacity bind:map bind:layer />
 </FieldControl>
 
-<FieldControl title="Raster brightness max">
+<FieldControl
+	title="Raster brightness max"
+	help={{ type: 'paint', layerType: 'raster', property: 'raster-brightness-max' }}
+>
 	<RasterBrightnessMax bind:map bind:layer />
 </FieldControl>
 
-<FieldControl title="Raster brightness min">
+<FieldControl
+	title="Raster brightness min"
+	help={{ type: 'paint', layerType: 'raster', property: 'raster-brightness-min' }}
+>
 	<RasterBrightnessMin bind:map bind:layer />
 </FieldControl>
 
-<FieldControl title="Raster contrast">
+<FieldControl
+	title="Raster contrast"
+	help={{ type: 'paint', layerType: 'raster', property: 'raster-contrast' }}
+>
 	<RasterContrast bind:map bind:layer />
 </FieldControl>
 
-<FieldControl title="Raster hue rotate">
+<FieldControl
+	title="Raster hue rotate"
+	help={{ type: 'paint', layerType: 'raster', property: 'raster-hue-rotate' }}
+>
 	<RasterHueRotate bind:map bind:layer />
 </FieldControl>
 
-<FieldControl title="Raster resampling">
+<FieldControl
+	title="Raster resampling"
+	help={{ type: 'paint', layerType: 'raster', property: 'raster-resampling' }}
+>
 	<RasterResampling bind:map bind:layer />
 </FieldControl>
 
-<FieldControl title="Raster saturation">
+<FieldControl
+	title="Raster saturation"
+	help={{ type: 'paint', layerType: 'raster', property: 'raster-saturation' }}
+>
 	<RasterSaturation bind:map bind:layer />
 </FieldControl>

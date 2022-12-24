@@ -10,22 +10,37 @@
 	export let layer: LayerSpecification;
 </script>
 
-<FieldControl title="Opacity">
+<FieldControl
+	title="Opacity"
+	help={{ type: 'paint', layerType: 'circle', property: 'circle-opacity' }}
+>
 	<Opacity bind:map bind:layer />
 </FieldControl>
 
-<FieldControl title="Circle radius">
+<FieldControl
+	title="Circle radius"
+	help={{ type: 'paint', layerType: 'circle', property: 'circle-radius' }}
+>
 	<CircleRadius bind:map bind:layer />
 </FieldControl>
 
-<FieldControl title="Circle color">
+<FieldControl
+	title="Circle color"
+	help={{ type: 'paint', layerType: 'circle', property: 'circle-color' }}
+>
 	<ColorControl bind:map bind:layer propertyName="circle-color" />
 </FieldControl>
 
-<FieldControl title="Circle stroke width">
+<FieldControl
+	title="Circle stroke width"
+	help={{ type: 'paint', layerType: 'circle', property: 'circle-stroke-width' }}
+>
 	<CircleStrokeWidth bind:map bind:layer />
 </FieldControl>
 
-<FieldControl title="Circle stroke color">
+<FieldControl
+	title="Circle stroke color"
+	help={{ type: 'paint', layerType: 'circle', property: 'circle-stroke-color' }}
+>
 	<ColorControl bind:map bind:layer propertyName="circle-stroke-color" />
 </FieldControl>

@@ -8,14 +8,20 @@
 	export let layer: LayerSpecification;
 </script>
 
-<FieldControl title="Opacity">
+<FieldControl title="Opacity" help={{ type: 'paint', layerType: 'fill', property: 'fill-opacity' }}>
 	<Opacity bind:map bind:layer />
 </FieldControl>
 
-<FieldControl title="Fill color">
+<FieldControl
+	title="Fill color"
+	help={{ type: 'paint', layerType: 'fill', property: 'fill-color' }}
+>
 	<ColorControl bind:map bind:layer propertyName="fill-color" />
 </FieldControl>
 
-<FieldControl title="Fill outline color">
+<FieldControl
+	title="Fill outline color"
+	help={{ type: 'paint', layerType: 'fill', property: 'fill-outline-color' }}
+>
 	<ColorControl bind:map bind:layer propertyName="fill-outline-color" />
 </FieldControl>

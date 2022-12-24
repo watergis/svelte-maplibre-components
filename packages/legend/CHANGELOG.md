@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.18
+
+### Patch Changes
+
+- 85dbeea: show heatmap and hillshade layers as rendered or related layers. fixed various bugs
+
 ## 0.1.17
 
 ### Patch Changes

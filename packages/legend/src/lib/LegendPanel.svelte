@@ -179,70 +179,38 @@
 <ul class="legend-panel">
 	{#if spriteLoader}
 		{#key style}
-			{#key allLayers}
-				{#each allLayers as layer, index (layer.id)}
-					{#if onlyRendered === true}
-						{#key visibleLayerMap}
-							{#if visibleLayerMap[layer.id]}
-								{#if onlyRelative === true}
-									{#if isRelativeLayer(layer.id)}
-										<div
-											class="list-item"
-											draggable={enableLayerOrder}
-											on:dragstart={(event) => dragstart(event, index)}
-											on:drop|preventDefault={(event) => drop(event, index, layer)}
-											on:dragover={(event) => dragover(event)}
-											on:dragenter={() => {
-												hovering = index;
-											}}
-											class:is-active={hovering === index}
-										>
-											<li class="legend-panel-block">
-												<Layer
-													{map}
-													{layer}
-													{spriteLoader}
-													{relativeLayers}
-													bind:enableLayerOrder
-													bind:disableVisibleButton
-													bind:enableEditing
-													on:visibilityChanged={layerVisibilityChanged}
-													on:layerOrderChanged={layerOrderChanged}
-												/>
-											</li>
-										</div>
-									{/if}
-								{:else}
-									<div
-										class="list-item"
-										draggable={enableLayerOrder}
-										on:dragstart={(event) => dragstart(event, index)}
-										on:drop|preventDefault={(event) => drop(event, index, layer)}
-										on:dragover={(event) => dragover(event)}
-										on:dragenter={() => {
-											hovering = index;
-										}}
-										class:is-active={hovering === index}
-									>
-										<li class="legend-panel-block">
-											<Layer
-												{map}
-												{layer}
-												{spriteLoader}
-												{relativeLayers}
-												bind:enableLayerOrder
-												bind:disableVisibleButton
-												bind:enableEditing
-												on:visibilityChanged={layerVisibilityChanged}
-												on:layerOrderChanged={layerOrderChanged}
-											/>
-										</li>
-									</div>
-								{/if}
+			{#each allLayers as layer, index (layer.id)}
+				{#if onlyRendered === true}
+					{#if visibleLayerMap[layer.id]}
+						{#if onlyRelative === true}
+							{#if isRelativeLayer(layer.id)}
+								<div
+									class="list-item"
+									draggable={enableLayerOrder}
+									on:dragstart={(event) => dragstart(event, index)}
+									on:drop|preventDefault={(event) => drop(event, index, layer)}
+									on:dragover={(event) => dragover(event)}
+									on:dragenter={() => {
+										hovering = index;
+									}}
+									class:is-active={hovering === index}
+								>
+									<li class="legend-panel-block">
+										<Layer
+											{map}
+											{layer}
+											{spriteLoader}
+											{relativeLayers}
+											bind:enableLayerOrder
+											bind:disableVisibleButton
+											bind:enableEditing
+											on:visibilityChanged={layerVisibilityChanged}
+											on:layerOrderChanged={layerOrderChanged}
+										/>
+									</li>
+								</div>
 							{/if}
-						{/key}
-					{:else if onlyRelative === true}
-						{#if isRelativeLayer(layer.id)}
+						{:else}
 							<div
 								class="list-item"
 								draggable={enableLayerOrder}
@@ -269,7 +237,9 @@
 								</li>
 							</div>
 						{/if}
-					{:else}
+					{/if}
+				{:else if onlyRelative === true}
+					{#if isRelativeLayer(layer.id)}
 						<div
 							class="list-item"
 							draggable={enableLayerOrder}
@@ -296,25 +266,51 @@
 							</li>
 						</div>
 					{/if}
-				{/each}
-				{#if enableLayerOrder}
+				{:else}
 					<div
 						class="list-item"
-						style="height: 40px;"
-						draggable={false}
-						on:drop|preventDefault={(event) => drop(event, getLastVisibleIndex())}
+						draggable={enableLayerOrder}
+						on:dragstart={(event) => dragstart(event, index)}
+						on:drop|preventDefault={(event) => drop(event, index, layer)}
 						on:dragover={(event) => dragover(event)}
 						on:dragenter={() => {
-							hovering = getLastVisibleIndex();
+							hovering = index;
 						}}
-						class:is-active={hovering === getLastVisibleIndex()}
+						class:is-active={hovering === index}
 					>
-						{#if isShowLastDropArea}
-							<div class="last-drop-area">Drag to the last</div>
-						{/if}
+						<li class="legend-panel-block">
+							<Layer
+								{map}
+								{layer}
+								{spriteLoader}
+								{relativeLayers}
+								bind:enableLayerOrder
+								bind:disableVisibleButton
+								bind:enableEditing
+								on:visibilityChanged={layerVisibilityChanged}
+								on:layerOrderChanged={layerOrderChanged}
+							/>
+						</li>
 					</div>
 				{/if}
-			{/key}
+			{/each}
+			{#if enableLayerOrder}
+				<div
+					class="list-item"
+					style="height: 40px;"
+					draggable={false}
+					on:drop|preventDefault={(event) => drop(event, getLastVisibleIndex())}
+					on:dragover={(event) => dragover(event)}
+					on:dragenter={() => {
+						hovering = getLastVisibleIndex();
+					}}
+					class:is-active={hovering === getLastVisibleIndex()}
+				>
+					{#if isShowLastDropArea}
+						<div class="last-drop-area">Drag to the last</div>
+					{/if}
+				</div>
+			{/if}
 		{/key}
 	{/if}
 </ul>

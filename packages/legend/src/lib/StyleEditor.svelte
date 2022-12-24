@@ -14,6 +14,7 @@
 	import type SpriteLoader from './sprite';
 	import RasterEditor from './editor-panels/RasterEditor.svelte';
 	import HeatmapEditor from './editor-panels/HeatmapEditor.svelte';
+	import Help from './util/Help.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -43,6 +44,10 @@
 
 {#if showTooltip}
 	<div id="tooltip" use:popperContent={extraOpts} use:clickOutside={() => (showTooltip = false)}>
+		<p class="title">
+			{layer.type} editor
+			<Help bind:layerType={layer.type} />
+		</p>
 		<span
 			role="button"
 			class="close-button has-tooltip-right has-tooltip-arrow"
@@ -101,6 +106,20 @@
 		padding: 15px;
 		position: relative;
 		z-index: 10;
+
+		.title {
+			margin: 0;
+			margin-left: 0.5rem;
+			font-size: medium;
+			font-weight: bold;
+			text-transform: capitalize;
+			border-bottom: 1px solid gray;
+		}
+
+		.editor-contents {
+			max-height: 90vh;
+			overflow-y: auto;
+		}
 
 		.close-button {
 			position: absolute;

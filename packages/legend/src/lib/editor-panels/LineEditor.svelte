@@ -12,26 +12,35 @@
 	export let layer: LayerSpecification;
 </script>
 
-<FieldControl title="Heatmap">
+<FieldControl title="Heatmap" help={{ layerType: 'heatmap' }}>
 	<HeatmapGenerator bind:map bind:layer />
 </FieldControl>
 
-<FieldControl title="Opacity">
+<FieldControl title="Opacity" help={{ type: 'paint', layerType: 'line', property: 'line-opacity' }}>
 	<Opacity bind:map bind:layer />
 </FieldControl>
 
-<FieldControl title="Line color">
+<FieldControl
+	title="Line color"
+	help={{ type: 'paint', layerType: 'line', property: 'line-color' }}
+>
 	<ColorControl bind:map bind:layer propertyName="line-color" />
 </FieldControl>
 
-<FieldControl title="Line width">
+<FieldControl
+	title="Line width"
+	help={{ type: 'paint', layerType: 'line', property: 'line-width' }}
+>
 	<LineWidth bind:map bind:layer />
 </FieldControl>
 
-<FieldControl title="Line pattern">
+<FieldControl
+	title="Line pattern"
+	help={{ type: 'paint', layerType: 'line', property: 'line-dasharray' }}
+>
 	<LineDashArray bind:map bind:layer />
 </FieldControl>
 
-<FieldControl title="Line blur">
+<FieldControl title="Line blur" help={{ type: 'paint', layerType: 'line', property: 'line-blur' }}>
 	<LineBlur bind:map bind:layer />
 </FieldControl>

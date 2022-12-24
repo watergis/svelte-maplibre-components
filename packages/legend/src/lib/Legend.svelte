@@ -106,7 +106,7 @@
 					Object.keys(symbol.attributes).forEach((k) => {
 						svgIcon.setAttribute(k, symbol.attributes[k]);
 						let group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-						symbol.children.forEach((child) => {
+						symbol.children.forEach((child: { element: any; attributes: { [x: string]: any } }) => {
 							var c = document.createElementNS('http://www.w3.org/2000/svg', child.element);
 							Object.keys(child.attributes).forEach((k2) => {
 								c.setAttributeNS(null, k2, child.attributes[k2]);

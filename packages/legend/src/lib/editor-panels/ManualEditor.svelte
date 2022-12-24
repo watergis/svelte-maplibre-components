@@ -67,7 +67,6 @@
 
 <style lang="scss">
 	@use '@creativebulma/bulma-tooltip/dist/bulma-tooltip.min.css';
-	// @import 'bulma/bulma.sass';
 
 	.menu-buttons {
 		padding-bottom: 0.5rem;
@@ -94,8 +93,9 @@
 	.manual-editor {
 		min-width: 100%;
 		max-width: 100%;
+		min-height: 100px;
 		height: 200px;
-		max-height: 40vh;
+		max-height: 300px;
 		overflow-y: scroll;
 		// resize: none;
 	}

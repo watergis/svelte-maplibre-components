@@ -20,6 +20,8 @@
 		let image = document.createElement('img');
 		image.src = url;
 		image.addEventListener('load', () => URL.revokeObjectURL(url), { once: true });
+		image.height = 24;
+		image.width = 24;
 		return image;
 	};
 

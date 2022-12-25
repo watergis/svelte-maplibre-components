@@ -60,14 +60,11 @@
 		heatmapLayer.maxzoom = symbolLayer.maxzoom ?? 24;
 
 		map.addLayer(heatmapLayer, symbolLayer.id);
-		map.fire('style:changed');
 	};
 
 	const deleteHeatmap = () => {
 		if (map.getLayer(heatmapLayerId)) {
 			map.removeLayer(heatmapLayerId);
-
-			map.fire('style:changed');
 		}
 	};
 </script>

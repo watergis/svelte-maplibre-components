@@ -6,12 +6,12 @@
 	import { distinct } from './util/distinct';
 
 	export let map: Map;
-	export let style: StyleSpecification;
 	export let onlyRendered = true;
 	export let onlyRelative = true;
 	export let enableLayerOrder = false;
 	export let disableVisibleButton = false;
 	export let enableEditing = true;
+	let style: StyleSpecification;
 	let spriteLoader: SpriteLoader | undefined;
 	let hovering: boolean | number | undefined = false;
 	$: isShowLastDropArea = hovering === getLastVisibleIndex();
@@ -24,9 +24,8 @@
 		if (map) {
 			map.on('moveend', updateLayers);
 			map.on('styledata', updateLayers);
-			map.on('load', updateLayers);
-			map.on('style:changed', () => {
-				handleStyleChanged(false);
+			map.on('load', () => {
+				style = map.getStyle();
 			});
 		}
 

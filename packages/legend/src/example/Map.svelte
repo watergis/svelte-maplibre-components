@@ -115,7 +115,6 @@
 		<div class="legend-content">
 			<LegendPanel
 				bind:map
-				bind:style
 				bind:onlyRendered
 				bind:onlyRelative
 				bind:enableLayerOrder

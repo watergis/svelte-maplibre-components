@@ -1,26 +1,17 @@
 <script lang="ts">
+	import type { PropertyType } from '$lib/interfaces';
 	import Slider from '$lib/util/Slider.svelte';
 	import type { Map, LayerSpecification } from 'maplibre-gl';
+	import Control from '../Control.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
-
-	const getValue = () => {
-		let value = map.getPaintProperty(layer.id, 'circle-stroke-width');
-
-		if (!value) {
-			value = 0;
-		}
-		return value as number;
-	};
-
-	let value = getValue();
-
-	$: value, setValue();
-
-	const setValue = () => {
-		map?.setPaintProperty(layer.id, 'circle-stroke-width', value);
-	};
+	let type: PropertyType = 'paint';
+	let property = 'circle-stroke-width';
+	let defaultValue = 0;
+	let value: number;
 </script>
 
-<Slider bind:value min={0} max={20} step={1} unit="px" />
+<Control bind:map bind:layer bind:type bind:property bind:defaultValue bind:value>
+	<Slider bind:value min={0} max={20} step={1} unit="px" />
+</Control>

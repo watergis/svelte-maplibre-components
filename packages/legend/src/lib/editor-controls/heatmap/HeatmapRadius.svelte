@@ -1,26 +1,17 @@
 <script lang="ts">
+	import type { PropertyType } from '$lib/interfaces';
 	import Slider from '$lib/util/Slider.svelte';
 	import type { Map, LayerSpecification } from 'maplibre-gl';
+	import Control from '../Control.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
-
-	const getValue = () => {
-		let value = map.getPaintProperty(layer.id, 'heatmap-radius');
-
-		if (!value) {
-			value = 30;
-		}
-		return value as number;
-	};
-
-	let value = getValue();
-
-	$: value, setValue();
-
-	const setValue = () => {
-		map?.setPaintProperty(layer.id, 'heatmap-radius', value);
-	};
+	let type: PropertyType = 'paint';
+	let property = 'heatmap-radius';
+	let defaultValue = 30;
+	let value: number;
 </script>
 
-<Slider bind:value min={1} max={100} step={1} unit="" />
+<Control bind:map bind:layer bind:type bind:property bind:defaultValue bind:value>
+	<Slider bind:value min={1} max={100} step={1} unit="" />
+</Control>

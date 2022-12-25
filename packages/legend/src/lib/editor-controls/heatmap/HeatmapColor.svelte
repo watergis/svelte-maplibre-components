@@ -89,7 +89,7 @@
 <style lang="scss">
 	.description {
 		margin: 0;
-		padding-bottom: 0.3rem;
+		padding-bottom: 0.1rem;
 		font-size: smaller;
 	}
 	.color-table {

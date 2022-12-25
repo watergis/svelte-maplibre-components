@@ -206,6 +206,7 @@ importers:
       '@sveltejs/kit': ^1.0.0
       '@sveltejs/package': ^1.0.0
       '@types/chroma-js': ^2.1.4
+      '@types/lodash-es': ^4.17.6
       '@types/svelte-range-slider-pips': ^2.0.0
       '@typescript-eslint/eslint-plugin': ^5.46.1
       '@typescript-eslint/parser': ^5.46.1
@@ -219,6 +220,7 @@ importers:
       eslint: ^8.29.0
       eslint-config-prettier: ^8.5.0
       eslint-plugin-svelte3: ^4.0.0
+      lodash-es: ^4.17.21
       maplibre-gl: ^2.4.0
       prettier: ^2.8.1
       prettier-plugin-svelte: ^2.9.0
@@ -239,6 +241,7 @@ importers:
       '@watergis/legend-symbol': 0.2.3
       chroma-js: 2.4.2
       detect-touch-device: 1.1.6
+      lodash-es: 4.17.21
       maplibre-gl: 2.4.0
       svelte-awesome-color-picker: 2.2.1
       svelte-fa: 3.0.3
@@ -253,6 +256,7 @@ importers:
       '@sveltejs/kit': 1.0.0_svelte@3.55.0+vite@4.0.1
       '@sveltejs/package': 1.0.0_niwyv7xychq2ag6arq5eqxbomm
       '@types/chroma-js': 2.1.4
+      '@types/lodash-es': 4.17.6
       '@types/svelte-range-slider-pips': 2.0.0
       '@typescript-eslint/eslint-plugin': 5.46.1_imrg37k3svwu377c6q7gkarwmi
       '@typescript-eslint/parser': 5.46.1_ha6vam6werchizxrnqvarmz2zu
@@ -3416,6 +3420,10 @@ packages:
     dependencies:
       p-locate: 5.0.0
     dev: true
+
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}

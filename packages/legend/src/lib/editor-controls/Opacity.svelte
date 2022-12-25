@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Map, LayerSpecification } from 'maplibre-gl';
+	import { debounce } from 'lodash-es';
 	import Slider from '$lib/util/Slider.svelte';
 
 	export let map: Map;
@@ -46,7 +47,7 @@
 	let value = getOpacity();
 	$: value, setOpacity();
 
-	const setOpacity = () => {
+	const setOpacity = debounce(() => {
 		if (!value) return;
 		const style = map?.getStyle().layers.find((l) => l.id === layer.id);
 		switch (style?.type) {
@@ -78,7 +79,7 @@
 			default:
 				break;
 		}
-	};
+	}, 100);
 </script>
 
 <Slider bind:value min={0} max={100} step={1} unit="%" />

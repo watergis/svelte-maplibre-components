@@ -3,20 +3,42 @@
 	import { Map } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import { LegendPanel, LegendHeader } from '$lib';
-	import type { StyleSpecification } from 'maplibre-gl';
+	import {
+		StyleSwitcher,
+		StyleUrl,
+		type StyleSwitcherOption
+	} from '@watergis/svelte-maplibre-style-switcher';
 
 	let mapContainer: HTMLDivElement;
 	let map: Map;
 
 	let isMenuShown = true;
-	let style: StyleSpecification;
-	$: {
-		if (map) {
-			map.on('load', () => {
-				style = map.getStyle();
-			});
+
+	let styles = [
+		{
+			title: 'UNVT Water (OSM)',
+			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style.json`
+		},
+		{
+			title: 'UNVT Water (Building)',
+			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style-buildings.json`
+		},
+		{
+			title: 'Satellite Water',
+			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style-aerial.json`
+		},
+		{
+			title: 'UNVT Sewer',
+			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style-sewer.json`
+		},
+		{
+			title: 'Satellite Sewer',
+			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style-aerial-sewer.json`
 		}
-	}
+	];
+
+	const styleUrlObj = new StyleUrl();
+	let selectedStyle: StyleSwitcherOption = styleUrlObj.getInitialStyle(styles);
 
 	let onlyRendered = true;
 	let onlyRelative = true;
@@ -60,14 +82,22 @@
 			container: mapContainer,
 			// style: 'https://undp-data.github.io/style/style.json'
 			// style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style-aerial.json'
-			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json',
+			style: selectedStyle.uri,
 			hash: true
 		});
 	});
+
+	const onStyleChange = () => {
+		if (!map) return;
+		map.fire('style:change');
+	};
 </script>
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
 	<div slot="primary" class="primary-container">
+		<div class="style-header">
+			<StyleSwitcher bind:map bind:selectedStyle bind:styles on:change={onStyleChange} />
+		</div>
 		<div class="legend-header">
 			<LegendHeader
 				bind:onlyRendered
@@ -79,7 +109,6 @@
 		<div class="legend-content">
 			<LegendPanel
 				bind:map
-				{style}
 				bind:onlyRendered
 				bind:onlyRelative
 				bind:enableLayerOrder
@@ -106,12 +135,17 @@
 		z-index: 1;
 	}
 
-	$height: calc(100vh - 56px);
+	$height: calc(100vh - 140px);
 
 	.primary-container {
 		display: flex;
 		flex-direction: column;
 		position: relative;
+
+		.style-header {
+			width: 100%;
+			margin-bottom: 0.5rem;
+		}
 
 		.legend-header {
 			padding-left: 0.5rem;

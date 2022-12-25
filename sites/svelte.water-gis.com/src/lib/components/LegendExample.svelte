@@ -84,7 +84,6 @@
 		<div class="legend-content" style="height:{menuHeight - 56}px">
 			<LegendPanel
 				bind:map
-				{style}
 				bind:onlyRendered
 				bind:onlyRelative
 				{relativeLayers}

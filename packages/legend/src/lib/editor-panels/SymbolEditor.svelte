@@ -12,6 +12,7 @@
 	import TextRotate from '$lib/editor-controls/symbol/TextRotate.svelte';
 	import FieldControl from '$lib/util/FieldControl.svelte';
 	import HeatmapGenerator from '$lib/editor-controls/heatmap/HeatmapGenerator.svelte';
+	import IconOverlap from '$lib/editor-controls/symbol/IconOverlap.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -38,6 +39,13 @@
 		help={{ type: 'layout', layerType: 'symbol', property: 'icon-size' }}
 	>
 		<IconSize bind:map bind:layer />
+	</FieldControl>
+
+	<FieldControl
+		title="Icon overlap"
+		help={{ type: 'layout', layerType: 'symbol', property: 'icon-overlap' }}
+	>
+		<IconOverlap bind:map bind:layer />
 	</FieldControl>
 
 	{#if spriteLoader?.isSdf(layer)}

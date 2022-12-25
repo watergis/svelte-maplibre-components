@@ -1,5 +1,12 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.21
+
+### Patch Changes
+
+- cc0b2d6: introduced debounce to avoid to much call setproperty function of maplibre. fixed bug of line-dasharray legend
+- 2be1189: add IconOverlap for symbol layer
+
 ## 0.1.20
 
 ### Patch Changes

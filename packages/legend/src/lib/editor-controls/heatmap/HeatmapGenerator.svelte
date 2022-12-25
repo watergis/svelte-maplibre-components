@@ -56,7 +56,7 @@
 				'heatmap-weight': 1
 			}
 		};
-		heatmapLayer.minzoom = 0;
+		heatmapLayer.minzoom = symbolLayer.maxzoom ?? 0;
 		heatmapLayer.maxzoom = symbolLayer.maxzoom ?? 24;
 
 		map.addLayer(heatmapLayer, symbolLayer.id);

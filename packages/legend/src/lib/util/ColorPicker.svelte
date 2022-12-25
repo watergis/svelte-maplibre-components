@@ -6,6 +6,8 @@
 	import { clickOutside } from 'svelte-use-click-outside';
 
 	export let color: string;
+	export let label = 'Choose a color';
+	export let hideLabel = false;
 	let rgba: RgbaColor;
 	let showTooltip = false;
 
@@ -63,8 +65,10 @@
 	on:keydown={handleKeydown}
 	use:popperRef
 >
-	<div class="color-palette" alt={color} title={color} style="background: {color};" />
-	<p class="label">Choose a color</p>
+	<div class="color-palette" title={color} style="background: {color};" />
+	{#if !hideLabel}
+		<p class="label">{label}</p>
+	{/if}
 </span>
 
 {#if showTooltip}

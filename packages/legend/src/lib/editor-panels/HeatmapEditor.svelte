@@ -5,6 +5,7 @@
 	import HeatmapIntensity from '$lib/editor-controls/heatmap/HeatmapIntensity.svelte';
 	import HeatmapRadius from '$lib/editor-controls/heatmap/HeatmapRadius.svelte';
 	import HeatmapWeight from '$lib/editor-controls/heatmap/HeatmapWeight.svelte';
+	import HeatmapColor from '$lib/editor-controls/heatmap/HeatmapColor.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -15,6 +16,13 @@
 	help={{ type: 'paint', layerType: 'heatmap', property: 'heatmap-opacity' }}
 >
 	<Opacity bind:map bind:layer />
+</FieldControl>
+
+<FieldControl
+	title="Heatmap color"
+	help={{ type: 'paint', layerType: 'heatmap', property: 'heatmap-color' }}
+>
+	<HeatmapColor bind:map bind:layer />
 </FieldControl>
 
 <FieldControl

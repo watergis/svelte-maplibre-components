@@ -109,7 +109,6 @@ pnpm i @watergis/svelte-maplibre-legend
 		<div class="legend-content" style="height:{menuHeight - 56}px">
 			<LegendPanel
 				bind:map
-				{style}
 				bind:onlyRendered
 				bind:onlyRelative
 				{relativeLayers}
@@ -154,4 +153,12 @@ pnpm i @watergis/svelte-maplibre-legend
 		}
 	}
 </style>
+```
+
+### In case style.json is changed
+
+When you changed map style.json, please fire `style:change` event like the following source code. this legend panel watch this event and will recreate legend with new style.json.
+
+```shell
+map.on('style:change')
 ```

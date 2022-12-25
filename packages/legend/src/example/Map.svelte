@@ -3,7 +3,6 @@
 	import { Map } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import { LegendPanel, LegendHeader } from '$lib';
-	import type { StyleSpecification } from 'maplibre-gl';
 	import {
 		StyleSwitcher,
 		StyleUrl,
@@ -14,7 +13,6 @@
 	let map: Map;
 
 	let isMenuShown = true;
-	let style: StyleSpecification;
 
 	let styles = [
 		{
@@ -87,15 +85,11 @@
 			style: selectedStyle.uri,
 			hash: true
 		});
-
-		map.on('load', () => {
-			style = map.getStyle();
-		});
 	});
 
 	const onStyleChange = () => {
 		if (!map) return;
-		style = map.getStyle();
+		map.fire('style:change');
 	};
 </script>
 

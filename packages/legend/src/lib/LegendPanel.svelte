@@ -27,6 +27,7 @@
 			map.on('load', () => {
 				style = map.getStyle();
 			});
+			map.on('style:change', handleStyleChanged);
 		}
 
 		if (relativeLayers && Object.keys(relativeLayers).length === 0) {
@@ -43,11 +44,15 @@
 		if (!style) return;
 		const styleUrl = style.sprite;
 		if (!styleUrl) return;
-		if (isLoadSprite === true) {
-			spriteLoader = new SpriteLoader(styleUrl);
-			spriteLoader.load().then(updateLayers);
+		if (map.isStyleLoaded()) {
+			if (isLoadSprite === true) {
+				spriteLoader = new SpriteLoader(styleUrl);
+				spriteLoader.load().then(updateLayers);
+			} else {
+				updateLayers();
+			}
 		} else {
-			updateLayers();
+			setTimeout(handleStyleChanged, 500);
 		}
 	};
 

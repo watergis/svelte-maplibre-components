@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Map, LayerSpecification } from 'maplibre-gl';
-	import chroma from 'chroma-js';
+	import { debounce } from 'lodash-es';
 	import ColorPicker from '$lib/util/ColorPicker.svelte';
 	import { getColorFromExpression } from '$lib/util/getColorFromExpression';
 
@@ -35,14 +35,14 @@
 
 	let color: string = getValue();
 
-	const handleColorChanged = (e: { detail: { color: string } }) => {
+	const handleColorChanged = debounce((e: { detail: { color: string } }) => {
 		color = e.detail.color;
 		map.setPaintProperty(layer.id, propertyName, color);
 		const newLayer = map.getStyle().layers.find((l) => l.id === layer.id);
 		if (newLayer) {
 			layer = newLayer;
 		}
-	};
+	}, 100);
 </script>
 
 <ColorPicker bind:color on:change={handleColorChanged} />

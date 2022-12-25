@@ -9,7 +9,7 @@
 	let options: Option[] = [
 		{
 			title: 'Solid',
-			value: [1]
+			value: ''
 		},
 		{
 			title: ' dash',
@@ -39,7 +39,11 @@
 	$: value, setValue();
 
 	const setValue = () => {
-		map?.setPaintProperty(layer.id, 'line-dasharray', value);
+		if (value) {
+			map?.setPaintProperty(layer.id, 'line-dasharray', value);
+		} else {
+			map?.setPaintProperty(layer.id, 'line-dasharray', undefined);
+		}
 		const newLayer = map.getStyle().layers.find((l) => l.id === layer.id);
 		if (newLayer) {
 			layer = newLayer;

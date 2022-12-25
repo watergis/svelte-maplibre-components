@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.22
+
+### Patch Changes
+
+- 96f5ee5: add heatmap-color control in heatmap editor
+
 ## 0.1.21
 
 ### Patch Changes

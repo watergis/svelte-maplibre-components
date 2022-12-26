@@ -23,6 +23,7 @@
 	export let enableLayerOrder = false;
 	export let disableVisibleButton = false;
 	export let enableEditing = true;
+	export let selectedFormat: 'yaml' | 'json';
 	let visibility = map.getLayer(layer.id).visibility;
 
 	let checked = visibility === 'none' ? false : true;
@@ -166,7 +167,7 @@
 			{/if}
 		</div>
 	{:else if !isMobile && enableEditing === true}
-		<StyleEditor bind:map bind:layer bind:spriteLoader />
+		<StyleEditor bind:map bind:layer bind:spriteLoader bind:selectedFormat />
 	{/if}
 </div>
 

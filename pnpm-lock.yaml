@@ -206,6 +206,7 @@ importers:
       '@sveltejs/kit': ^1.0.0
       '@sveltejs/package': ^1.0.0
       '@types/chroma-js': ^2.1.4
+      '@types/js-yaml': ^4.0.5
       '@types/lodash-es': ^4.17.6
       '@types/svelte-range-slider-pips': ^2.0.0
       '@typescript-eslint/eslint-plugin': ^5.46.1
@@ -220,6 +221,7 @@ importers:
       eslint: ^8.29.0
       eslint-config-prettier: ^8.5.0
       eslint-plugin-svelte3: ^4.0.0
+      js-yaml: ^4.1.0
       lodash-es: ^4.17.21
       maplibre-gl: ^2.4.0
       prettier: ^2.8.1
@@ -241,6 +243,7 @@ importers:
       '@watergis/legend-symbol': 0.2.3
       chroma-js: 2.4.2
       detect-touch-device: 1.1.6
+      js-yaml: 4.1.0
       lodash-es: 4.17.21
       maplibre-gl: 2.4.0
       svelte-awesome-color-picker: 2.2.1
@@ -256,6 +259,7 @@ importers:
       '@sveltejs/kit': 1.0.0_svelte@3.55.0+vite@4.0.1
       '@sveltejs/package': 1.0.0_niwyv7xychq2ag6arq5eqxbomm
       '@types/chroma-js': 2.1.4
+      '@types/js-yaml': 4.0.5
       '@types/lodash-es': 4.17.6
       '@types/svelte-range-slider-pips': 2.0.0
       '@typescript-eslint/eslint-plugin': 5.46.1_imrg37k3svwu377c6q7gkarwmi
@@ -1452,6 +1456,10 @@ packages:
       ci-info: 3.7.0
     dev: true
 
+  /@types/js-yaml/4.0.5:
+    resolution: {integrity: sha512-FhpRzf927MNQdRZP0J5DLIdTXhjLYzeUTmLAu69mnVksLH9CJY3IuSeEgbKUki7GQZm0WqDkGzyxju2EZGD2wA==}
+    dev: true
+
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
@@ -1828,7 +1836,6 @@ packages:
 
   /argparse/2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
-    dev: true
 
   /array-union/1.0.2:
     resolution: {integrity: sha512-Dxr6QJj/RdU/hCaBjOfxW+q6lyuVE6JFWIrAUpuOOhoJJoQ99cUn3igRaHVB5P9WrgFVN0FfArM3x0cueOU8ng==}
@@ -3255,7 +3262,6 @@ packages:
     hasBin: true
     dependencies:
       argparse: 2.0.1
-    dev: true
 
   /json-parse-even-better-errors/2.3.1:
     resolution: {integrity: sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==}

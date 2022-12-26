@@ -14,6 +14,7 @@
 	let style: StyleSpecification;
 	let spriteLoader: SpriteLoader | undefined;
 	let hovering: boolean | number | undefined = false;
+	export let defaultEditorFormat: 'yaml' | 'json' = 'yaml';
 	$: isShowLastDropArea = hovering === getLastVisibleIndex();
 
 	$: allLayers = style ? style.layers : [];
@@ -227,6 +228,7 @@
 								bind:enableLayerOrder
 								bind:disableVisibleButton
 								bind:enableEditing
+								bind:selectedFormat={defaultEditorFormat}
 								on:visibilityChanged={layerVisibilityChanged}
 								on:layerOrderChanged={layerOrderChanged}
 							/>

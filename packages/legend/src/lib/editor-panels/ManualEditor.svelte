@@ -1,18 +1,76 @@
 <script lang="ts">
 	import type { LayerSpecification, Map } from 'maplibre-gl';
 	import Fa from 'svelte-fa';
-	import { faFloppyDisk, faIndent } from '@fortawesome/free-solid-svg-icons';
+	import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
+	import yaml from 'js-yaml';
+	import Options from '$lib/util/Options.svelte';
+	import type { Option } from '$lib/interfaces';
+	import { onMount } from 'svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
 
-	let layerLayoutStyleJson = JSON.stringify(layer.layout, null, 4);
-	let layerPaintStyleJson = JSON.stringify(layer.paint, null, 4);
+	let formatOptions: Option[] = [
+		{
+			title: 'YAML',
+			value: 'yaml'
+		},
+		{
+			title: 'JSON',
+			value: 'json'
+		}
+	];
+	export let selectedFormat: 'yaml' | 'json';
 
-	let errorMessage: string;
+	$: selectedFormat, handleFormat();
+
+	let layerLayoutStyle = '';
+	let layerPaintStyle = '';
+
+	onMount(() => {
+		layerLayoutStyle = initialise('layout');
+		layerPaintStyle = initialise('paint');
+	});
+
+	const initialise = (type: 'layout' | 'paint') => {
+		if (selectedFormat === 'yaml') {
+			return yaml.dump(layer[type]);
+		} else {
+			return JSON.stringify(layer[type], null, 4);
+		}
+	};
+
+	const formatStyle = (type: 'layout' | 'paint') => {
+		let target = layerPaintStyle;
+		if (type === 'layout') {
+			target = layerLayoutStyle;
+		}
+		if (!target) return '';
+		let style = '';
+		if (selectedFormat === 'yaml') {
+			style = yaml.dump(JSON.parse(target));
+		} else {
+			style = JSON.stringify(yaml.load(target), null, 4);
+		}
+		return style;
+	};
+
+	const convertToStyleJson = (type: 'layout' | 'paint') => {
+		let json: any;
+		let target: string = layerLayoutStyle;
+		if (type === 'paint') {
+			target = layerPaintStyle;
+		}
+		if (selectedFormat === 'yaml') {
+			json = yaml.load(target);
+		} else {
+			json = JSON.parse(target);
+		}
+		return json;
+	};
 
 	const handleSave = () => {
-		const layoutStyle = JSON.parse(layerLayoutStyleJson);
+		const layoutStyle = convertToStyleJson('layout');
 		if (layoutStyle) {
 			const keys = Object.keys(layoutStyle);
 			for (const prop of keys) {
@@ -21,7 +79,7 @@
 		}
 		layer.layout = layoutStyle;
 
-		const paintStyle = JSON.parse(layerPaintStyleJson);
+		const paintStyle = convertToStyleJson('paint');
 		if (paintStyle) {
 			const keys = Object.keys(paintStyle);
 			for (const prop of keys) {
@@ -32,8 +90,8 @@
 	};
 
 	const handleFormat = () => {
-		layerLayoutStyleJson = JSON.stringify(JSON.parse(layerLayoutStyleJson), null, 4);
-		layerPaintStyleJson = JSON.stringify(JSON.parse(layerPaintStyleJson), null, 4);
+		layerLayoutStyle = formatStyle('layout');
+		layerPaintStyle = formatStyle('paint');
 	};
 </script>
 
@@ -47,28 +105,22 @@
 		<Fa icon={faFloppyDisk} size="2x" />
 	</span>
 
-	<span
-		role="button"
-		class="menu-button has-tooltip-bottom has-tooltip-arrow"
-		data-tooltip="Format JSON"
-		on:click={handleFormat}
-	>
-		<Fa icon={faIndent} size="2x" />
-	</span>
+	<Options bind:options={formatOptions} bind:selectedValue={selectedFormat} />
 </div>
-
-<p class="editor-title">Layout editor</p>
-
-<textarea class="manual-editor" bind:value={layerLayoutStyleJson} />
 
 <p class="editor-title">Paint editor</p>
 
-<textarea class="manual-editor" bind:value={layerPaintStyleJson} />
+<textarea class="manual-editor" bind:value={layerPaintStyle} />
+
+<p class="editor-title">Layout editor</p>
+
+<textarea class="manual-editor" bind:value={layerLayoutStyle} />
 
 <style lang="scss">
 	@use '@creativebulma/bulma-tooltip/dist/bulma-tooltip.min.css';
 
 	.menu-buttons {
+		display: flex;
 		padding-bottom: 0.5rem;
 
 		.menu-button {

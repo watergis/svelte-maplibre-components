@@ -21,6 +21,7 @@
 	export let layer: LayerSpecification;
 	export let spriteLoader: SpriteLoader;
 	let showManualEditor = false;
+	export let selectedFormat: 'yaml' | 'json';
 
 	const [popperRef, popperContent] = createPopperActions({
 		placement: 'right',
@@ -70,7 +71,7 @@
 		</span>
 		<div class="editor-contents">
 			{#if showManualEditor}
-				<ManualEditor bind:map bind:layer />
+				<ManualEditor bind:map bind:layer bind:selectedFormat />
 			{:else if layer.type === 'background'}
 				<BackgroundEditor bind:map bind:layer />
 			{:else if layer.type === 'fill'}

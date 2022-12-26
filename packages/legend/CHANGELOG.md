@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.23
+
+### Patch Changes
+
+- 86bb2bc: add options to choose either json editor or yaml editor for legend editor control
+
 ## 0.1.22
 
 ### Patch Changes

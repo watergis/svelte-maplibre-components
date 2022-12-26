@@ -7,7 +7,7 @@
 <p class="buttons">
 	{#key selectedValue}
 		{#each options as option}
-			<p class="control pt-2">
+			<p class="control">
 				<button
 					class="button is-small {`${
 						JSON.stringify(option.value) == JSON.stringify(selectedValue)

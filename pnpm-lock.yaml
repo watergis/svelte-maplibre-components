@@ -57,6 +57,47 @@ importers:
       typescript: 4.9.4
       vite: 4.0.1_sass@1.56.2
 
+  packages/attribute-table:
+    specifiers:
+      '@geoffcox/svelte-splitter': ^1.0.1
+      '@sveltejs/adapter-auto': ^1.0.0
+      '@sveltejs/kit': ^1.0.0
+      '@sveltejs/package': ^1.0.0
+      '@typescript-eslint/eslint-plugin': ^5.45.0
+      '@typescript-eslint/parser': ^5.45.0
+      bulma: ^0.9.4
+      eslint: ^8.28.0
+      eslint-config-prettier: ^8.5.0
+      eslint-plugin-svelte3: ^4.0.0
+      maplibre-gl: ^2.4.0
+      prettier: ^2.8.0
+      prettier-plugin-svelte: ^2.8.1
+      svelte: ^3.54.0
+      svelte-check: ^2.9.2
+      tslib: ^2.4.1
+      typescript: ^4.9.3
+      vite: ^4.0.0
+    dependencies:
+      '@geoffcox/svelte-splitter': 1.0.1
+      maplibre-gl: 2.4.0
+    devDependencies:
+      '@sveltejs/adapter-auto': 1.0.0_@sveltejs+kit@1.0.1
+      '@sveltejs/kit': 1.0.1_svelte@3.55.0+vite@4.0.2
+      '@sveltejs/package': 1.0.0_niwyv7xychq2ag6arq5eqxbomm
+      '@typescript-eslint/eslint-plugin': 5.46.1_mqzxmroayievgzgel6yrqgih5i
+      '@typescript-eslint/parser': 5.46.1_lzzuuodtsqwxnvqeq4g4likcqa
+      bulma: 0.9.4
+      eslint: 8.30.0
+      eslint-config-prettier: 8.5.0_eslint@8.30.0
+      eslint-plugin-svelte3: 4.0.0_khrjkzzv5v2x7orkj5o7sxbz3a
+      prettier: 2.8.1
+      prettier-plugin-svelte: 2.9.0_ajxj753sv7dbwexjherrch25ta
+      svelte: 3.55.0
+      svelte-check: 2.10.2_svelte@3.55.0
+      tslib: 2.4.1
+      typescript: 4.9.4
+      vite: 4.0.2
+
   packages/center:
     specifiers:
       '@sveltejs/adapter-auto': ^1.0.0
@@ -1344,7 +1385,7 @@ packages:
       svelte: 3.55.0
       tiny-glob: 0.2.9
       undici: 5.14.0
-      vite: 4.0.2_sass@1.57.0
+      vite: 4.0.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1397,7 +1438,7 @@ packages:
       magic-string: 0.27.0
       svelte: 3.55.0
       svelte-hmr: 0.15.1_svelte@3.55.0
-      vite: 4.0.2_sass@1.57.0
+      vite: 4.0.2
       vitefu: 0.2.3_vite@4.0.2
     transitivePeerDependencies:
       - supports-color
@@ -5153,6 +5194,39 @@ packages:
       fsevents: 2.3.2
     dev: true
 
+  /vite/4.0.2:
+    resolution: {integrity: sha512-QJaY3R+tFlTagH0exVqbgkkw45B+/bXVBzF2ZD1KB5Z8RiAoiKo60vSUf6/r4c2Vh9jfGBKM4oBI9b4/1ZJYng==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': '>= 14'
+      less: '*'
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      esbuild: 0.16.7
+      postcss: 8.4.20
+      resolve: 1.22.1
+      rollup: 3.7.4
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
   /vite/4.0.2_sass@1.57.0:
     resolution: {integrity: sha512-QJaY3R+tFlTagH0exVqbgkkw45B+/bXVBzF2ZD1KB5Z8RiAoiKo60vSUf6/r4c2Vh9jfGBKM4oBI9b4/1ZJYng==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -5206,7 +5280,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.0.2_sass@1.57.0
+      vite: 4.0.2
     dev: true
 
   /vt-pbf/3.1.3:

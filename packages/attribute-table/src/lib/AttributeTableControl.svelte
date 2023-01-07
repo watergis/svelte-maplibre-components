@@ -23,6 +23,8 @@
 	$: innerHeight, () => (menuHeight = innerHeight);
 	$: innerWidth, () => (menuWidth = innerWidth);
 
+	let tableHeight = 0;
+
 	// eslint-disable-next-line
 	function AttributeTableControl() {}
 
@@ -133,8 +135,8 @@
 			<slot />
 		</div>
 
-		<div slot="secondary" class="secondary-content">
-			<AttributeTable bind:map bind:sourceIds />
+		<div slot="secondary" class="secondary-content" bind:clientHeight={tableHeight}>
+			<AttributeTable bind:map bind:sourceIds bind:height={tableHeight} />
 		</div>
 	</Split>
 </div>
@@ -148,10 +150,6 @@
 		background-size: 70%;
 	}
 
-	// :global(.maplibre-table-icon.-active) {
-	// 	background-color: #ffae00;
-	// }
-
 	.split-container {
 		.primary-content {
 			position: relative;
@@ -161,7 +159,6 @@
 		.secondary-content {
 			position: relative;
 			height: 100%;
-			overflow: auto;
 			padding: 0.5rem;
 		}
 	}

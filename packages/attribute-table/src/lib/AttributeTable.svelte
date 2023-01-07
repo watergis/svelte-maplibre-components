@@ -4,13 +4,17 @@
 		HeatmapLayerSpecification,
 		LineLayerSpecification,
 		Map,
-		SymbolLayerSpecification
+		SymbolLayerSpecification,
+		VectorSourceSpecification
 	} from 'maplibre-gl';
 	import { distinct } from './util/distinct';
-	import SvelteTable from 'svelte-table';
 
 	export let map: Map;
 	export let sourceIds: string[];
+	export let height: number;
+	let controlHeader: number;
+	let tableHeight: number;
+	$: tableBodyHeight = height - controlHeader - tableHeight;
 
 	let layers: string[];
 	let selectedLayerId: string;
@@ -21,14 +25,19 @@
 	$: if (map) {
 		map.on('sourcedata', (e) => {
 			if (e.isSourceLoaded) {
-				layers = getLayerList();
+				getLayerList();
 			}
 		});
+		map.on('zoomend', getLayerList);
+		map.on('zoomend', updateTable);
+		map.on('moveend', updateTable);
 	}
 
 	const getLayerList = () => {
 		const ids: string[] = [];
-		map.getStyle().layers.forEach((layer) => {
+		const style = map.getStyle();
+		const zoom = map.getZoom();
+		style.layers.forEach((layer) => {
 			if (['symbol', 'line', 'fill', 'heatmap'].includes(layer.type)) {
 				const vectorLayer:
 					| SymbolLayerSpecification
@@ -42,10 +51,17 @@
 				if (!sourceIds.includes(vectorLayer.source)) return;
 				const id = vectorLayer['source-layer'];
 				if (!id) return;
+
+				const source = style.sources[vectorLayer.source] as VectorSourceSpecification;
+				let minzoom = vectorLayer.minzoom;
+				if (!minzoom) {
+					minzoom = source.minzoom ?? 0;
+				}
+				if (!(minzoom <= zoom)) return;
 				ids.push(id);
 			}
 		});
-		return ids.map((id) => id).filter(distinct);
+		layers = ids.map((id) => id).filter(distinct);
 	};
 
 	$: selectedLayerId, updateTable();
@@ -56,10 +72,9 @@
 
 		rows = [];
 		columns = [];
-		sourceIds.forEach((id) => {
-			const features = map.querySourceFeatures(id, { sourceLayer: selectedLayerId });
-			rows = [...rows, ...features.map((f) => f.properties)];
-		});
+		const features = map.queryRenderedFeatures(undefined, { layers: [selectedLayerId] });
+		rows = features.map((f) => f.properties);
+
 		if (rows.length > 0) {
 			columns = Object.keys(rows[0]).map((key) => {
 				return {
@@ -71,69 +86,73 @@
 	};
 </script>
 
-{#if layers && layers.length > 0}
-	<select class="layer-select" bind:value={selectedLayerId}>
-		{#each layers as id}
-			<option value={id}>{id}</option>
-		{/each}
-	</select>
-{/if}
+<div class="control-header pb-2" bind:clientHeight={controlHeader}>
+	{#if layers && layers.length > 0}
+		<p class="title is-6 p-0 m-0 pr-2">Layer:</p>
+		<select class="select" bind:value={selectedLayerId}>
+			{#each layers as id}
+				<option value={id}>{id}</option>
+			{/each}
+		</select>
+	{/if}
+	<p class="subtitle is-6 p-0 m-0 pl-2">{rows.length} feature{rows.length > 1 ? 's' : ''} found.</p>
+</div>
 
-<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-	<thead>
+<table class="attribute-table table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+	<thead bind:clientHeight={tableHeight}>
 		<tr>
 			{#each columns as col}
-				<th>{col.title}</th>
+				<th><p class="nowrap">{col.title}</p></th>
 			{/each}
 		</tr>
 	</thead>
-	<tbody>
-		{#each rows as row}
-			<tr>
-				{#each columns as col}
-					<td>{row[col.name]}</td>
-				{/each}
-			</tr>
-		{/each}
+	<tbody style="height:{tableBodyHeight}px;">
+		{#if rows.length === 0}
+			<div class="notification is-info is-light">
+				No features found in current map area. Please try to move map.
+			</div>
+		{:else}
+			{#each rows as row}
+				<tr>
+					{#each columns as col}
+						<td><p class="text-wrap">{row[col.name]}</p></td>
+					{/each}
+				</tr>
+			{/each}
+		{/if}
 	</tbody>
 </table>
 
 <style lang="scss">
-	@import 'bulma/bulma.sass';
+	@use 'bulma/css/bulma.css';
 
-	.layer-select {
-		cursor: pointer;
-		width: fit-content;
-		height: 40px;
-		border-radius: 4px;
-		border-color: #485fc7;
-		box-sizing: border-box;
-		font-size: 1em;
-		padding: 10px;
-		margin-bottom: 0.5rem;
+	.control-header {
+		display: flex;
+		align-items: center;
+	}
 
-		select {
-			width: fit-content;
-			border-radius: 4px;
-			border-color: #485fc7;
-			box-sizing: border-box;
-			background: transparent;
-			-webkit-appearance: none;
-			cursor: pointer;
-			background: #fff
-				url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2211%22%20height%3D%2211%22%20viewBox%3D%220%200%2011%2011%22%3E%3Cpath%20d%3D%22M4.33%208.5L0%201L8.66%201z%22%20fill%3D%22%23666%22%2F%3E%3C%2Fsvg%3E')
-				right 10px center no-repeat;
-			padding: 12px 35px 12px 11px;
-			color: #000;
+	table tbody {
+		display: block;
+		max-height: 300px;
+		overflow-y: scroll;
+	}
 
-			/* Firefox hide arrow */
-			-moz-appearance: none;
-			text-indent: 0.01px;
-			text-overflow: '';
-		}
-		/* IE10 hide arrow */
-		select::-ms-expand {
-			display: none;
-		}
+	table thead,
+	table tbody tr {
+		display: table;
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	.nowrap {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.text-wrap {
+		white-space: break-spaces;
+		overflow: hidden;
+		text-overflow: unset;
 	}
 </style>

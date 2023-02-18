@@ -166,7 +166,7 @@
 				</span>
 			{/if}
 		</div>
-	{:else if !isMobile && enableEditing === true}
+	{:else if enableEditing === true}
 		<StyleEditor bind:map bind:layer bind:spriteLoader bind:selectedFormat />
 	{/if}
 </div>

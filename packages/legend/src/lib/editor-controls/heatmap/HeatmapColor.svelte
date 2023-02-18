@@ -98,6 +98,8 @@
 
 		.row {
 			display: flex;
+			margin-top: 0.1em;
+			margin-bottom: 0.1em;
 		}
 	}
 </style>

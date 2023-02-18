@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.24
+
+### Patch Changes
+
+- ae17bd4: enabled style editor for mobile.
+
 ## 0.1.23
 
 ### Patch Changes

@@ -13,7 +13,7 @@
 
 	const dispatch = createEventDispatcher();
 	const [popperRef, popperContent] = createPopperActions({
-		placement: 'right',
+		placement: 'bottom',
 		strategy: 'fixed'
 	});
 	const extraOpts = {

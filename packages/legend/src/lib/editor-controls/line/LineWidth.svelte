@@ -19,6 +19,7 @@
 	$: value, setValue();
 
 	const setValue = () => {
+		if (!value) return;
 		map?.setPaintProperty(layer.id, 'line-width', value);
 	};
 </script>

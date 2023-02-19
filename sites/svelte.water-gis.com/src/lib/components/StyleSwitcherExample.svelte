@@ -48,11 +48,11 @@
 <svelte:window bind:innerWidth bind:innerHeight />
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown width={menuWidth} height={menuHeight}>
-	<div slot="primary" class="primary-container">
+	<div slot="sidebar" class="primary-container">
 		<h4>Style switch control</h4>
 		<StyleSwitcher bind:map bind:styles bind:selectedStyle />
 	</div>
-	<div slot="secondary">
+	<div slot="map">
 		<div class="map" bind:this={mapContainer} />
 		<StyleSwitcherControl bind:map bind:styles bind:selectedStyle position="top-left" />
 	</div>

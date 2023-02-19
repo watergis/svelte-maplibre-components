@@ -79,12 +79,12 @@ pnpm i @watergis/svelte-maplibre-style-switcher
 </script>
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
-	<div slot="primary" class="primary-container">
+	<div slot="sidebar" class="primary-container">
 		<h4>Style switch control</h4>
 		<!-- control to add select box for map styles -->
 		<StyleSwitcher bind:map bind:styles bind:selectedStyle />
 	</div>
-	<div slot="secondary">
+	<div slot="map">
 		<div class="map" bind:this={mapContainer} />
 		<!-- maplibre control to select map styles with a preview -->
 		<StyleSwitcherControl bind:map bind:styles bind:selectedStyle position="top-left" />

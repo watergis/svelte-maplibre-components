@@ -76,7 +76,7 @@
 <svelte:window bind:innerWidth bind:innerHeight />
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown width={menuWidth} height={menuHeight}>
-	<div slot="primary" class="primary-container" style="height:{menuHeight - 50}px;">
+	<div slot="sidebar" class="primary-container" style="height:{menuHeight - 50}px;">
 		<h3>Isochrone tool</h3>
 		<ValhallaIsochronePanel
 			bind:map
@@ -87,7 +87,7 @@
 		<h3>Routing tool</h3>
 		<ValhallaRoutingPanel bind:map bind:url={valhallaUrl} bind:options={valhallaRoutingOptions} />
 	</div>
-	<div slot="secondary">
+	<div slot="map">
 		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>

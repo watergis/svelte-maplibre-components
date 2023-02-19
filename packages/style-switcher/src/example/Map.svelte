@@ -45,10 +45,10 @@
 </script>
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
-	<div slot="primary" class="contents">
+	<div slot="sidebar" class="contents">
 		<StyleSwitcher bind:map bind:styles bind:selectedStyle />
 	</div>
-	<div slot="secondary">
+	<div slot="map">
 		<div class="map" bind:this={mapContainer}>
 			<StyleSwitcherControl bind:map bind:styles bind:selectedStyle position="top-left" />
 		</div>

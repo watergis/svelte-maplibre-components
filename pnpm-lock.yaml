@@ -212,8 +212,8 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.52.0
       '@typescript-eslint/parser': ^5.52.0
       '@watergis/legend-symbol': ^0.2.3
-      '@watergis/svelte-maplibre-menu': workspace:^0.1.17
-      '@watergis/svelte-maplibre-style-switcher': workspace:^0.1.15
+      '@watergis/svelte-maplibre-menu': workspace:^0.1.18
+      '@watergis/svelte-maplibre-style-switcher': workspace:^0.1.16
       bulma: ^0.9.4
       bulma-switch: ^2.0.4
       chroma-js: ^2.4.2
@@ -294,7 +294,7 @@ importers:
       '@turf/distance': ^6.5.0
       '@typescript-eslint/eslint-plugin': ^5.52.0
       '@typescript-eslint/parser': ^5.52.0
-      '@watergis/svelte-maplibre-menu': workspace:^0.1.16
+      '@watergis/svelte-maplibre-menu': workspace:^0.1.18
       '@watergis/terrain-rgb': ^1.1.12
       buffer: ^6.0.3
       eslint: ^8.34.0
@@ -481,7 +481,7 @@ importers:
       '@types/lodash-es': ^4.17.6
       '@typescript-eslint/eslint-plugin': ^5.52.0
       '@typescript-eslint/parser': ^5.52.0
-      '@watergis/svelte-maplibre-menu': workspace:^0.1.16
+      '@watergis/svelte-maplibre-menu': workspace:^0.1.18
       debounce: ^1.2.1
       eslint: ^8.34.0
       eslint-config-prettier: ^8.6.0
@@ -530,7 +530,7 @@ importers:
       '@sveltejs/package': ^2.0.1
       '@typescript-eslint/eslint-plugin': ^5.52.0
       '@typescript-eslint/parser': ^5.52.0
-      '@watergis/svelte-maplibre-menu': workspace:^0.1.16
+      '@watergis/svelte-maplibre-menu': workspace:^0.1.18
       eslint: ^8.34.0
       eslint-config-prettier: ^8.6.0
       eslint-plugin-svelte3: ^4.0.0
@@ -574,17 +574,17 @@ importers:
       '@sveltejs/kit': ^1.7.2
       '@typescript-eslint/eslint-plugin': ^5.52.0
       '@typescript-eslint/parser': ^5.52.0
-      '@watergis/maplibre-center-icon': workspace:^0.1.8
-      '@watergis/svelte-collapsible-panel': workspace:^0.0.14
-      '@watergis/svelte-maplibre-attribute-popup': workspace:^0.0.16
-      '@watergis/svelte-maplibre-export': workspace:^0.1.20
-      '@watergis/svelte-maplibre-legend': workspace:^0.1.15
-      '@watergis/svelte-maplibre-measure': workspace:^0.1.17
-      '@watergis/svelte-maplibre-menu': workspace:^0.1.16
-      '@watergis/svelte-maplibre-search': workspace:^0.1.9
-      '@watergis/svelte-maplibre-share': workspace:^0.1.13
-      '@watergis/svelte-maplibre-style-switcher': workspace:^0.1.15
-      '@watergis/svelte-maplibre-valhalla': workspace:^0.0.14
+      '@watergis/maplibre-center-icon': workspace:^0.1.9
+      '@watergis/svelte-collapsible-panel': workspace:^0.0.15
+      '@watergis/svelte-maplibre-attribute-popup': workspace:^0.0.17
+      '@watergis/svelte-maplibre-export': workspace:^0.1.21
+      '@watergis/svelte-maplibre-legend': workspace:^0.1.25
+      '@watergis/svelte-maplibre-measure': workspace:^0.1.19
+      '@watergis/svelte-maplibre-menu': workspace:^0.1.18
+      '@watergis/svelte-maplibre-search': workspace:^0.1.12
+      '@watergis/svelte-maplibre-share': workspace:^0.1.14
+      '@watergis/svelte-maplibre-style-switcher': workspace:^0.1.16
+      '@watergis/svelte-maplibre-valhalla': workspace:^0.0.15
       buffer: ^6.0.3
       bulma: ^0.9.4
       eslint: ^8.34.0

@@ -42,11 +42,11 @@
 <svelte:window bind:innerWidth bind:innerHeight />
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown width={menuWidth} height={menuHeight}>
-	<div slot="primary" class="primary-container">
+	<div slot="sidebar" class="primary-container">
 		<h4>Measure tool with elevation enquiry</h4>
 		<MeasurePanel bind:map bind:measureOption bind:terrainRgbUrl />
 	</div>
-	<div slot="secondary">
+	<div slot="map">
 		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>

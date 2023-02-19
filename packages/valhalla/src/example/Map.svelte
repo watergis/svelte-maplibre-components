@@ -65,7 +65,7 @@
 </script>
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
-	<div slot="primary" class="primary-container">
+	<div slot="sidebar" class="primary-container">
 		<h3>Isochrone tool</h3>
 		<ValhallaIsochronePanel
 			bind:map
@@ -76,7 +76,7 @@
 		<h3>Routing tool</h3>
 		<ValhallaRoutingPanel bind:map bind:url={valhallaUrl} bind:options={valhallaRoutingOptions} />
 	</div>
-	<div slot="secondary">
+	<div slot="map">
 		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>

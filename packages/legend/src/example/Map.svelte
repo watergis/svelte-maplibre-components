@@ -94,7 +94,7 @@
 </script>
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
-	<div slot="primary" class="primary-container">
+	<div slot="sidebar" class="primary-container">
 		<div class="style-header">
 			<StyleSwitcher bind:map bind:selectedStyle bind:styles on:change={onStyleChange} />
 		</div>
@@ -118,7 +118,7 @@
 			/>
 		</div>
 	</div>
-	<div slot="secondary">
+	<div slot="map">
 		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>

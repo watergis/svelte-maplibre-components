@@ -34,7 +34,7 @@ jobs:
           cache: pnpm
 
       - name: install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: lint packages & sites
         run: pnpm lint
       - name: format packages & sites

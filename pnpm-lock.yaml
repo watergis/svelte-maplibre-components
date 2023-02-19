@@ -577,7 +577,7 @@ importers:
       '@watergis/svelte-collapsible-panel': workspace:^0.0.15
       '@watergis/svelte-maplibre-attribute-popup': workspace:^0.0.17
       '@watergis/svelte-maplibre-export': workspace:^0.1.21
-      '@watergis/svelte-maplibre-legend': workspace:^0.1.25
+      '@watergis/svelte-maplibre-legend': workspace:^0.1.26
       '@watergis/svelte-maplibre-measure': workspace:^0.1.19
       '@watergis/svelte-maplibre-menu': workspace:^0.1.18
       '@watergis/svelte-maplibre-search': workspace:^0.1.12

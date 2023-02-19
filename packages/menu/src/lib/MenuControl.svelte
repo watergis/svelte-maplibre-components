@@ -7,11 +7,12 @@
 
 	export let map: Map;
 	export let isMenuShown = false;
-	export let initialPrimaryWidth = 380;
-	export let minPrimaryWidth = '300px';
-	export let minSecondaryWidth = '50%';
+	export let initialSidebarWidth = 380;
+	export let minSidebarWidth = '300px';
+	export let minMapWidth = '50%';
 	export let height = 0;
 	export let width = 0;
+	export let sidebarOnLeft = true;
 
 	let menuButton: HTMLButtonElement;
 
@@ -25,6 +26,9 @@
 	$: menuWidth = width > 0 ? width : innerWidth;
 	$: innerHeight, () => (menuHeight = innerHeight);
 	$: innerWidth, () => (menuWidth = innerWidth);
+
+	let minPrimaryWidth = sidebarOnLeft ? minSidebarWidth : minMapWidth;
+	let minSecondaryWidth = sidebarOnLeft ? minMapWidth : minSidebarWidth;
 
 	export let position: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' = 'top-left';
 
@@ -81,18 +85,41 @@
 
 	const setSplitControl = () => {
 		if (!splitControl) return;
+
 		if (isMenuShown === true) {
 			if (isMobile) {
-				splitControl.setPercent(100);
+				if (sidebarOnLeft) {
+					splitControl.setPercent(100);
+					minSecondaryWidth = '0px';
+				} else {
+					splitControl.setPercent(0);
+					minPrimaryWidth = '0px';
+				}
 				splitterSize = '0px';
 			} else {
-				const widthPecent = (initialPrimaryWidth / innerWidth) * 100;
-				splitControl.setPercent(widthPecent);
+				if (sidebarOnLeft) {
+					minPrimaryWidth = minSidebarWidth;
+					minSecondaryWidth = minMapWidth;
+					const widthPecent = (initialSidebarWidth / innerWidth) * 100;
+					splitControl.setPercent(widthPecent);
+				} else {
+					minSecondaryWidth = minSidebarWidth;
+					minPrimaryWidth = minMapWidth;
+					const widthPecent = ((innerWidth - initialSidebarWidth) / innerWidth) * 100;
+					splitControl.setPercent(widthPecent);
+				}
+
 				splitterSize = '10px';
 				splitControl;
 			}
 		} else {
-			splitControl.setPercent(0);
+			if (sidebarOnLeft) {
+				minPrimaryWidth = '0px';
+				splitControl.setPercent(0);
+			} else {
+				minSecondaryWidth = '0px';
+				splitControl.setPercent(100);
+			}
 			splitterSize = '0px';
 		}
 		resizeMap();
@@ -125,24 +152,38 @@
 <div class="split-container" style="height:{menuHeight}px;width:{menuWidth}px">
 	<Split
 		initialPrimarySize="0%"
-		minPrimarySize={isMenuShown ? `${minPrimaryWidth}` : '0px'}
-		minSecondarySize={isMobile ? '0px' : minSecondaryWidth}
-		{splitterSize}
+		bind:minPrimarySize={minPrimaryWidth}
+		bind:minSecondarySize={minSecondaryWidth}
+		bind:splitterSize
 		on:changed={splitterChanged}
 		bind:this={splitControl}
 	>
 		<div slot="primary" class="primary-content">
-			{#if isMobile}
-				<!-- svelte-ignore a11y-click-events-have-key-events -->
-				<span class="span close-icon" on:click={handleClose}>
-					<Fa icon={faCircleXmark} size="2x" color="#1c1c1c" />
-				</span>
+			{#if sidebarOnLeft}
+				{#if isMobile}
+					<!-- svelte-ignore a11y-click-events-have-key-events -->
+					<span class="span close-icon" on:click={handleClose}>
+						<Fa icon={faCircleXmark} size="2x" color="#1c1c1c" />
+					</span>
+				{/if}
+				<slot name="sidebar" />
+			{:else}
+				<slot name="map" />
 			{/if}
-			<slot name="primary" />
 		</div>
 
 		<div slot="secondary" class="secondary-content">
-			<slot name="secondary" />
+			{#if sidebarOnLeft}
+				<slot name="map" />
+			{:else}
+				{#if isMobile}
+					<!-- svelte-ignore a11y-click-events-have-key-events -->
+					<span class="span close-icon" on:click={handleClose}>
+						<Fa icon={faCircleXmark} size="2x" color="#1c1c1c" />
+					</span>
+				{/if}
+				<slot name="sidebar" />
+			{/if}
 		</div>
 	</Split>
 </div>

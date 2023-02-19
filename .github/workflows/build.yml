@@ -34,21 +34,10 @@ jobs:
           cache: pnpm
 
       - name: install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
       - name: lint packages & sites
         run: pnpm lint
       - name: format packages & sites
         run: pnpm format
       - name: build packages & sites
         run: pnpm build
-      - name: Deploy 🚀
-        if: ${{ github.repository == 'watergis/svelte-maplibre-components' && github.ref == 'refs/heads/main'}}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CNAME: ${{secrets.CNAME}}
-        run: |
-          echo "${CNAME}" >> sites/svelte.water-gis.com/build/CNAME
-          git config --global user.name "watergis+githubci"
-          git config --global user.email "watergis+githubci@users.noreply.github.com"
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/watergis/svelte-maplibre-components.git
-          pnpm deploy:ghpages

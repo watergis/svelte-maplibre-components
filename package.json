@@ -23,10 +23,10 @@
   },
   "homepage": "https://github.com/watergis/svelte-maplibre-components#readme",
   "devDependencies": {
-    "@changesets/cli": "^2.25.2",
-    "gh-pages": "^4.0.0",
-    "lefthook": "^1.2.6",
-    "turbo": "^1.6.3"
+    "@changesets/cli": "^2.26.0",
+    "gh-pages": "^5.0.0",
+    "lefthook": "^1.2.9",
+    "turbo": "^1.8.1"
   },
   "packageManager": "pnpm@7.18.0",
   "engines": {

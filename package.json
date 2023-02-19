@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "This repository to manage packages of svelte maplibre components for water application.",
   "scripts": {
-    "prepare": "lefthook install",
     "lint": "turbo run lint",
     "format": "turbo run format",
     "build": "turbo run build",

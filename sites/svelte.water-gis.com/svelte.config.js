@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-auto';
 import preprocess from 'svelte-preprocess';
 import { mdsvex } from 'mdsvex';
 import mdsvexConfig from './mdsvex.config.js';
@@ -10,17 +10,7 @@ const config = {
 	preprocess: [preprocess(), mdsvex(mdsvexConfig)],
 
 	kit: {
-		adapter: adapter({
-			// default options are shown
-			pages: 'build',
-			assets: 'build',
-			fallback: null
-		}),
-		paths: {
-			// YOUR github repository name
-			// base: process.env.NODE_ENV === 'production' ? '/svelte-maplibre-components' : ''
-			base: ''
-		}
+		adapter: adapter()
 	},
 	extensions: ['.svelte', ...mdsvexConfig.extensions],
 	onwarn: () => {

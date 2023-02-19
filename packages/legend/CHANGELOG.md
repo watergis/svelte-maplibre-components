@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.26
+
+### Patch Changes
+
+- 87983f3: changed the position of importing tippy css in legend component
+
 ## 0.1.25
 
 ### Patch Changes

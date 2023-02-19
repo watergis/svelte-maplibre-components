@@ -1,5 +1,14 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.27
+
+### Patch Changes
+
+- 335408a: show layer title in style editor popup as title
+- 4053f06: improved legend of heatmap
+- 3d9c22c: fixed error of textsize and iconsize components
+- 9e4ac24: fixed eye button and styleeditor button html. changed from span to div
+
 ## 0.1.26
 
 ### Patch Changes

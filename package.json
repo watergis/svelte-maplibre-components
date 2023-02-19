@@ -7,8 +7,7 @@
     "format": "turbo run format",
     "build": "turbo run build",
     "precommit": "turbo run precommit",
-    "release": "changeset publish",
-    "deploy:ghpages": "gh-pages -d sites/svelte.water-gis.com/build -t true"
+    "release": "changeset publish"
   },
   "repository": {
     "type": "git",
@@ -23,7 +22,6 @@
   "homepage": "https://github.com/watergis/svelte-maplibre-components#readme",
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
-    "gh-pages": "^5.0.0",
     "lefthook": "^1.2.9",
     "turbo": "^1.8.1"
   },

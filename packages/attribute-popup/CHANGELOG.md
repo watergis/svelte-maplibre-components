@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-attribute-popup
 
+## 0.0.17
+
+### Patch Changes
+
+- e0ecf37: Updated svelte-package to v2. packaging folder was changed from package to dist
+
 ## 0.0.16
 
 ### Patch Changes

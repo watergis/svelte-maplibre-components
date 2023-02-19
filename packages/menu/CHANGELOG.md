@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 0.1.18
+
+### Patch Changes
+
+- e0ecf37: Updated svelte-package to v2. packaging folder was changed from package to dist
+
 ## 0.1.17
 
 ### Patch Changes

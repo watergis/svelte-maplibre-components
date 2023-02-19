@@ -19,7 +19,7 @@
 	$: value, setValue();
 
 	const setValue = () => {
-		if (!value) return
+		if (!value) return;
 		map?.setLayoutProperty(layer.id, 'icon-size', value);
 	};
 </script>

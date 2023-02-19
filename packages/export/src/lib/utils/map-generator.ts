@@ -36,14 +36,14 @@ export const Format = {
 	PDF: 'pdf',
 	SVG: 'svg'
 } as const;
-type Format = typeof Format[keyof typeof Format];
+type Format = (typeof Format)[keyof typeof Format];
 
 export const Unit = {
 	// don't use inch unit. because page size setting is using mm unit.
 	in: 'in',
 	mm: 'mm'
 } as const;
-type Unit = typeof Unit[keyof typeof Unit];
+type Unit = (typeof Unit)[keyof typeof Unit];
 
 export const Size = {
 	// A0, A1, B0, B1 are not working well.
@@ -62,13 +62,13 @@ export const Size = {
 	B5: [250, 176],
 	B6: [176, 125]
 } as const;
-type Size = typeof Size[keyof typeof Size];
+type Size = (typeof Size)[keyof typeof Size];
 
 export const PageOrientation = {
 	Landscape: 'landscape',
 	Portrait: 'portrait'
 } as const;
-type PageOrientation = typeof PageOrientation[keyof typeof PageOrientation];
+type PageOrientation = (typeof PageOrientation)[keyof typeof PageOrientation];
 
 export const DPI = {
 	72: 72,
@@ -77,7 +77,7 @@ export const DPI = {
 	300: 300,
 	400: 400
 } as const;
-type DPI = typeof DPI[keyof typeof DPI];
+type DPI = (typeof DPI)[keyof typeof DPI];
 
 export default class MapGenerator {
 	private map: Map | undefined;

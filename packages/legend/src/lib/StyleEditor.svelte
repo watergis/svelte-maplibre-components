@@ -32,7 +32,7 @@
 	let tooltipContent: HTMLElement;
 </script>
 
-<span
+<div
 	tabindex="0"
 	role="button"
 	class="palette-button has-tooltip-left has-tooltip-arrow"
@@ -40,7 +40,7 @@
 	use:tippy={{ content: tooltipContent }}
 >
 	<Fa icon={faPalette} size="lg" />
-</span>
+</div>
 
 <div class="tooltip" bind:this={tooltipContent}>
 	<p class="title">

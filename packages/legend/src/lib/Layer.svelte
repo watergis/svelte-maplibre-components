@@ -105,16 +105,16 @@
 
 <div class="layer-container" style="cursor:{enableLayerOrder ? 'grab' : 'default'};">
 	{#if enableLayerOrder}
-		<span
+		<div
 			class="draggable-icon has-tooltip-right has-tooltip-arrow"
 			data-tooltip="{isMobile ? 'Long press & drag' : 'Drag'} to change order"
 		>
 			<Fa icon={faGripVertical} />
-		</span>
+		</div>
 	{/if}
 	{#if !disableVisibleButton}
 		{#if !enableLayerOrder}
-			<span
+			<div
 				tabindex="0"
 				role="button"
 				class="visible-button has-tooltip-right has-tooltip-arrow"
@@ -127,7 +127,7 @@
 				{:else}
 					<Fa icon={faEyeSlash} />
 				{/if}
-			</span>
+			</div>
 		{/if}
 	{/if}
 	<div class="legend">

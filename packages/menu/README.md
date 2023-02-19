@@ -25,27 +25,26 @@ See [Example](./src/example).
 
 ```svelte
 <script>
-import { MenuControl } from '@watergis/svelte-maplibre-menu';
-const map = new Map
+	import { MenuControl } from '@watergis/svelte-maplibre-menu';
+	const map = new Map();
 </script>
 
-<MenuControl bind:map={$map} position={'top-left'}>
-  <div slot="primary">content</div>
-  <div slot="secondary">
-    <div class="map" id="map" bind:this={mapContainer} />
-  </div>
+<MenuControl bind:map={$map} position={'top-left'} isMenuShown={true} sidebarOnLeft={true}>
+	<div slot="sidebar">content</div>
+	<div slot="menu">
+		<div class="map" id="map" bind:this={mapContainer} />
+	</div>
 </MenuControl>
 
 <style>
-
-.map {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
+	.map {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+	}
 </style>
 ```
 

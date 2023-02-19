@@ -20,16 +20,19 @@ author: Jin Igarashi
 ### Install the package
 
 - Use npm
+
 ```
 npm i @watergis/svelte-maplibre-menu
 ```
 
 - Use yarn
+
 ```
 yarn add @watergis/svelte-maplibre-menu
 ```
 
 - Use pnpm
+
 ```
 pnpm i @watergis/svelte-maplibre-menu
 ```
@@ -38,44 +41,43 @@ pnpm i @watergis/svelte-maplibre-menu
 
 ```svelte
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { Map } from 'maplibre-gl';
-  import { MenuControl } from '@watergis/svelte-maplibre-menu';
+	import { onMount } from 'svelte';
+	import { Map } from 'maplibre-gl';
+	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 
-  let mapContainer: HTMLDivElement;
-  // create maplibre.Map object
-  let map = new Map();
+	let mapContainer: HTMLDivElement;
+	// create maplibre.Map object
+	let map = new Map();
 
-  onMount(async () => {
-    map = new Map({
-      container: mapContainer,
-      style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
-    });
-  });
-
+	onMount(async () => {
+		map = new Map({
+			container: mapContainer,
+			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
+		});
+	});
 </script>
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
-  <div slot="primary" class="primary-container">
-    <h4>Contents</h4>
-  </div>
-  <div slot="secondary">
-    <div class="map" bind:this={mapContainer} />
-  </div>
+	<div slot="sidebar" class="primary-container">
+		<h4>Contents</h4>
+	</div>
+	<div slot="map">
+		<div class="map" bind:this={mapContainer} />
+	</div>
 </MenuControl>
 
 <style lang="scss">
-  @import 'maplibre-gl/dist/maplibre-gl.css';
+	@import 'maplibre-gl/dist/maplibre-gl.css';
 
-  .map {
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
+	.map {
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+	}
 
-  .primary-container {
-    margin: 0.5rem;
-  }
+	.primary-container {
+		margin: 0.5rem;
+	}
 </style>
 ```
 
@@ -83,4 +85,10 @@ if you want to use this control with specific height and width, there are also v
 
 ```svelte
 <MenuControl bind:map position={'top-right'} bind:isMenuShown width={800} height={500}>
+```
+
+Use `sidebarOnLeft` property if you want to change sidebar location either left or right.
+
+```svelte
+<MenuControl bind:map position={'top-right'} bind:isMenuShown sidebarOnLeft={false}>
 ```

@@ -14,9 +14,9 @@
 	});
 </script>
 
-<MenuControl bind:map position={'top-left'} isMenuShown={false}>
-	<div slot="primary">content</div>
-	<div slot="secondary">
+<MenuControl bind:map position={'top-left'} isMenuShown={false} sidebarOnLeft={true}>
+	<div slot="sidebar">content</div>
+	<div slot="map">
 		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>

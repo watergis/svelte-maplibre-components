@@ -17,12 +17,17 @@
 	import { initTippy } from './util/initTippy';
 	import 'tippy.js/dist/tippy.css';
 	import 'tippy.js/themes/light.css';
+	import Legend from './Legend.svelte';
+	import { clean } from './util/clean';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
 	export let spriteLoader: SpriteLoader;
+	export let relativeLayers: { [key: string]: string };
 	let showManualEditor = false;
 	export let selectedFormat: 'yaml' | 'json';
+	$: layerTitle =
+		relativeLayers && relativeLayers[layer.id] ? relativeLayers[layer.id] : clean(layer.id);
 
 	const tippy = initTippy({
 		placement: 'left',
@@ -43,9 +48,16 @@
 </div>
 
 <div class="tooltip" bind:this={tooltipContent}>
-	<p class="title">
-		{layer.type} editor
+	<div class="title">
+		<div class="legend">
+			<Legend {map} {layer} {spriteLoader} />
+		</div>
+		<div class="layer-name">
+			{layerTitle}
+		</div>
+	</div>
 
+	<div class="header-buttons">
 		<span
 			role="button"
 			class="manual-edit-button has-tooltip-right has-tooltip-arrow"
@@ -55,11 +67,19 @@
 			<Fa icon={faPenToSquare} size="lg" />
 		</span>
 
-		<Help bind:layerType={layer.type} />
-	</p>
-	<span role="button" class="close has-tooltip-bottom has-tooltip-arrow" data-tooltip="Close popup">
-		<Fa icon={faCircleXmark} size="2x" color="#1c1c1c" />
-	</span>
+		<div class="help-button">
+			<Help size="lg" bind:layerType={layer.type} />
+		</div>
+
+		<div
+			role="button"
+			class="close has-tooltip-bottom has-tooltip-arrow"
+			data-tooltip="Close popup"
+		>
+			<Fa icon={faCircleXmark} size="lg" color="#1c1c1c" />
+		</div>
+	</div>
+
 	<div class="editor-contents">
 		{#if showManualEditor}
 			<ManualEditor bind:map bind:layer bind:selectedFormat />
@@ -108,12 +128,43 @@
 		z-index: 9999;
 
 		.title {
+			display: flex;
 			margin: 0;
 			margin-left: 0.5rem;
 			font-size: medium;
 			font-weight: bold;
 			text-transform: capitalize;
 			border-bottom: 2px solid gray;
+
+			.legend {
+				padding-right: 0.2rem;
+			}
+
+			.layer-name {
+				max-width: 190px;
+				white-space: nowrap;
+				overflow: hidden;
+				text-transform: capitalize;
+				text-overflow: ellipsis;
+				-webkit-text-overflow: ellipsis;
+				-o-text-overflow: ellipsis;
+			}
+		}
+
+		.header-buttons {
+			display: flex;
+			position: absolute;
+			top: 0.8rem;
+			right: 0.5rem;
+
+			.manual-edit-button,
+			.help-button {
+				padding-right: 0.5rem;
+			}
+
+			.close {
+				cursor: pointer;
+			}
 		}
 
 		.editor-contents {
@@ -127,13 +178,6 @@
 			&:hover {
 				color: hsl(204, 86%, 53%);
 			}
-		}
-
-		.close {
-			position: absolute;
-			top: 0.5rem;
-			right: 0.6rem;
-			cursor: pointer;
 		}
 	}
 

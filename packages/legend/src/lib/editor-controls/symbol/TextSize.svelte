@@ -19,6 +19,7 @@
 	$: value, setValue();
 
 	const setValue = () => {
+		if (!value) return
 		map?.setLayoutProperty(layer.id, 'text-size', value);
 	};
 </script>

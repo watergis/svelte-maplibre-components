@@ -16,6 +16,8 @@
 		| 'heatmap'
 		| 'hillshade';
 	export let property: string | undefined = undefined;
+	// svelte-fa size. https://cweili.github.io/svelte-fa/
+	export let size: 'xs' | 'sm' | 'lg' | '2x' | '2.5x' | '5x' | '7x' | '10x' = 'sm';
 
 	let url: string;
 
@@ -31,7 +33,7 @@
 </script>
 
 <a class="help" href={url} target="_blank" rel="noreferrer" role="button">
-	<Fa icon={faCircleQuestion} size="sm" />
+	<Fa icon={faCircleQuestion} {size} />
 </a>
 
 <style lang="scss">

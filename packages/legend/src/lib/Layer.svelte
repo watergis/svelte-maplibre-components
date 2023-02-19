@@ -13,6 +13,7 @@
 	import type SpriteLoader from './sprite';
 	import { isMobile } from 'detect-touch-device';
 	import StyleEditor from './StyleEditor.svelte';
+	import { clean } from './util/clean';
 
 	const dispatch = createEventDispatcher();
 
@@ -29,7 +30,8 @@
 	let checked = visibility === 'none' ? false : true;
 	$: checked, setVisibility();
 
-	$: layerTitle = relativeLayers && relativeLayers[layer.id] ? relativeLayers[layer.id] : layer.id;
+	$: layerTitle =
+		relativeLayers && relativeLayers[layer.id] ? relativeLayers[layer.id] : clean(layer.id);
 
 	const setVisibility = () => {
 		const visibility = checked === true ? 'visible' : 'none';
@@ -167,7 +169,7 @@
 			{/if}
 		</div>
 	{:else if enableEditing === true}
-		<StyleEditor bind:map bind:layer bind:spriteLoader bind:selectedFormat />
+		<StyleEditor bind:map bind:layer bind:spriteLoader bind:selectedFormat bind:relativeLayers />
 	{/if}
 </div>
 
@@ -205,6 +207,12 @@
 			font-size: 16px;
 			font-weight: 400;
 			width: 100%;
+			white-space: nowrap;
+			overflow: hidden;
+			text-transform: capitalize;
+			text-overflow: ellipsis;
+			-webkit-text-overflow: ellipsis;
+			-o-text-overflow: ellipsis;
 		}
 
 		.layer-position {

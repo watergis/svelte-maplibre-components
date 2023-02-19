@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-valhalla
 
+## 0.0.15
+
+### Patch Changes
+
+- e0ecf37: Updated svelte-package to v2. packaging folder was changed from package to dist
+
 ## 0.0.14
 
 ### Patch Changes

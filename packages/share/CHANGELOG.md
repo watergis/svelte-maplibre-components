@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-share
 
+## 0.1.14
+
+### Patch Changes
+
+- e0ecf37: Updated svelte-package to v2. packaging folder was changed from package to dist
+
 ## 0.1.13
 
 ### Patch Changes

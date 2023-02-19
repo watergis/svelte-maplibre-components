@@ -15,6 +15,8 @@
 	import Help from './util/Help.svelte';
 	import ManualEditor from './editor-panels/ManualEditor.svelte';
 	import { initTippy } from './util/initTippy';
+	import 'tippy.js/dist/tippy.css';
+	import 'tippy.js/themes/light.css';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
@@ -86,8 +88,6 @@
 
 <style lang="scss">
 	@use '@creativebulma/bulma-tooltip/dist/bulma-tooltip.min.css';
-	@import 'tippy.js/dist/tippy.css';
-	@import 'tippy.js/themes/light.css';
 
 	.palette-button {
 		cursor: pointer;

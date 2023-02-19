@@ -13,6 +13,7 @@
 	import type SpriteLoader from './sprite';
 	import { isMobile } from 'detect-touch-device';
 	import StyleEditor from './StyleEditor.svelte';
+	import { clean } from './util/clean';
 
 	const dispatch = createEventDispatcher();
 
@@ -29,7 +30,8 @@
 	let checked = visibility === 'none' ? false : true;
 	$: checked, setVisibility();
 
-	$: layerTitle = relativeLayers && relativeLayers[layer.id] ? relativeLayers[layer.id] : layer.id;
+	$: layerTitle =
+		relativeLayers && relativeLayers[layer.id] ? relativeLayers[layer.id] : clean(layer.id);
 
 	const setVisibility = () => {
 		const visibility = checked === true ? 'visible' : 'none';
@@ -105,16 +107,16 @@
 
 <div class="layer-container" style="cursor:{enableLayerOrder ? 'grab' : 'default'};">
 	{#if enableLayerOrder}
-		<span
+		<div
 			class="draggable-icon has-tooltip-right has-tooltip-arrow"
 			data-tooltip="{isMobile ? 'Long press & drag' : 'Drag'} to change order"
 		>
 			<Fa icon={faGripVertical} />
-		</span>
+		</div>
 	{/if}
 	{#if !disableVisibleButton}
 		{#if !enableLayerOrder}
-			<span
+			<div
 				tabindex="0"
 				role="button"
 				class="visible-button has-tooltip-right has-tooltip-arrow"
@@ -127,7 +129,7 @@
 				{:else}
 					<Fa icon={faEyeSlash} />
 				{/if}
-			</span>
+			</div>
 		{/if}
 	{/if}
 	<div class="legend">
@@ -167,7 +169,7 @@
 			{/if}
 		</div>
 	{:else if enableEditing === true}
-		<StyleEditor bind:map bind:layer bind:spriteLoader bind:selectedFormat />
+		<StyleEditor bind:map bind:layer bind:spriteLoader bind:selectedFormat bind:relativeLayers />
 	{/if}
 </div>
 
@@ -205,6 +207,12 @@
 			font-size: 16px;
 			font-weight: 400;
 			width: 100%;
+			white-space: nowrap;
+			overflow: hidden;
+			text-transform: capitalize;
+			text-overflow: ellipsis;
+			-webkit-text-overflow: ellipsis;
+			-o-text-overflow: ellipsis;
 		}
 
 		.layer-position {

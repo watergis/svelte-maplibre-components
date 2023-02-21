@@ -30,4 +30,4 @@ Please describe what you changed briefly.
 
 - [ ] If your PR makes a change under `packages` folder that should be noted in one or more packages' changelogs, generate a changeset by running `pnpm changeset` and following the prompts. Changesets that add features should be `minor` and those that fix bugs should be `patch`. Please prefix changeset messages with `feat:`, `fix:`, or `chore:`.
 
-Refer to [CONTRIBUTING.MD](https://github.com/UNDP-Data/geohub/blob/develop/CONTRIBUTING.md) for more information.
+

@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-legend
 
+## 0.1.28
+
+### Patch Changes
+
+- beca6aa: chore: updated npm packages
+
 ## 0.1.27
 
 ### Patch Changes

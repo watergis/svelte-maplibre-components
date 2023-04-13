@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-search
 
+## 0.1.13
+
+### Patch Changes
+
+- beca6aa: chore: updated npm packages
+
 ## 0.1.12
 
 ### Patch Changes

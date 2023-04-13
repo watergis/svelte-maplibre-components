@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-style-switcher
 
+## 0.1.17
+
+### Patch Changes
+
+- beca6aa: chore: updated npm packages
+
 ## 0.1.16
 
 ### Patch Changes

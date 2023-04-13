@@ -1,5 +1,11 @@
 # @watergis/maplibre-center-icon
 
+## 0.1.10
+
+### Patch Changes
+
+- beca6aa: chore: updated npm packages
+
 ## 0.1.9
 
 ### Patch Changes

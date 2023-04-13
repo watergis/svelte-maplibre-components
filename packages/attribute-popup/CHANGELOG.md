@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-attribute-popup
 
+## 0.0.18
+
+### Patch Changes
+
+- beca6aa: chore: updated npm packages
+
 ## 0.0.17
 
 ### Patch Changes

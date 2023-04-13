@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 0.2.1
+
+### Patch Changes
+
+- beca6aa: chore: updated npm packages
+
 ## 0.2.0
 
 ### Minor Changes

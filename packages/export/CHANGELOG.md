@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 0.1.22
+
+### Patch Changes
+
+- beca6aa: chore: updated npm packages
+
 ## 0.1.21
 
 ### Patch Changes

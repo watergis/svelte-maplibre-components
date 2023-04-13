@@ -1,6 +1,6 @@
 {
 	"name": "@watergis/svelte-maplibre-style-switcher",
-	"version": "0.1.16",
+	"version": "0.1.17",
 	"description": "This is a svelte component to add style stich component to maplibre.",
 	"main": "dist/index.js",
 	"files": [

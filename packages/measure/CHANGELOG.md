@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-measure
 
+## 0.1.20
+
+### Patch Changes
+
+- beca6aa: chore: updated npm packages
+
 ## 0.1.19
 
 ### Patch Changes

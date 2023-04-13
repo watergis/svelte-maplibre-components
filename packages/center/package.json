@@ -1,6 +1,6 @@
 {
 	"name": "@watergis/maplibre-center-icon",
-	"version": "0.1.9",
+	"version": "0.1.10",
 	"description": "This is a library to add center icon to maplibre",
 	"main": "dist/index.js",
 	"files": [

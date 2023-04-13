@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-valhalla
 
+## 0.0.16
+
+### Patch Changes
+
+- beca6aa: chore: updated npm packages
+
 ## 0.0.15
 
 ### Patch Changes

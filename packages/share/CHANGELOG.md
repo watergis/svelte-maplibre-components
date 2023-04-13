@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-share
 
+## 0.1.15
+
+### Patch Changes
+
+- beca6aa: chore: updated npm packages
+
 ## 0.1.14
 
 ### Patch Changes

@@ -4,7 +4,7 @@ author: Jin Igarashi
 ---
 
 <script lang="ts">
-  import MenuExample from "$lib/components/MenuExample.svelte";
+  import MenuExample from "./Example.svelte";
 </script>
 
 # @watergis/svelte-maplibre-menu

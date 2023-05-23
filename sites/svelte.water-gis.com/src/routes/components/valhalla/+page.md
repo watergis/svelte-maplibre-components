@@ -4,7 +4,7 @@ author: Jin Igarashi
 ---
 
 <script lang="ts">
-  import ValhallaExample from "$lib/components/ValhallaExample.svelte";
+  import ValhallaExample from "./Example.svelte";
 </script>
 
 # @watergis/svelte-maplibre-valhalla

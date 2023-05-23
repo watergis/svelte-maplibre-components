@@ -4,7 +4,7 @@ author: Jin Igarashi
 ---
 
 <script lang="ts">
-	import LegendExample from "$lib/components/LegendExample.svelte";
+	import LegendExample from "./Example.svelte";
 </script>
 
 # @watergis/svelte-maplibre-legend

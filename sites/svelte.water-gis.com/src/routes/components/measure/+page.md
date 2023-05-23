@@ -4,7 +4,7 @@ author: Jin Igarashi
 ---
 
 <script lang="ts">
-  import MeasureExample from "$lib/components/MeasureExample.svelte";
+  import MeasureExample from "./Example.svelte";
 </script>
 
 # @watergis/svelte-maplibre-measure

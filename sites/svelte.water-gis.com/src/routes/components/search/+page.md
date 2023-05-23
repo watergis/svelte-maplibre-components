@@ -4,7 +4,7 @@ author: Jin Igarashi
 ---
 
 <script lang="ts">
-	import SearchExample from "$lib/components/SearchExample.svelte";
+	import SearchExample from "./Example.svelte";
 </script>
 
 # @watergis/svelte-maplibre-search

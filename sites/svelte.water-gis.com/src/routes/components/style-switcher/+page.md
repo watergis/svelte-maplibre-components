@@ -4,7 +4,7 @@ author: Jin Igarashi
 ---
 
 <script lang="ts">
-  import StyleSwitcherExample from "$lib/components/StyleSwitcherExample.svelte";
+  import StyleSwitcherExample from "./Example.svelte";
 </script>
 
 # @watergis/svelte-maplibre-style-switcher

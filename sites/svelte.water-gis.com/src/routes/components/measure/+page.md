@@ -1,10 +1,13 @@
----
-title: @watergis/svelte-maplibre-measure
-author: Jin Igarashi
----
+<svelte:head>
+
+<title>svelte-maplibre-measure | svelte-maplibre-components</title>
+<meta name="twitter:title" content="svelte-maplibre-measure | svelte-maplibre-components" />
+<meta property="og:title" content="svelte-maplibre-measure | svelte-maplibre-components" />
+
+</svelte:head>
 
 <script lang="ts">
-  import MeasureExample from "$lib/components/MeasureExample.svelte";
+  import Example from "./Example.svelte";
 </script>
 
 # @watergis/svelte-maplibre-measure
@@ -13,7 +16,7 @@ author: Jin Igarashi
 
 ## Demo
 
-<MeasureExample />
+<Example />
 
 ## Usage
 

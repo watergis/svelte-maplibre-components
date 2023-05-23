@@ -27,9 +27,19 @@ See [Example](./src/example).
 <script>
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	const map = new Map();
+
+	import { faBars } from '@fortawesome/free-solid-svg-icons';
 </script>
 
-<MenuControl bind:map={$map} position={'top-left'} isMenuShown={true} sidebarOnLeft={true}>
+<MenuControl
+	bind:map={$map}
+	position={'top-left'}
+	isMenuShown={true}
+	sidebarOnLeft={true}
+	isHorizontal={false}
+	faIcon={faBars}
+	faIconSize="nm"
+>
 	<div slot="sidebar">content</div>
 	<div slot="menu">
 		<div class="map" id="map" bind:this={mapContainer} />
@@ -47,6 +57,8 @@ See [Example](./src/example).
 	}
 </style>
 ```
+
+If you want to split horizontally, please set `isHorizontal` as `true` value. If you set it to `true`, `sidebarOnLeft` option will be considered as `sidebarOnTop`. If you want to show primary container at the bottom, please set `sidebarOnLeft` as `false`.
 
 ## create-svelte
 

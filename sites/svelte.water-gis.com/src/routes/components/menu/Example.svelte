@@ -33,6 +33,7 @@
 	width={menuWidth}
 	height={menuHeight}
 	sidebarOnLeft={true}
+	isHorizontal={false}
 >
 	<div slot="sidebar" class="primary-container">
 		<h4>Contents</h4>

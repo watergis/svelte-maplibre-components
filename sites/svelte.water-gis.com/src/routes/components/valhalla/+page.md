@@ -1,10 +1,13 @@
----
-title: @watergis/svelte-maplibre-valhalla
-author: Jin Igarashi
----
+<svelte:head>
+
+<title>svelte-maplibre-valhalla | svelte-maplibre-components</title>
+<meta name="twitter:title" content="svelte-maplibre-valhalla | svelte-maplibre-components" />
+<meta property="og:title" content="svelte-maplibre-valhalla | svelte-maplibre-components" />
+
+</svelte:head>
 
 <script lang="ts">
-  import ValhallaExample from "$lib/components/ValhallaExample.svelte";
+  import Example from "./Example.svelte";
 </script>
 
 # @watergis/svelte-maplibre-valhalla
@@ -15,7 +18,7 @@ In order to use this control, you need to prepare your own valhalla server. The 
 
 ## Demo
 
-<ValhallaExample />
+<Example />
 
 ## Usage
 

@@ -1,10 +1,13 @@
----
-title: @watergis/maplibre-center-icon
-author: Jin Igarashi
----
+<svelte:head>
+
+<title>maplibre-center-icon | svelte-maplibre-components</title>
+<meta name="twitter:title" content="maplibre-center-icon | svelte-maplibre-components" />
+<meta property="og:title" content="maplibre-center-icon | svelte-maplibre-components" />
+
+</svelte:head>
 
 <script lang="ts">
-  import CenterIconExample from "$lib/components/CenterIconExample.svelte";
+  import Example from "./Example.svelte";
 </script>
 
 # @watergis/maplibre-center-icon
@@ -13,23 +16,26 @@ author: Jin Igarashi
 
 ## Demo
 
-<CenterIconExample />
+<Example />
 
 ## Usage
 
 ### Install the package
 
 - Use npm
+
 ```
 npm i @watergis/maplibre-center-icon
 ```
 
 - Use yarn
+
 ```
 yarn add@watergis/maplibre-center-icon
 ```
 
 - Use pnpm
+
 ```
 pnpm i @watergis/maplibre-center-icon
 ```
@@ -38,34 +44,33 @@ pnpm i @watergis/maplibre-center-icon
 
 ```svelte
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { Map } from 'maplibre-gl';
-  import CenterIconManager from '@watergis/maplibre-center-icon';
+	import { onMount } from 'svelte';
+	import { Map } from 'maplibre-gl';
+	import CenterIconManager from '@watergis/maplibre-center-icon';
 
-  let mapContainer: HTMLDivElement;
-  // create maplibre.Map object
-  let map = new Map();
+	let mapContainer: HTMLDivElement;
+	// create maplibre.Map object
+	let map = new Map();
 
-  onMount(async () => {
-    map = new Map({
-      container: mapContainer,
-      style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
-    });
-    const centerIconManager = new CenterIconManager(map);
-    centerIconManager.create();
-  });
-
+	onMount(async () => {
+		map = new Map({
+			container: mapContainer,
+			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
+		});
+		const centerIconManager = new CenterIconManager(map);
+		centerIconManager.create();
+	});
 </script>
 
 <div class="map" bind:this={mapContainer} />
 
 <style lang="scss">
-  @import 'maplibre-gl/dist/maplibre-gl.css';
+	@import 'maplibre-gl/dist/maplibre-gl.css';
 
-  .map {
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
+	.map {
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+	}
 </style>
 ```

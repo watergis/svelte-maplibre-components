@@ -92,3 +92,9 @@ Use `sidebarOnLeft` property if you want to change sidebar location either left 
 ```svelte
 <MenuControl bind:map position={'top-right'} bind:isMenuShown sidebarOnLeft={false}>
 ```
+
+If you want to split horizontally, please set `isHorizontal` as `true` value. If you set it to `true`, `sidebarOnLeft` option will be considered as `sidebarOnTop`. If you want to show primary container at the bottom, please set `sidebarOnLeft` as `false`. For Instance, the below code can show the container at the bottom horizontally.
+
+```svelte
+<MenuControl bind:map position={'top-right'} bind:isMenuShown sidebarOnLeft={false} isHorizontal={true}>
+```

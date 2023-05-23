@@ -14,7 +14,13 @@
 	});
 </script>
 
-<MenuControl bind:map position={'top-left'} isMenuShown={false} sidebarOnLeft={true}>
+<MenuControl
+	bind:map
+	position={'top-left'}
+	isMenuShown={false}
+	sidebarOnLeft={true}
+	isHorizontal={true}
+>
 	<div slot="sidebar">content</div>
 	<div slot="map">
 		<div class="map" bind:this={mapContainer} />

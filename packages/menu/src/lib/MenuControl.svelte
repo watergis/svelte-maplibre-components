@@ -13,6 +13,7 @@
 	export let height = 0;
 	export let width = 0;
 	export let sidebarOnLeft = true;
+	export let isHorizontal = false;
 
 	let menuButton: HTMLButtonElement;
 
@@ -151,6 +152,7 @@
 
 <div class="split-container" style="height:{menuHeight}px;width:{menuWidth}px">
 	<Split
+		horizontal={isHorizontal}
 		initialPrimarySize="0%"
 		bind:minPrimarySize={minPrimaryWidth}
 		bind:minSecondarySize={minSecondaryWidth}

@@ -53,7 +53,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"maplibre-gl": "^2.4.0"
+		"maplibre-gl": "^3.0.0"
 	},
 	"peerDependencies": {
 		"svelte": "^3.54.0"

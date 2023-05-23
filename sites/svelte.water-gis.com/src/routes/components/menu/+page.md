@@ -1,10 +1,13 @@
----
-title: @watergis/svelte-maplibre-menu
-author: Jin Igarashi
----
+<svelte:head>
+
+<title>svelte-maplibre-menu | svelte-maplibre-components</title>
+<meta name="twitter:title" content="svelte-maplibre-menu | svelte-maplibre-components" />
+<meta property="og:title" content="svelte-maplibre-menu | svelte-maplibre-components" />
+
+</svelte:head>
 
 <script lang="ts">
-  import MenuExample from "./Example.svelte";
+  import Example from "./Example.svelte";
 </script>
 
 # @watergis/svelte-maplibre-menu
@@ -13,7 +16,7 @@ author: Jin Igarashi
 
 ## Demo
 
-<MenuExample />
+<Example />
 
 ## Usage
 

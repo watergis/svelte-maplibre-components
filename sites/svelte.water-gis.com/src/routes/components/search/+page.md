@@ -1,10 +1,13 @@
----
-title: @watergis/svelte-maplibre-search
-author: Jin Igarashi
----
+<svelte:head>
+
+<title>svelte-maplibre-search | svelte-maplibre-components</title>
+<meta name="twitter:title" content="svelte-maplibre-search | svelte-maplibre-components" />
+<meta property="og:title" content="svelte-maplibre-search | svelte-maplibre-components" />
+
+</svelte:head>
 
 <script lang="ts">
-	import SearchExample from "./Example.svelte";
+	import Example from "./Example.svelte";
 </script>
 
 # @watergis/svelte-maplibre-search
@@ -13,7 +16,7 @@ author: Jin Igarashi
 
 ## Demo
 
-<SearchExample />
+<Example />
 
 ## Usage
 

@@ -1,10 +1,13 @@
----
-title: @watergis/svelte-maplibre-style-switcher
-author: Jin Igarashi
----
+<svelte:head>
+
+<title>svelte-maplibre-style-switcher | svelte-maplibre-components</title>
+<meta name="twitter:title" content="svelte-maplibre-style-switcher | svelte-maplibre-components" />
+<meta property="og:title" content="svelte-maplibre-style-switcher | svelte-maplibre-components" />
+
+</svelte:head>
 
 <script lang="ts">
-  import StyleSwitcherExample from "./Example.svelte";
+  import Example from "./Example.svelte";
 </script>
 
 # @watergis/svelte-maplibre-style-switcher
@@ -13,7 +16,7 @@ author: Jin Igarashi
 
 ## Demo
 
-<StyleSwitcherExample />
+<Example />
 
 ## Usage
 

@@ -1,10 +1,13 @@
----
-title: @watergis/svelte-maplibre-export
-author: Jin Igarashi
----
+<svelte:head>
+
+<title>svelte-maplibre-export | svelte-maplibre-components</title>
+<meta name="twitter:title" content="svelte-maplibre-export | svelte-maplibre-components" />
+<meta property="og:title" content="svelte-maplibre-export | svelte-maplibre-components" />
+
+</svelte:head>
 
 <script lang="ts">
-	import ExportExample from "./Example.svelte";
+	import Example from "./Example.svelte";
 </script>
 
 # @watergis/svelte-maplibre-export
@@ -13,7 +16,7 @@ author: Jin Igarashi
 
 ## Demo
 
-<ExportExample />
+<Example />
 
 ## Usage
 

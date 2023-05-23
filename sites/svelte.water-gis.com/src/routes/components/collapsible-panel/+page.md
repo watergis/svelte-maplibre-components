@@ -1,10 +1,13 @@
----
-title: @watergis/svelte-collapsible-panel
-author: Jin Igarashi
----
+<svelte:head>
+
+<title>svelte-collapsible-panel | svelte-maplibre-components</title>
+<meta name="twitter:title" content="svelte-collapsible-panel | svelte-maplibre-components" />
+<meta property="og:title" content="svelte-collapsible-panel | svelte-maplibre-components" />
+
+</svelte:head>
 
 <script lang="ts">
-  import CollapsiblePanelExample from "./Example.svelte";
+  import Example from "./Example.svelte";
 </script>
 
 # @watergis/svelte-collapsible-panel
@@ -13,7 +16,7 @@ author: Jin Igarashi
 
 ## Demo
 
-<CollapsiblePanelExample />
+<Example />
 
 ## Usage
 

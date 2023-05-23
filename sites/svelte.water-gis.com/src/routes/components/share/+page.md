@@ -1,10 +1,13 @@
----
-title: @watergis/svelte-maplibre-share
-author: Jin Igarashi
----
+<svelte:head>
+
+<title>svelte-maplibre-share | svelte-maplibre-components</title>
+<meta name="twitter:title" content="svelte-maplibre-share | svelte-maplibre-components" />
+<meta property="og:title" content="svelte-maplibre-share | svelte-maplibre-components" />
+
+</svelte:head>
 
 <script lang="ts">
-	import ShareExample from "./Example.svelte";
+	import Example from "./Example.svelte";
 </script>
 
 # @watergis/svelte-maplibre-share
@@ -13,7 +16,7 @@ author: Jin Igarashi
 
 ## Demo
 
-<ShareExample />
+<Example />
 
 ## Usage
 

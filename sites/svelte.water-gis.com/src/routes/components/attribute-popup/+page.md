@@ -1,10 +1,13 @@
----
-title: @watergis/svelte-maplibre-attribute-popup
-author: Jin Igarashi
----
+<svelte:head>
+
+<title>svelte-maplibre-attribute-popup | svelte-maplibre-components</title>
+<meta name="twitter:title" content="svelte-maplibre-attribute-popup | svelte-maplibre-components" />
+<meta property="og:title" content="svelte-maplibre-attribute-popup | svelte-maplibre-components" />
+
+</svelte:head>
 
 <script lang="ts">
-	import AtttributePopupExample from "./Example.svelte";
+	import Example from "./Example.svelte";
 </script>
 
 # @watergis/svelte-maplibre-attribute-popup
@@ -13,7 +16,7 @@ author: Jin Igarashi
 
 ## Demo
 
-<AtttributePopupExample />
+<Example />
 
 ## Usage
 

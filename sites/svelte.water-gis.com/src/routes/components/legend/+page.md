@@ -1,10 +1,13 @@
----
-title: @watergis/svelte-maplibre-legend
-author: Jin Igarashi
----
+<svelte:head>
+
+<title>svelte-maplibre-legend | svelte-maplibre-components</title>
+<meta name="twitter:title" content="svelte-maplibre-legend | svelte-maplibre-components" />
+<meta property="og:title" content="svelte-maplibre-legend | svelte-maplibre-components" />
+
+</svelte:head>
 
 <script lang="ts">
-	import LegendExample from "./Example.svelte";
+	import Example from "./Example.svelte";
 </script>
 
 # @watergis/svelte-maplibre-legend
@@ -13,7 +16,7 @@ author: Jin Igarashi
 
 ## Demo
 
-<LegendExample />
+<Example />
 
 ## Usage
 

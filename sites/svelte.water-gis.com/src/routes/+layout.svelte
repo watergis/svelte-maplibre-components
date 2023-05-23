@@ -16,15 +16,24 @@
 		{ name: 'center-icon', title: 'maplibre-center-icon' },
 		{ name: 'collapsible-panel', title: 'svelte-collapsible-panel' }
 	];
+
+	let description =
+		'Documentation for svelte-maplibre-components packages powered by GIS for Water';
 </script>
 
 <svelte:head>
-	<title>maplibre components for svelte</title>
+	<meta name="twitter:description" content={description} />
+	<meta name="description" content={description} />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:description" content={description} />
+	<meta property="og:url" content="https://svelte-maplibre.water-gis.com/" />
+	<meta property="og:image" content="/favicon.png" />
 </svelte:head>
 
 <nav class="navbar is-link" role="navigation" aria-label="main navigation">
 	<div class="navbar-brand">
-		<a class="navbar-item" href="https://github.com/watergis/svelte-maplibre-components">
+		<a class="navbar-item" href="/">
 			<img src="https://raw.githubusercontent.com/watergis/logo/main/logo.svg" />
 		</a>
 

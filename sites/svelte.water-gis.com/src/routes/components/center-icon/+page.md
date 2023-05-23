@@ -1,10 +1,13 @@
----
-title: @watergis/maplibre-center-icon
-author: Jin Igarashi
----
+<svelte:head>
+
+<title>maplibre-center-icon | svelte-maplibre-components</title>
+<meta name="twitter:title" content="maplibre-center-icon | svelte-maplibre-components" />
+<meta property="og:title" content="maplibre-center-icon | svelte-maplibre-components" />
+
+</svelte:head>
 
 <script lang="ts">
-  import CenterIconExample from "./Example.svelte";
+  import Example from "./Example.svelte";
 </script>
 
 # @watergis/maplibre-center-icon
@@ -13,7 +16,7 @@ author: Jin Igarashi
 
 ## Demo
 
-<CenterIconExample />
+<Example />
 
 ## Usage
 

@@ -1,5 +1,12 @@
 # @watergis/svelte-maplibre-menu
 
+## 0.3.0
+
+### Minor Changes
+
+- f62e97b: feat: added `faIcon` and `faIconSize` props to enable to change menu icon to any other fontawesome icons and sizes
+- f62e97b: feat: added `isHorizontal` option to split menu as horizontally
+
 ## 0.2.1
 
 ### Patch Changes

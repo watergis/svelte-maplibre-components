@@ -93,8 +93,27 @@ Use `sidebarOnLeft` property if you want to change sidebar location either left 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown sidebarOnLeft={false}>
 ```
 
+#### Split horizontally
+
 If you want to split horizontally, please set `isHorizontal` as `true` value. If you set it to `true`, `sidebarOnLeft` option will be considered as `sidebarOnTop`. If you want to show primary container at the bottom, please set `sidebarOnLeft` as `false`. For Instance, the below code can show the container at the bottom horizontally.
 
 ```svelte
 <MenuControl bind:map position={'top-right'} bind:isMenuShown sidebarOnLeft={false} isHorizontal={true}>
 ```
+
+#### Change menu icon
+
+As default, it uses `fa-bars`. You can change default icon to any other fontawesome icons as following example.
+
+Using `faIconSize` prop, you can also change icon size from default's `nm` to other sizes.
+
+```svelte
+<script lang="ts">
+import { MenuControl } from '@watergis/svelte-maplibre-menu';
+import { faTable } from '@fortawesome/free-solid-svg-icons';
+</script>
+
+<MenuControl bind:map faIcon={faTable} faIconSize="lg">
+```
+
+Please also install fontawesome package by using the command of `pnpm i -D @fortawesome/free-solid-svg-icons`.

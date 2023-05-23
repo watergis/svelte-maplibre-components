@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { Map } from 'maplibre-gl';
 	import { MenuControl } from '$lib';
+	import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 	let mapContainer: HTMLDivElement;
 	let map: Map;
@@ -19,7 +20,9 @@
 	position={'top-left'}
 	isMenuShown={false}
 	sidebarOnLeft={true}
-	isHorizontal={true}
+	isHorizontal={false}
+	faIcon={faBars}
+	faIconSize="nm"
 >
 	<div slot="sidebar">content</div>
 	<div slot="map">

@@ -3,7 +3,12 @@
 	import { onMount } from 'svelte';
 	import { Split } from '@geoffcox/svelte-splitter/src';
 	import Fa from 'svelte-fa';
-	import { faBars, faXmark, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faBars,
+		faXmark,
+		faCircleXmark,
+		type IconDefinition
+	} from '@fortawesome/free-solid-svg-icons';
 
 	export let map: Map;
 	export let isMenuShown = false;
@@ -14,6 +19,8 @@
 	export let width = 0;
 	export let sidebarOnLeft = true;
 	export let isHorizontal = false;
+	export let faIcon: IconDefinition = faBars;
+	export let faIconSize: 'xs' | 'sm' | 'nm' | 'lg' | '2x' = 'nm';
 
 	let menuButton: HTMLButtonElement;
 
@@ -146,7 +153,7 @@
 	{#if isMenuShown}
 		<Fa icon={faXmark} />
 	{:else}
-		<Fa icon={faBars} />
+		<Fa icon={faIcon} size={faIconSize} />
 	{/if}
 </button>
 
@@ -181,7 +188,7 @@
 				{#if isMobile}
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<span class="span close-icon" on:click={handleClose}>
-						<Fa icon={faCircleXmark} size="2x" color="#1c1c1c" />
+						<Fa icon={faIcon} size="2x" color="#1c1c1c" />
 					</span>
 				{/if}
 				<slot name="sidebar" />

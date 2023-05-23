@@ -27,6 +27,8 @@ See [Example](./src/example).
 <script>
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	const map = new Map();
+
+	import { faBars } from '@fortawesome/free-solid-svg-icons';
 </script>
 
 <MenuControl
@@ -35,6 +37,8 @@ See [Example](./src/example).
 	isMenuShown={true}
 	sidebarOnLeft={true}
 	isHorizontal={false}
+	faIcon={faBars}
+	faIconSize="nm"
 >
 	<div slot="sidebar">content</div>
 	<div slot="menu">

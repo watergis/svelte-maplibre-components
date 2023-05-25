@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-valhalla
 
+## 1.0.0
+
+### Major Changes
+
+- 9add035: chore(deps): update dependency maplibre-gl to v3
+
 ## 0.0.16
 
 ### Patch Changes

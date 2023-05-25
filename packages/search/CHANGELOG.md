@@ -1,5 +1,15 @@
 # @watergis/svelte-maplibre-search
 
+## 1.0.0
+
+### Major Changes
+
+- 9add035: chore(deps): update dependency maplibre-gl to v3
+
+### Patch Changes
+
+- 9add035: fix: css class name of 'mapboxgl-ctrl' to 'maplibregl-ctrl'
+
 ## 0.1.13
 
 ### Patch Changes

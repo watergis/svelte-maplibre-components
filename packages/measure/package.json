@@ -1,6 +1,6 @@
 {
 	"name": "@watergis/svelte-maplibre-measure",
-	"version": "0.1.20",
+	"version": "1.0.0",
 	"description": "This is a svelte component to add measure control plugin to maplibre.",
 	"main": "dist/index.js",
 	"files": [

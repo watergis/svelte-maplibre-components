@@ -23,7 +23,7 @@
 		this.map = map;
 
 		this.controlContainer = document.createElement('div');
-		this.controlContainer.className = 'mapboxgl-ctrl';
+		this.controlContainer.className = 'maplibregl-ctrl';
 		this.controlContainer.appendChild(searchContainer);
 		return this.controlContainer;
 	};

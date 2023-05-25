@@ -17,7 +17,7 @@
 		this.map = map;
 
 		this.controlContainer = document.createElement('div');
-		this.controlContainer.className = 'mapboxgl-ctrl mapboxgl-ctrl-group';
+		this.controlContainer.className = 'maplibregl-ctrl maplibregl-ctrl-group';
 		this.button = document.createElement('button');
 		this.button.className = 'maplibre-identify-icon';
 		this.button.type = 'button';

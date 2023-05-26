@@ -8,7 +8,7 @@
 	import MeasureManager from './MeasureManager';
 
 	export let map: Map;
-	export let terrainRgbUrl: string | undefined = undefined;
+	export let terrainSource: string;
 	export let measureOption: MeasureOption;
 
 	let isQuery: boolean;
@@ -16,7 +16,7 @@
 
 	$: if (map) {
 		if (!$measureManager) {
-			$measureManager = new MeasureManager(map, terrainRgbUrl, measureOption);
+			$measureManager = new MeasureManager(map, terrainSource, measureOption);
 		}
 
 		map.on('measure.on', () => {

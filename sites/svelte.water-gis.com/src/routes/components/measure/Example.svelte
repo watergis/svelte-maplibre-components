@@ -14,7 +14,7 @@
 	$: menuHeight = innerHeight * 0.6;
 	$: menuWidth = innerWidth * 0.95;
 
-	let terrainRgbUrl = 'https://narwassco.github.io/narok-terrain/tiles/{z}/{x}/{y}.png';
+	let terrainSource = 'narok-dem';
 	let measureOption: MeasureOption = {
 		tileSize: 512,
 		font: ['Roboto Medium'],
@@ -44,7 +44,7 @@
 <MenuControl bind:map position={'top-right'} bind:isMenuShown width={menuWidth} height={menuHeight}>
 	<div slot="sidebar" class="primary-container">
 		<h4>Measure tool with elevation enquiry</h4>
-		<MeasurePanel bind:map bind:measureOption bind:terrainRgbUrl />
+		<MeasurePanel bind:map bind:measureOption bind:terrainSource />
 	</div>
 	<div slot="map">
 		<div class="map" bind:this={mapContainer} />

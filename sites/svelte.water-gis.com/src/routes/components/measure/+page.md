@@ -40,20 +40,6 @@ yarn add @watergis/svelte-maplibre-measure
 pnpm i @watergis/svelte-maplibre-measure
 ```
 
-### Configuration on vite.config.ts
-
-You might need to configure as follows.
-
-```ts
-import { onMount } from 'svelte';
-
-onMount(async () => {
-	window.global = window;
-	const Buffer = await (await import('buffer')).Buffer;
-	window.Buffer = Buffer;
-});
-```
-
 ### Example
 
 ```svelte

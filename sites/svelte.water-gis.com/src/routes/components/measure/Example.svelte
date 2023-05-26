@@ -25,10 +25,6 @@
 	};
 
 	onMount(async () => {
-		window.global = window;
-		const Buffer = await (await import('buffer')).Buffer;
-		window.Buffer = Buffer;
-
 		map = new Map({
 			container: mapContainer,
 			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'

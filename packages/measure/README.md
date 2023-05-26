@@ -19,58 +19,33 @@ or
 yarn add @watergis/svelte-maplibre-measure
 ```
 
-## vite configuration
-
-Add following settings in your vite.config.ts
-
-```ts
-import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
-
-const config: UserConfig = {
-    optimizeDeps: {
-        esbuildOptions: {
-            // Node.js global to browser globalThis
-            define: {
-                global: 'globalThis'
-            },
-            // Enable esbuild polyfill plugins
-            plugins: [
-                NodeGlobalsPolyfillPlugin({
-                    buffer: true
-                })
-            ]
-        }
-    }
-};
-```
-
 ## Usage
 
 See [Example](./src/example).
 
 ```svelte
 <script lang="ts">
-import { MeasurePanel, type MeasureOption} from '$lib';
+	import { MeasurePanel, type MeasureOption } from '$lib';
 
-// create maplibre.Map object
-let map = new Map();
+	// create maplibre.Map object
+	let map = new Map();
 
-// set URL for your terrain RGB
-let terrainRgbUrl = 'https://narwassco.github.io/narok-terrain/tiles/{z}/{x}/{y}.png'
+	// put your terrain source (raster-dem) name in style.json
+	let terrainSource = 'narok-dem';
 
-// set Options
-let measureOption: MeasureOption = {
-    tileSize: 512,
-    font: ['Roboto Medium'],
-    fontSize: 12,
-    fontHalo: 1,
-    mainColor: '#263238',
-    haloColor: '#fff',
-};
+	// set Options
+	let measureOption: MeasureOption = {
+		tileSize: 512,
+		font: ['Roboto Medium'],
+		fontSize: 12,
+		fontHalo: 1,
+		mainColor: '#263238',
+		haloColor: '#fff'
+	};
 </script>
 
 <!-- You can skip terrainRgbUrl if you don't have terrain RGB data -->
-<MeasurePanel bind:map={$map} bind:measureOption bind:terrainRgbUrl />
+<MeasurePanel bind:map={$map} bind:measureOption bind:terrainSource />
 ```
 
 ## create-svelte

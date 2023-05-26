@@ -1,4 +1,3 @@
-import { TerrainRGB } from '@watergis/terrain-rgb';
 import distance from '@turf/distance';
 import {
 	Marker,
@@ -26,7 +25,7 @@ const DEFAULT_OPTION: MeasureOption = {
 class MeasureManager {
 	private map: Map;
 	private measureOption: MeasureOption = Object.assign({}, DEFAULT_OPTION);
-	private terrainRgbUrl: string | undefined;
+	private terrainSource: string;
 
 	private units: string | undefined = 'kilometers';
 
@@ -35,9 +34,9 @@ class MeasureManager {
 	private isMeasure = false;
 	private isClickListenerAdded = false;
 
-	constructor(map: Map, terrainRgbUrl?: string, measureOption?: MeasureOption) {
+	constructor(map: Map, terrainSource: string, measureOption?: MeasureOption) {
 		this.map = map;
-		this.terrainRgbUrl = terrainRgbUrl;
+		this.terrainSource = terrainSource;
 		this.measureOption = Object.assign(this.measureOption, measureOption);
 
 		this.measureControlData = {
@@ -60,6 +59,9 @@ class MeasureManager {
 			}
 			this.map.fire('measure.on');
 			this.isMeasure = true;
+			if (this.map.getTerrain()?.source !== this.terrainSource) {
+				this.map.setTerrain({ source: this.terrainSource, exaggeration: 1 });
+			}
 		}
 	}
 
@@ -94,15 +96,10 @@ class MeasureManager {
 			zoom = 15;
 		}
 		zoom = Math.round(zoom);
-		const lnglat: number[] = [event.lngLat.lng, event.lngLat.lat];
-		const tileSize: number = this.measureOption.tileSize ? this.measureOption.tileSize : 512;
+		const elevation = this.map.queryTerrainElevation(event.lngLat);
 
-		if (this.terrainRgbUrl) {
-			const trgb = new TerrainRGB(this.terrainRgbUrl, tileSize);
-			trgb.getElevation(lnglat, zoom).then((elev: number) => {
-				if (!elev) elev = -1;
-				this.addPoint(event.lngLat, elev);
-			});
+		if (elevation) {
+			this.addPoint(event.lngLat, elevation);
 		} else {
 			this.addPoint(event.lngLat);
 		}

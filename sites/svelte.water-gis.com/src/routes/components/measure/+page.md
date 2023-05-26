@@ -40,20 +40,6 @@ yarn add @watergis/svelte-maplibre-measure
 pnpm i @watergis/svelte-maplibre-measure
 ```
 
-### Configuration on vite.config.ts
-
-You might need to configure as follows.
-
-```ts
-import { onMount } from 'svelte';
-
-onMount(async () => {
-	window.global = window;
-	const Buffer = await (await import('buffer')).Buffer;
-	window.Buffer = Buffer;
-});
-```
-
 ### Example
 
 ```svelte
@@ -67,8 +53,8 @@ onMount(async () => {
 	// create maplibre.Map object
 	let map = new Map();
 
-	// put your terrain RGB URL
-	let terrainRgbUrl = 'https://narwassco.github.io/narok-terrain/tiles/{z}/{x}/{y}.png';
+	// put your terrain source (raster-dem) name in style.json
+	let terrainSource = 'narok-dem';
 	let measureOption: MeasureOption = {
 		tileSize: 512,
 		font: ['Roboto Medium'],
@@ -79,10 +65,6 @@ onMount(async () => {
 	};
 
 	onMount(async () => {
-		window.global = window;
-		const Buffer = await (await import('buffer')).Buffer;
-		window.Buffer = Buffer;
-
 		map = new Map({
 			container: mapContainer,
 			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
@@ -93,7 +75,7 @@ onMount(async () => {
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
 	<div slot="sidebar" class="primary-container">
 		<h4>Measure tool with elevation enquiry</h4>
-		<MeasurePanel bind:map bind:measureOption bind:terrainRgbUrl />
+		<MeasurePanel bind:map bind:measureOption bind:terrainSource />
 	</div>
 	<div slot="map">
 		<div class="map" bind:this={mapContainer} />

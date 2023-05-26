@@ -411,9 +411,6 @@ importers:
       '@turf/distance':
         specifier: ^6.5.0
         version: 6.5.0
-      '@watergis/terrain-rgb':
-        specifier: ^1.1.12
-        version: 1.1.12
       maplibre-gl:
         specifier: ^3.0.0
         version: 3.0.0
@@ -462,10 +459,10 @@ importers:
         version: 3.58.0
       svelte-check:
         specifier: ^3.2.0
-        version: 3.2.0(sass@1.62.0)(svelte@3.58.0)
+        version: 3.2.0(svelte@3.58.0)
       svelte-preprocess:
         specifier: ^5.0.3
-        version: 5.0.3(sass@1.62.0)(svelte@3.58.0)(typescript@5.0.4)
+        version: 5.0.3(svelte@3.58.0)(typescript@5.0.4)
       tslib:
         specifier: ^2.5.0
         version: 2.5.0
@@ -474,7 +471,7 @@ importers:
         version: 5.0.4
       vite:
         specifier: ^4.2.1
-        version: 4.2.1(sass@1.62.0)
+        version: 4.2.1
 
   packages/menu:
     dependencies:
@@ -954,10 +951,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
-
-  /@canvas/image-data@1.0.0:
-    resolution: {integrity: sha512-BxOqI5LgsIQP1odU5KMwV9yoijleOPzHL18/YvNqF9KFSGF2K/DLlYAbDQsWqd/1nbaFuSkYD/191dpMtNh4vw==}
-    dev: false
 
   /@changesets/apply-release-plan@6.1.3:
     resolution: {integrity: sha512-ECDNeoc3nfeAe1jqJb5aFQX7CqzQhD2klXRez2JDb/aVpGUbX673HgKrnrgJRuQR/9f2TtLoYIzrGB9qwD77mg==}
@@ -1592,7 +1585,7 @@ packages:
       svelte: 3.58.0
       tiny-glob: 0.2.9
       undici: 5.20.0
-      vite: 4.2.1(sass@1.62.0)
+      vite: 4.2.1
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1626,7 +1619,7 @@ packages:
       magic-string: 0.30.0
       svelte: 3.58.0
       svelte-hmr: 0.15.1(svelte@3.58.0)
-      vite: 4.2.1(sass@1.62.0)
+      vite: 4.2.1
       vitefu: 0.2.4(vite@4.2.1)
     transitivePeerDependencies:
       - supports-color
@@ -1894,18 +1887,6 @@ packages:
       '@mapbox/mapbox-gl-style-spec': 13.28.0
     dev: false
 
-  /@watergis/terrain-rgb@1.1.12:
-    resolution: {integrity: sha512-LbZHMJ4K6ox7HMv/UpfDDWoccJGfXjwQ1jXcIu1eugIS9vCx1miMnQIPVhE/W7P+Zkz4ldTlb7bF+g9x4NJRcw==}
-    dependencies:
-      '@canvas/image-data': 1.0.0
-      axios: 0.21.4
-      global-mercator: 3.1.0
-      pako: 2.1.0
-      webp-hero: 0.0.0-dev.27
-    transitivePeerDependencies:
-      - debug
-    dev: false
-
   /acorn-jsx@5.3.2(acorn@8.8.2):
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
@@ -2017,14 +1998,6 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
     dev: true
-
-  /axios@0.21.4:
-    resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
-    dependencies:
-      follow-redirects: 1.15.2
-    transitivePeerDependencies:
-      - debug
-    dev: false
 
   /bail@2.0.2:
     resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
@@ -2791,16 +2764,6 @@ packages:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
 
-  /follow-redirects@1.15.2:
-    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-    dev: false
-
   /for-each@0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
     dependencies:
@@ -2927,10 +2890,6 @@ packages:
       once: 1.4.0
       path-is-absolute: 1.0.1
     dev: true
-
-  /global-mercator@3.1.0:
-    resolution: {integrity: sha512-Ws/8nyCHDFzpDQjfr6fcbWY+yU/Oh6rk7+WXNr/pZl7O1WCktAnMZy+9wpJ2stNCqM2SWwvZoqWbIzTiFN++2A==}
-    dev: false
 
   /global-prefix@3.0.0:
     resolution: {integrity: sha512-awConJSVCHVGND6x3tmMaKcQvwXLhjdkmomy2W+Goaui8YPgYgXJZewhg3fWC+DlfqqQuWg8AwqjGTD2nAPVWg==}
@@ -3843,10 +3802,6 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /pako@2.1.0:
-    resolution: {integrity: sha512-w+eufiZ1WuJYgPXbV/PO3NCMEc3xqylkKHzp8bxp1uW4qaSNQUkwmLLEc3kKsfz8lpV1F8Ht3U1Cm+9Srog2ug==}
-    dev: false
-
   /parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
     engines: {node: '>=6'}
@@ -4541,6 +4496,33 @@ packages:
       - sugarss
     dev: true
 
+  /svelte-check@3.2.0(svelte@3.58.0):
+    resolution: {integrity: sha512-6ZnscN8dHEN5Eq5LgIzjj07W9nc9myyBH+diXsUAuiY/3rt0l65/LCIQYlIuoFEjp2F1NhXqZiJwV9omPj9tMw==}
+    hasBin: true
+    peerDependencies:
+      svelte: ^3.55.0
+    dependencies:
+      '@jridgewell/trace-mapping': 0.3.18
+      chokidar: 3.5.3
+      fast-glob: 3.2.12
+      import-fresh: 3.3.0
+      picocolors: 1.0.0
+      sade: 1.8.1
+      svelte: 3.58.0
+      svelte-preprocess: 5.0.3(svelte@3.58.0)(typescript@5.0.4)
+      typescript: 5.0.4
+    transitivePeerDependencies:
+      - '@babel/core'
+      - coffeescript
+      - less
+      - postcss
+      - postcss-load-config
+      - pug
+      - sass
+      - stylus
+      - sugarss
+    dev: true
+
   /svelte-copy@1.3.0:
     resolution: {integrity: sha512-C3v7/RNhMsRoXgAdIW8VSb7A5+/fV/NXDdlm7mXlKN9jXRC5fwG0HvjsgqhKgitlXOJtYf9UvAK+NPSAv+qPbg==}
     dev: false
@@ -4610,6 +4592,53 @@ packages:
       detect-indent: 6.1.0
       magic-string: 0.27.0
       sass: 1.62.0
+      sorcery: 0.11.0
+      strip-indent: 3.0.0
+      svelte: 3.58.0
+      typescript: 5.0.4
+    dev: true
+
+  /svelte-preprocess@5.0.3(svelte@3.58.0)(typescript@5.0.4):
+    resolution: {integrity: sha512-GrHF1rusdJVbOZOwgPWtpqmaexkydznKzy5qIC2FabgpFyKN57bjMUUUqPRfbBXK5igiEWn1uO/DXsa2vJ5VHA==}
+    engines: {node: '>= 14.10.0'}
+    requiresBuild: true
+    peerDependencies:
+      '@babel/core': ^7.10.2
+      coffeescript: ^2.5.1
+      less: ^3.11.3 || ^4.0.0
+      postcss: ^7 || ^8
+      postcss-load-config: ^2.1.0 || ^3.0.0 || ^4.0.0
+      pug: ^3.0.0
+      sass: ^1.26.8
+      stylus: ^0.55.0
+      sugarss: ^2.0.0 || ^3.0.0 || ^4.0.0
+      svelte: ^3.23.0
+      typescript: '>=3.9.5 || ^4.0.0 || ^5.0.0'
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      coffeescript:
+        optional: true
+      less:
+        optional: true
+      postcss:
+        optional: true
+      postcss-load-config:
+        optional: true
+      pug:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@types/pug': 2.0.6
+      detect-indent: 6.1.0
+      magic-string: 0.27.0
       sorcery: 0.11.0
       strip-indent: 3.0.0
       svelte: 3.58.0
@@ -4995,6 +5024,39 @@ packages:
       vfile-message: 3.1.4
     dev: true
 
+  /vite@4.2.1:
+    resolution: {integrity: sha512-7MKhqdy0ISo4wnvwtqZkjke6XN4taqQ2TBaTccLIpOKv7Vp2h4Y+NpmWCnGDeSvvn45KxvWgGyb0MkHvY1vgbg==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': '>= 14'
+      less: '*'
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      esbuild: 0.17.19
+      postcss: 8.4.23
+      resolve: 1.22.2
+      rollup: 3.22.1
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
   /vite@4.2.1(sass@1.62.0):
     resolution: {integrity: sha512-7MKhqdy0ISo4wnvwtqZkjke6XN4taqQ2TBaTccLIpOKv7Vp2h4Y+NpmWCnGDeSvvn45KxvWgGyb0MkHvY1vgbg==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -5037,7 +5099,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.2.1(sass@1.62.0)
+      vite: 4.2.1
     dev: true
 
   /vt-pbf@3.1.3:
@@ -5053,10 +5115,6 @@ packages:
     dependencies:
       defaults: 1.0.4
     dev: true
-
-  /webp-hero@0.0.0-dev.27:
-    resolution: {integrity: sha512-ptEl95qLj2bDweaEw3UR9w8pucJ7KA9OlzUYLkV+zhb3OrZyIC6mNDdZFHzWpzuBDAtfS5jM24vj/aOje/8cKQ==}
-    dev: false
 
   /which-boxed-primitive@1.0.2:
     resolution: {integrity: sha512-bwZdv0AKLpplFY2KZRX6TvyuN7ojjr7lwkg6ml0roIy9YeuSr7JS372qlNW18UQYzgYK9ziGcerWqZOmEn9VNg==}

@@ -9,7 +9,7 @@
 	let mapContainer: HTMLDivElement;
 	let map: Map;
 
-	let terrainRgbUrl = 'https://narwassco.github.io/narok-terrain/tiles/{z}/{x}/{y}.png';
+	let terrainSource = 'narok-dem';
 	let measureOption: MeasureOption = {
 		tileSize: 512,
 		font: ['Roboto Medium'],
@@ -22,7 +22,8 @@
 	onMount(async () => {
 		map = new Map({
 			container: mapContainer,
-			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
+			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json',
+			hash: true
 		});
 	});
 </script>
@@ -30,7 +31,7 @@
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
 	<div slot="sidebar" class="primary-container">
 		<h4>Measure tool with elevation enquiry</h4>
-		<MeasurePanel bind:map bind:measureOption bind:terrainRgbUrl />
+		<MeasurePanel bind:map bind:measureOption bind:terrainSource />
 	</div>
 	<div slot="map">
 		<div class="map" bind:this={mapContainer} />

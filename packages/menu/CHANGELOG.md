@@ -1,5 +1,24 @@
 # @watergis/svelte-maplibre-menu
 
+## 1.0.2
+
+### Patch Changes
+
+- 6303c40: feat: added on:changed event to enable tracking changes of splitted containers' size.
+
+  You can track changes for containers' size by following code.
+
+  ```svelte
+  <script>
+  	const onChange = (e) => {
+  		const { percent, primarySize, splitterSize, secondarySize, dragging } = event.detail
+  	};
+  </script>
+
+  <MenuControl
+  	on:changed={onChange}>
+  ```
+
 ## 1.0.1
 
 ### Patch Changes

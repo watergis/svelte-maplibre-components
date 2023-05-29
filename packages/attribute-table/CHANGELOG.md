@@ -1,5 +1,12 @@
 # @watergis/svelte-maplibre-attribute-table
 
+## 0.0.4
+
+### Patch Changes
+
+- Updated dependencies [6303c40]
+  - @watergis/svelte-maplibre-menu@1.0.2
+
 ## 0.0.3
 
 ### Patch Changes

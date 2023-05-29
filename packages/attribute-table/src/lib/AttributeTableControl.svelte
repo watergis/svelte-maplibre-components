@@ -31,7 +31,7 @@
 	<div slot="sidebar" class="primary-container">
 		<AttributeTable bind:map bind:rowsPerPage bind:minZoom bind:getLayerList />
 	</div>
-	<div slot="map" class="secondary-content">
+	<div slot="map" class="secondary-container">
 		<slot />
 	</div>
 </MenuControl>
@@ -39,6 +39,11 @@
 <style lang="scss">
 	.primary-container {
 		padding: 0.6rem;
+		width: 100%;
+		height: 100%;
+	}
+
+	.secondary-container {
 		width: 100%;
 		height: 100%;
 	}

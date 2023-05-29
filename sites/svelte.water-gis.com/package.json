@@ -39,6 +39,7 @@
 		"@watergis/maplibre-center-icon": "workspace:^",
 		"@watergis/svelte-collapsible-panel": "workspace:^",
 		"@watergis/svelte-maplibre-attribute-popup": "workspace:^",
+		"@watergis/svelte-maplibre-attribute-table": "workspace:^",
 		"@watergis/svelte-maplibre-export": "workspace:^",
 		"@watergis/svelte-maplibre-legend": "workspace:^",
 		"@watergis/svelte-maplibre-measure": "workspace:^",

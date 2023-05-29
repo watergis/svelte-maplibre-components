@@ -889,6 +889,9 @@ importers:
       '@watergis/svelte-maplibre-attribute-popup':
         specifier: workspace:^
         version: link:../../packages/attribute-popup
+      '@watergis/svelte-maplibre-attribute-table':
+        specifier: workspace:^
+        version: link:../../packages/attribute-table
       '@watergis/svelte-maplibre-export':
         specifier: workspace:^
         version: link:../../packages/export

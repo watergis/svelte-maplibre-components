@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Map } from 'maplibre-gl';
-	import { onMount } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
 	import { Split } from '@geoffcox/svelte-splitter/src';
 	import Fa from 'svelte-fa';
 	import {
@@ -9,6 +9,8 @@
 		faCircleXmark,
 		type IconDefinition
 	} from '@fortawesome/free-solid-svg-icons';
+
+	const dispatch = createEventDispatcher();
 
 	export let map: Map;
 	export let isMenuShown = false;
@@ -138,8 +140,18 @@
 		setSplitControl();
 	};
 
-	const splitterChanged = () => {
+	const splitterChanged = (event) => {
 		resizeMap();
+
+		const { percent, primarySize, splitterSize, secondarySize, dragging } = event.detail;
+
+		dispatch('changed', {
+			percent,
+			primarySize,
+			splitterSize,
+			secondarySize,
+			dragging
+		});
 	};
 
 	const handleClose = () => {

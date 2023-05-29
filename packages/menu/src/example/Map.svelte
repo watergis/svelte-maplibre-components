@@ -13,6 +13,10 @@
 			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
 		});
 	});
+
+	const onChange = (e) => {
+		console.log(e.detail);
+	};
 </script>
 
 <MenuControl
@@ -23,6 +27,7 @@
 	isHorizontal={false}
 	faIcon={faBars}
 	faIconSize="nm"
+	on:changed={onChange}
 >
 	<div slot="sidebar">content</div>
 	<div slot="map">

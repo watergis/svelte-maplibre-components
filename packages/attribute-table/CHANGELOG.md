@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-attribute-table
 
+## 0.0.3
+
+### Patch Changes
+
+- 84b02fd: fix: set default values for width and height
+
 ## 0.0.2
 
 ### Patch Changes

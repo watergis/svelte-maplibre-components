@@ -120,3 +120,18 @@ import { faTable } from '@fortawesome/free-solid-svg-icons';
 ```
 
 Please also install fontawesome package by using the command of `pnpm i -D @fortawesome/free-solid-svg-icons`.
+
+#### track container size changes
+
+You can track changes for containers' size by following code.
+
+```svelte
+<script>
+	const onChange = (e) => {
+		const { percent, primarySize, splitterSize, secondarySize, dragging } = event.detail
+	};
+</script>
+
+<MenuControl
+	on:changed={onChange}>
+```

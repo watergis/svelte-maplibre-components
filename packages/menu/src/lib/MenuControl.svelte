@@ -202,19 +202,19 @@
 		.primary-content {
 			position: relative;
 			height: 100%;
-
-			.close-icon {
-				position: absolute;
-				top: 0.5rem;
-				right: 0.6rem;
-				cursor: pointer;
-				z-index: 10;
-			}
 		}
 
 		.secondary-content {
 			position: relative;
 			height: 100%;
+		}
+
+		.close-icon {
+			position: absolute;
+			top: 0.5rem;
+			right: 0.6rem;
+			cursor: pointer;
+			z-index: 10;
 		}
 	}
 </style>

@@ -6,6 +6,9 @@
 	let mapContainer: HTMLDivElement;
 	let map: Map;
 
+	let width: number;
+	let height: number;
+
 	onMount(() => {
 		map = new Map({
 			container: mapContainer,
@@ -18,8 +21,17 @@
 	});
 </script>
 
-<div class="container">
-	<AttributeTableControl bind:map position="top-right" rowsPerPage="25" minZoom="14">
+<svelte:window bind:innerWidth={width} bind:innerHeight={height} />
+
+<div class="container" style="width: {width * 0.95}px">
+	<AttributeTableControl
+		bind:map
+		position="top-right"
+		rowsPerPage="25"
+		minZoom="14"
+		width={width * 0.95}
+		height={height * 0.6}
+	>
 		<div class="map" bind:this={mapContainer} />
 	</AttributeTableControl>
 </div>
@@ -27,7 +39,7 @@
 <style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 
-	$height: calc(100vh);
+	$height: calc(60vh);
 
 	.container {
 		margin: auto;
@@ -36,7 +48,7 @@
 		.map {
 			display: inline-block;
 			text-align: left;
-			width: 95%;
+			width: 100%;
 			height: $height;
 			z-index: 1;
 		}

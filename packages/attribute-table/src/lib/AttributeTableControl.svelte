@@ -8,6 +8,8 @@
 	export let position: ControlPosition = 'top-right';
 	export let rowsPerPage = 25;
 	export let minZoom = 14;
+	export let width: number;
+	export let height: number;
 
 	let isMenuShown = false;
 
@@ -27,6 +29,8 @@
 	faIcon={faTable}
 	faIconSize="lg"
 	minSidebarWidth="40%"
+	bind:width
+	bind:height
 >
 	<div slot="sidebar" class="primary-container">
 		<AttributeTable bind:map bind:rowsPerPage bind:minZoom bind:getLayerList />

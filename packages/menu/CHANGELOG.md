@@ -1,5 +1,12 @@
 # @watergis/svelte-maplibre-menu
 
+## 1.0.1
+
+### Patch Changes
+
+- 6e4275e: fix: bug of customised close icon for mobile in menu control
+- 6e4275e: fix: bug of position of close icon when holizontally splitted and sidebarOnLeft is false
+
 ## 1.0.0
 
 ### Major Changes

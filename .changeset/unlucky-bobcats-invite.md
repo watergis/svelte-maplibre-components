@@ -1,5 +1,5 @@
 ---
-"@watergis/attribute-table": patch
+"@watergis/svelte-maplibre-attribute-table": patch
 ---
 
-feat: add @watergis/attribute-table control
+feat: add @watergis/svelte-maplibre-attribute-table control

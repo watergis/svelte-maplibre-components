@@ -7,8 +7,15 @@
 	export let map: Map;
 	export let position: ControlPosition = 'top-right';
 	export let rowsPerPage = 25;
+	export let minZoom = 14;
 
 	let isMenuShown = false;
+
+	$: if (isMenuShown) {
+		getLayerList();
+	}
+
+	let getLayerList: () => void;
 </script>
 
 <MenuControl
@@ -22,7 +29,7 @@
 	minSidebarWidth="40%"
 >
 	<div slot="sidebar" class="primary-container">
-		<AttributeTable bind:map bind:rowsPerPage />
+		<AttributeTable bind:map bind:rowsPerPage bind:minZoom bind:getLayerList />
 	</div>
 	<div slot="map" class="secondary-content">
 		<slot />

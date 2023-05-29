@@ -1,5 +1,5 @@
 {
-	"name": "@watergis/attribute-table",
+	"name": "@watergis/svelte-maplibre-attribute-table",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",

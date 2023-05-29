@@ -9,14 +9,15 @@
 	onMount(() => {
 		map = new Map({
 			container: mapContainer,
-			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
+			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json',
+			hash: true
 		});
 
 		map.addControl(new NavigationControl(), 'top-right');
 	});
 </script>
 
-<AttributeTableControl bind:map position="top-right">
+<AttributeTableControl bind:map position="top-right" rowsPerPage="25" minZoom="14">
 	<div class="map" bind:this={mapContainer} />
 </AttributeTableControl>
 

@@ -1,5 +1,6 @@
 {
 	"name": "@watergis/svelte-maplibre-attribute-table",
+	"description": "This is a svelte component to add attribute table plugin to maplibre.",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
@@ -12,6 +13,22 @@
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write ."
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/watergis/svelte-maplibre-components.git",
+		"directory": "packages/attribute-table"
+	},
+	"keywords": [
+		"maplibre",
+		"maplibre-gl-js",
+		"attribute table"
+	],
+	"author": "Jin IGARASHI",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/watergis/svelte-maplibre-components/issues"
+	},
+	"homepage": "https://github.com/watergis/svelte-maplibre-components/tree/main/packages/attribute-table#readme",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",

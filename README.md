@@ -14,6 +14,7 @@ The following packages are managed in this monorepo.
 | Package                                                               | Changelog                                            | version                                                                        |
 | --------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------ |
 | [@watergis/svelte-maplibre-attribute-popup](packages/attribute-popup) | [Changelog](packages/attribute-popup/CHANGELOG.md)   | ![npm](https://img.shields.io/npm/v/@watergis/svelte-maplibre-attribute-popup) |
+| [@watergis/svelte-maplibre-attribute-table](packages/attribute-table) | [Changelog](packages/attribute-table/CHANGELOG.md)   | ![npm](https://img.shields.io/npm/v/@watergis/svelte-maplibre-attribute-table) |
 | [@watergis/maplibre-center-icon](packages/center)                     | [Changelog](packages/center/CHANGELOG.md)            | ![npm](https://img.shields.io/npm/v/@watergis/maplibre-center-icon)            |
 | [@watergis/collapsible-panel](packages/collapsible-panel)             | [Changelog](packages/collapsible-panel/CHANGELOG.md) | ![npm](https://img.shields.io/npm/v/@watergis/svelte-maplibre-attribute-popup) |
 | [@watergis/svelte-maplibre-export](packages/export)                   | [Changelog](packages/export/CHANGELOG.md)            | ![npm](https://img.shields.io/npm/v/@watergis/svelte-maplibre-export)          |

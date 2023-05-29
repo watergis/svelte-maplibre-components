@@ -5,6 +5,7 @@
 
 	let components = [
 		{ name: 'attribute-popup', title: 'svelte-maplbre-attribute-popup' },
+		{ name: 'attribute-table', title: 'svelte-maplbre-attribute-table' },
 		{ name: 'export', title: 'svelte-maplbre-export' },
 		{ name: 'legend', title: 'svelte-maplbre-legend' },
 		{ name: 'measure', title: 'svelte-maplbre-measure' },

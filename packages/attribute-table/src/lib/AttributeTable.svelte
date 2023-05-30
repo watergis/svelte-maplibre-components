@@ -365,6 +365,9 @@
 			background: #1c1c1c;
 			color: #ffffff;
 			margin-left: 0.3rem;
+			align-items: center;
+			display: inline-flex;
+			justify-content: center;
 		}
 
 		.reload-button:disabled {
@@ -407,6 +410,9 @@
 				border-radius: 25px;
 				background: #1c1c1c;
 				color: #fff;
+				align-items: center;
+				display: inline-flex;
+				justify-content: center;
 			}
 			.operation-button:before {
 				line-height: 30px;

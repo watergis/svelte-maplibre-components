@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-attribute-table
 
+## 0.0.5
+
+### Patch Changes
+
+- 3210692: feat: added pan to feature button
+
 ## 0.0.4
 
 ### Patch Changes

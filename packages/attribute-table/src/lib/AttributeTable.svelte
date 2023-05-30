@@ -15,7 +15,11 @@
 	import { distinct } from './util';
 	import { Datatable } from 'svelte-simple-datatables';
 	import Fa from 'svelte-fa';
-	import { faMagnifyingGlassPlus, faRotate } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faMagnifyingGlassPlus,
+		faRotate,
+		faUpDownLeftRight
+	} from '@fortawesome/free-solid-svg-icons';
 
 	export let map: Map;
 	export let rowsPerPage = 25;
@@ -54,7 +58,7 @@
 	let columns: { id: string; label: string }[] = [];
 
 	let zoomedMarker: Marker;
-	let reloadButtonDiabled = false;
+	let mapChanged = false;
 
 	$: if (map) {
 		map.on('sourcedata', (e) => {
@@ -63,10 +67,10 @@
 			}
 		});
 		map.on('zoomend', () => {
-			reloadButtonDiabled = false;
+			mapChanged = true;
 		});
 		map.on('moveend', () => {
-			reloadButtonDiabled = false;
+			mapChanged = true;
 		});
 	}
 
@@ -116,7 +120,7 @@
 		if (!selectedSourceLayerId) return;
 		if (!map) return;
 
-		reloadButtonDiabled = true;
+		mapChanged = false;
 
 		const ids = getLayerIdsBySourceLayer(selectedSourceLayerId);
 		if (ids.length > 0) {
@@ -151,10 +155,10 @@
 	const handleReload = () => {
 		getLayerList();
 		updateTable();
-		reloadButtonDiabled = true;
+		mapChanged = false;
 	};
 
-	const zoomToFeature = (feature?: MapGeoJSONFeature) => {
+	const zoomToFeature = (feature?: MapGeoJSONFeature, isPan = false) => {
 		if (!feature) return;
 		const geometry = feature.geometry;
 
@@ -164,8 +168,11 @@
 			const point: number[] = geometry.coordinates as number[];
 			center = [point[0], point[1]];
 			let currentZoom = map.getZoom();
-			if (currentZoom < minZoom) {
-				currentZoom = minZoom;
+
+			if (!isPan) {
+				if (currentZoom < minZoom) {
+					currentZoom = minZoom;
+				}
 			}
 			map.flyTo({
 				center: center,
@@ -177,23 +184,40 @@
 				return bounds.extend(coord);
 			}, new LngLatBounds(coordinates[0], coordinates[0]));
 
-			map.fitBounds(bounds, {
-				padding: 20
-			});
+			if (!isPan) {
+				map.fitBounds(bounds, {
+					padding: 20
+				});
+			}
 
 			center = coordinates[parseInt(`${coordinates.length / 2}`)];
+
+			if (isPan) {
+				map.flyTo({
+					center: center,
+					zoom: map.getZoom()
+				});
+			}
 		} else if (type === 'polygon') {
 			const coordinates = geometry.coordinates[0];
 			const bounds = coordinates.reduce(function (bounds, coord) {
 				return bounds.extend(coord);
 			}, new LngLatBounds(coordinates[0], coordinates[0]));
 
-			map.fitBounds(bounds, {
-				padding: 20
-			});
+			if (!isPan) {
+				map.fitBounds(bounds, {
+					padding: 20
+				});
+			}
 
-			console.log(bounds);
 			center = [(bounds._ne.lng + bounds._sw.lng) / 2, (bounds._ne.lat + bounds._sw.lat) / 2];
+
+			if (isPan) {
+				map.flyTo({
+					center: center,
+					zoom: map.getZoom()
+				});
+			}
 		}
 
 		if (zoomedMarker) {
@@ -212,7 +236,11 @@
 				{/each}
 			{/if}
 		</select>
-		<button class="reload-button" on:click={handleReload} disabled={reloadButtonDiabled}>
+		<button
+			class="reload-button"
+			on:click={handleReload}
+			disabled={selectedSourceLayerId && !mapChanged}
+		>
 			<Fa icon={faRotate} size="nm" />
 		</button>
 	</aside>
@@ -248,6 +276,14 @@
 												}}
 											>
 												<Fa icon={faMagnifyingGlassPlus} size="lg" />
+											</button>
+											<button
+												class="operation-button"
+												on:click={() => {
+													zoomToFeature(feature, true);
+												}}
+											>
+												<Fa icon={faUpDownLeftRight} size="lg" />
 											</button>
 										</td>
 										{#each columns as col}

@@ -11,9 +11,9 @@
 	export let width = 0;
 	export let height = 0;
 
-	let isMenuShown = false;
+	let showAttributeTable = false;
 
-	$: if (isMenuShown) {
+	$: if (showAttributeTable) {
 		getLayerList();
 	}
 
@@ -23,7 +23,7 @@
 <MenuControl
 	bind:map
 	bind:position
-	bind:isMenuShown
+	bind:isMenuShown={showAttributeTable}
 	isHorizontal={true}
 	sidebarOnLeft={false}
 	faIcon={faTable}

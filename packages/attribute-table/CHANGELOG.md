@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-attribute-table
 
+## 0.0.6
+
+### Patch Changes
+
+- 4693240: fix: style of icon button in attribute-table control
+
 ## 0.0.5
 
 ### Patch Changes

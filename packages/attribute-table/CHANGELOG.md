@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-attribute-table
 
+## 0.0.7
+
+### Patch Changes
+
+- e84324d: feat: migrated datatables lib to [new repo's](https://github.com/vincjo/datatables)
+
 ## 0.0.6
 
 ### Patch Changes

@@ -6,7 +6,7 @@
 
 	export let map: Map;
 	export let position: ControlPosition = 'top-right';
-	export let rowsPerPage = 25;
+	export let rowsPerPage = 50;
 	export let minZoom = 14;
 	export let width = 0;
 	export let height = 0;

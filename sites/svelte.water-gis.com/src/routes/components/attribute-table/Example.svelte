@@ -27,8 +27,8 @@
 	<AttributeTableControl
 		bind:map
 		position="top-right"
-		rowsPerPage="25"
-		minZoom="14"
+		rowsPerPage={50}
+		minZoom={14}
 		width={width * 0.95}
 		height={height * 0.6}
 	>

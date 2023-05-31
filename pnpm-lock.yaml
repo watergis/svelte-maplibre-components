@@ -80,6 +80,9 @@ importers:
       '@fortawesome/free-solid-svg-icons':
         specifier: ^6.4.0
         version: 6.4.0
+      '@vincjo/datatables':
+        specifier: ^1.7.2
+        version: 1.7.2
       '@watergis/svelte-maplibre-menu':
         specifier: workspace:^
         version: link:../menu
@@ -89,9 +92,6 @@ importers:
       svelte-fa:
         specifier: ^3.0.3
         version: 3.0.3
-      svelte-simple-datatables:
-        specifier: ^0.3.1
-        version: 0.3.1
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^2.1.0
@@ -2213,6 +2213,10 @@ packages:
       '@typescript-eslint/types': 5.59.7
       eslint-visitor-keys: 3.4.1
     dev: true
+
+  /@vincjo/datatables@1.7.2:
+    resolution: {integrity: sha512-BVbLvdr0DLn7D4qYijcABVi9spoRJOYn1HnJJpS+uYoYvv7B4mXfxmI3Y/5qEE4I7gOtC5aRAu3nPJIxgoJ3+g==}
+    dev: false
 
   /@watergis/legend-symbol@0.2.3:
     resolution: {integrity: sha512-bxW2nGUvL80/iLTAstvP0QRcpprKKyTOLFueDW+dD0g9PDIFYx4De6MrKp4QJPx9SmrlidPxslOB0mXZrENmUg==}
@@ -5281,10 +5285,6 @@ packages:
 
   /svelte-range-slider-pips@2.1.1:
     resolution: {integrity: sha512-fLkhfnyEc4uMOCZCl8IPyC0e9lujrjqdSyrKw28Y8j99YUPZR+pHnSxde7PqhM0ST6eyO4ugh2nFnLZTIoG9aQ==}
-    dev: false
-
-  /svelte-simple-datatables@0.3.1:
-    resolution: {integrity: sha512-6T+8FLgeBxXWJkLbaiFJ8H009dzeboZNHGS3E4XpvIUWYmDJhrXLSid94/Sy3YXr0hYUt/27Q7X0/QJ2kbJ3QQ==}
     dev: false
 
   /svelte-tippy@1.3.2:

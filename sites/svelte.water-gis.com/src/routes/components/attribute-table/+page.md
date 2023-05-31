@@ -62,7 +62,7 @@ pnpm i @watergis/svelte-maplibre-attribute-table
 	});
 </script>
 
-<AttributeTableControl bind:map position="top-right" rowsPerPage="25" minZoom="14">
+<AttributeTableControl bind:map position="top-right" rowsPerPage={50} minZoom={14}>
 	<div class="map" bind:this={mapContainer} />
 </AttributeTableControl>
 

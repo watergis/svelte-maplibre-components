@@ -226,6 +226,7 @@
 <div class="attribute-table-container" bind:clientHeight={containerHeight}>
 	<header class="header" bind:clientHeight={headerHeight}>
 		<select class="layer-select" bind:value={selectedSourceLayerId}>
+			<option>Select a layer</option>
 			{#if layers && layers.length > 0}
 				{#each layers as id}
 					<option value={id}>{id}</option>
@@ -321,37 +322,32 @@
 			margin-left: 16px;
 
 			.layer-select {
-				cursor: pointer;
 				width: 196px;
 				height: 26px;
-
-				display: inline-flex;
-				align-items: center;
-				position: relative;
-			}
-
-			.layer-select::after {
-				position: absolute;
-				right: 15px;
-				width: 10px;
-				height: 7px;
-				background-color: #535353;
-				clip-path: polygon(0 0, 100% 0, 50% 100%);
-				content: '';
-				pointer-events: none;
-			}
-
-			.layer-select select {
-				appearance: none;
-				min-width: 230px;
-				height: 2.8em;
-				padding: 0.4em calc(0.8em + 30px) 0.4em 0.8em;
-				border: 1px solid #cccccc;
-				border-radius: 3px;
-				background-color: #fff;
-				color: #333333;
+				border-radius: 4px;
+				border-color: #cccccc;
+				box-sizing: border-box;
 				font-size: 1em;
+			}
+
+			select {
+				width: 100%;
+				border-radius: 4px;
+				border-color: #cccccc;
+				box-sizing: border-box;
+				background: transparent;
+				-webkit-appearance: none;
 				cursor: pointer;
+				background: #fff
+					url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2211%22%20height%3D%2211%22%20viewBox%3D%220%200%2011%2011%22%3E%3Cpath%20d%3D%22M4.33%208.5L0%201L8.66%201z%22%20fill%3D%22%23666%22%2F%3E%3C%2Fsvg%3E')
+					right 0.3em center no-repeat;
+				padding-left: 0.5em;
+				color: #000;
+
+				/* Firefox hide arrow */
+				-moz-appearance: none;
+				text-indent: 0.01px;
+				text-overflow: '';
 			}
 
 			.reload-button {
@@ -384,7 +380,7 @@
 		}
 
 		.no-data {
-			margin-left: 32px;
+			margin: 1rem;
 		}
 
 		.attribute-table {

@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-attribute-table
 
+## 0.0.8
+
+### Patch Changes
+
+- 5fa4ff4: fix: adjusted the layout of attribute table for select box and label when there is no data in selected layer.
+
 ## 0.0.7
 
 ### Patch Changes

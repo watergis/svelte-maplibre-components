@@ -1,5 +1,16 @@
 # @watergis/svelte-maplibre-attribute-table
 
+## 1.0.0
+
+### Major Changes
+
+- ba763ad: chore: update dependency svelte to v4, migrate eslint-plugin-svelte3 to eslint-plugin-svelte.
+
+### Patch Changes
+
+- Updated dependencies [ba763ad]
+  - @watergis/svelte-maplibre-menu@2.0.0
+
 ## 0.0.8
 
 ### Patch Changes

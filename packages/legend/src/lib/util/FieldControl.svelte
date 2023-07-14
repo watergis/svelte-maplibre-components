@@ -20,12 +20,12 @@
 </script>
 
 <div class="field">
-	<label class="label is-normal">
+	<div class="label is-normal">
 		{title}
 		{#if help}
 			<Help bind:type={help.type} bind:layerType={help.layerType} bind:property={help.property} />
 		{/if}
-	</label>
+	</div>
 	<div class="control">
 		<slot />
 	</div>

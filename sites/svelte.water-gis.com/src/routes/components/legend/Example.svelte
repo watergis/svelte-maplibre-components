@@ -3,7 +3,6 @@
 	import { Map, NavigationControl } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import { LegendPanel, LegendHeader } from '@watergis/svelte-maplibre-legend';
-	import type { StyleSpecification } from 'maplibre-gl';
 
 	let mapContainer: HTMLDivElement;
 	let map: Map;
@@ -14,14 +13,6 @@
 	$: menuWidth = innerWidth * 0.95;
 
 	let isMenuShown = true;
-	let style: StyleSpecification;
-	$: {
-		if (map) {
-			map.on('load', () => {
-				style = map.getStyle();
-			});
-		}
-	}
 
 	let onlyRendered = true;
 	let onlyRelative = true;

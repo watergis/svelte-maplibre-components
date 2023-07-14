@@ -93,14 +93,24 @@
 		layerLayoutStyle = formatStyle('layout');
 		layerPaintStyle = formatStyle('paint');
 	};
+
+	const handleEnterKey = (e: KeyboardEvent) => {
+		if (e.key === 'Enter') {
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			e.target.click();
+		}
+	};
 </script>
 
 <div class="menu-buttons">
 	<span
 		role="button"
+		tabindex="0"
 		class="menu-button has-tooltip-bottom has-tooltip-arrow"
 		data-tooltip="Apply to map"
 		on:click={handleSave}
+		on:keydown={handleEnterKey}
 	>
 		<Fa icon={faFloppyDisk} size="2x" />
 	</span>

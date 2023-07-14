@@ -32,10 +32,10 @@
 	<meta property="og:image" content="/favicon.png" />
 </svelte:head>
 
-<nav class="navbar is-link" role="navigation" aria-label="main navigation">
+<nav class="navbar is-link" aria-label="main navigation">
 	<div class="navbar-brand">
 		<a class="navbar-item" href="/">
-			<img src="https://raw.githubusercontent.com/watergis/logo/main/logo.svg" />
+			<img src="https://raw.githubusercontent.com/watergis/logo/main/logo.svg" alt="logo" />
 		</a>
 
 		<!-- svelte-ignore a11y-missing-attribute -->
@@ -60,7 +60,7 @@
 			<a class="navbar-item" href="/" on:click={() => (isMenuOpened = false)}> Getting started </a>
 
 			<div class="navbar-item has-dropdown is-hoverable">
-				<a class="navbar-link"> Components </a>
+				<a class="navbar-link" href="/"> Components </a>
 
 				<div class="navbar-dropdown">
 					{#each components as component}

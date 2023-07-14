@@ -179,6 +179,8 @@
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<span
 				class="icon close-icon"
+				role="button"
+				tabindex="0"
 				on:click={() => {
 					isExportContainerShown = !isExportContainerShown;
 				}}

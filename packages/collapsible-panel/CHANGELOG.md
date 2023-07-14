@@ -1,5 +1,11 @@
 # @watergis/svelte-collapsible-panel
 
+## 1.0.0
+
+### Major Changes
+
+- ba763ad: chore: update dependency svelte to v4, migrate eslint-plugin-svelte3 to eslint-plugin-svelte.
+
 ## 0.0.16
 
 ### Patch Changes

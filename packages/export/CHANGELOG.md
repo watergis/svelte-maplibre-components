@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-export
 
+## 1.0.1
+
+### Patch Changes
+
+- 117542c: fix: fixed the bug of export PDF of A3 size spondered by @PivnoyBaronDmitry through the PR of https://github.com/watergis/mapbox-gl-export/pull/48
+
 ## 1.0.0
 
 ### Major Changes

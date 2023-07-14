@@ -210,6 +210,7 @@
 				{#if showOnList(layer.id)}
 					<div
 						class="list-item"
+						role="listitem"
 						draggable={enableLayerOrder}
 						on:dragstart={(event) => dragstart(event, index)}
 						on:drop|preventDefault={(event) => drop(event, index, layer)}
@@ -239,6 +240,7 @@
 			{#if enableLayerOrder}
 				<div
 					class="list-item"
+					role="listitem"
 					style="height: 40px;"
 					draggable={false}
 					on:drop|preventDefault={(event) => drop(event, getLastVisibleIndex())}

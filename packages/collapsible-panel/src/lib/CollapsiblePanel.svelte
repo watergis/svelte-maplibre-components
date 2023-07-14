@@ -1,6 +1,9 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
 	import Fa from 'svelte-fa';
 	import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+
+	const dispatch = createEventDispatcher();
 
 	export let title: string;
 
@@ -13,11 +16,24 @@
 		| 'is-warning'
 		| 'is-danger'
 		| '' = '';
+
+	const handleEnterKey = (e: KeyboardEvent) => {
+		if (e.key === 'Enter') {
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			e.target.click();
+		}
+	};
 </script>
 
 <nav class="panel {color} my-1 mx-1">
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<p class="panel-heading p-2 header-menu" on:click={() => (isPanelOpen = !isPanelOpen)}>
+	<div
+		class="panel-heading p-2 header-menu"
+		role="button"
+		tabindex="0"
+		on:click={() => (isPanelOpen = !isPanelOpen)}
+		on:keydown={handleEnterKey}
+	>
 		<span class="panel-icon mt-1">
 			{#if isPanelOpen}
 				<Fa icon={faAngleDown} color="white" />
@@ -26,7 +42,7 @@
 			{/if}
 		</span>
 		{title}
-	</p>
+	</div>
 	<div class="container m-2" hidden={!isPanelOpen}>
 		<slot />
 	</div>

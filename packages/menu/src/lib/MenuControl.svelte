@@ -157,6 +157,14 @@
 	const handleClose = () => {
 		isMenuShown = false;
 	};
+
+	const handleEnterKey = (e: KeyboardEvent) => {
+		if (e.key === 'Enter') {
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			e.target.click();
+		}
+	};
 </script>
 
 <svelte:window bind:innerWidth bind:innerHeight />
@@ -182,8 +190,13 @@
 		<div slot="primary" class="primary-content">
 			{#if sidebarOnLeft}
 				{#if isMobile}
-					<!-- svelte-ignore a11y-click-events-have-key-events -->
-					<span class="span close-icon" on:click={handleClose}>
+					<span
+						class="span close-icon"
+						role="button"
+						tabindex="0"
+						on:click={handleClose}
+						on:keydown={handleEnterKey}
+					>
 						<Fa icon={faCircleXmark} size="2x" color="#1c1c1c" />
 					</span>
 				{/if}
@@ -198,8 +211,13 @@
 				<slot name="map" />
 			{:else}
 				{#if isMobile}
-					<!-- svelte-ignore a11y-click-events-have-key-events -->
-					<span class="span close-icon" on:click={handleClose}>
+					<span
+						class="span close-icon"
+						role="button"
+						tabindex="0"
+						on:click={handleClose}
+						on:keydown={handleEnterKey}
+					>
 						<Fa icon={faCircleXmark} size="2x" color="#1c1c1c" />
 					</span>
 				{/if}

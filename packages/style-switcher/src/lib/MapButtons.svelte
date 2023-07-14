@@ -42,11 +42,14 @@
 
 <div
 	class="button-container"
+	role="button"
+	tabindex="0"
 	bind:this={mainContainer}
 	on:mouseleave={() => (isOptionsShown = false)}
 >
 	<div
 		role="button"
+		tabindex="0"
 		class="main-button"
 		on:click={handleMainButtonClick}
 		on:keydown={handleKeydown}

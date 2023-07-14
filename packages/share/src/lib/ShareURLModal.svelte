@@ -46,11 +46,24 @@
 	const handleClose = () => {
 		isShareModalShown = false;
 	};
+
+	const handleEnterKey = (e: KeyboardEvent) => {
+		if (e.key === 'Enter') {
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			e.target.click();
+		}
+	};
 </script>
 
 <div class="modal {`${isShareModalShown ? 'is-active' : ''}`}">
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<div class="modal-background" on:click={handleClose} />
+	<div
+		class="modal-background"
+		role="button"
+		tabindex="-1"
+		on:click={handleClose}
+		on:keydown={handleEnterKey}
+	/>
 	<div class="modal-card">
 		<header class="modal-card-head">
 			<p class="modal-card-title">URL to share</p>

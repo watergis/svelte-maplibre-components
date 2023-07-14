@@ -148,6 +148,7 @@
 	map.on('zoom', update);
 </script>
 
+<!-- eslint-disable svelte/no-at-html-tags -->
 <div class="legend">{@html container.innerHTML}</div>
 
 <style>

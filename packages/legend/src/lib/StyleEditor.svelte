@@ -35,6 +35,14 @@
 		appendTo: document.body
 	});
 	let tooltipContent: HTMLElement;
+
+	const handleEnterKey = (e: KeyboardEvent) => {
+		if (e.key === 'Enter') {
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			e.target.click();
+		}
+	};
 </script>
 
 <div
@@ -60,9 +68,11 @@
 	<div class="header-buttons">
 		<span
 			role="button"
+			tabindex="0"
 			class="manual-edit-button has-tooltip-right has-tooltip-arrow"
 			data-tooltip="Manual editor"
 			on:click={() => (showManualEditor = !showManualEditor)}
+			on:keydown={handleEnterKey}
 		>
 			<Fa icon={faPenToSquare} size="lg" />
 		</span>

@@ -18,7 +18,8 @@
 	import {
 		faMagnifyingGlassPlus,
 		faRotate,
-		faUpDownLeftRight
+		faUpDownLeftRight,
+		faDownload
 	} from '@fortawesome/free-solid-svg-icons';
 
 	export let map: Map;
@@ -221,6 +222,28 @@
 		}
 		zoomedMarker = new Marker().setLngLat(center).addTo(map);
 	};
+
+	const handleDownload = () => {
+		const fc = {
+			type: 'FeatureCollection',
+			features: features
+		};
+		console.log(fc);
+
+		const element = document.createElement('a');
+		element.setAttribute(
+			'href',
+			'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(fc, null, 2))
+		);
+		element.setAttribute('download', `${selectedSourceLayerId}.geojson`);
+
+		element.style.display = 'none';
+		document.body.appendChild(element);
+
+		element.click();
+
+		document.body.removeChild(element);
+	};
 </script>
 
 <div class="attribute-table-container" bind:clientHeight={containerHeight}>
@@ -240,6 +263,14 @@
 			disabled={selectedSourceLayerId && !mapChanged}
 		>
 			<Fa icon={faRotate} size="nm" />
+		</button>
+
+		<button
+			class="download-button"
+			on:click={handleDownload}
+			disabled={!(selectedSourceLayerId && data.length > 0)}
+		>
+			<Fa icon={faDownload} size="nm" />
 		</button>
 	</header>
 
@@ -376,6 +407,10 @@
 				font-variant: normal;
 				text-rendering: auto;
 				-webkit-font-smoothing: antialiased;
+			}
+
+			.download-button {
+				cursor: pointer;
 			}
 		}
 

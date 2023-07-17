@@ -10,6 +10,8 @@
 		map = new Map({
 			container: mapContainer,
 			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json',
+			center: { lng: 35.87063, lat: -1.08551 },
+			zoom: 13,
 			hash: true
 		});
 

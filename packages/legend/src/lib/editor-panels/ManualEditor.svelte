@@ -56,7 +56,7 @@
 	};
 
 	const convertToStyleJson = (type: 'layout' | 'paint') => {
-		let json: any;
+		let json: unknown;
 		let target: string = layerLayoutStyle;
 		if (type === 'paint') {
 			target = layerPaintStyle;

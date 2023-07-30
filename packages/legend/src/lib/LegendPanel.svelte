@@ -107,7 +107,12 @@
 		handleStyleChanged(false);
 	};
 
-	const drop = (event: any, target: number, layer?: LayerSpecification) => {
+	const drop = (
+		/* eslint-disable @typescript-eslint/no-explicit-any */
+		event: any, 
+		target: number, 
+		layer?: LayerSpecification
+		) => {
 		event.dataTransfer.dropEffect = 'move';
 		const start = parseInt(event.dataTransfer.getData('text/plain'));
 		const newTracklist = allLayers;
@@ -132,14 +137,21 @@
 		layerOrderChanged();
 	};
 
-	const dragstart = (event: any, i: number) => {
+	const dragstart = (
+		/* eslint-disable @typescript-eslint/no-explicit-any */
+		event: any, 
+		i: number
+		) => {
 		event.dataTransfer.effectAllowed = 'move';
 		event.dataTransfer.dropEffect = 'move';
 		const start = i;
 		event.dataTransfer.setData('text/plain', start);
 	};
 
-	const dragover = (event: any) => {
+	const dragover = (
+		/* eslint-disable @typescript-eslint/no-explicit-any */
+		event: any
+	) => {
 		event.preventDefault();
 		event.dataTransfer.dropEffect = 'move';
 	};

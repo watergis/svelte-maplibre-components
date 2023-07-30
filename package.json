@@ -22,8 +22,8 @@
   "homepage": "https://github.com/watergis/svelte-maplibre-components#readme",
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
-    "lefthook": "^1.4.5",
-    "turbo": "^1.10.7"
+    "lefthook": "^1.4.7",
+    "turbo": "^1.10.12"
   },
   "packageManager": "pnpm@8.6.10",
   "engines": {

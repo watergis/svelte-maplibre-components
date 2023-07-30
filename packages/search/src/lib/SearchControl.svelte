@@ -9,7 +9,7 @@
 	export let position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' = 'top-left';
 	export let allowFlyTo = false;
 
-	let searchItems: any[] = [];
+	let searchItems: unknown[] = [];
 	let searchObject: { [key: string]: GeoJSONFeature } = {};
 	let selectedObject: { [key: string]: string } = {};
 	let markerSearch: Marker | undefined;

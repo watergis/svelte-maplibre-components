@@ -1,6 +1,6 @@
 import chroma from 'chroma-js';
 
-export const getColorFromExpression = (value: any) => {
+export const getColorFromExpression = (value: unknown) => {
 	if (value && Array.isArray(value)) {
 		if (value[0] === 'rgb') {
 			value = chroma(value.splice(1, 3)).css();

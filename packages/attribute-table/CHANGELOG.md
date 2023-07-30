@@ -1,5 +1,19 @@
 # @watergis/svelte-maplibre-attribute-table
 
+## 1.0.1
+
+### Patch Changes
+
+- cfd5091: Upgraded prettier and eslint versions
+
+  - chore(deps): update typescript-eslint monorepo to v6 (major) (#284)
+  - chore(deps): update dependency prettier-plugin-svelte to v3 (#289)
+
+  Also, there are several maintenances by renovate. See commit logs.
+
+- Updated dependencies [cfd5091]
+  - @watergis/svelte-maplibre-menu@2.0.1
+
 ## 1.0.0
 
 ### Major Changes

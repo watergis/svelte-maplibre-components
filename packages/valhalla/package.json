@@ -1,6 +1,6 @@
 {
 	"name": "@watergis/svelte-maplibre-valhalla",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "This is a svelte component to add valhalla control plugin to maplibre.",
 	"main": "dist/index.js",
 	"files": [

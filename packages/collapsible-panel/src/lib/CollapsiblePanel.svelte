@@ -1,9 +1,6 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
 	import Fa from 'svelte-fa';
 	import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
-
-	const dispatch = createEventDispatcher();
 
 	export let title: string;
 

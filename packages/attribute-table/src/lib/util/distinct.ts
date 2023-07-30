@@ -1,3 +1,3 @@
-export const distinct = (value: any, index: any, self: string | any[]) => {
+export const distinct = (value: never, index: never, self: string | never[]) => {
 	return self.indexOf(value) === index;
 };

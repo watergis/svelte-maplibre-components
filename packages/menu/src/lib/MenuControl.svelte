@@ -23,6 +23,7 @@
 	export let isHorizontal = false;
 	export let faIcon: IconDefinition = faBars;
 	export let faIconSize: 'xs' | 'sm' | 'nm' | 'lg' | '2x' = 'nm';
+	export let controlName = 'menu'
 
 	let menuButton: HTMLButtonElement;
 
@@ -50,6 +51,7 @@
 
 		this.controlContainer = document.createElement('div');
 		this.controlContainer.className = 'maplibregl-ctrl maplibregl-ctrl-group';
+		menuButton.className = `maplibregl-ctrl-${controlName}`
 		menuButton.addEventListener('click', () => {
 			isMenuShown = !isMenuShown;
 		});

@@ -47,11 +47,13 @@
 		"@watergis/svelte-maplibre-search": "workspace:^",
 		"@watergis/svelte-maplibre-share": "workspace:^",
 		"@watergis/svelte-maplibre-style-switcher": "workspace:^",
+		"@watergis/svelte-maplibre-tour": "workspace:^",
 		"@watergis/svelte-maplibre-valhalla": "workspace:^",
 		"buffer": "^6.0.3",
 		"bulma": "^0.9.4",
 		"github-markdown-css": "^5.2.0",
 		"maplibre-gl": "^3.2.1",
+		"pmtiles": "^2.10.0",
 		"prismjs": "^1.29.0"
 	}
 }

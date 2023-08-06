@@ -24,6 +24,7 @@ The following packages are managed in this monorepo.
 | [@watergis/svelte-maplibre-search](packages/search)                   | [Changelog](packages/search/CHANGELOG.md)            | ![npm](https://img.shields.io/npm/v/@watergis/svelte-maplibre-search)          |
 | [@watergis/svelte-maplibre-share](packages/share)                     | [Changelog](packages/share/CHANGELOG.md)             | ![npm](https://img.shields.io/npm/v/@watergis/svelte-maplibre-share)           |
 | [@watergis/svelte-maplibre-style-switcher](packages/style-switcher)   | [Changelog](packages/style-switcher/CHANGELOG.md)    | ![npm](https://img.shields.io/npm/v/@watergis/svelte-maplibre-style-switcher)  |
+| [@watergis/svelte-maplibre-tour](packages/tour)                       | [Changelog](packages/tour/CHANGELOG.md)              | ![npm](https://img.shields.io/npm/v/@watergis/svelte-maplibre-tour)            |
 | [@watergis/svelte-maplibre-valhalla](packages/valhalla)               | [Changelog](packages/valhalla/CHANGELOG.md)          | ![npm](https://img.shields.io/npm/v/@watergis/svelte-maplibre-valhalla)        |
 
 ## Documentation

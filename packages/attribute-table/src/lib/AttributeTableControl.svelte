@@ -29,6 +29,7 @@
 	faIcon={faTable}
 	faIconSize="lg"
 	minSidebarWidth="40%"
+	controlName="attribute-table"
 	bind:width
 	bind:height
 >

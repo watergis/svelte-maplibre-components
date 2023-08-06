@@ -24,6 +24,7 @@
 
 		this.controlContainer = document.createElement('div');
 		this.controlContainer.className = 'maplibregl-ctrl maplibregl-ctrl-group';
+		shareButton.className = 'maplibregl-ctrl-share'
 		shareButton.addEventListener('click', () => {
 			isShareModalShown = !isShareModalShown;
 		});

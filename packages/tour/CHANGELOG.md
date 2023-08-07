@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-tour
 
+## 0.0.4
+
+### Patch Changes
+
+- c314707: fix: refresh tour components when tour starts
+
 ## 0.0.3
 
 ### Patch Changes

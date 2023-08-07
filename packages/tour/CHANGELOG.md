@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-tour
 
+## 0.0.5
+
+### Patch Changes
+
+- 8837216: fix: added await to refresh tour elements
+
 ## 0.0.4
 
 ### Patch Changes

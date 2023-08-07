@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-tour
 
+## 0.0.3
+
+### Patch Changes
+
+- f7753e5: feat: exported getTourguide function and showTourAsDefault option. Updated example
+
 ## 0.0.2
 
 ### Patch Changes

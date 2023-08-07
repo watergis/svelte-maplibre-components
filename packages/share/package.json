@@ -1,6 +1,6 @@
 {
 	"name": "@watergis/svelte-maplibre-share",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"description": "This is a svelte component to add share control plugin to maplibre.",
 	"main": "dist/index.js",
 	"files": [

@@ -1,5 +1,13 @@
 # @watergis/svelte-maplibre-attribute-table
 
+## 1.0.2
+
+### Patch Changes
+
+- 570b43c: fix: added classname for maplibre control button
+- Updated dependencies [570b43c]
+  - @watergis/svelte-maplibre-menu@2.0.2
+
 ## 1.0.1
 
 ### Patch Changes

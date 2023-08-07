@@ -45,30 +45,45 @@ pnpm i @watergis/svelte-maplibre-tour
 ```svelte
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Map } from 'maplibre-gl';
+	import maplibregl, { Map, NavigationControl } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 
-	import TourControl, { type TourGuideOptions } from '@watergis/svelte-maplibre-tour';
+	import * as pmtiles from 'pmtiles';
 
-	let tourOptions: TourGuideOptions;
+	let protocol = new pmtiles.Protocol();
+	maplibregl.addProtocol('pmtiles', protocol.tile);
+
+	let isMenuShown = true;
 
 	let mapContainer: HTMLDivElement;
-	// create maplibre.Map object
-	let map = new Map();
+	let map: Map;
+	let innerHeight = 0;
+	let innerWidth = 0;
 
-	onMount(async () => {
+	$: menuHeight = innerHeight * 0.8;
+	$: menuWidth = innerWidth * 0.95;
+
+	import TourControl, {
+		type TourGuideOptions,
+		type TourGuideClient
+	} from '@watergis/svelte-maplibre-tour';
+
+	let tourOptions: TourGuideOptions;
+	let getTourguide: () => TourGuideClient;
+	let isMapLoaded = false;
+
+	onMount(() => {
 		map = new Map({
 			container: mapContainer,
 			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
 		});
+		map.addControl(new NavigationControl({}));
+		map.scrollZoom.disable();
+		map.touchPitch.enable();
 
 		// tourguide needs to be generated after some times
 		// because all html elements have to be ready prior to tourgude component being initialised
-		setTimeout(() => {
-			// You can get maplibre control button as follows
-			const topLeftTools = document.querySelectorAll('.maplibregl-ctrl-top-left .maplibregl-ctrl');
-			const menuButton = topLeftTools.item(0);
-
+		map.on('load', () => {
 			// target of steps can be refered to ID, class name, DOM element, and so on.
 			// see the library documentation here: https://tourguidejs.com/docs/steps.html#steps-array
 			const steps = [
@@ -81,7 +96,7 @@ pnpm i @watergis/svelte-maplibre-tour
 				{
 					title: 'Sidemenu button',
 					content: `Side menu can be opened or closed by clicking this button`,
-					target: menuButton,
+					target: '.maplibregl-ctrl-menu',
 					order: 2
 				},
 				{
@@ -105,12 +120,14 @@ pnpm i @watergis/svelte-maplibre-tour
 			];
 
 			tourOptions = { steps, rememberStep: true };
-		}, 100);
+		});
 	});
 </script>
 
-<MenuControl bind:map position={'top-left'} bind:isMenuShown>
-	<div slot="sidebar" class="primary-container">
+<svelte:window bind:innerWidth bind:innerHeight />
+
+<MenuControl bind:map position={'top-left'} bind:isMenuShown width={menuWidth} height={menuHeight}>
+	<div slot="sidebar" class="primary-container" style="height:{menuHeight - 50}px;">
 		<h1 class="one">content 1</h1>
 		<h2 class="two">content 2</h2>
 		<h3 class="three">content 3</h3>
@@ -121,10 +138,11 @@ pnpm i @watergis/svelte-maplibre-tour
 		<!-- In this example, TourControl component will be initialised after tourOptions variable is set -->
 		<!-- Set unique localStorageKey name for the tour This is important to remember tour completion state in local storage -->
 		<!-- For this example, timestamp is added to storage key because the tour want to be shown always as an example -->
-		{#if tourOptions}
+		{#if isMapLoaded}
 			<TourControl
 				bind:map
 				bind:tourguideOptions={tourOptions}
+				bind:getTourguide
 				localStorageKey={`svelte-maplibre-tour-example-${new Date().toISOString()}`}
 			/>
 		{/if}
@@ -135,6 +153,9 @@ pnpm i @watergis/svelte-maplibre-tour
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 
 	.map {
+		position: absolute;
+		top: 0;
+		bottom: 0;
 		width: 100%;
 		height: 100%;
 		z-index: 1;
@@ -142,6 +163,7 @@ pnpm i @watergis/svelte-maplibre-tour
 
 	.primary-container {
 		margin: 0.5rem;
+		overflow-y: auto;
 	}
 </style>
 ```

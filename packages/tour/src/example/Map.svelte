@@ -7,12 +7,15 @@
 	let protocol = new pmtiles.Protocol();
 	maplibregl.addProtocol('pmtiles', protocol.tile);
 
-	import TourControl, { type TourGuideOptions } from '$lib';
+	import TourControl, { type TourGuideOptions, type TourGuideClient } from '$lib';
 
-	let tourOptions: TourGuideOptions;
+	let tourOptions: TourGuideOptions = { rememberStep: true };
+	let getTourguide: ()=>TourGuideClient
 
 	let mapContainer: HTMLDivElement;
 	let map: Map;
+
+	let isMapLoaded = false
 
 	onMount(async () => {
 		map = new Map({
@@ -24,11 +27,7 @@
 
 		// tourguide needs to be generated after some times
 		// because all html elements have to be ready prior to tourgude component being initialised
-		setTimeout(() => {
-			// You can get maplibre control button as follows
-			const topLeftTools = document.querySelectorAll('.maplibregl-ctrl-top-left .maplibregl-ctrl');
-			const menuButton = topLeftTools.item(0);
-
+		map.on('load', ()=>{
 			// target of steps can be refered to ID, class name, DOM element, and so on.
 			// see the library documentation here: https://tourguidejs.com/docs/steps.html#steps-array
 			const steps = [
@@ -41,7 +40,7 @@
 				{
 					title: 'Sidemenu button',
 					content: `Side menu can be opened or closed by clicking this button`,
-					target: menuButton,
+					target: '.maplibregl-ctrl-menu',
 					order: 2
 				},
 				{
@@ -64,8 +63,10 @@
 				}
 			];
 
-			tourOptions = { steps, rememberStep: true };
-		}, 100);
+			tourOptions.steps = steps;
+
+			isMapLoaded = true
+		})
 	});
 </script>
 
@@ -87,10 +88,12 @@
 		<!-- In this example, TourControl component will be initialised after tourOptions variable is set -->
 		<!-- Set unique localStorageKey name for the tour This is important to remember tour completion state in local storage -->
 		<!-- For this example, timestamp is added to storage key because the tour want to be shown always as an example -->
-		{#if tourOptions}
+		{#if isMapLoaded}
 			<TourControl
 				bind:map
 				bind:tourguideOptions={tourOptions}
+				bind:getTourguide
+				showTourAsDefault={true}
 				localStorageKey={`svelte-maplibre-tour-example-${new Date().toISOString()}`}
 			/>
 		{/if}

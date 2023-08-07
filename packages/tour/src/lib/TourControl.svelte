@@ -100,9 +100,9 @@
 		this.map = undefined;
 	};
 
-	TourControl.prototype.tourStart = () => {
-		$tourguide?.refresh()
-		$tourguide?.start();
+	TourControl.prototype.tourStart = async() => {
+		await $tourguide?.refresh()
+		await $tourguide?.start();
 
 		$tourguide?.onFinish(() => {
 			$tourGuideFinished = true;

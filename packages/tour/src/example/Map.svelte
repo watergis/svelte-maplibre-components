@@ -25,10 +25,6 @@
 		// tourguide needs to be generated after some times
 		// because all html elements have to be ready prior to tourgude component being initialised
 		setTimeout(() => {
-			// You can get maplibre control button as follows
-			const topLeftTools = document.querySelectorAll('.maplibregl-ctrl-top-left .maplibregl-ctrl');
-			const menuButton = topLeftTools.item(0);
-
 			// target of steps can be refered to ID, class name, DOM element, and so on.
 			// see the library documentation here: https://tourguidejs.com/docs/steps.html#steps-array
 			const steps = [
@@ -41,7 +37,7 @@
 				{
 					title: 'Sidemenu button',
 					content: `Side menu can be opened or closed by clicking this button`,
-					target: menuButton,
+					target: '.maplibregl-ctrl-menu',
 					order: 2
 				},
 				{

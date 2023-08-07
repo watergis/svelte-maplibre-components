@@ -14,12 +14,11 @@
 	// change LocalStorageKey for your app.
 	export let localStorageKey = 'tourGuideFinished';
 
+	// if true, tour will be shown when users visit for the first time
+	export let showTourAsDefault = true
 	export let addDefaultLastStep = true;
 	export let finishTitle = 'Done!';
 	export let finishDescription = `The tour has been completed now. Click Finish button to start using it! Thank you for taking your time to use this tutorial!<br><br>You can always come back to this tour by clicking this button.`;
-
-	// update tour options reactively
-	$: tourguideOptions, initialiseTourguide();
 
 	// configulation of localstorage to store the state of tour completion
 	const initialValue = browser
@@ -35,6 +34,10 @@
 	});
 
 	const tourguide = writable<TourGuideClient>(null);
+
+	export const getTourguide = () => {
+		return $tourguide
+	}
 
 	const initialiseTourguide = () => {
 		if (!(tourguideOptions?.steps?.length > 0)) return;
@@ -80,13 +83,9 @@
 
 		initialiseTourguide();
 
-		if (!$tourGuideFinished && tourguideOptions?.steps?.length > 0) {
+		if (showTourAsDefault && !$tourGuideFinished && tourguideOptions?.steps?.length > 0) {
 			setTimeout(() => {
-				$tourguide.start();
-
-				$tourguide.onFinish(() => {
-					$tourGuideFinished = true;
-				});
+				this.button.dispatchEvent(new Event('click'));
 			}, 100);
 		}
 

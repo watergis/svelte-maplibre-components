@@ -101,6 +101,7 @@
 	};
 
 	TourControl.prototype.tourStart = () => {
+		$tourguide?.refresh()
 		$tourguide?.start();
 
 		$tourguide?.onFinish(() => {

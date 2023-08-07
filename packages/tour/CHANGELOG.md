@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-tour
 
+## 0.0.6
+
+### Patch Changes
+
+- 52f729e: fix: bug of saving completion state in local storage
+
 ## 0.0.5
 
 ### Patch Changes

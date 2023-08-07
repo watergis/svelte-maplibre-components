@@ -59,6 +59,10 @@
 
 		if (!$tourguide) {
 			const tg = new TourGuideClient(tourguideOptions);
+			tg.onFinish(() => {
+				$tourGuideFinished = true;
+			});
+
 			tourguide.update(() => tg);
 		} else {
 			$tourguide.setOptions(tourguideOptions);
@@ -103,10 +107,6 @@
 	TourControl.prototype.tourStart = async() => {
 		await $tourguide?.refresh()
 		await $tourguide?.start();
-
-		$tourguide?.onFinish(() => {
-			$tourGuideFinished = true;
-		});
 	};
 
 	/*global TourControl */

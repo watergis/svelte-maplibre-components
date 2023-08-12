@@ -44,7 +44,7 @@
 		"@watergis/svelte-maplibre-menu": "workspace:^",
 		"buffer": "^6.0.3",
 		"eslint": "^8.46.0",
-		"eslint-config-prettier": "^8.9.0",
+		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-svelte": "^2.32.4",
 		"prettier": "^3.0.0",
 		"prettier-plugin-svelte": "^3.0.3",

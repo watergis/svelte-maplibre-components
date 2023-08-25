@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 2.0.3
+
+### Patch Changes
+
+- 4c49068: fix: recreate maplibre control object once map object is available
+
 ## 2.0.2
 
 ### Patch Changes

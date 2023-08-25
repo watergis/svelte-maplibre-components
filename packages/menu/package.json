@@ -1,6 +1,6 @@
 {
 	"name": "@watergis/svelte-maplibre-menu",
-	"version": "2.0.3",
+	"version": "2.0.4",
 	"description": "This is a svelte component to add menu control plugin to maplibre.",
 	"main": "dist/index.js",
 	"files": [

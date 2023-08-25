@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 2.0.4
+
+### Patch Changes
+
+- 0ff6f04: fix: wait for creating menuButton until map object is ready
+
 ## 2.0.3
 
 ### Patch Changes

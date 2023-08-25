@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Map } from 'maplibre-gl';
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { createEventDispatcher, onDestroy, onMount } from 'svelte';
 	import { Split } from '@geoffcox/svelte-splitter/src';
 	import Fa from 'svelte-fa';
 	import {
@@ -74,19 +74,31 @@
 	// @ts-ignore
 	let mapMenuControl: MapMenuControl = null;
 
-	$: {
+	onMount(() => {
+		initControl()
+	});
+
+	$:if (map) {
+		initControl()
+	}
+
+	const initControl = () => {
 		if (map) {
-			if (mapMenuControl !== null && map.hasControl(mapMenuControl) === false) {
+			if (!(mapMenuControl && map.hasControl(mapMenuControl))) {
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				mapMenuControl = new MapMenuControl();
 				map.addControl(mapMenuControl, position);
 			}
 		}
 	}
 
-	onMount(async () => {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		mapMenuControl = new MapMenuControl();
-		setSplitControl();
+	onDestroy(() => {
+		if (map) {
+			if (mapMenuControl && map.hasControl(mapMenuControl)) {
+				map.removeControl(mapMenuControl);
+			}
+		}
 	});
 
 	const resizeMap = () => {

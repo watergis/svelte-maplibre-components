@@ -78,7 +78,7 @@
 		initControl()
 	});
 
-	$:if (map) {
+	$:if (map && menuButton) {
 		initControl()
 	}
 
@@ -183,13 +183,15 @@
 
 <svelte:window bind:innerWidth bind:innerHeight />
 
-<button bind:this={menuButton}>
-	{#if isMenuShown}
-		<Fa icon={faXmark} />
-	{:else}
-		<Fa icon={faIcon} size={faIconSize} />
-	{/if}
-</button>
+{#if map}
+	<button bind:this={menuButton}>
+		{#if isMenuShown}
+			<Fa icon={faXmark} />
+		{:else}
+			<Fa icon={faIcon} size={faIconSize} />
+		{/if}
+	</button>
+{/if}
 
 <div class="split-container" style="height:{menuHeight}px;width:{menuWidth}px">
 	<Split

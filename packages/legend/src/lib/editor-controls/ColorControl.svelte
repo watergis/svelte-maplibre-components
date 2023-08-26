@@ -30,14 +30,29 @@
 			value = '#000000';
 		}
 
+		if (value && typeof value === 'object') {
+			if ('stops' in value) {
+				const expr = value as {base: number, stops: [number, string][]}
+				const stops = expr.stops as [number, string][]
+				stops.forEach(stop=>{
+					stop[1] = getColorFromExpression(stop[1]) as string;
+				})
+				return expr
+			}
+		}
+
 		return value as string;
 	};
 
-	let color: string = getValue();
+	let color: string |  {base: number, stops: [number, string][]} = getValue();
 
 	const handleColorChanged = debounce((e: { detail: { color: string } }) => {
-		color = e.detail.color;
-		map.setPaintProperty(layer.id, propertyName, color);
+		if (typeof color === 'string') {
+			color = e.detail.color;
+			map.setPaintProperty(layer.id, propertyName, color);
+		} else {
+			map.setPaintProperty(layer.id, propertyName, color);
+		}
 		const newLayer = map.getStyle().layers.find((l) => l.id === layer.id);
 		if (newLayer) {
 			layer = newLayer;
@@ -45,4 +60,25 @@
 	}, 100);
 </script>
 
+{#if typeof color === 'string'}
+
 <ColorPicker bind:color on:change={handleColorChanged} />
+
+{:else if 'stops' in color}
+
+{#each color.stops as stop}
+<div class="stop">
+	<p>{stop[0]}</p>
+	<ColorPicker bind:color={stop[1]} on:change={handleColorChanged} />
+</div>
+{/each}
+
+{/if}
+
+<style lang="scss">
+	.stop{
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1px;
+	}
+</style>

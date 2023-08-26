@@ -154,6 +154,10 @@
 		setSplitControl();
 	};
 
+	$: if (splitControl) {
+		opened()
+	}
+
 	const splitterChanged = (event) => {
 		resizeMap();
 

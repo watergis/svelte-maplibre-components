@@ -1,5 +1,12 @@
 # @watergis/svelte-maplibre-legend
 
+## 2.0.2
+
+### Patch Changes
+
+- caa7a6e: fix: add support of stops in ColorControl.svelte
+- de5af7b: feat: added heatmap support for circle layer
+
 ## 2.0.1
 
 ### Patch Changes

@@ -5,10 +5,15 @@
 	import CircleRadius from '$lib/editor-controls/circle/CircleRadius.svelte';
 	import CircleStrokeWidth from '$lib/editor-controls/circle/CircleStrokeWidth.svelte';
 	import FieldControl from '$lib/util/FieldControl.svelte';
+	import HeatmapGenerator from '$lib/editor-controls/heatmap/HeatmapGenerator.svelte';
 
 	export let map: Map;
 	export let layer: LayerSpecification;
 </script>
+
+<FieldControl title="Heatmap" help={{ layerType: 'heatmap' }}>
+	<HeatmapGenerator bind:map bind:layer />
+</FieldControl>
 
 <FieldControl
 	title="Opacity"

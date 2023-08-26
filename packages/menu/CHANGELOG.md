@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 2.0.5
+
+### Patch Changes
+
+- 0da5eeb: fix: bug of opening mobile menu even when isMenuShown is false
+
 ## 2.0.4
 
 ### Patch Changes

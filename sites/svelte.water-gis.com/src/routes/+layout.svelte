@@ -13,7 +13,7 @@
 		{ name: 'search', title: 'svelte-maplbre-search' },
 		{ name: 'share', title: 'svelte-maplbre-share' },
 		{ name: 'style-switcher', title: 'svelte-maplbre-style-switcher' },
-		{ name: 'tour', title: 'svelte-maplbre-tour' },
+		{ name: 'tour', title: 'maplibre-gl-tour' },
 		{ name: 'valhalla', title: 'svelte-maplbre-valhalla' },
 		{ name: 'center-icon', title: 'maplibre-center-icon' },
 		{ name: 'collapsible-panel', title: 'svelte-collapsible-panel' }

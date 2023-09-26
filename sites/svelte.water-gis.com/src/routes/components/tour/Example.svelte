@@ -18,9 +18,9 @@
 	$: menuHeight = innerHeight * 0.8;
 	$: menuWidth = innerWidth * 0.95;
 
-	import { MaplibreTourControl, type TourGuideOptions } from '@watergis/svelte-maplibre-tour';
-	import '@sjmc11/tourguidejs/src/scss/tour.scss';
-	import '@watergis/svelte-maplibre-tour/dist/maplibre-tour-control.css'
+	import { MaplibreTourControl, type TourGuideOptions } from '@watergis/maplibre-gl-tour';
+	import '@sjmc11/tourguidejs/dist/css/tour.min.css';
+	import '@watergis/maplibre-gl-tour/dist/maplibre-tour-control.css'
 
 	let tourOptions: TourGuideOptions;
 
@@ -68,7 +68,7 @@
 
 			tourOptions = { steps, rememberStep: true };
 
-			map.addControl(new MaplibreTourControl({tourguideOptions: tourOptions}), 'top-right')
+			map.addControl(new MaplibreTourControl(tourOptions), 'top-right')
 	});
 </script>
 

@@ -954,6 +954,9 @@ importers:
       '@watergis/maplibre-center-icon':
         specifier: workspace:^
         version: link:../../packages/center
+      '@watergis/maplibre-gl-tour':
+        specifier: workspace:^
+        version: link:../../packages/tour
       '@watergis/svelte-collapsible-panel':
         specifier: workspace:^
         version: link:../../packages/collapsible-panel
@@ -984,9 +987,6 @@ importers:
       '@watergis/svelte-maplibre-style-switcher':
         specifier: workspace:^
         version: link:../../packages/style-switcher
-      '@watergis/svelte-maplibre-tour':
-        specifier: workspace:^
-        version: link:../../packages/tour
       '@watergis/svelte-maplibre-valhalla':
         specifier: workspace:^
         version: link:../../packages/valhalla

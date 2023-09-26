@@ -3,7 +3,7 @@
 	import maplibregl, { Map, NavigationControl } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import * as pmtiles from 'pmtiles';
-	import '@sjmc11/tourguidejs/src/scss/tour.scss';
+	import '@sjmc11/tourguidejs/dist/css/tour.min.css';
 	import '$lib/maplibre-tour-control.css'
 
 	let protocol = new pmtiles.Protocol();
@@ -59,7 +59,7 @@
 
 			tourOptions.steps = steps;
 
-			map.addControl(new MaplibreTourControl({tourguideOptions: tourOptions}), 'top-right')
+			map.addControl(new MaplibreTourControl(tourOptions), 'top-right')
 	});
 </script>
 

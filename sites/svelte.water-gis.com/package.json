@@ -36,6 +36,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sjmc11/tourguidejs": "^0.0.10",
 		"@watergis/maplibre-center-icon": "workspace:^",
 		"@watergis/svelte-collapsible-panel": "workspace:^",
 		"@watergis/svelte-maplibre-attribute-popup": "workspace:^",

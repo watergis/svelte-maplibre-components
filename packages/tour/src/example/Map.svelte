@@ -3,19 +3,18 @@
 	import maplibregl, { Map, NavigationControl } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import * as pmtiles from 'pmtiles';
+	import '@sjmc11/tourguidejs/src/scss/tour.scss';
+	import '$lib/maplibre-tour-control.css'
 
 	let protocol = new pmtiles.Protocol();
 	maplibregl.addProtocol('pmtiles', protocol.tile);
 
-	import TourControl, { type TourGuideOptions, type TourGuideClient } from '$lib';
+	import { MaplibreTourControl, type TourGuideOptions } from '$lib';
 
 	let tourOptions: TourGuideOptions = { rememberStep: true };
-	let getTourguide: ()=>TourGuideClient
 
 	let mapContainer: HTMLDivElement;
 	let map: Map;
-
-	let isMapLoaded = false
 
 	onMount(async () => {
 		map = new Map({
@@ -25,12 +24,7 @@
 
 		map.addControl(new NavigationControl());
 
-		// tourguide needs to be generated after some times
-		// because all html elements have to be ready prior to tourgude component being initialised
-		map.on('load', ()=>{
-			// target of steps can be refered to ID, class name, DOM element, and so on.
-			// see the library documentation here: https://tourguidejs.com/docs/steps.html#steps-array
-			const steps = [
+		const steps = [
 				{
 					title: 'Welcome to svelte maplibre tour!',
 					content: `This tutorial is going to take you around the main features of the application. <br> Let's begin!`,
@@ -65,8 +59,7 @@
 
 			tourOptions.steps = steps;
 
-			isMapLoaded = true
-		})
+			map.addControl(new MaplibreTourControl({tourguideOptions: tourOptions}), 'top-right')
 	});
 </script>
 
@@ -84,19 +77,6 @@
 	</div>
 	<div slot="map">
 		<div class="map" bind:this={mapContainer} />
-
-		<!-- In this example, TourControl component will be initialised after tourOptions variable is set -->
-		<!-- Set unique localStorageKey name for the tour This is important to remember tour completion state in local storage -->
-		<!-- For this example, timestamp is added to storage key because the tour want to be shown always as an example -->
-		{#if isMapLoaded}
-			<TourControl
-				bind:map
-				bind:tourguideOptions={tourOptions}
-				bind:getTourguide
-				showTourAsDefault={true}
-				localStorageKey={`svelte-maplibre-tour-example-${new Date().toISOString()}`}
-			/>
-		{/if}
 	</div>
 </MenuControl>
 

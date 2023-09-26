@@ -948,6 +948,9 @@ importers:
 
   sites/svelte.water-gis.com:
     dependencies:
+      '@sjmc11/tourguidejs':
+        specifier: ^0.0.10
+        version: 0.0.10
       '@watergis/maplibre-center-icon':
         specifier: workspace:^
         version: link:../../packages/center

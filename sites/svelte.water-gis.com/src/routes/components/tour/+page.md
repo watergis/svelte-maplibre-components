@@ -20,6 +20,12 @@
 
 ## Usage
 
+### Install dependency
+
+```
+npm i -D @sjmc11/tourguidejs
+```
+
 ### Install the package
 
 - Use npm
@@ -63,14 +69,11 @@ pnpm i @watergis/svelte-maplibre-tour
 	$: menuHeight = innerHeight * 0.8;
 	$: menuWidth = innerWidth * 0.95;
 
-	import TourControl, {
-		type TourGuideOptions,
-		type TourGuideClient
-	} from '@watergis/svelte-maplibre-tour';
+	import { MaplibreTourControl, type TourGuideOptions } from '@watergis/svelte-maplibre-tour';
+	import '@sjmc11/tourguidejs/src/scss/tour.scss';
+	import '@watergis/svelte-maplibre-tour/dist/maplibre-tour-control.css';
 
 	let tourOptions: TourGuideOptions;
-	let getTourguide: () => TourGuideClient;
-	let isMapLoaded = false;
 
 	onMount(() => {
 		map = new Map({
@@ -81,46 +84,42 @@ pnpm i @watergis/svelte-maplibre-tour
 		map.scrollZoom.disable();
 		map.touchPitch.enable();
 
-		// tourguide needs to be generated after some times
-		// because all html elements have to be ready prior to tourgude component being initialised
-		map.on('load', () => {
-			// target of steps can be refered to ID, class name, DOM element, and so on.
-			// see the library documentation here: https://tourguidejs.com/docs/steps.html#steps-array
-			const steps = [
-				{
-					title: 'Welcome to svelte maplibre tour!',
-					content: `This tutorial is going to take you around the main features of the application. <br> Let's begin!`,
-					target: document.body,
-					order: 1
-				},
-				{
-					title: 'Sidemenu button',
-					content: `Side menu can be opened or closed by clicking this button`,
-					target: '.maplibregl-ctrl-menu',
-					order: 2
-				},
-				{
-					title: 'Header 1',
-					content: `This is header 1.`,
-					target: '.one',
-					order: 3
-				},
-				{
-					title: 'Header 2',
-					content: `This is header 2.`,
-					target: '.two',
-					order: 4
-				},
-				{
-					title: 'Header 3',
-					content: `This is header 3.`,
-					target: '.three',
-					order: 5
-				}
-			];
+		const steps = [
+			{
+				title: 'Welcome to svelte maplibre tour!',
+				content: `This tutorial is going to take you around the main features of the application. <br> Let's begin!`,
+				target: document.body,
+				order: 1
+			},
+			{
+				title: 'Sidemenu button',
+				content: `Side menu can be opened or closed by clicking this button`,
+				target: '.maplibregl-ctrl-menu',
+				order: 2
+			},
+			{
+				title: 'Header 1',
+				content: `This is header 1.`,
+				target: '.one',
+				order: 3
+			},
+			{
+				title: 'Header 2',
+				content: `This is header 2.`,
+				target: '.two',
+				order: 4
+			},
+			{
+				title: 'Header 3',
+				content: `This is header 3.`,
+				target: '.three',
+				order: 5
+			}
+		];
 
-			tourOptions = { steps, rememberStep: true };
-		});
+		tourOptions = { steps, rememberStep: true };
+
+		map.addControl(new MaplibreTourControl({ tourguideOptions: tourOptions }), 'top-right');
 	});
 </script>
 
@@ -134,18 +133,6 @@ pnpm i @watergis/svelte-maplibre-tour
 	</div>
 	<div slot="map">
 		<div class="map" bind:this={mapContainer} />
-
-		<!-- In this example, TourControl component will be initialised after tourOptions variable is set -->
-		<!-- Set unique localStorageKey name for the tour This is important to remember tour completion state in local storage -->
-		<!-- For this example, timestamp is added to storage key because the tour want to be shown always as an example -->
-		{#if isMapLoaded}
-			<TourControl
-				bind:map
-				bind:tourguideOptions={tourOptions}
-				bind:getTourguide
-				localStorageKey={`svelte-maplibre-tour-example-${new Date().toISOString()}`}
-			/>
-		{/if}
 	</div>
 </MenuControl>
 

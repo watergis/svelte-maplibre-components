@@ -1,6 +1,6 @@
 {
 	"name": "@watergis/svelte-maplibre-tour",
-	"version": "0.0.6",
+	"version": "1.0.0",
 	"description": "This is a svelte component to add tourguide control plugin to maplibre.",
 	"scripts": {
 		"dev": "vite dev",

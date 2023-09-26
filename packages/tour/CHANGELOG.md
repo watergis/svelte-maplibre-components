@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-tour
 
+## 1.0.0
+
+### Major Changes
+
+- d522795: feat: migrate svelte component to general maplibre gl control class
+
 ## 0.0.6
 
 ### Patch Changes

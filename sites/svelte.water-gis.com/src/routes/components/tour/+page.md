@@ -10,9 +10,9 @@
   import Example from "./Example.svelte";
 </script>
 
-# @watergis/svelte-maplibre-tour
+# @watergis/maplibre-gl-tour
 
-[@watergis/svelte-maplibre-tour](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/tour) is a svelte component to add tourguide plugin for maplibre-gl.
+[@watergis/maplibre-gl-tour](https://github.com/watergis/svelte-maplibre-components/tree/main/packages/tour) is to add tourguide plugin for maplibre-gl.
 
 ## Demo
 
@@ -31,19 +31,19 @@ npm i -D @sjmc11/tourguidejs
 - Use npm
 
 ```
-npm i @watergis/svelte-maplibre-tour
+npm i @watergis/maplibre-gl-tour
 ```
 
 - Use yarn
 
 ```
-yarn add @watergis/svelte-maplibre-tour
+yarn add @watergis/maplibre-gl-tour
 ```
 
 - Use pnpm
 
 ```
-pnpm i @watergis/svelte-maplibre-tour
+pnpm i @watergis/maplibre-gl-tour
 ```
 
 ### Example
@@ -69,9 +69,9 @@ pnpm i @watergis/svelte-maplibre-tour
 	$: menuHeight = innerHeight * 0.8;
 	$: menuWidth = innerWidth * 0.95;
 
-	import { MaplibreTourControl, type TourGuideOptions } from '@watergis/svelte-maplibre-tour';
-	import '@sjmc11/tourguidejs/src/scss/tour.scss';
-	import '@watergis/svelte-maplibre-tour/dist/maplibre-tour-control.css';
+	import { MaplibreTourControl, type TourGuideOptions } from '@watergis/maplibre-gl-tour';
+	import '@sjmc11/tourguidejs/dist/css/tour.min.css';
+	import '@watergis/maplibre-gl-tour/dist/maplibre-tour-control.css';
 
 	let tourOptions: TourGuideOptions;
 
@@ -119,7 +119,7 @@ pnpm i @watergis/svelte-maplibre-tour
 
 		tourOptions = { steps, rememberStep: true };
 
-		map.addControl(new MaplibreTourControl({ tourguideOptions: tourOptions }), 'top-right');
+		map.addControl(new MaplibreTourControl(tourOptions), 'top-right');
 	});
 </script>
 

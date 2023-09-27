@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 2.1.0
+
+### Minor Changes
+
+- e1b1a96: fix: removed svelte-fa and use fontawesome CDN as dependency due to the error when it is used in SSR
+
 ## 2.0.5
 
 ### Patch Changes

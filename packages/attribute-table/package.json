@@ -67,10 +67,8 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-		"@fortawesome/free-solid-svg-icons": "^6.4.0",
 		"@vincjo/datatables": "^1.12.2",
 		"@watergis/svelte-maplibre-menu": "workspace:^",
-		"maplibre-gl": "^3.2.1",
-		"svelte-fa": "^3.0.4"
+		"maplibre-gl": "^3.2.1"
 	}
 }

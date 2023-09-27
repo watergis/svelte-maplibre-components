@@ -14,12 +14,6 @@
 	} from 'maplibre-gl';
 	import { distinct } from './util';
 	import { Datatable, DataHandler, Th, ThFilter } from '@vincjo/datatables';
-	import Fa from 'svelte-fa';
-	import {
-		faMagnifyingGlassPlus,
-		faRotate,
-		faUpDownLeftRight
-	} from '@fortawesome/free-solid-svg-icons';
 
 	export let map: Map;
 	export let rowsPerPage = 50;
@@ -239,7 +233,7 @@
 			on:click={handleReload}
 			disabled={selectedSourceLayerId && !mapChanged}
 		>
-			<Fa icon={faRotate} size="nm" />
+		<i class="fa-solid fa-rotate"></i>
 		</button>
 	</header>
 
@@ -279,7 +273,7 @@
 													zoomToFeature(feature);
 												}}
 											>
-												<Fa icon={faMagnifyingGlassPlus} size="lg" />
+											<i class="fa-solid fa-magnifying-glass fa-lg"></i>
 											</button>
 											<button
 												class="operation-button"
@@ -287,7 +281,7 @@
 													zoomToFeature(feature, true);
 												}}
 											>
-												<Fa icon={faUpDownLeftRight} size="lg" />
+											<i class="fa-solid fa-up-down-left-right fa-lg"></i>
 											</button>
 										</div>
 									</td>

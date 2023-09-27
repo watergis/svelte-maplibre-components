@@ -42,6 +42,12 @@ pnpm i @watergis/svelte-maplibre-attribute-table
 
 ### Example
 
+Use this package, importing fontawesome css is mandetory like
+
+```js
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css';
+```
+
 ```svelte
 <script lang="ts">
 	import { onMount } from 'svelte';
@@ -68,6 +74,7 @@ pnpm i @watergis/svelte-maplibre-attribute-table
 
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';
+	@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css';
 
 	.map {
 		position: absolute;

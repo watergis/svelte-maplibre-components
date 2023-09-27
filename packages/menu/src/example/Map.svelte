@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import { Map } from 'maplibre-gl';
 	import { MenuControl } from '$lib';
-	import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 	let mapContainer: HTMLDivElement;
 	let map: Map;
@@ -25,8 +24,8 @@
 	isMenuShown={false}
 	sidebarOnLeft={true}
 	isHorizontal={false}
-	faIcon={faBars}
-	faIconSize="nm"
+	faIcon="fa-bars"
+	faIconSize=""
 	on:changed={onChange}
 >
 	<div slot="sidebar">content</div>
@@ -37,7 +36,8 @@
 
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';
-
+	@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css';
+	
 	.map {
 		position: absolute;
 		top: 0;

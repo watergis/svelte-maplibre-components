@@ -38,7 +38,8 @@
 
 <style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';
-
+	@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css';
+	
 	$height: calc(60vh);
 
 	.container {

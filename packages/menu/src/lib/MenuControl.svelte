@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Map } from 'maplibre-gl';
 	import { createEventDispatcher, onDestroy, onMount } from 'svelte';
-	import { Split } from '@geoffcox/svelte-splitter/src';
+	import { Split } from '@geoffcox/svelte-splitter';
 
 	const dispatch = createEventDispatcher();
 

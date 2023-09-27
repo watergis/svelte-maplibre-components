@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { ControlPosition, Map } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
-	import { faTable } from '@fortawesome/free-solid-svg-icons';
 	import AttributeTable from './AttributeTable.svelte';
 
 	export let map: Map;
@@ -26,7 +25,7 @@
 	bind:isMenuShown={showAttributeTable}
 	isHorizontal={true}
 	sidebarOnLeft={false}
-	faIcon={faTable}
+	faIcon="fa-table"
 	faIconSize="lg"
 	minSidebarWidth="40%"
 	controlName="attribute-table"

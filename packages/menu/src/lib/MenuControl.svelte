@@ -2,13 +2,6 @@
 	import type { Map } from 'maplibre-gl';
 	import { createEventDispatcher, onDestroy, onMount } from 'svelte';
 	import { Split } from '@geoffcox/svelte-splitter/src';
-	import Fa from 'svelte-fa';
-	import {
-		faBars,
-		faXmark,
-		faCircleXmark,
-		type IconDefinition
-	} from '@fortawesome/free-solid-svg-icons';
 
 	const dispatch = createEventDispatcher();
 
@@ -21,8 +14,8 @@
 	export let width = 0;
 	export let sidebarOnLeft = true;
 	export let isHorizontal = false;
-	export let faIcon: IconDefinition = faBars;
-	export let faIconSize: 'xs' | 'sm' | 'nm' | 'lg' | '2x' = 'nm';
+	export let faIcon: string = 'fa-solid fa-bars';
+	export let faIconSize: '2xs'|'xs' | 'sm'  | 'lg' | 'xl' | '2xl' | '' = '';
 	export let controlName = 'menu'
 
 	let menuButton: HTMLButtonElement;
@@ -190,9 +183,9 @@
 {#if map}
 	<button bind:this={menuButton}>
 		{#if isMenuShown}
-			<Fa icon={faXmark} />
+		<i class="fa-solid fa-xmark"></i>
 		{:else}
-			<Fa icon={faIcon} size={faIconSize} />
+		<i class="fa-solid {faIcon} {faIconSize}"></i>
 		{/if}
 	</button>
 {/if}
@@ -217,7 +210,8 @@
 						on:click={handleClose}
 						on:keydown={handleEnterKey}
 					>
-						<Fa icon={faCircleXmark} size="2x" color="#1c1c1c" />
+					<i class="fa-solid fa-circle-xmark fa-2xl" style="color: #1c1c1c"></i>
+						<!-- <Fa icon={faCircleXmark} size="2x" color="#1c1c1c" /> -->
 					</span>
 				{/if}
 				<slot name="sidebar" />
@@ -238,7 +232,7 @@
 						on:click={handleClose}
 						on:keydown={handleEnterKey}
 					>
-						<Fa icon={faCircleXmark} size="2x" color="#1c1c1c" />
+					<i class="fa-solid fa-circle-xmark fa-2xl" style="color: #1c1c1c"></i>
 					</span>
 				{/if}
 				<slot name="sidebar" />

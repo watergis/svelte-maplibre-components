@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-tour
 
+## 1.0.1
+
+### Patch Changes
+
+- 54febc8: chore: renamed svelte-maplibre-tour to maplibre-gl-tour
+
 ## 1.0.0
 
 ### Major Changes

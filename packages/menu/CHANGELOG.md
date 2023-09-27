@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 2.1.1
+
+### Patch Changes
+
+- 8cf922a: fix: use module of splitter from dist instead of src
+
 ## 2.1.0
 
 ### Minor Changes

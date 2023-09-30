@@ -1,13 +1,17 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { Map } from 'maplibre-gl';
+	import { LegendHeader, LegendPanel } from '$lib';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
-	import { LegendPanel, LegendHeader } from '$lib';
 	import {
 		StyleSwitcher,
 		StyleUrl,
 		type StyleSwitcherOption
 	} from '@watergis/svelte-maplibre-style-switcher';
+	import maplibregl, { Map } from 'maplibre-gl';
+	import * as pmtiles from 'pmtiles';
+	import { onMount } from 'svelte';
+
+	let protocol = new pmtiles.Protocol();
+	maplibregl.addProtocol('pmtiles', protocol.tile);
 
 	let mapContainer: HTMLDivElement;
 	let map: Map;
@@ -126,7 +130,7 @@
 <style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 	@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css';
-	
+
 	.map {
 		position: absolute;
 		top: 0;

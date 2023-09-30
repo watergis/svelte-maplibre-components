@@ -87,14 +87,14 @@ export class MaplibreTourControl implements IControl {
 
 		if (this.options.addDefaultLastStep) {
 			const lastStep = this.tourguideOptions.steps[this.tourguideOptions.steps.length - 1];
-			if (lastStep.target === '.maplibre-tour-icon') {
+			if (lastStep.target === this.button) {
 				lastStep.title = this.options.finishTitle;
 				lastStep.content = this.options.finishDescription;
 			} else {
 				this.tourguideOptions.steps.push({
 					title: this.options.finishTitle,
 					content: this.options.finishDescription,
-					target: '.maplibre-tour-icon',
+					target: this.button,
 					order: this.tourguideOptions.steps.length + 1
 				});
 			}

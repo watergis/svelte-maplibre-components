@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { LayerSpecification } from 'maplibre-gl';
+	import type { createMapStore } from '$lib/stores';
+	import type { LayerSpecification, SymbolLayerSpecification } from 'maplibre-gl';
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
-	import type { createMapStore } from '$lib/stores';
 	import LegendSymbol from '@watergis/legend-symbol';
 	import chroma from 'chroma-js';
 	import { getContext } from 'svelte';
@@ -73,7 +73,7 @@
 				}
 			} else {
 				const color = $mapStore.getPaintProperty(layer.id, 'background-color');
-				const value = getColorFromExpression(color) ?? '#000000';
+				const value: string = (getColorFromExpression(color) as string) ?? '#000000';
 
 				const opacity = $mapStore.getPaintProperty(layer.id, 'background-opacity') ?? 1;
 
@@ -112,7 +112,7 @@
 					break;
 				case 'svg':
 					if (spriteLoader) {
-						dataUrl = spriteLoader.getIconDataUrl(layer);
+						dataUrl = spriteLoader.getIconDataUrl(layer as SymbolLayerSpecification);
 						if (dataUrl) {
 							const img = document.createElement('img');
 							img.src = dataUrl;

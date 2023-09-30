@@ -1,15 +1,13 @@
 <script lang="ts">
 	import type { createMapStore } from '$lib/stores';
 	import Slider from '$lib/util/Slider.svelte';
-	import type { LayerSpecification } from 'maplibre-gl';
 	import { getContext } from 'svelte';
 
 	let map: ReturnType<typeof createMapStore> = getContext('map');
-
-	export let layer: LayerSpecification;
+	let layerId: string = getContext('layerId');
 
 	const getValue = () => {
-		let value = $map.getLayoutProperty(layer.id, 'text-rotate');
+		let value = $map.getLayoutProperty(layerId, 'text-rotate');
 
 		if (!value) {
 			value = 0;
@@ -22,7 +20,7 @@
 	$: value, setValue();
 
 	const setValue = () => {
-		map.setLayoutProperty(layer.id, 'text-rotate', value);
+		map.setLayoutProperty(layerId, 'text-rotate', value);
 	};
 </script>
 

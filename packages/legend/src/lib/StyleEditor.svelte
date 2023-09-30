@@ -93,25 +93,25 @@
 
 	<div class="editor-contents">
 		{#if showManualEditor}
-			<ManualEditor bind:layer bind:selectedFormat />
+			<ManualEditor bind:selectedFormat />
 		{:else if layer.type === 'background'}
-			<BackgroundEditor bind:layer />
+			<BackgroundEditor />
 		{:else if layer.type === 'fill'}
-			<FillEditor bind:layer />
+			<FillEditor />
 		{:else if layer.type === 'line'}
-			<LineEditor bind:layer />
+			<LineEditor />
 		{:else if layer.type === 'symbol'}
-			<SymbolEditor bind:layer bind:spriteLoader />
+			<SymbolEditor bind:spriteLoader />
 		{:else if layer.type === 'circle'}
-			<CircleEditor bind:layer />
+			<CircleEditor />
 		{:else if layer.type === 'fill-extrusion'}
-			<FillExtrusionEditor bind:layer />
+			<FillExtrusionEditor />
 		{:else if layer.type === 'hillshade'}
-			<HillshadeEditor bind:layer />
+			<HillshadeEditor />
 		{:else if layer.type === 'raster'}
-			<RasterEditor bind:layer />
+			<RasterEditor />
 		{:else if layer.type === 'heatmap'}
-			<HeatmapEditor bind:layer />
+			<HeatmapEditor />
 		{/if}
 	</div>
 	<div id="arrow" data-popper-arrow />

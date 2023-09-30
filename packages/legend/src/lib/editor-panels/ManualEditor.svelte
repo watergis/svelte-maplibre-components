@@ -9,8 +9,10 @@
 	import Fa from 'svelte-fa';
 
 	let map: ReturnType<typeof createMapStore> = getContext('map');
-
-	export let layer: LayerSpecification;
+	let layerId: string = getContext('layerId');
+	let layer: LayerSpecification = $map
+		.getStyle()
+		.layers.find((l) => l.id === layerId) as LayerSpecification;
 
 	let formatOptions: Option[] = [
 		{

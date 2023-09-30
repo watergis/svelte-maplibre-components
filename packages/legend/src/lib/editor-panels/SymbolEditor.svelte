@@ -13,27 +13,30 @@
 	import type SpriteLoader from '$lib/sprite';
 	import type { createMapStore } from '$lib/stores';
 	import FieldControl from '$lib/util/FieldControl.svelte';
-	import type { LayerSpecification } from 'maplibre-gl';
+	import type { SymbolLayerSpecification } from 'maplibre-gl';
 	import { getContext } from 'svelte';
 
 	let map: ReturnType<typeof createMapStore> = getContext('map');
+	let layerId: string = getContext('layerId');
 
-	export let layer: LayerSpecification;
+	let layer: SymbolLayerSpecification = $map.getStyle().layers.find((l) => {
+		l.id === layerId;
+	}) as SymbolLayerSpecification;
 	export let spriteLoader: SpriteLoader;
 
-	let iconImage = $map.getLayoutProperty(layer.id, 'icon-image');
-	let textField = $map.getLayoutProperty(layer.id, 'text-field');
+	let iconImage = $map.getLayoutProperty(layerId, 'icon-image');
+	let textField = $map.getLayoutProperty(layerId, 'text-field');
 </script>
 
 <FieldControl title="Heatmap" help={{ layerType: 'heatmap' }}>
-	<HeatmapGenerator bind:layer />
+	<HeatmapGenerator />
 </FieldControl>
 
 <FieldControl
 	title="Opacity"
 	help={{ type: 'paint', layerType: 'symbol', property: 'icon-opacity' }}
 >
-	<Opacity bind:layer />
+	<Opacity />
 </FieldControl>
 
 {#if iconImage}
@@ -41,43 +44,43 @@
 		title="Icon size"
 		help={{ type: 'layout', layerType: 'symbol', property: 'icon-size' }}
 	>
-		<IconSize bind:layer />
+		<IconSize />
 	</FieldControl>
 
 	<FieldControl
 		title="Icon overlap"
 		help={{ type: 'layout', layerType: 'symbol', property: 'icon-overlap' }}
 	>
-		<IconOverlap bind:layer />
+		<IconOverlap />
 	</FieldControl>
 
-	{#if spriteLoader?.isSdf(layer)}
+	{#if layer && spriteLoader?.isSdf(layer)}
 		<FieldControl
 			title="Icon color"
 			help={{ type: 'paint', layerType: 'symbol', property: 'icon-color' }}
 		>
-			<ColorControl bind:layer propertyName="icon-color" />
+			<ColorControl propertyName="icon-color" />
 		</FieldControl>
 
 		<FieldControl
 			title="Icon halo color"
 			help={{ type: 'paint', layerType: 'symbol', property: 'icon-halo-color' }}
 		>
-			<ColorControl bind:layer propertyName="icon-halo-color" />
+			<ColorControl propertyName="icon-halo-color" />
 		</FieldControl>
 
 		<FieldControl
 			title="Icon halo width"
 			help={{ type: 'paint', layerType: 'symbol', property: 'icon-halo-width' }}
 		>
-			<IconHaloWidth bind:layer />
+			<IconHaloWidth />
 		</FieldControl>
 
 		<FieldControl
 			title="Icon halo blur"
 			help={{ type: 'paint', layerType: 'symbol', property: 'icon-halo-blur' }}
 		>
-			<IconHaloBlur bind:layer />
+			<IconHaloBlur />
 		</FieldControl>
 	{/if}
 {/if}
@@ -87,41 +90,41 @@
 		title="Text size"
 		help={{ type: 'layout', layerType: 'symbol', property: 'text-size' }}
 	>
-		<TextSize bind:layer />
+		<TextSize />
 	</FieldControl>
 
 	<FieldControl
 		title="Text color"
 		help={{ type: 'paint', layerType: 'symbol', property: 'text-color' }}
 	>
-		<ColorControl bind:layer propertyName="text-color" />
+		<ColorControl propertyName="text-color" />
 	</FieldControl>
 
 	<FieldControl
 		title="Text rotate"
 		help={{ type: 'layout', layerType: 'symbol', property: 'text-rotate' }}
 	>
-		<TextRotate bind:layer />
+		<TextRotate />
 	</FieldControl>
 
 	<FieldControl
 		title="Text halo color"
 		help={{ type: 'paint', layerType: 'symbol', property: 'text-halo-color' }}
 	>
-		<ColorControl bind:layer propertyName="text-halo-color" />
+		<ColorControl propertyName="text-halo-color" />
 	</FieldControl>
 
 	<FieldControl
 		title="Text halo width"
 		help={{ type: 'paint', layerType: 'symbol', property: 'text-halo-width' }}
 	>
-		<TextHaloWidth bind:layer />
+		<TextHaloWidth />
 	</FieldControl>
 
 	<FieldControl
 		title="Text halo blur"
 		help={{ type: 'paint', layerType: 'symbol', property: 'text-halo-blur' }}
 	>
-		<TextHaloBlur bind:layer />
+		<TextHaloBlur />
 	</FieldControl>
 {/if}

@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { StyleSpecification, LayerSpecification, Map } from 'maplibre-gl';
+	import { createMapStore, invisibleLayerMap } from '$lib/stores';
+	import type { LayerSpecification, Map, StyleSpecification } from 'maplibre-gl';
+	import { setContext } from 'svelte';
 	import Layer from './Layer.svelte';
 	import SpriteLoader from './sprite';
-	import { invisibleLayerMap, createMapStore } from '$lib/stores';
 	import { distinct } from './util/distinct';
-	import { setContext } from 'svelte';
 
 	export let map: Map;
 	export let onlyRendered = true;
@@ -13,8 +13,8 @@
 	export let disableVisibleButton = false;
 	export let enableEditing = true;
 
-	let mapStore: ReturnType<typeof createMapStore> = createMapStore()
-	setContext('map', mapStore)
+	let mapStore: ReturnType<typeof createMapStore> = createMapStore();
+	setContext('map', mapStore);
 
 	let style: StyleSpecification;
 	let spriteLoader: SpriteLoader | undefined;
@@ -28,7 +28,7 @@
 
 	$: {
 		if (map) {
-			mapStore.set(map)
+			mapStore.set(map);
 
 			$mapStore.on('moveend', updateLayers);
 			$mapStore.on('styledata', updateLayers);
@@ -116,10 +116,10 @@
 
 	const drop = (
 		/* eslint-disable @typescript-eslint/no-explicit-any */
-		event: any, 
-		target: number, 
+		event: any,
+		target: number,
 		layer?: LayerSpecification
-		) => {
+	) => {
 		event.dataTransfer.dropEffect = 'move';
 		const start = parseInt(event.dataTransfer.getData('text/plain'));
 		const newTracklist = allLayers;
@@ -146,9 +146,9 @@
 
 	const dragstart = (
 		/* eslint-disable @typescript-eslint/no-explicit-any */
-		event: any, 
+		event: any,
 		i: number
-		) => {
+	) => {
 		event.dataTransfer.effectAllowed = 'move';
 		event.dataTransfer.dropEffect = 'move';
 		const start = i;
@@ -223,7 +223,7 @@
 </script>
 
 <ul class="legend-panel">
-	{#if spriteLoader}
+	{#if $mapStore && spriteLoader}
 		{#key style}
 			{#each allLayers as layer, index (layer.id)}
 				{#if showOnList(layer.id)}

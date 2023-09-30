@@ -1,15 +1,13 @@
 <script lang="ts">
 	import Slider from '$lib/util/Slider.svelte';
-	import type { LayerSpecification } from 'maplibre-gl';
 	import { getContext } from 'svelte';
 	import type { createMapStore } from './stores';
 
 	let map: ReturnType<typeof createMapStore> = getContext('map');
-
-	export let layer: LayerSpecification;
+	let layerId: string = getContext('layerId');
 
 	const getValue = () => {
-		let value = $map.getPaintProperty(layer.id, 'circle-radius');
+		let value = $map.getPaintProperty(layerId, 'circle-radius');
 
 		if (!value) {
 			value = 5;
@@ -22,7 +20,7 @@
 	$: value, setValue();
 
 	const setValue = () => {
-		map.setPaintProperty(layer.id, 'circle-radius', value);
+		map.setPaintProperty(layerId, 'circle-radius', value);
 	};
 </script>
 

@@ -1,15 +1,13 @@
 <script lang="ts">
 	import type { createMapStore } from '$lib/stores';
 	import Slider from '$lib/util/Slider.svelte';
-	import type { LayerSpecification } from 'maplibre-gl';
 	import { getContext } from 'svelte';
 
 	let map: ReturnType<typeof createMapStore> = getContext('map');
-
-	export let layer: LayerSpecification;
+	let layerId: string = getContext('layerId');
 
 	const getValue = () => {
-		let value = $map.getLayoutProperty(layer.id, 'text-size');
+		let value = $map.getLayoutProperty(layerId, 'text-size');
 
 		if (!value) {
 			value = 16;
@@ -23,7 +21,7 @@
 
 	const setValue = () => {
 		if (!value) return;
-		map.setLayoutProperty(layer.id, 'text-size', value);
+		map.setLayoutProperty(layerId, 'text-size', value);
 	};
 </script>
 

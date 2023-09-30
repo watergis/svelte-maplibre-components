@@ -3,12 +3,11 @@
 	import ColorPicker from '$lib/util/ColorPicker.svelte';
 	import { getColorFromExpression } from '$lib/util/getColorFromExpression';
 	import { debounce } from 'lodash-es';
-	import type { LayerSpecification } from 'maplibre-gl';
 	import { getContext } from 'svelte';
 
 	let map: ReturnType<typeof createMapStore> = getContext('map');
+	let layerId: string = getContext('layerId');
 
-	export let layer: LayerSpecification;
 	export let propertyName:
 		| 'background-color'
 		| 'fill-color'
@@ -26,7 +25,7 @@
 		| 'hillshade-shadow-color';
 
 	const getValue = () => {
-		let value = $map.getPaintProperty(layer.id, propertyName);
+		let value = $map.getPaintProperty(layerId, propertyName);
 		value = getColorFromExpression(value);
 
 		if (!value) {
@@ -52,13 +51,9 @@
 	const handleColorChanged = debounce((e: { detail: { color: string } }) => {
 		if (typeof color === 'string') {
 			color = e.detail.color;
-			map.setPaintProperty(layer.id, propertyName, color);
+			map.setPaintProperty(layerId, propertyName, color);
 		} else {
-			map.setPaintProperty(layer.id, propertyName, color);
-		}
-		const newLayer = $map.getStyle().layers.find((l) => l.id === layer.id);
-		if (newLayer) {
-			layer = newLayer;
+			map.setPaintProperty(layerId, propertyName, color);
 		}
 	}, 100);
 </script>

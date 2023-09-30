@@ -2,15 +2,15 @@
 	import type { createMapStore } from '$lib/stores';
 	import type {
 		HeatmapLayerSpecification,
-		LayerSpecification,
+		LineLayerSpecification,
 		SymbolLayerSpecification
 	} from 'maplibre-gl';
 	import { getContext } from 'svelte';
 
 	let map: ReturnType<typeof createMapStore> = getContext('map');
+	let layerId: string = getContext('layerId');
 
-	export let layer: LayerSpecification;
-	let heatmapLayerId = `${layer.id} heatmap`;
+	let heatmapLayerId = `${layerId} heatmap`;
 	let isHeatmapCreated = $map.getLayer(heatmapLayerId) ? true : false;
 
 	$: if (isHeatmapCreated === true) {
@@ -23,8 +23,10 @@
 
 	const createHeatmap = () => {
 		if ($map.getLayer(heatmapLayerId)) return;
-
-		const symbolLayer: SymbolLayerSpecification = layer as SymbolLayerSpecification;
+		const layer = $map.getStyle().layers.find((l) => l.id === layerId);
+		const symbolLayer: SymbolLayerSpecification | LineLayerSpecification = layer as
+			| SymbolLayerSpecification
+			| LineLayerSpecification;
 
 		const heatmapLayer: HeatmapLayerSpecification = {
 			id: heatmapLayerId,

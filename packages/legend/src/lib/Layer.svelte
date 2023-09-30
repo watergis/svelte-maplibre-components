@@ -9,7 +9,7 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import { isMobile } from 'detect-touch-device';
 	import type { LayerSpecification } from 'maplibre-gl';
-	import { createEventDispatcher, getContext } from 'svelte';
+	import { createEventDispatcher, getContext, setContext } from 'svelte';
 	import Fa from 'svelte-fa';
 	import Legend from './Legend.svelte';
 	import StyleEditor from './StyleEditor.svelte';
@@ -27,6 +27,7 @@
 	export let selectedFormat: 'yaml' | 'json';
 
 	let mapStore: ReturnType<typeof createMapStore> = getContext('map');
+	setContext('layerId', layer.id);
 
 	let visibility = $mapStore?.getLayer(layer.id).visibility;
 

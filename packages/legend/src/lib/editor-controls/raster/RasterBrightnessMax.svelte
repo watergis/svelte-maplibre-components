@@ -1,15 +1,13 @@
 <script lang="ts">
 	import type { createMapStore } from '$lib/stores';
 	import Slider from '$lib/util/Slider.svelte';
-	import type { LayerSpecification } from 'maplibre-gl';
 	import { getContext } from 'svelte';
 
 	let map: ReturnType<typeof createMapStore> = getContext('map');
-
-	export let layer: LayerSpecification;
+	let layerId: string = getContext('layerId');
 
 	const getValue = () => {
-		let value = $map.getPaintProperty(layer.id, 'raster-brightness-max');
+		let value = $map.getPaintProperty(layerId, 'raster-brightness-max');
 
 		if (!value) {
 			value = 1;
@@ -22,7 +20,7 @@
 	$: value, setValue();
 
 	const setValue = () => {
-		map.setPaintProperty(layer.id, 'raster-brightness-max', value);
+		map.setPaintProperty(layerId, 'raster-brightness-max', value);
 	};
 </script>
 

@@ -9,7 +9,7 @@
 	let protocol = new pmtiles.Protocol();
 	maplibregl.addProtocol('pmtiles', protocol.tile);
 
-	import { MaplibreTourControl, type TourGuideOptions } from '$lib';
+	import { MaplibreTourControl, type TourGuideOptions, type MaplibreTourControlOptions } from '$lib';
 
 	let tourOptions: TourGuideOptions = { rememberStep: true };
 
@@ -59,7 +59,12 @@
 
 			tourOptions.steps = steps;
 
-			map.addControl(new MaplibreTourControl(tourOptions), 'top-right')
+			const controlOption: MaplibreTourControlOptions = {
+				localStorageKey: new Date().toDateString,
+				showTourAsDefault: true, 
+			}
+
+			map.addControl(new MaplibreTourControl(tourOptions, controlOption), 'top-right')
 	});
 </script>
 

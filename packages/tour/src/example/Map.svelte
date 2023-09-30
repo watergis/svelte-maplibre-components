@@ -9,7 +9,7 @@
 	let protocol = new pmtiles.Protocol();
 	maplibregl.addProtocol('pmtiles', protocol.tile);
 
-	import { MaplibreTourControl, type TourGuideOptions } from '$lib';
+	import { MaplibreTourControl, type TourGuideOptions, type MaplibreTourControlOptions } from '$lib';
 
 	let tourOptions: TourGuideOptions = { rememberStep: true };
 
@@ -59,7 +59,12 @@
 
 			tourOptions.steps = steps;
 
-			map.addControl(new MaplibreTourControl(tourOptions), 'top-right')
+			const controlOption: MaplibreTourControlOptions = {
+				localStorageKey: new Date().toDateString,
+				showTourAsDefault: true, 
+			}
+
+			map.addControl(new MaplibreTourControl(tourOptions, controlOption), 'top-right')
 	});
 </script>
 
@@ -82,7 +87,7 @@
 
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';
-
+	@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css';
 	.map {
 		position: absolute;
 		top: 0;

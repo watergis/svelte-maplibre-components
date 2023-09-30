@@ -1,14 +1,40 @@
 import type { ControlPosition, IControl, Map as MaplibreMap } from 'maplibre-gl';
 import { TourGuideClient, type TourGuideOptions } from '@sjmc11/tourguidejs';
 
-export interface Options {
+/**
+ * maplibre-gl-tour control options
+ */
+export interface MaplibreTourControlOptions {
+	/**
+	 * The name used for local storage key.
+	 * The tour control will save a flag with this key if the tour finished.
+	 * So, the tour will not be shown again in the same browser.
+	 */
 	localStorageKey?: string;
+	/**
+	 * If true, the control will show the tour as default.
+	 * Default value is set to True.
+	 */
 	showTourAsDefault?: boolean;
+	/**
+	 * If true, the control will add the final step automatically.
+	 * Default value is set to True.
+	 */
 	addDefaultLastStep?: boolean;
+	/**
+	 * The title of the final step
+	 * Default value is 'Done!'
+	 */
 	finishTitle?: string;
+	/**
+	 * The description of the final step
+	 */
 	finishDescription?: string;
 }
 
+/**
+ * Maplibre GL Tour control class
+ */
 export class MaplibreTourControl implements IControl {
 	private controlContainer?: HTMLElement;
 	private map?: MaplibreMap;
@@ -19,7 +45,7 @@ export class MaplibreTourControl implements IControl {
 	private tourguideOptions: TourGuideOptions = {
 		rememberStep: true
 	};
-	private options: Options = {
+	private options: MaplibreTourControlOptions = {
 		localStorageKey: 'tourGuideFinished',
 		showTourAsDefault: true,
 		addDefaultLastStep: true,
@@ -28,7 +54,12 @@ export class MaplibreTourControl implements IControl {
 			'The tour has been completed now. Click Finish button to start using it! Thank you for taking your time to use this tutorial!<br><br>You can always come back to this tour by clicking this button.'
 	};
 
-	constructor(tourguideOptions: TourGuideOptions, options: Options) {
+	/**
+	 * Constructor
+	 * @param tourguideOptions TourGuideOptions instance. See the official documentation at https://tourguidejs.com/docs/options.html
+	 * @param options MaplibreTourControl options
+	 */
+	constructor(tourguideOptions: TourGuideOptions, options: MaplibreTourControlOptions) {
 		this.tourguideOptions = Object.assign(this.tourguideOptions, tourguideOptions);
 		if (options) {
 			this.options = Object.assign(this.options, options);
@@ -87,14 +118,14 @@ export class MaplibreTourControl implements IControl {
 
 		if (this.options.addDefaultLastStep) {
 			const lastStep = this.tourguideOptions.steps[this.tourguideOptions.steps.length - 1];
-			if (lastStep.target === '.maplibre-tour-icon') {
+			if (lastStep.target === this.button) {
 				lastStep.title = this.options.finishTitle;
 				lastStep.content = this.options.finishDescription;
 			} else {
 				this.tourguideOptions.steps.push({
 					title: this.options.finishTitle,
 					content: this.options.finishDescription,
-					target: '.maplibre-tour-icon',
+					target: this.button,
 					order: this.tourguideOptions.steps.length + 1
 				});
 			}

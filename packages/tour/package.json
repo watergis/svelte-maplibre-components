@@ -1,6 +1,6 @@
 {
 	"name": "@watergis/maplibre-gl-tour",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "This is to add tourguide control plugin to maplibre.",
 	"scripts": {
 		"dev": "vite dev",

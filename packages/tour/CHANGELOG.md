@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-tour
 
+## 1.0.2
+
+### Patch Changes
+
+- 92e5b89: fix: bug of not focusing tour button element in final step
+
 ## 1.0.1
 
 ### Patch Changes

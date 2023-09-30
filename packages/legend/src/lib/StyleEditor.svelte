@@ -5,16 +5,18 @@
 	import 'tippy.js/dist/tippy.css';
 	import 'tippy.js/themes/light.css';
 	import Legend from './Legend.svelte';
-	import BackgroundEditor from './editor-panels/BackgroundEditor.svelte';
-	import CircleEditor from './editor-panels/CircleEditor.svelte';
-	import FillEditor from './editor-panels/FillEditor.svelte';
-	import FillExtrusionEditor from './editor-panels/FillExtrusionEditor.svelte';
-	import HeatmapEditor from './editor-panels/HeatmapEditor.svelte';
-	import HillshadeEditor from './editor-panels/HillshadeEditor.svelte';
-	import LineEditor from './editor-panels/LineEditor.svelte';
-	import ManualEditor from './editor-panels/ManualEditor.svelte';
-	import RasterEditor from './editor-panels/RasterEditor.svelte';
-	import SymbolEditor from './editor-panels/SymbolEditor.svelte';
+	import {
+		BackgroundEditor,
+		CircleEditor,
+		FillEditor,
+		FillExtrusionEditor,
+		HeatmapEditor,
+		HillshadeEditor,
+		LineEditor,
+		ManualEditor,
+		RasterEditor,
+		SymbolEditor
+	} from './editor-panels';
 	import type SpriteLoader from './sprite';
 	import Help from './util/Help.svelte';
 	import { clean } from './util/clean';

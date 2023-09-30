@@ -1,12 +1,15 @@
 <script lang="ts">
-	import type { Map, LayerSpecification } from 'maplibre-gl';
+	import type { createMapStore } from '$lib/stores';
 	import Slider from '$lib/util/Slider.svelte';
+	import type { LayerSpecification } from 'maplibre-gl';
+	import { getContext } from 'svelte';
 
-	export let map: Map;
+	let map: ReturnType<typeof createMapStore> = getContext('map');
+
 	export let layer: LayerSpecification;
 
 	const getValue = () => {
-		let value = map.getPaintProperty(layer.id, 'fill-extrusion-base');
+		let value = $map.getPaintProperty(layer.id, 'fill-extrusion-base');
 
 		if (!value) {
 			value = 0;
@@ -18,7 +21,7 @@
 	$: value, setValue();
 
 	const setValue = () => {
-		map?.setPaintProperty(layer.id, 'fill-extrusion-base', value);
+		map.setPaintProperty(layer.id, 'fill-extrusion-base', value);
 	};
 </script>
 

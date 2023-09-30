@@ -1,38 +1,42 @@
 <script lang="ts">
-	import type { Map, LayerSpecification } from 'maplibre-gl';
-	import { debounce } from 'lodash-es';
 	import Slider from '$lib/util/Slider.svelte';
+	import { debounce } from 'lodash-es';
+	import type { LayerSpecification } from 'maplibre-gl';
 
-	export let map: Map;
+	import type { createMapStore } from '$lib/stores';
+	import { getContext } from 'svelte';
+
+	let map: ReturnType<typeof createMapStore> = getContext('map');
+
 	export let layer: LayerSpecification;
 
 	const getOpacity = () => {
-		const style = map?.getStyle().layers.find((l) => l.id === layer.id);
+		const style = $map?.getStyle().layers.find((l) => l.id === layer.id);
 		let opacity;
 		switch (style?.type) {
 			case 'background':
-				opacity = map.getPaintProperty(layer.id, 'background-opacity');
+				opacity = $map.getPaintProperty(layer.id, 'background-opacity');
 				break;
 			case 'raster':
-				opacity = map.getPaintProperty(layer.id, 'raster-opacity');
+				opacity = $map.getPaintProperty(layer.id, 'raster-opacity');
 				break;
 			case 'symbol':
-				opacity = map.getPaintProperty(layer.id, 'icon-opacity');
+				opacity = $map.getPaintProperty(layer.id, 'icon-opacity');
 				break;
 			case 'line':
-				opacity = map.getPaintProperty(layer.id, 'line-opacity');
+				opacity = $map.getPaintProperty(layer.id, 'line-opacity');
 				break;
 			case 'fill':
-				opacity = map.getPaintProperty(layer.id, 'fill-opacity');
+				opacity = $map.getPaintProperty(layer.id, 'fill-opacity');
 				break;
 			case 'circle':
-				opacity = map.getPaintProperty(layer.id, 'circle-opacity');
+				opacity = $map.getPaintProperty(layer.id, 'circle-opacity');
 				break;
 			case 'heatmap':
-				opacity = map.getPaintProperty(layer.id, 'heatmap-opacity');
+				opacity = $map.getPaintProperty(layer.id, 'heatmap-opacity');
 				break;
 			case 'fill-extrusion':
-				opacity = map.getPaintProperty(layer.id, 'fill-extrusion-opacity');
+				opacity = $map.getPaintProperty(layer.id, 'fill-extrusion-opacity');
 				break;
 			default:
 				break;
@@ -49,7 +53,7 @@
 
 	const setOpacity = debounce(() => {
 		if (!value) return;
-		const style = map?.getStyle().layers.find((l) => l.id === layer.id);
+		const style = $map?.getStyle().layers.find((l) => l.id === layer.id);
 		switch (style?.type) {
 			case 'background':
 				map.setPaintProperty(layer.id, 'background-opacity', value);

@@ -1,13 +1,16 @@
 <script lang="ts">
-	import type { LayerSpecification, Map } from 'maplibre-gl';
+	import type { LayerSpecification } from 'maplibre-gl';
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
+	import type { createMapStore } from '$lib/stores';
 	import LegendSymbol from '@watergis/legend-symbol';
+	import chroma from 'chroma-js';
+	import { getContext } from 'svelte';
 	import type SpriteLoader from './sprite';
 	import { getColorFromExpression } from './util/getColorFromExpression';
-	import chroma from 'chroma-js';
 
-	export let map: Map;
+	let mapStore: ReturnType<typeof createMapStore> = getContext('map');
+
 	export let layer: LayerSpecification;
 	export let spriteLoader: SpriteLoader;
 	let container: HTMLElement = document.createElement('div');
@@ -25,7 +28,7 @@
 	};
 
 	const update = async () => {
-		const zoom = map.getZoom();
+		const zoom = $mapStore.getZoom();
 		const symbol = LegendSymbol({ zoom: zoom, layer: layer });
 		container.innerText = '';
 
@@ -46,7 +49,7 @@
 				const image = createSvgIcon(svg);
 				container.appendChild(image);
 			} else if (layer.type === 'heatmap') {
-				const color: string[] = map.getPaintProperty(layer.id, 'heatmap-color') as string[];
+				const color: string[] = $mapStore.getPaintProperty(layer.id, 'heatmap-color') as string[];
 				if (color && color[0] === 'interpolate') {
 					const colors: string[] = [];
 					for (let i = 4; i < color.length; i = i + 2) {
@@ -69,10 +72,10 @@
 					container.appendChild(image);
 				}
 			} else {
-				const color = map.getPaintProperty(layer.id, 'background-color');
+				const color = $mapStore.getPaintProperty(layer.id, 'background-color');
 				const value = getColorFromExpression(color) ?? '#000000';
 
-				const opacity = map.getPaintProperty(layer.id, 'background-opacity') ?? 1;
+				const opacity = $mapStore.getPaintProperty(layer.id, 'background-opacity') ?? 1;
 
 				const divIcon = document.createElement('div');
 				divIcon.style.height = '24px';
@@ -125,16 +128,18 @@
 					Object.keys(symbol.attributes).forEach((k) => {
 						svgIcon.setAttribute(k, symbol.attributes[k]);
 						let group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-						symbol.children.forEach((
-							/* eslint-disable @typescript-eslint/no-explicit-any */
-							child: { element: any; attributes: { [x: string]: string } }
-						) => {
-							var c = document.createElementNS('http://www.w3.org/2000/svg', child.element);
-							Object.keys(child.attributes).forEach((k2) => {
-								c.setAttributeNS(null, k2, child.attributes[k2]);
-							});
-							group.appendChild(c);
-						});
+						symbol.children.forEach(
+							(
+								/* eslint-disable @typescript-eslint/no-explicit-any */
+								child: { element: any; attributes: { [x: string]: string } }
+							) => {
+								var c = document.createElementNS('http://www.w3.org/2000/svg', child.element);
+								Object.keys(child.attributes).forEach((k2) => {
+									c.setAttributeNS(null, k2, child.attributes[k2]);
+								});
+								group.appendChild(c);
+							}
+						);
 						svgIcon.appendChild(group);
 					});
 					container.appendChild(svgIcon);
@@ -147,8 +152,8 @@
 		}
 	};
 
-	map.on('moveend', update);
-	map.on('zoom', update);
+	$mapStore.on('moveend', update);
+	$mapStore.on('zoom', update);
 </script>
 
 <!-- eslint-disable svelte/no-at-html-tags -->

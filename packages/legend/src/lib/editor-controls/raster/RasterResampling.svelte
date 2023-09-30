@@ -1,9 +1,12 @@
 <script lang="ts">
 	import type { Option } from '$lib/interfaces';
+	import type { createMapStore } from '$lib/stores';
 	import Options from '$lib/util/Options.svelte';
-	import type { Map, LayerSpecification } from 'maplibre-gl';
+	import type { LayerSpecification } from 'maplibre-gl';
+	import { getContext } from 'svelte';
 
-	export let map: Map;
+	let map: ReturnType<typeof createMapStore> = getContext('map');
+
 	export let layer: LayerSpecification;
 
 	let options: Option[] = [
@@ -18,7 +21,7 @@
 	];
 
 	const getValue = () => {
-		let value = map.getPaintProperty(layer.id, 'raster-resampling');
+		let value = $map.getPaintProperty(layer.id, 'raster-resampling');
 
 		if (!value) {
 			value = options[0].value;
@@ -31,7 +34,7 @@
 	$: value, setValue();
 
 	const setValue = () => {
-		map?.setPaintProperty(layer.id, 'raster-resampling', value);
+		map.setPaintProperty(layer.id, 'raster-resampling', value);
 	};
 </script>
 

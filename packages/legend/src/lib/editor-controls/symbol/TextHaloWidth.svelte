@@ -1,12 +1,15 @@
 <script lang="ts">
+	import type { createMapStore } from '$lib/stores';
 	import Slider from '$lib/util/Slider.svelte';
-	import type { Map, LayerSpecification } from 'maplibre-gl';
+	import type { LayerSpecification } from 'maplibre-gl';
+	import { getContext } from 'svelte';
 
-	export let map: Map;
+	let map: ReturnType<typeof createMapStore> = getContext('map');
+
 	export let layer: LayerSpecification;
 
 	const getValue = () => {
-		let value = map.getPaintProperty(layer.id, 'text-halo-width');
+		let value = $map.getPaintProperty(layer.id, 'text-halo-width');
 
 		if (!value) {
 			value = 0;
@@ -19,7 +22,7 @@
 	$: value, setValue();
 
 	const setValue = () => {
-		map?.setPaintProperty(layer.id, 'text-halo-width', value);
+		map.setPaintProperty(layer.id, 'text-halo-width', value);
 	};
 </script>
 

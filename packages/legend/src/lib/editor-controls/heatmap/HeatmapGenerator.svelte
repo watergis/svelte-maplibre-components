@@ -1,15 +1,17 @@
 <script lang="ts">
+	import type { createMapStore } from '$lib/stores';
 	import type {
-		Map,
 		HeatmapLayerSpecification,
-		SymbolLayerSpecification,
-		LayerSpecification
+		LayerSpecification,
+		SymbolLayerSpecification
 	} from 'maplibre-gl';
+	import { getContext } from 'svelte';
 
-	export let map: Map;
+	let map: ReturnType<typeof createMapStore> = getContext('map');
+
 	export let layer: LayerSpecification;
 	let heatmapLayerId = `${layer.id} heatmap`;
-	let isHeatmapCreated = map.getLayer(heatmapLayerId) ? true : false;
+	let isHeatmapCreated = $map.getLayer(heatmapLayerId) ? true : false;
 
 	$: if (isHeatmapCreated === true) {
 		createHeatmap();
@@ -20,7 +22,7 @@
 	}
 
 	const createHeatmap = () => {
-		if (map.getLayer(heatmapLayerId)) return;
+		if ($map.getLayer(heatmapLayerId)) return;
 
 		const symbolLayer: SymbolLayerSpecification = layer as SymbolLayerSpecification;
 
@@ -59,12 +61,12 @@
 		heatmapLayer.minzoom = symbolLayer.maxzoom ?? 0;
 		heatmapLayer.maxzoom = symbolLayer.maxzoom ?? 24;
 
-		map.addLayer(heatmapLayer, symbolLayer.id);
+		$map.addLayer(heatmapLayer, symbolLayer.id);
 	};
 
 	const deleteHeatmap = () => {
-		if (map.getLayer(heatmapLayerId)) {
-			map.removeLayer(heatmapLayerId);
+		if ($map.getLayer(heatmapLayerId)) {
+			$map.removeLayer(heatmapLayerId);
 		}
 	};
 </script>

@@ -1,9 +1,12 @@
 <script lang="ts">
 	import type { Option } from '$lib/interfaces';
+	import type { createMapStore } from '$lib/stores';
 	import Options from '$lib/util/Options.svelte';
-	import type { Map, LayerSpecification } from 'maplibre-gl';
+	import type { LayerSpecification } from 'maplibre-gl';
+	import { getContext } from 'svelte';
 
-	export let map: Map;
+	let map: ReturnType<typeof createMapStore> = getContext('map');
+
 	export let layer: LayerSpecification;
 
 	let options: Option[] = [
@@ -26,7 +29,7 @@
 	];
 
 	const getValue = () => {
-		let value = map.getPaintProperty(layer.id, 'line-dasharray');
+		let value = $map.getPaintProperty(layer.id, 'line-dasharray');
 
 		if (!value) {
 			value = options[0].value;
@@ -40,11 +43,11 @@
 
 	const setValue = () => {
 		if (value) {
-			map?.setPaintProperty(layer.id, 'line-dasharray', value);
+			map.setPaintProperty(layer.id, 'line-dasharray', value);
 		} else {
-			map?.setPaintProperty(layer.id, 'line-dasharray', undefined);
+			map.setPaintProperty(layer.id, 'line-dasharray', undefined);
 		}
-		const newLayer = map.getStyle().layers.find((l) => l.id === layer.id);
+		const newLayer = $map.getStyle().layers.find((l) => l.id === layer.id);
 		if (newLayer) {
 			layer = newLayer;
 		}

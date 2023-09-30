@@ -1,10 +1,13 @@
 <script lang="ts">
-	import type { Map, LayerSpecification } from 'maplibre-gl';
-	import { debounce } from 'lodash-es';
+	import type { createMapStore } from '$lib/stores';
 	import ColorPicker from '$lib/util/ColorPicker.svelte';
 	import { getColorFromExpression } from '$lib/util/getColorFromExpression';
+	import { debounce } from 'lodash-es';
+	import type { LayerSpecification } from 'maplibre-gl';
+	import { getContext } from 'svelte';
 
-	export let map: Map;
+	let map: ReturnType<typeof createMapStore> = getContext('map');
+
 	export let layer: LayerSpecification;
 	export let propertyName:
 		| 'background-color'
@@ -23,7 +26,7 @@
 		| 'hillshade-shadow-color';
 
 	const getValue = () => {
-		let value = map.getPaintProperty(layer.id, propertyName);
+		let value = $map.getPaintProperty(layer.id, propertyName);
 		value = getColorFromExpression(value);
 
 		if (!value) {
@@ -32,19 +35,19 @@
 
 		if (value && typeof value === 'object') {
 			if ('stops' in value) {
-				const expr = value as {base: number, stops: [number, string][]}
-				const stops = expr.stops as [number, string][]
-				stops.forEach(stop=>{
+				const expr = value as { base: number; stops: [number, string][] };
+				const stops = expr.stops as [number, string][];
+				stops.forEach((stop) => {
 					stop[1] = getColorFromExpression(stop[1]) as string;
-				})
-				return expr
+				});
+				return expr;
 			}
 		}
 
 		return value as string;
 	};
 
-	let color: string |  {base: number, stops: [number, string][]} = getValue();
+	let color: string | { base: number; stops: [number, string][] } = getValue();
 
 	const handleColorChanged = debounce((e: { detail: { color: string } }) => {
 		if (typeof color === 'string') {
@@ -53,7 +56,7 @@
 		} else {
 			map.setPaintProperty(layer.id, propertyName, color);
 		}
-		const newLayer = map.getStyle().layers.find((l) => l.id === layer.id);
+		const newLayer = $map.getStyle().layers.find((l) => l.id === layer.id);
 		if (newLayer) {
 			layer = newLayer;
 		}
@@ -61,22 +64,18 @@
 </script>
 
 {#if typeof color === 'string'}
-
-<ColorPicker bind:color on:change={handleColorChanged} />
-
+	<ColorPicker bind:color on:change={handleColorChanged} />
 {:else if 'stops' in color}
-
-{#each color.stops as stop}
-<div class="stop">
-	<p>{stop[0]}</p>
-	<ColorPicker bind:color={stop[1]} on:change={handleColorChanged} />
-</div>
-{/each}
-
+	{#each color.stops as stop}
+		<div class="stop">
+			<p>{stop[0]}</p>
+			<ColorPicker bind:color={stop[1]} on:change={handleColorChanged} />
+		</div>
+	{/each}
 {/if}
 
 <style lang="scss">
-	.stop{
+	.stop {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 1px;

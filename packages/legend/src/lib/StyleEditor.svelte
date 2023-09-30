@@ -1,26 +1,25 @@
 <script lang="ts">
-	import type { LayerSpecification, Map } from 'maplibre-gl';
+	import { faCircleXmark, faPalette, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+	import type { LayerSpecification } from 'maplibre-gl';
 	import Fa from 'svelte-fa';
-	import { faPalette, faCircleXmark, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-	import BackgroundEditor from './editor-panels/BackgroundEditor.svelte';
-	import FillEditor from './editor-panels/FillEditor.svelte';
-	import LineEditor from './editor-panels/LineEditor.svelte';
-	import CircleEditor from './editor-panels/CircleEditor.svelte';
-	import SymbolEditor from './editor-panels/SymbolEditor.svelte';
-	import FillExtrusionEditor from './editor-panels/FillExtrusionEditor.svelte';
-	import HillshadeEditor from './editor-panels/HillshadeEditor.svelte';
-	import type SpriteLoader from './sprite';
-	import RasterEditor from './editor-panels/RasterEditor.svelte';
-	import HeatmapEditor from './editor-panels/HeatmapEditor.svelte';
-	import Help from './util/Help.svelte';
-	import ManualEditor from './editor-panels/ManualEditor.svelte';
-	import { initTippy } from './util/initTippy';
 	import 'tippy.js/dist/tippy.css';
 	import 'tippy.js/themes/light.css';
 	import Legend from './Legend.svelte';
+	import BackgroundEditor from './editor-panels/BackgroundEditor.svelte';
+	import CircleEditor from './editor-panels/CircleEditor.svelte';
+	import FillEditor from './editor-panels/FillEditor.svelte';
+	import FillExtrusionEditor from './editor-panels/FillExtrusionEditor.svelte';
+	import HeatmapEditor from './editor-panels/HeatmapEditor.svelte';
+	import HillshadeEditor from './editor-panels/HillshadeEditor.svelte';
+	import LineEditor from './editor-panels/LineEditor.svelte';
+	import ManualEditor from './editor-panels/ManualEditor.svelte';
+	import RasterEditor from './editor-panels/RasterEditor.svelte';
+	import SymbolEditor from './editor-panels/SymbolEditor.svelte';
+	import type SpriteLoader from './sprite';
+	import Help from './util/Help.svelte';
 	import { clean } from './util/clean';
+	import { initTippy } from './util/initTippy';
 
-	export let map: Map;
 	export let layer: LayerSpecification;
 	export let spriteLoader: SpriteLoader;
 	export let relativeLayers: { [key: string]: string };
@@ -58,7 +57,7 @@
 <div class="tooltip" bind:this={tooltipContent}>
 	<div class="title">
 		<div class="legend">
-			<Legend {map} {layer} {spriteLoader} />
+			<Legend {layer} {spriteLoader} />
 		</div>
 		<div class="layer-name">
 			{layerTitle}
@@ -92,25 +91,25 @@
 
 	<div class="editor-contents">
 		{#if showManualEditor}
-			<ManualEditor bind:map bind:layer bind:selectedFormat />
+			<ManualEditor bind:layer bind:selectedFormat />
 		{:else if layer.type === 'background'}
-			<BackgroundEditor bind:map bind:layer />
+			<BackgroundEditor bind:layer />
 		{:else if layer.type === 'fill'}
-			<FillEditor bind:map bind:layer />
+			<FillEditor bind:layer />
 		{:else if layer.type === 'line'}
-			<LineEditor bind:map bind:layer />
+			<LineEditor bind:layer />
 		{:else if layer.type === 'symbol'}
-			<SymbolEditor bind:map bind:layer bind:spriteLoader />
+			<SymbolEditor bind:layer bind:spriteLoader />
 		{:else if layer.type === 'circle'}
-			<CircleEditor bind:map bind:layer />
+			<CircleEditor bind:layer />
 		{:else if layer.type === 'fill-extrusion'}
-			<FillExtrusionEditor bind:map bind:layer />
+			<FillExtrusionEditor bind:layer />
 		{:else if layer.type === 'hillshade'}
-			<HillshadeEditor bind:map bind:layer />
+			<HillshadeEditor bind:layer />
 		{:else if layer.type === 'raster'}
-			<RasterEditor bind:map bind:layer />
+			<RasterEditor bind:layer />
 		{:else if layer.type === 'heatmap'}
-			<HeatmapEditor bind:map bind:layer />
+			<HeatmapEditor bind:layer />
 		{/if}
 	</div>
 	<div id="arrow" data-popper-arrow />

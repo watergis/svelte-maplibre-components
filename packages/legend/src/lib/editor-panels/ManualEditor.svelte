@@ -1,13 +1,15 @@
 <script lang="ts">
-	import type { LayerSpecification, Map } from 'maplibre-gl';
-	import Fa from 'svelte-fa';
+	import type { Option } from '$lib/interfaces';
+	import type { createMapStore } from '$lib/stores';
+	import Options from '$lib/util/Options.svelte';
 	import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 	import yaml from 'js-yaml';
-	import Options from '$lib/util/Options.svelte';
-	import type { Option } from '$lib/interfaces';
-	import { onMount } from 'svelte';
+	import type { LayerSpecification } from 'maplibre-gl';
+	import { getContext, onMount } from 'svelte';
+	import Fa from 'svelte-fa';
 
-	export let map: Map;
+	let map: ReturnType<typeof createMapStore> = getContext('map');
+
 	export let layer: LayerSpecification;
 
 	let formatOptions: Option[] = [

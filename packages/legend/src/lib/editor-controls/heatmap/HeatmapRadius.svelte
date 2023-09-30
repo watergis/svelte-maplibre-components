@@ -1,12 +1,15 @@
 <script lang="ts">
+	import type { createMapStore } from '$lib/stores';
 	import Slider from '$lib/util/Slider.svelte';
-	import type { Map, LayerSpecification } from 'maplibre-gl';
+	import type { LayerSpecification } from 'maplibre-gl';
+	import { getContext } from 'svelte';
 
-	export let map: Map;
+	let map: ReturnType<typeof createMapStore> = getContext('map');
+
 	export let layer: LayerSpecification;
 
 	const getValue = () => {
-		let value = map.getPaintProperty(layer.id, 'heatmap-radius');
+		let value = $map.getPaintProperty(layer.id, 'heatmap-radius');
 
 		if (!value) {
 			value = 30;
@@ -19,7 +22,7 @@
 	$: value, setValue();
 
 	const setValue = () => {
-		map?.setPaintProperty(layer.id, 'heatmap-radius', value);
+		map.setPaintProperty(layer.id, 'heatmap-radius', value);
 	};
 </script>
 

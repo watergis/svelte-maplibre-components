@@ -2,8 +2,9 @@
 	import type { StyleSpecification, LayerSpecification, Map } from 'maplibre-gl';
 	import Layer from './Layer.svelte';
 	import SpriteLoader from './sprite';
-	import { invisibleLayerMap } from './stores';
+	import { invisibleLayerMap, createMapStore } from '$lib/stores';
 	import { distinct } from './util/distinct';
+	import { setContext } from 'svelte';
 
 	export let map: Map;
 	export let onlyRendered = true;
@@ -11,6 +12,10 @@
 	export let enableLayerOrder = false;
 	export let disableVisibleButton = false;
 	export let enableEditing = true;
+
+	let mapStore: ReturnType<typeof createMapStore> = createMapStore()
+	setContext('map', mapStore)
+
 	let style: StyleSpecification;
 	let spriteLoader: SpriteLoader | undefined;
 	let hovering: boolean | number | undefined = false;
@@ -23,12 +28,14 @@
 
 	$: {
 		if (map) {
-			map.on('moveend', updateLayers);
-			map.on('styledata', updateLayers);
-			map.on('load', () => {
+			mapStore.set(map)
+
+			$mapStore.on('moveend', updateLayers);
+			$mapStore.on('styledata', updateLayers);
+			$mapStore.on('load', () => {
 				style = map.getStyle();
 			});
-			map.on('style:change', handleStyleChanged);
+			$mapStore.on('style:change', handleStyleChanged);
 		}
 
 		if (relativeLayers && Object.keys(relativeLayers).length === 0) {
@@ -41,11 +48,11 @@
 	$: style, handleStyleChanged();
 
 	const handleStyleChanged = (isLoadSprite = true) => {
-		if (!map) return;
+		if (!$mapStore) return;
 		if (!style) return;
 		const styleUrl = style.sprite;
 		if (!styleUrl) return;
-		if (map.isStyleLoaded()) {
+		if ($mapStore.isStyleLoaded()) {
 			if (isLoadSprite === true) {
 				spriteLoader = new SpriteLoader(styleUrl);
 				spriteLoader.load().then(updateLayers);
@@ -58,17 +65,17 @@
 	};
 
 	const updateLayers = () => {
-		if (!map) return;
+		if (!$mapStore) return;
 		if (!style) return;
 		visibleLayerMap = {};
-		const all = map.getStyle().layers;
+		const all = $mapStore.getStyle().layers;
 		if (onlyRendered === true) {
 			Object.keys($invisibleLayerMap).forEach((layerId) => {
 				visibleLayerMap[layerId] = $invisibleLayerMap[layerId];
 			});
-			const features = map.queryRenderedFeatures();
+			const features = $mapStore.queryRenderedFeatures();
 			const ids = features.map((f) => f.layer.id).filter(distinct);
-			const zoom = map.getZoom();
+			const zoom = $mapStore.getZoom();
 			all.forEach((layer) => {
 				const minzoom = layer.minzoom ?? 0;
 				const maxzoom = layer.maxzoom ?? 24;
@@ -103,7 +110,7 @@
 	};
 
 	const layerOrderChanged = () => {
-		allLayers = map.getStyle().layers;
+		allLayers = $mapStore.getStyle().layers;
 		handleStyleChanged(false);
 	};
 
@@ -129,10 +136,10 @@
 
 		const targetLayer = allLayers[target];
 		if (layer?.id) {
-			map.moveLayer(targetLayer.id, layer.id);
+			$mapStore.moveLayer(targetLayer.id, layer.id);
 		} else {
-			const startLayer = map.getStyle().layers[start];
-			map.moveLayer(startLayer.id);
+			const startLayer = $mapStore.getStyle().layers[start];
+			$mapStore.moveLayer(startLayer.id);
 		}
 		layerOrderChanged();
 	};
@@ -234,7 +241,6 @@
 					>
 						<li class="legend-panel-block">
 							<Layer
-								{map}
 								{layer}
 								{spriteLoader}
 								{relativeLayers}

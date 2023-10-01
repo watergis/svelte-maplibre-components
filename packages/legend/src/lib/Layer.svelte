@@ -1,23 +1,38 @@
+<script context="module" lang="ts">
+	import { getContext, setContext } from 'svelte';
+
+	const LAYERID_CONTEXT_KEY = 'maplibre-legend-layer-id';
+
+	export const getLayerIdContext = () => {
+		const layerId: string = getContext(LAYERID_CONTEXT_KEY);
+		return layerId;
+	};
+
+	export const setLayerIdContext = (layerId: string) => {
+		setContext(LAYERID_CONTEXT_KEY, layerId);
+	};
+</script>
+
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-	import type { LayerSpecification, Map } from 'maplibre-gl';
-	import Fa from 'svelte-fa';
 	import {
 		faEye,
 		faEyeSlash,
-		faSortUp,
+		faGripVertical,
 		faSortDown,
-		faGripVertical
+		faSortUp
 	} from '@fortawesome/free-solid-svg-icons';
-	import Legend from './Legend.svelte';
-	import type SpriteLoader from './sprite';
 	import { isMobile } from 'detect-touch-device';
+	import type { LayerSpecification } from 'maplibre-gl';
+	import { createEventDispatcher } from 'svelte';
+	import Fa from 'svelte-fa';
+	import Legend from './Legend.svelte';
+	import { getMapContext } from './LegendPanel.svelte';
 	import StyleEditor from './StyleEditor.svelte';
+	import type SpriteLoader from './sprite';
 	import { clean } from './util/clean';
 
 	const dispatch = createEventDispatcher();
 
-	export let map: Map;
 	export let layer: LayerSpecification;
 	export let spriteLoader: SpriteLoader;
 	export let relativeLayers: { [key: string]: string } = {};
@@ -25,7 +40,11 @@
 	export let disableVisibleButton = false;
 	export let enableEditing = true;
 	export let selectedFormat: 'yaml' | 'json';
-	let visibility = map.getLayer(layer.id).visibility;
+
+	const mapStore = getMapContext();
+	setLayerIdContext(layer.id);
+
+	let visibility = $mapStore?.getLayer(layer.id).visibility;
 
 	let checked = visibility === 'none' ? false : true;
 	$: checked, setVisibility();
@@ -35,7 +54,7 @@
 
 	const setVisibility = () => {
 		const visibility = checked === true ? 'visible' : 'none';
-		map.setLayoutProperty(layer.id, 'visibility', visibility);
+		mapStore.setLayoutProperty(layer.id, 'visibility', visibility);
 		dispatch('visibilityChanged', {
 			layer,
 			visibility
@@ -49,13 +68,13 @@
 	};
 
 	const getLayerIndex = () => {
-		const layers = map?.getStyle()?.layers;
+		const layers = $mapStore?.getStyle()?.layers;
 		const index = layers?.findIndex((l) => l.id === layer.id);
 		return index;
 	};
 
 	const getTotalCount = () => {
-		return map?.getStyle()?.layers.length;
+		return $mapStore?.getStyle()?.layers.length;
 	};
 
 	const checkIsFirstLayer = () => {
@@ -64,7 +83,7 @@
 	};
 
 	const checkIsLastLayer = () => {
-		const layers = map?.getStyle()?.layers;
+		const layers = $mapStore?.getStyle()?.layers;
 		const index = getLayerIndex();
 		return index === layers.length - 1;
 	};
@@ -74,9 +93,9 @@
 
 	const moveBefore = () => {
 		const currentIndex = getLayerIndex();
-		const layers = map?.getStyle()?.layers;
+		const layers = $mapStore?.getStyle()?.layers;
 		const beforeLayerId = layers[currentIndex - 1].id;
-		map.moveLayer(layer.id, beforeLayerId);
+		$mapStore.moveLayer(layer.id, beforeLayerId);
 		isFirstLater = checkIsFirstLayer();
 		isLastLayer = checkIsLastLayer();
 		dispatch('layerOrderChanged');
@@ -90,9 +109,9 @@
 
 	const moveAfter = () => {
 		const currentIndex = getLayerIndex();
-		const layers = map?.getStyle()?.layers;
+		const layers = $mapStore?.getStyle()?.layers;
 		const afterLayerId = layers[currentIndex + 1].id;
-		map.moveLayer(afterLayerId, layer.id);
+		$mapStore.moveLayer(afterLayerId, layer.id);
 		isFirstLater = checkIsFirstLayer();
 		isLastLayer = checkIsLastLayer();
 		dispatch('layerOrderChanged');
@@ -133,7 +152,9 @@
 		{/if}
 	{/if}
 	<div class="legend">
-		<Legend {map} {layer} {spriteLoader} />
+		{#if $mapStore}
+			<Legend {spriteLoader} />
+		{/if}
 	</div>
 	<div class="layer-name">
 		{layerTitle}
@@ -169,7 +190,9 @@
 			{/if}
 		</div>
 	{:else if enableEditing === true}
-		<StyleEditor bind:map bind:layer bind:spriteLoader bind:selectedFormat bind:relativeLayers />
+		{#if $mapStore}
+			<StyleEditor bind:spriteLoader bind:selectedFormat bind:relativeLayers />
+		{/if}
 	{/if}
 </div>
 
@@ -202,7 +225,13 @@
 		}
 
 		.layer-name {
-			font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica, Arial,
+			font-family:
+				system-ui,
+				-apple-system,
+				system-ui,
+				'Helvetica Neue',
+				Helvetica,
+				Arial,
 				sans-serif;
 			font-size: 16px;
 			font-weight: 400;

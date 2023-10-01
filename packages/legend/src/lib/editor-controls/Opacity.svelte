@@ -1,38 +1,40 @@
 <script lang="ts">
-	import type { Map, LayerSpecification } from 'maplibre-gl';
-	import { debounce } from 'lodash-es';
+	import { getLayerIdContext } from '$lib/Layer.svelte';
+	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import Slider from '$lib/util/Slider.svelte';
+	import { debounce } from 'lodash-es';
+	import type { LayerSpecification } from 'maplibre-gl';
 
-	export let map: Map;
-	export let layer: LayerSpecification;
+	const map = getMapContext();
+	let layerId: string = getLayerIdContext();
 
 	const getOpacity = () => {
-		const style = map?.getStyle().layers.find((l) => l.id === layer.id);
+		const style = $map?.getStyle().layers.find((l: LayerSpecification) => l.id === layerId);
 		let opacity;
 		switch (style?.type) {
 			case 'background':
-				opacity = map.getPaintProperty(layer.id, 'background-opacity');
+				opacity = $map.getPaintProperty(layerId, 'background-opacity');
 				break;
 			case 'raster':
-				opacity = map.getPaintProperty(layer.id, 'raster-opacity');
+				opacity = $map.getPaintProperty(layerId, 'raster-opacity');
 				break;
 			case 'symbol':
-				opacity = map.getPaintProperty(layer.id, 'icon-opacity');
+				opacity = $map.getPaintProperty(layerId, 'icon-opacity');
 				break;
 			case 'line':
-				opacity = map.getPaintProperty(layer.id, 'line-opacity');
+				opacity = $map.getPaintProperty(layerId, 'line-opacity');
 				break;
 			case 'fill':
-				opacity = map.getPaintProperty(layer.id, 'fill-opacity');
+				opacity = $map.getPaintProperty(layerId, 'fill-opacity');
 				break;
 			case 'circle':
-				opacity = map.getPaintProperty(layer.id, 'circle-opacity');
+				opacity = $map.getPaintProperty(layerId, 'circle-opacity');
 				break;
 			case 'heatmap':
-				opacity = map.getPaintProperty(layer.id, 'heatmap-opacity');
+				opacity = $map.getPaintProperty(layerId, 'heatmap-opacity');
 				break;
 			case 'fill-extrusion':
-				opacity = map.getPaintProperty(layer.id, 'fill-extrusion-opacity');
+				opacity = $map.getPaintProperty(layerId, 'fill-extrusion-opacity');
 				break;
 			default:
 				break;
@@ -49,32 +51,32 @@
 
 	const setOpacity = debounce(() => {
 		if (!value) return;
-		const style = map?.getStyle().layers.find((l) => l.id === layer.id);
+		const style = $map?.getStyle().layers.find((l) => l.id === layerId);
 		switch (style?.type) {
 			case 'background':
-				map.setPaintProperty(layer.id, 'background-opacity', value);
+				map.setPaintProperty(layerId, 'background-opacity', value);
 				break;
 			case 'raster':
-				map.setPaintProperty(layer.id, 'raster-opacity', value);
+				map.setPaintProperty(layerId, 'raster-opacity', value);
 				break;
 			case 'symbol':
-				map.setPaintProperty(layer.id, 'icon-opacity', value);
-				map.setPaintProperty(layer.id, 'text-opacity', value);
+				map.setPaintProperty(layerId, 'icon-opacity', value);
+				map.setPaintProperty(layerId, 'text-opacity', value);
 				break;
 			case 'line':
-				map.setPaintProperty(layer.id, 'line-opacity', value);
+				map.setPaintProperty(layerId, 'line-opacity', value);
 				break;
 			case 'fill':
-				map.setPaintProperty(layer.id, 'fill-opacity', value);
+				map.setPaintProperty(layerId, 'fill-opacity', value);
 				break;
 			case 'circle':
-				map.setPaintProperty(layer.id, 'circle-opacity', value);
+				map.setPaintProperty(layerId, 'circle-opacity', value);
 				break;
 			case 'heatmap':
-				map.setPaintProperty(layer.id, 'heatmap-opacity', value);
+				map.setPaintProperty(layerId, 'heatmap-opacity', value);
 				break;
 			case 'fill-extrusion':
-				map.setPaintProperty(layer.id, 'fill-extrusion-opacity', value);
+				map.setPaintProperty(layerId, 'fill-extrusion-opacity', value);
 				break;
 			default:
 				break;

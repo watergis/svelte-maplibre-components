@@ -1,8 +1,26 @@
+<script context="module" lang="ts">
+	import { createMapStore } from '$lib/stores';
+	import { getContext, setContext } from 'svelte';
+
+	const MAP_CONTEXT_KEY = 'maplibre-legend-map';
+
+	export const getMapContext = (): ReturnType<typeof createMapStore> => {
+		const mapStore: ReturnType<typeof createMapStore> = getContext(MAP_CONTEXT_KEY);
+		return mapStore;
+	};
+
+	export const setMapContext = () => {
+		let mapStore: ReturnType<typeof createMapStore> = createMapStore();
+		setContext(MAP_CONTEXT_KEY, mapStore);
+		return mapStore;
+	};
+</script>
+
 <script lang="ts">
-	import type { StyleSpecification, LayerSpecification, Map } from 'maplibre-gl';
+	import type { LayerSpecification, Map, StyleSpecification } from 'maplibre-gl';
+	import { writable } from 'svelte/store';
 	import Layer from './Layer.svelte';
 	import SpriteLoader from './sprite';
-	import { invisibleLayerMap } from './stores';
 	import { distinct } from './util/distinct';
 
 	export let map: Map;
@@ -11,6 +29,10 @@
 	export let enableLayerOrder = false;
 	export let disableVisibleButton = false;
 	export let enableEditing = true;
+
+	const mapStore = setMapContext();
+	const invisibleLayerMap = writable<{ [key: string]: LayerSpecification }>({});
+
 	let style: StyleSpecification;
 	let spriteLoader: SpriteLoader | undefined;
 	let hovering: boolean | number | undefined = false;
@@ -23,12 +45,14 @@
 
 	$: {
 		if (map) {
-			map.on('moveend', updateLayers);
-			map.on('styledata', updateLayers);
-			map.on('load', () => {
+			mapStore.set(map);
+
+			$mapStore.on('moveend', updateLayers);
+			$mapStore.on('styledata', updateLayers);
+			$mapStore.on('load', () => {
 				style = map.getStyle();
 			});
-			map.on('style:change', handleStyleChanged);
+			$mapStore.on('style:change', handleStyleChanged);
 		}
 
 		if (relativeLayers && Object.keys(relativeLayers).length === 0) {
@@ -41,11 +65,11 @@
 	$: style, handleStyleChanged();
 
 	const handleStyleChanged = (isLoadSprite = true) => {
-		if (!map) return;
+		if (!$mapStore) return;
 		if (!style) return;
 		const styleUrl = style.sprite;
 		if (!styleUrl) return;
-		if (map.isStyleLoaded()) {
+		if ($mapStore.isStyleLoaded()) {
 			if (isLoadSprite === true) {
 				spriteLoader = new SpriteLoader(styleUrl);
 				spriteLoader.load().then(updateLayers);
@@ -58,18 +82,21 @@
 	};
 
 	const updateLayers = () => {
-		if (!map) return;
+		if (!$mapStore) return;
 		if (!style) return;
 		visibleLayerMap = {};
-		const all = map.getStyle().layers;
+		const all = $mapStore.getStyle().layers;
 		if (onlyRendered === true) {
 			Object.keys($invisibleLayerMap).forEach((layerId) => {
 				visibleLayerMap[layerId] = $invisibleLayerMap[layerId];
+				if ($mapStore.getLayer(layerId)) {
+					mapStore.setLayoutProperty(layerId, 'visibility', 'none');
+				}
 			});
-			const features = map.queryRenderedFeatures();
+			const features = $mapStore.queryRenderedFeatures();
 			const ids = features.map((f) => f.layer.id).filter(distinct);
-			const zoom = map.getZoom();
-			all.forEach((layer) => {
+			const zoom = $mapStore.getZoom();
+			all.forEach((layer: LayerSpecification) => {
 				const minzoom = layer.minzoom ?? 0;
 				const maxzoom = layer.maxzoom ?? 24;
 				if (ids.indexOf(layer.id) !== -1) {
@@ -81,7 +108,7 @@
 				}
 			});
 		} else {
-			all.forEach((layer) => {
+			all.forEach((layer: LayerSpecification) => {
 				visibleLayerMap[layer.id] = layer;
 			});
 		}
@@ -103,16 +130,16 @@
 	};
 
 	const layerOrderChanged = () => {
-		allLayers = map.getStyle().layers;
+		allLayers = $mapStore.getStyle().layers;
 		handleStyleChanged(false);
 	};
 
 	const drop = (
 		/* eslint-disable @typescript-eslint/no-explicit-any */
-		event: any, 
-		target: number, 
+		event: any,
+		target: number,
 		layer?: LayerSpecification
-		) => {
+	) => {
 		event.dataTransfer.dropEffect = 'move';
 		const start = parseInt(event.dataTransfer.getData('text/plain'));
 		const newTracklist = allLayers;
@@ -129,19 +156,19 @@
 
 		const targetLayer = allLayers[target];
 		if (layer?.id) {
-			map.moveLayer(targetLayer.id, layer.id);
+			$mapStore.moveLayer(targetLayer.id, layer.id);
 		} else {
-			const startLayer = map.getStyle().layers[start];
-			map.moveLayer(startLayer.id);
+			const startLayer = $mapStore.getStyle().layers[start];
+			$mapStore.moveLayer(startLayer.id);
 		}
 		layerOrderChanged();
 	};
 
 	const dragstart = (
 		/* eslint-disable @typescript-eslint/no-explicit-any */
-		event: any, 
+		event: any,
 		i: number
-		) => {
+	) => {
 		event.dataTransfer.effectAllowed = 'move';
 		event.dataTransfer.dropEffect = 'move';
 		const start = i;
@@ -216,7 +243,7 @@
 </script>
 
 <ul class="legend-panel">
-	{#if spriteLoader}
+	{#if $mapStore && spriteLoader}
 		{#key style}
 			{#each allLayers as layer, index (layer.id)}
 				{#if showOnList(layer.id)}
@@ -234,7 +261,6 @@
 					>
 						<li class="legend-panel-block">
 							<Layer
-								{map}
 								{layer}
 								{spriteLoader}
 								{relativeLayers}

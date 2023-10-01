@@ -1,12 +1,13 @@
 <script lang="ts">
-	import type { Map, LayerSpecification } from 'maplibre-gl';
+	import { getLayerIdContext } from '$lib/Layer.svelte';
+	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import Slider from '$lib/util/Slider.svelte';
 
-	export let map: Map;
-	export let layer: LayerSpecification;
+	const map = getMapContext();
+	let layerId: string = getLayerIdContext();
 
 	const getValue = () => {
-		let value = map.getPaintProperty(layer.id, 'hillshade-illumination-direction');
+		let value = $map.getPaintProperty(layerId, 'hillshade-illumination-direction');
 
 		if (!value) {
 			value = 335;
@@ -18,7 +19,7 @@
 	$: value, setValue();
 
 	const setValue = () => {
-		map?.setPaintProperty(layer.id, 'hillshade-illumination-direction', value);
+		map.setPaintProperty(layerId, 'hillshade-illumination-direction', value);
 	};
 </script>
 

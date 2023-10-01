@@ -1,10 +1,11 @@
 <script lang="ts">
+	import { getLayerIdContext } from '$lib/Layer.svelte';
+	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import type { Option } from '$lib/interfaces';
 	import Options from '$lib/util/Options.svelte';
-	import type { Map, LayerSpecification } from 'maplibre-gl';
 
-	export let map: Map;
-	export let layer: LayerSpecification;
+	const map = getMapContext();
+	let layerId: string = getLayerIdContext();
 
 	let options: Option[] = [
 		{
@@ -18,7 +19,7 @@
 	];
 
 	const getValue = () => {
-		let value = map.getPaintProperty(layer.id, 'raster-resampling');
+		let value = $map.getPaintProperty(layerId, 'raster-resampling');
 
 		if (!value) {
 			value = options[0].value;
@@ -31,7 +32,7 @@
 	$: value, setValue();
 
 	const setValue = () => {
-		map?.setPaintProperty(layer.id, 'raster-resampling', value);
+		map.setPaintProperty(layerId, 'raster-resampling', value);
 	};
 </script>
 

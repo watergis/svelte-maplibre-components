@@ -1,10 +1,11 @@
 <script lang="ts">
+	import { getLayerIdContext } from '$lib/Layer.svelte';
+	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import type { Option } from '$lib/interfaces';
 	import Options from '$lib/util/Options.svelte';
-	import type { Map, LayerSpecification } from 'maplibre-gl';
 
-	export let map: Map;
-	export let layer: LayerSpecification;
+	const map = getMapContext();
+	let layerId: string = getLayerIdContext();
 
 	let options: Option[] = [
 		{
@@ -26,7 +27,7 @@
 	];
 
 	const getValue = () => {
-		let value = map.getPaintProperty(layer.id, 'line-dasharray');
+		let value = $map.getPaintProperty(layerId, 'line-dasharray');
 
 		if (!value) {
 			value = options[0].value;
@@ -40,13 +41,9 @@
 
 	const setValue = () => {
 		if (value) {
-			map?.setPaintProperty(layer.id, 'line-dasharray', value);
+			map.setPaintProperty(layerId, 'line-dasharray', value);
 		} else {
-			map?.setPaintProperty(layer.id, 'line-dasharray', undefined);
-		}
-		const newLayer = map.getStyle().layers.find((l) => l.id === layer.id);
-		if (newLayer) {
-			layer = newLayer;
+			map.setPaintProperty(layerId, 'line-dasharray', undefined);
 		}
 	};
 </script>

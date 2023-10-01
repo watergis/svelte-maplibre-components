@@ -1,11 +1,12 @@
 <script lang="ts">
-	import chroma from 'chroma-js';
-	import type { Map, LayerSpecification } from 'maplibre-gl';
-	import { debounce } from 'lodash-es';
+	import { getLayerIdContext } from '$lib/Layer.svelte';
+	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import ColorPicker from '$lib/util/ColorPicker.svelte';
+	import chroma from 'chroma-js';
+	import { debounce } from 'lodash-es';
 
-	export let map: Map;
-	export let layer: LayerSpecification;
+	const map = getMapContext();
+	let layerId: string = getLayerIdContext();
 
 	type InterpolateType = number | string[] | string;
 
@@ -14,7 +15,7 @@
 	const START_POSITION = 3;
 
 	const getValue = () => {
-		let value = map.getPaintProperty(layer.id, 'heatmap-color') as InterpolateType[];
+		let value = $map.getPaintProperty(layerId, 'heatmap-color') as InterpolateType[];
 
 		if (!value) {
 			value = [
@@ -63,7 +64,7 @@
 	$: value, setValue();
 
 	const setValue = () => {
-		map?.setPaintProperty(layer.id, 'heatmap-color', value);
+		map.setPaintProperty(layerId, 'heatmap-color', value);
 	};
 
 	const handleColorChanged = debounce((index: number) => {

@@ -1,4 +1,4 @@
-import type { LayerSpecification } from 'maplibre-gl';
+import type { SymbolLayerSpecification } from 'maplibre-gl';
 
 export interface Sprite {
 	image: HTMLImageElement;
@@ -17,7 +17,7 @@ export interface spritePosition {
 class SpriteLoader {
 	private spriteUrl: string;
 
-	private sprite: Sprite;
+	private sprite?: Sprite = undefined;
 
 	constructor(url: string) {
 		this.spriteUrl = url;
@@ -61,15 +61,15 @@ class SpriteLoader {
 		return response.json();
 	}
 
-	getIconDataUrl(layer: LayerSpecification): string {
-		let dataUrl: string;
+	getIconDataUrl(layer: SymbolLayerSpecification): string {
+		let dataUrl = '';
 		if (layer.layout && layer.layout['icon-image']) {
 			let imgKey = layer.layout['icon-image'];
 			if (Array.isArray(imgKey)) {
-				imgKey = imgKey[imgKey.length - 1];
+				imgKey = imgKey[imgKey.length - 1] as string;
 			}
 			if (this.sprite?.json) {
-				let icon: spritePosition;
+				let icon: spritePosition | undefined = undefined;
 				Object.keys(this.sprite.json).forEach((id) => {
 					if (id === imgKey) {
 						icon = this.sprite.json[id];
@@ -89,7 +89,7 @@ class SpriteLoader {
 		el.width = sprite.width * dpi;
 		el.height = sprite.height * dpi;
 		const ctx = el.getContext('2d');
-		ctx.drawImage(
+		ctx?.drawImage(
 			img,
 			sprite.x * dpi,
 			sprite.y * dpi,
@@ -103,12 +103,12 @@ class SpriteLoader {
 		return el.toDataURL();
 	}
 
-	isSdf(layer: LayerSpecification) {
+	isSdf(layer: SymbolLayerSpecification) {
 		let isSdf = false;
 		if (layer.layout && layer.layout['icon-image']) {
 			let imgKey = layer.layout['icon-image'];
 			if (Array.isArray(imgKey)) {
-				imgKey = imgKey[imgKey.length - 1];
+				imgKey = imgKey[imgKey.length - 1] as string;
 			}
 			if (this.sprite?.json) {
 				let icon: spritePosition;

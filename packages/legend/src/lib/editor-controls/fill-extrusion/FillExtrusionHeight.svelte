@@ -1,12 +1,13 @@
 <script lang="ts">
-	import type { Map, LayerSpecification } from 'maplibre-gl';
+	import { getLayerIdContext } from '$lib/Layer.svelte';
+	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import Slider from '$lib/util/Slider.svelte';
 
-	export let map: Map;
-	export let layer: LayerSpecification;
+	const map = getMapContext();
+	let layerId: string = getLayerIdContext();
 
 	const getValue = () => {
-		let value = map.getPaintProperty(layer.id, 'fill-extrusion-height');
+		let value = $map.getPaintProperty(layerId, 'fill-extrusion-height');
 
 		if (!value) {
 			value = 0;
@@ -18,7 +19,7 @@
 	$: value, setValue();
 
 	const setValue = () => {
-		map?.setPaintProperty(layer.id, 'fill-extrusion-height', value);
+		map.setPaintProperty(layerId, 'fill-extrusion-height', value);
 	};
 </script>
 

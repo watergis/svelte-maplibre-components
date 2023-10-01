@@ -1,15 +1,17 @@
 <script lang="ts">
+	import { getLayerIdContext } from '$lib/Layer.svelte';
+	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import type {
-		Map,
 		HeatmapLayerSpecification,
-		SymbolLayerSpecification,
-		LayerSpecification
+		LineLayerSpecification,
+		SymbolLayerSpecification
 	} from 'maplibre-gl';
 
-	export let map: Map;
-	export let layer: LayerSpecification;
-	let heatmapLayerId = `${layer.id} heatmap`;
-	let isHeatmapCreated = map.getLayer(heatmapLayerId) ? true : false;
+	const map = getMapContext();
+	let layerId: string = getLayerIdContext();
+
+	let heatmapLayerId = `${layerId} heatmap`;
+	let isHeatmapCreated = $map.getLayer(heatmapLayerId) ? true : false;
 
 	$: if (isHeatmapCreated === true) {
 		createHeatmap();
@@ -20,9 +22,11 @@
 	}
 
 	const createHeatmap = () => {
-		if (map.getLayer(heatmapLayerId)) return;
-
-		const symbolLayer: SymbolLayerSpecification = layer as SymbolLayerSpecification;
+		if ($map.getLayer(heatmapLayerId)) return;
+		const layer = $map.getStyle().layers.find((l) => l.id === layerId);
+		const symbolLayer: SymbolLayerSpecification | LineLayerSpecification = layer as
+			| SymbolLayerSpecification
+			| LineLayerSpecification;
 
 		const heatmapLayer: HeatmapLayerSpecification = {
 			id: heatmapLayerId,
@@ -59,12 +63,12 @@
 		heatmapLayer.minzoom = symbolLayer.maxzoom ?? 0;
 		heatmapLayer.maxzoom = symbolLayer.maxzoom ?? 24;
 
-		map.addLayer(heatmapLayer, symbolLayer.id);
+		$map.addLayer(heatmapLayer, symbolLayer.id);
 	};
 
 	const deleteHeatmap = () => {
-		if (map.getLayer(heatmapLayerId)) {
-			map.removeLayer(heatmapLayerId);
+		if ($map.getLayer(heatmapLayerId)) {
+			$map.removeLayer(heatmapLayerId);
 		}
 	};
 </script>

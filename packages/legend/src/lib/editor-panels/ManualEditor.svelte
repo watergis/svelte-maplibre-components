@@ -1,14 +1,19 @@
 <script lang="ts">
-	import type { LayerSpecification, Map } from 'maplibre-gl';
-	import Fa from 'svelte-fa';
+	import { getLayerIdContext } from '$lib/Layer.svelte';
+	import { getMapContext } from '$lib/LegendPanel.svelte';
+	import type { Option } from '$lib/interfaces';
+	import Options from '$lib/util/Options.svelte';
 	import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 	import yaml from 'js-yaml';
-	import Options from '$lib/util/Options.svelte';
-	import type { Option } from '$lib/interfaces';
+	import type { LayerSpecification } from 'maplibre-gl';
 	import { onMount } from 'svelte';
+	import Fa from 'svelte-fa';
 
-	export let map: Map;
-	export let layer: LayerSpecification;
+	const map = getMapContext();
+	let layerId: string = getLayerIdContext();
+	let layer: LayerSpecification = $map
+		.getStyle()
+		.layers.find((l: LayerSpecification) => l.id === layerId) as LayerSpecification;
 
 	let formatOptions: Option[] = [
 		{

@@ -1,23 +1,19 @@
 <script lang="ts">
-	import type { LayerSpecification, Map } from 'maplibre-gl';
-	import Opacity from '$lib/editor-controls/Opacity.svelte';
 	import ColorControl from '$lib/editor-controls/ColorControl.svelte';
+	import Opacity from '$lib/editor-controls/Opacity.svelte';
 	import FieldControl from '$lib/util/FieldControl.svelte';
-
-	export let map: Map;
-	export let layer: LayerSpecification;
 </script>
 
 <FieldControl
 	title="Opacity"
 	help={{ type: 'paint', layerType: 'background', property: 'background-opacity' }}
 >
-	<Opacity bind:map bind:layer />
+	<Opacity />
 </FieldControl>
 
 <FieldControl
 	title="Background color"
 	help={{ type: 'paint', layerType: 'background', property: 'background-color' }}
 >
-	<ColorControl bind:map bind:layer propertyName="background-color" />
+	<ColorControl propertyName="background-color" />
 </FieldControl>

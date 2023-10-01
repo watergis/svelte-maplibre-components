@@ -1,12 +1,13 @@
 <script lang="ts">
+	import { getLayerIdContext } from '$lib/Layer.svelte';
+	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import Slider from '$lib/util/Slider.svelte';
-	import type { Map, LayerSpecification } from 'maplibre-gl';
 
-	export let map: Map;
-	export let layer: LayerSpecification;
+	const map = getMapContext();
+	let layerId: string = getLayerIdContext();
 
 	const getValue = () => {
-		let value = map.getLayoutProperty(layer.id, 'icon-size');
+		let value = $map.getLayoutProperty(layerId, 'icon-size');
 
 		if (!value) {
 			value = 1;
@@ -20,7 +21,7 @@
 
 	const setValue = () => {
 		if (!value) return;
-		map?.setLayoutProperty(layer.id, 'icon-size', value);
+		map.setLayoutProperty(layerId, 'icon-size', value);
 	};
 </script>
 

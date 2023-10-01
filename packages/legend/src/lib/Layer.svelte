@@ -191,7 +191,7 @@
 		</div>
 	{:else if enableEditing === true}
 		{#if $mapStore}
-			<StyleEditor {layer} bind:spriteLoader bind:selectedFormat bind:relativeLayers />
+			<StyleEditor bind:spriteLoader bind:selectedFormat bind:relativeLayers />
 		{/if}
 	{/if}
 </div>

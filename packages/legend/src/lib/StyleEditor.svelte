@@ -4,7 +4,9 @@
 	import Fa from 'svelte-fa';
 	import 'tippy.js/dist/tippy.css';
 	import 'tippy.js/themes/light.css';
+	import { getLayerIdContext } from './Layer.svelte';
 	import Legend from './Legend.svelte';
+	import { getMapContext } from './LegendPanel.svelte';
 	import {
 		BackgroundEditor,
 		CircleEditor,
@@ -22,7 +24,12 @@
 	import { clean } from './util/clean';
 	import { initTippy } from './util/initTippy';
 
-	export let layer: LayerSpecification;
+	const mapStore = getMapContext();
+	const layerId = getLayerIdContext();
+
+	let layer: LayerSpecification = $mapStore
+		.getStyle()
+		.layers.find((l: LayerSpecification) => l.id === layerId);
 	export let spriteLoader: SpriteLoader;
 	export let relativeLayers: { [key: string]: string };
 	let showManualEditor = false;

@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type { createMapStore } from '$lib/stores';
+	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import ColorPicker from '$lib/util/ColorPicker.svelte';
 	import chroma from 'chroma-js';
 	import { debounce } from 'lodash-es';
 	import { getContext } from 'svelte';
 
-	let map: ReturnType<typeof createMapStore> = getContext('map');
+	const map = getMapContext();
 	let layerId: string = getContext('layerId');
 
 	type InterpolateType = number | string[] | string;

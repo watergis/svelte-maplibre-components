@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { createMapStore } from '$lib/stores';
+	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import type {
 		HeatmapLayerSpecification,
 		LineLayerSpecification,
@@ -7,7 +7,7 @@
 	} from 'maplibre-gl';
 	import { getContext } from 'svelte';
 
-	let map: ReturnType<typeof createMapStore> = getContext('map');
+	const map = getMapContext();
 	let layerId: string = getContext('layerId');
 
 	let heatmapLayerId = `${layerId} heatmap`;

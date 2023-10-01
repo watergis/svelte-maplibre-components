@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { createMapStore } from '$lib/stores';
+	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import Slider from '$lib/util/Slider.svelte';
 	import { getContext } from 'svelte';
 
-	let map: ReturnType<typeof createMapStore> = getContext('map');
+	const map = getMapContext();
 	let layerId: string = getContext('layerId');
 
 	const getValue = () => {

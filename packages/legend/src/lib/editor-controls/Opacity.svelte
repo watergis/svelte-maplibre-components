@@ -1,15 +1,16 @@
 <script lang="ts">
+	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import Slider from '$lib/util/Slider.svelte';
 	import { debounce } from 'lodash-es';
+	import type { LayerSpecification } from 'maplibre-gl';
 
-	import type { createMapStore } from '$lib/stores';
 	import { getContext } from 'svelte';
 
-	let map: ReturnType<typeof createMapStore> = getContext('map');
+	const map = getMapContext();
 	let layerId: string = getContext('layerId');
 
 	const getOpacity = () => {
-		const style = $map?.getStyle().layers.find((l) => l.id === layerId);
+		const style = $map?.getStyle().layers.find((l: LayerSpecification) => l.id === layerId);
 		let opacity;
 		switch (style?.type) {
 			case 'background':

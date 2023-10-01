@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import type { Option } from '$lib/interfaces';
-	import type { createMapStore } from '$lib/stores';
 	import Options from '$lib/util/Options.svelte';
 	import { getContext } from 'svelte';
 
-	let map: ReturnType<typeof createMapStore> = getContext('map');
+	const map = getMapContext();
 	let layerId: string = getContext('layerId');
 
 	let options: Option[] = [

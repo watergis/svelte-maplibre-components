@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { createMapStore } from '$lib/stores';
 	import {
 		faEye,
 		faEyeSlash,
@@ -9,9 +8,10 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import { isMobile } from 'detect-touch-device';
 	import type { LayerSpecification } from 'maplibre-gl';
-	import { createEventDispatcher, getContext, setContext } from 'svelte';
+	import { createEventDispatcher, setContext } from 'svelte';
 	import Fa from 'svelte-fa';
 	import Legend from './Legend.svelte';
+	import { getMapContext } from './LegendPanel.svelte';
 	import StyleEditor from './StyleEditor.svelte';
 	import type SpriteLoader from './sprite';
 	import { clean } from './util/clean';
@@ -26,7 +26,7 @@
 	export let enableEditing = true;
 	export let selectedFormat: 'yaml' | 'json';
 
-	let mapStore: ReturnType<typeof createMapStore> = getContext('map');
+	const mapStore = getMapContext();
 	setContext('layerId', layer.id);
 
 	let visibility = $mapStore?.getLayer(layer.id).visibility;

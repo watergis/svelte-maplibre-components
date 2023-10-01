@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import ColorControl from '$lib/editor-controls/ColorControl.svelte';
 	import Opacity from '$lib/editor-controls/Opacity.svelte';
 	import HeatmapGenerator from '$lib/editor-controls/heatmap/HeatmapGenerator.svelte';
@@ -11,12 +12,11 @@
 	import TextRotate from '$lib/editor-controls/symbol/TextRotate.svelte';
 	import TextSize from '$lib/editor-controls/symbol/TextSize.svelte';
 	import type SpriteLoader from '$lib/sprite';
-	import type { createMapStore } from '$lib/stores';
 	import FieldControl from '$lib/util/FieldControl.svelte';
 	import type { SymbolLayerSpecification } from 'maplibre-gl';
 	import { getContext } from 'svelte';
 
-	let map: ReturnType<typeof createMapStore> = getContext('map');
+	const map = getMapContext();
 	let layerId: string = getContext('layerId');
 
 	let layer: SymbolLayerSpecification = $map.getStyle().layers.find((l) => {

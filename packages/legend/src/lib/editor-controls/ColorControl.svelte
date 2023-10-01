@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type { createMapStore } from '$lib/stores';
+	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import ColorPicker from '$lib/util/ColorPicker.svelte';
 	import { getColorFromExpression } from '$lib/util/getColorFromExpression';
 	import { debounce } from 'lodash-es';
 	import { getContext } from 'svelte';
 
-	let map: ReturnType<typeof createMapStore> = getContext('map');
+	const map = getMapContext();
 	let layerId: string = getContext('layerId');
 
 	export let propertyName:

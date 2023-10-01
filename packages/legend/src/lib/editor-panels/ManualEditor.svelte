@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import type { Option } from '$lib/interfaces';
-	import type { createMapStore } from '$lib/stores';
 	import Options from '$lib/util/Options.svelte';
 	import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 	import yaml from 'js-yaml';
@@ -8,7 +8,7 @@
 	import { getContext, onMount } from 'svelte';
 	import Fa from 'svelte-fa';
 
-	let map: ReturnType<typeof createMapStore> = getContext('map');
+	const map = getMapContext();
 	let layerId: string = getContext('layerId');
 	let layer: LayerSpecification = $map
 		.getStyle()

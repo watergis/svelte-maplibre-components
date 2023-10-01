@@ -1,15 +1,14 @@
 <script lang="ts">
-	import type { createMapStore } from '$lib/stores';
 	import type { LayerSpecification, SymbolLayerSpecification } from 'maplibre-gl';
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
 	import LegendSymbol from '@watergis/legend-symbol';
 	import chroma from 'chroma-js';
-	import { getContext } from 'svelte';
+	import { getMapContext } from './LegendPanel.svelte';
 	import type SpriteLoader from './sprite';
 	import { getColorFromExpression } from './util/getColorFromExpression';
 
-	let mapStore: ReturnType<typeof createMapStore> = getContext('map');
+	const mapStore = getMapContext();
 
 	export let layer: LayerSpecification;
 	export let spriteLoader: SpriteLoader;

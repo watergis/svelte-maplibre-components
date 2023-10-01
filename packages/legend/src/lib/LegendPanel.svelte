@@ -1,7 +1,24 @@
+<script context="module" lang="ts">
+	import { createMapStore } from '$lib/stores';
+	import { getContext, setContext } from 'svelte';
+
+	const MAP_CONTEXT_KEY = 'maplibre-legend-map';
+
+	export const getMapContext = () => {
+		const mapStore: ReturnType<typeof createMapStore> = getContext(MAP_CONTEXT_KEY);
+		return mapStore;
+	};
+
+	export const setMapContext = () => {
+		let mapStore: ReturnType<typeof createMapStore> = createMapStore();
+		setContext(MAP_CONTEXT_KEY, mapStore);
+		return mapStore;
+	};
+</script>
+
 <script lang="ts">
-	import { createMapStore, invisibleLayerMap } from '$lib/stores';
+	import { invisibleLayerMap } from '$lib/stores';
 	import type { LayerSpecification, Map, StyleSpecification } from 'maplibre-gl';
-	import { setContext } from 'svelte';
 	import Layer from './Layer.svelte';
 	import SpriteLoader from './sprite';
 	import { distinct } from './util/distinct';
@@ -13,8 +30,7 @@
 	export let disableVisibleButton = false;
 	export let enableEditing = true;
 
-	let mapStore: ReturnType<typeof createMapStore> = createMapStore();
-	setContext('map', mapStore);
+	const mapStore = setMapContext();
 
 	let style: StyleSpecification;
 	let spriteLoader: SpriteLoader | undefined;

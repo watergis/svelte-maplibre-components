@@ -17,8 +17,8 @@
 </script>
 
 <script lang="ts">
-	import { invisibleLayerMap } from '$lib/stores';
 	import type { LayerSpecification, Map, StyleSpecification } from 'maplibre-gl';
+	import { writable } from 'svelte/store';
 	import Layer from './Layer.svelte';
 	import SpriteLoader from './sprite';
 	import { distinct } from './util/distinct';
@@ -31,6 +31,7 @@
 	export let enableEditing = true;
 
 	const mapStore = setMapContext();
+	const invisibleLayerMap = writable<{ [key: string]: LayerSpecification }>({});
 
 	let style: StyleSpecification;
 	let spriteLoader: SpriteLoader | undefined;

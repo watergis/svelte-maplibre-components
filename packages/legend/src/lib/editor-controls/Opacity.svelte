@@ -1,13 +1,12 @@
 <script lang="ts">
+	import { getLayerIdContext } from '$lib/Layer.svelte';
 	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import Slider from '$lib/util/Slider.svelte';
 	import { debounce } from 'lodash-es';
 	import type { LayerSpecification } from 'maplibre-gl';
 
-	import { getContext } from 'svelte';
-
 	const map = getMapContext();
-	let layerId: string = getContext('layerId');
+	let layerId: string = getLayerIdContext();
 
 	const getOpacity = () => {
 		const style = $map?.getStyle().layers.find((l: LayerSpecification) => l.id === layerId);

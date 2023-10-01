@@ -1,3 +1,18 @@
+<script context="module" lang="ts">
+	import { getContext, setContext } from 'svelte';
+
+	const LAYERID_CONTEXT_KEY = 'maplibre-legend-layer-id';
+
+	export const getLayerIdContext = () => {
+		const layerId: string = getContext(LAYERID_CONTEXT_KEY);
+		return layerId;
+	};
+
+	export const setLayerIdContext = (layerId: string) => {
+		setContext(LAYERID_CONTEXT_KEY, layerId);
+	};
+</script>
+
 <script lang="ts">
 	import {
 		faEye,
@@ -8,7 +23,7 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import { isMobile } from 'detect-touch-device';
 	import type { LayerSpecification } from 'maplibre-gl';
-	import { createEventDispatcher, setContext } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 	import Fa from 'svelte-fa';
 	import Legend from './Legend.svelte';
 	import { getMapContext } from './LegendPanel.svelte';
@@ -27,7 +42,7 @@
 	export let selectedFormat: 'yaml' | 'json';
 
 	const mapStore = getMapContext();
-	setContext('layerId', layer.id);
+	setLayerIdContext(layer.id);
 
 	let visibility = $mapStore?.getLayer(layer.id).visibility;
 
@@ -137,7 +152,9 @@
 		{/if}
 	{/if}
 	<div class="legend">
-		<Legend {layer} {spriteLoader} />
+		{#if $mapStore}
+			<Legend {layer} {spriteLoader} />
+		{/if}
 	</div>
 	<div class="layer-name">
 		{layerTitle}
@@ -173,7 +190,9 @@
 			{/if}
 		</div>
 	{:else if enableEditing === true}
-		<StyleEditor bind:layer bind:spriteLoader bind:selectedFormat bind:relativeLayers />
+		{#if $mapStore}
+			<StyleEditor {layer} bind:spriteLoader bind:selectedFormat bind:relativeLayers />
+		{/if}
 	{/if}
 </div>
 

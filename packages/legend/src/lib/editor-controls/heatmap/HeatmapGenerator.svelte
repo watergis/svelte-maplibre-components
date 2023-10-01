@@ -1,14 +1,14 @@
 <script lang="ts">
+	import { getLayerIdContext } from '$lib/Layer.svelte';
 	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import type {
 		HeatmapLayerSpecification,
 		LineLayerSpecification,
 		SymbolLayerSpecification
 	} from 'maplibre-gl';
-	import { getContext } from 'svelte';
 
 	const map = getMapContext();
-	let layerId: string = getContext('layerId');
+	let layerId: string = getLayerIdContext();
 
 	let heatmapLayerId = `${layerId} heatmap`;
 	let isHeatmapCreated = $map.getLayer(heatmapLayerId) ? true : false;

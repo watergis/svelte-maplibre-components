@@ -1,12 +1,12 @@
 <script lang="ts">
+	import { getLayerIdContext } from '$lib/Layer.svelte';
 	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import ColorPicker from '$lib/util/ColorPicker.svelte';
 	import chroma from 'chroma-js';
 	import { debounce } from 'lodash-es';
-	import { getContext } from 'svelte';
 
 	const map = getMapContext();
-	let layerId: string = getContext('layerId');
+	let layerId: string = getLayerIdContext();
 
 	type InterpolateType = number | string[] | string;
 

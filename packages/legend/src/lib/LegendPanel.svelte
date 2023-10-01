@@ -4,7 +4,7 @@
 
 	const MAP_CONTEXT_KEY = 'maplibre-legend-map';
 
-	export const getMapContext = () => {
+	export const getMapContext = (): ReturnType<typeof createMapStore> => {
 		const mapStore: ReturnType<typeof createMapStore> = getContext(MAP_CONTEXT_KEY);
 		return mapStore;
 	};

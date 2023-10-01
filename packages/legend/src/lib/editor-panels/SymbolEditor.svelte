@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getLayerIdContext } from '$lib/Layer.svelte';
 	import { getMapContext } from '$lib/LegendPanel.svelte';
 	import ColorControl from '$lib/editor-controls/ColorControl.svelte';
 	import Opacity from '$lib/editor-controls/Opacity.svelte';
@@ -13,13 +14,12 @@
 	import TextSize from '$lib/editor-controls/symbol/TextSize.svelte';
 	import type SpriteLoader from '$lib/sprite';
 	import FieldControl from '$lib/util/FieldControl.svelte';
-	import type { SymbolLayerSpecification } from 'maplibre-gl';
-	import { getContext } from 'svelte';
+	import type { LayerSpecification, SymbolLayerSpecification } from 'maplibre-gl';
 
 	const map = getMapContext();
-	let layerId: string = getContext('layerId');
+	let layerId: string = getLayerIdContext();
 
-	let layer: SymbolLayerSpecification = $map.getStyle().layers.find((l) => {
+	let layer: SymbolLayerSpecification = $map.getStyle().layers.find((l: LayerSpecification) => {
 		l.id === layerId;
 	}) as SymbolLayerSpecification;
 	export let spriteLoader: SpriteLoader;

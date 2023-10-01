@@ -88,11 +88,14 @@
 		if (onlyRendered === true) {
 			Object.keys($invisibleLayerMap).forEach((layerId) => {
 				visibleLayerMap[layerId] = $invisibleLayerMap[layerId];
+				if ($mapStore.getLayer(layerId)) {
+					mapStore.setLayoutProperty(layerId, 'visibility', 'none');
+				}
 			});
 			const features = $mapStore.queryRenderedFeatures();
 			const ids = features.map((f) => f.layer.id).filter(distinct);
 			const zoom = $mapStore.getZoom();
-			all.forEach((layer) => {
+			all.forEach((layer: LayerSpecification) => {
 				const minzoom = layer.minzoom ?? 0;
 				const maxzoom = layer.maxzoom ?? 24;
 				if (ids.indexOf(layer.id) !== -1) {
@@ -104,7 +107,7 @@
 				}
 			});
 		} else {
-			all.forEach((layer) => {
+			all.forEach((layer: LayerSpecification) => {
 				visibleLayerMap[layer.id] = layer;
 			});
 		}

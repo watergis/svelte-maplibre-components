@@ -59,7 +59,7 @@
 <div class="tooltip" bind:this={tooltipContent}>
 	<div class="title">
 		<div class="legend">
-			<Legend {layer} {spriteLoader} />
+			<Legend {spriteLoader} />
 		</div>
 		<div class="layer-name">
 			{layerTitle}

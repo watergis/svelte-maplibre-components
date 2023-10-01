@@ -4,16 +4,16 @@
 	// @ts-ignore
 	import LegendSymbol from '@watergis/legend-symbol';
 	import chroma from 'chroma-js';
+	import { getLayerIdContext } from './Layer.svelte';
 	import { getMapContext } from './LegendPanel.svelte';
 	import type SpriteLoader from './sprite';
 	import { getColorFromExpression } from './util/getColorFromExpression';
 
 	const mapStore = getMapContext();
+	const layerId = getLayerIdContext();
 
-	export let layer: LayerSpecification;
 	export let spriteLoader: SpriteLoader;
 	let container: HTMLElement = document.createElement('div');
-	$: layer, update();
 
 	const createSvgIcon = (svgXmlString: string) => {
 		let blob = new Blob([svgXmlString], { type: 'image/svg+xml' });
@@ -26,7 +26,12 @@
 		return image;
 	};
 
-	const update = async () => {
+	const update = () => {
+		const layer: LayerSpecification = $mapStore
+			.getStyle()
+			.layers.find((l: LayerSpecification) => l.id === layerId);
+		if (!layer) return;
+
 		const zoom = $mapStore.getZoom();
 		const symbol = LegendSymbol({ zoom: zoom, layer: layer });
 		container.innerText = '';
@@ -151,6 +156,7 @@
 		}
 	};
 
+	$mapStore.on('styledata', update);
 	$mapStore.on('moveend', update);
 	$mapStore.on('zoom', update);
 </script>

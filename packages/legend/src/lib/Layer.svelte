@@ -153,7 +153,7 @@
 	{/if}
 	<div class="legend">
 		{#if $mapStore}
-			<Legend {layer} {spriteLoader} />
+			<Legend {spriteLoader} />
 		{/if}
 	</div>
 	<div class="layer-name">

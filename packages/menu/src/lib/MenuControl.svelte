@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { Split } from '@geoffcox/svelte-splitter';
 	import type { Map } from 'maplibre-gl';
 	import { createEventDispatcher, onDestroy, onMount } from 'svelte';
-	import { Split } from '@geoffcox/svelte-splitter';
 
 	const dispatch = createEventDispatcher();
 
@@ -15,10 +15,11 @@
 	export let sidebarOnLeft = true;
 	export let isHorizontal = false;
 	export let faIcon: string = 'fa-solid fa-bars';
-	export let faIconSize: '2xs'|'xs' | 'sm'  | 'lg' | 'xl' | '2xl' | '' = '';
-	export let controlName = 'menu'
+	export let faIconSize: '2xs' | 'xs' | 'sm' | 'lg' | 'xl' | '2xl' | '' = '';
+	export let controlName = 'menu';
+	export let showMenuButtonOnMap = true;
 
-	let menuButton: HTMLButtonElement;
+	let menuButton: HTMLDivElement;
 
 	let innerWidth = 0;
 	let innerHeight = 0;
@@ -41,15 +42,7 @@
 
 	MapMenuControl.prototype.onAdd = function (map: Map) {
 		this.map = map;
-
-		this.controlContainer = document.createElement('div');
-		this.controlContainer.className = 'maplibregl-ctrl maplibregl-ctrl-group';
-		menuButton.className = `maplibregl-ctrl-${controlName}`
-		menuButton.addEventListener('click', () => {
-			isMenuShown = !isMenuShown;
-		});
-		this.controlContainer.appendChild(menuButton);
-		return this.controlContainer;
+		return menuButton;
 	};
 
 	MapMenuControl.prototype.onRemove = function () {
@@ -57,7 +50,6 @@
 			return;
 		}
 		this.controlContainer.parentNode.removeChild(this.controlContainer);
-		this.map.off('click', this.onClick.bind(this));
 		this.map = undefined;
 	};
 
@@ -68,11 +60,11 @@
 	let mapMenuControl: MapMenuControl = null;
 
 	onMount(() => {
-		initControl()
+		initControl();
 	});
 
-	$:if (map && menuButton) {
-		initControl()
+	$: if (map && menuButton) {
+		initControl();
 	}
 
 	const initControl = () => {
@@ -84,7 +76,7 @@
 				map.addControl(mapMenuControl, position);
 			}
 		}
-	}
+	};
 
 	onDestroy(() => {
 		if (map) {
@@ -148,7 +140,7 @@
 	};
 
 	$: if (splitControl) {
-		opened()
+		opened();
 	}
 
 	const splitterChanged = (event) => {
@@ -180,14 +172,17 @@
 
 <svelte:window bind:innerWidth bind:innerHeight />
 
-{#if map}
-	<button bind:this={menuButton}>
-		{#if isMenuShown}
-		<i class="fa-solid fa-xmark"></i>
-		{:else}
-		<i class="fa-solid {faIcon} {faIconSize}"></i>
-		{/if}
-	</button>
+{#if showMenuButtonOnMap && map}
+	<div class="maplibregl-ctrl maplibregl-ctrl-group" bind:this={menuButton} hidden={isMenuShown}>
+		<button
+			class="maplibregl-ctrl-${controlName}"
+			on:click={() => {
+				isMenuShown = !isMenuShown;
+			}}
+		>
+			<i class="{faIcon} {faIconSize}"></i>
+		</button>
+	</div>
 {/if}
 
 <div class="split-container" style="height:{menuHeight}px;width:{menuWidth}px">
@@ -202,18 +197,15 @@
 	>
 		<div slot="primary" class="primary-content">
 			{#if sidebarOnLeft}
-				{#if isMobile}
-					<span
-						class="span close-icon"
-						role="button"
-						tabindex="0"
-						on:click={handleClose}
-						on:keydown={handleEnterKey}
-					>
-					<i class="fa-solid fa-circle-xmark fa-2xl" style="color: #1c1c1c"></i>
-						<!-- <Fa icon={faCircleXmark} size="2x" color="#1c1c1c" /> -->
-					</span>
-				{/if}
+				<span
+					class="span close-icon"
+					role="button"
+					tabindex="0"
+					on:click={handleClose}
+					on:keydown={handleEnterKey}
+				>
+					<i class="fa-solid fa-circle-xmark fa-xl" style="color: #1c1c1c"></i>
+				</span>
 				<slot name="sidebar" />
 			{:else}
 				<slot name="map" />
@@ -224,17 +216,15 @@
 			{#if sidebarOnLeft}
 				<slot name="map" />
 			{:else}
-				{#if isMobile}
-					<span
-						class="span close-icon"
-						role="button"
-						tabindex="0"
-						on:click={handleClose}
-						on:keydown={handleEnterKey}
-					>
-					<i class="fa-solid fa-circle-xmark fa-2xl" style="color: #1c1c1c"></i>
-					</span>
-				{/if}
+				<span
+					class="span close-icon"
+					role="button"
+					tabindex="0"
+					on:click={handleClose}
+					on:keydown={handleEnterKey}
+				>
+					<i class="fa-solid fa-circle-xmark fa-xl" style="color: #1c1c1c"></i>
+				</span>
 				<slot name="sidebar" />
 			{/if}
 		</div>
@@ -255,8 +245,8 @@
 
 		.close-icon {
 			position: absolute;
-			top: 0.5rem;
-			right: 0.6rem;
+			top: 0.5em;
+			right: 0.3em;
 			cursor: pointer;
 			z-index: 10;
 		}

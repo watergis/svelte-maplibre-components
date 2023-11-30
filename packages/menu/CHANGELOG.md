@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 2.1.2
+
+### Patch Changes
+
+- 3df9f92: feat: Now moved xmark button to inside sidebar container. In addition, added `showMenuButtonOnMap` variable in the component to enable to hide menu button from the map.
+
 ## 2.1.1
 
 ### Patch Changes

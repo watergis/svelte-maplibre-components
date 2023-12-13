@@ -71,7 +71,7 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-		"@sjmc11/tourguidejs": "^0.0.10",
+		"@sjmc11/tourguidejs": "^0.0.11",
 		"maplibre-gl": "^3.2.1"
 	}
 }

@@ -28,8 +28,8 @@ importers:
         specifier: ^0.7.7
         version: 0.7.7
       '@sveltejs/adapter-auto':
-        specifier: ^2.1.0
-        version: 2.1.0(@sveltejs/kit@1.22.3)
+        specifier: ^3.0.0
+        version: 3.1.0(@sveltejs/kit@1.22.3)
       '@sveltejs/kit':
         specifier: ^1.22.3
         version: 1.22.3(svelte@4.1.1)(vite@4.4.7)
@@ -92,8 +92,8 @@ importers:
         version: 3.2.1
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^2.1.0
-        version: 2.1.0(@sveltejs/kit@1.22.3)
+        specifier: ^3.0.0
+        version: 3.1.0(@sveltejs/kit@1.22.3)
       '@sveltejs/kit':
         specifier: ^1.22.3
         version: 1.22.3(svelte@4.1.1)(vite@4.4.7)
@@ -153,8 +153,8 @@ importers:
         version: 3.2.1
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^2.1.0
-        version: 2.1.0(@sveltejs/kit@1.22.3)
+        specifier: ^3.0.0
+        version: 3.1.0(@sveltejs/kit@1.22.3)
       '@sveltejs/kit':
         specifier: ^1.22.3
         version: 1.22.3(svelte@4.1.1)(vite@4.4.7)
@@ -214,8 +214,8 @@ importers:
         version: 3.0.4
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^2.1.0
-        version: 2.1.0(@sveltejs/kit@1.22.3)
+        specifier: ^3.0.0
+        version: 3.1.0(@sveltejs/kit@1.22.3)
       '@sveltejs/kit':
         specifier: ^1.22.3
         version: 1.22.3(svelte@4.1.1)(vite@4.4.7)
@@ -284,8 +284,8 @@ importers:
         version: 3.0.4
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^2.1.0
-        version: 2.1.0(@sveltejs/kit@1.22.3)
+        specifier: ^3.0.0
+        version: 3.1.0(@sveltejs/kit@1.22.3)
       '@sveltejs/kit':
         specifier: ^1.22.3
         version: 1.22.3(svelte@4.1.1)(vite@4.4.7)
@@ -399,8 +399,8 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1
       '@sveltejs/adapter-auto':
-        specifier: ^2.1.0
-        version: 2.1.0(@sveltejs/kit@1.22.3)
+        specifier: ^3.0.0
+        version: 3.1.0(@sveltejs/kit@1.22.3)
       '@sveltejs/kit':
         specifier: ^1.22.3
         version: 1.22.3(svelte@4.1.1)(vite@4.4.7)
@@ -496,8 +496,8 @@ importers:
         version: 3.0.4
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^2.1.0
-        version: 2.1.0(@sveltejs/kit@1.22.3)
+        specifier: ^3.0.0
+        version: 3.1.0(@sveltejs/kit@1.22.3)
       '@sveltejs/kit':
         specifier: ^1.22.3
         version: 1.22.3(svelte@4.1.1)(vite@4.4.7)
@@ -560,8 +560,8 @@ importers:
         version: 3.2.1
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^2.1.0
-        version: 2.1.0(@sveltejs/kit@1.22.3)
+        specifier: ^3.0.0
+        version: 3.1.0(@sveltejs/kit@1.22.3)
       '@sveltejs/kit':
         specifier: ^1.22.3
         version: 1.22.3(svelte@4.1.1)(vite@4.4.7)
@@ -618,8 +618,8 @@ importers:
         version: 2.5.2
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^2.1.0
-        version: 2.1.0(@sveltejs/kit@1.22.3)
+        specifier: ^3.0.0
+        version: 3.1.0(@sveltejs/kit@1.22.3)
       '@sveltejs/kit':
         specifier: ^1.22.3
         version: 1.22.3(svelte@4.1.1)(vite@4.4.7)
@@ -682,8 +682,8 @@ importers:
         version: 3.0.4
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^2.1.0
-        version: 2.1.0(@sveltejs/kit@1.22.3)
+        specifier: ^3.0.0
+        version: 3.1.0(@sveltejs/kit@1.22.3)
       '@sveltejs/kit':
         specifier: ^1.22.3
         version: 1.22.3(svelte@4.1.1)(vite@4.4.7)
@@ -749,8 +749,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       '@sveltejs/adapter-auto':
-        specifier: ^2.1.0
-        version: 2.1.0(@sveltejs/kit@1.22.3)
+        specifier: ^3.0.0
+        version: 3.1.0(@sveltejs/kit@1.22.3)
       '@sveltejs/kit':
         specifier: ^1.22.3
         version: 1.22.3(svelte@4.1.1)(vite@4.4.7)
@@ -889,8 +889,8 @@ importers:
         version: 3.0.4
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^2.1.0
-        version: 2.1.0(@sveltejs/kit@1.22.3)
+        specifier: ^3.0.0
+        version: 3.1.0(@sveltejs/kit@1.22.3)
       '@sveltejs/kit':
         specifier: ^1.22.3
         version: 1.22.3(svelte@4.1.1)(vite@4.4.7)
@@ -2136,13 +2136,13 @@ packages:
       sass: 1.69.7
     dev: false
 
-  /@sveltejs/adapter-auto@2.1.0(@sveltejs/kit@1.22.3):
-    resolution: {integrity: sha512-o2pZCfATFtA/Gw/BB0Xm7k4EYaekXxaPGER3xGSY3FvzFJGTlJlZjBseaXwYSM94lZ0HniOjTokN3cWaLX6fow==}
+  /@sveltejs/adapter-auto@3.1.0(@sveltejs/kit@1.22.3):
+    resolution: {integrity: sha512-igS5hqCwdiXWb8NoWzThKCVQQj9tKgUkbTtzfxBPgSLOyFjkiGNDX0SgCoY2QIUWBqOkfGTOqGlrW5Ynw9oUvw==}
     peerDependencies:
-      '@sveltejs/kit': ^1.0.0
+      '@sveltejs/kit': ^2.0.0
     dependencies:
       '@sveltejs/kit': 1.22.3(svelte@4.1.1)(vite@4.4.7)
-      import-meta-resolve: 3.0.0
+      import-meta-resolve: 4.0.0
     dev: true
 
   /@sveltejs/adapter-auto@3.1.0(@sveltejs/kit@2.0.6):
@@ -4238,10 +4238,6 @@ packages:
     dependencies:
       parent-module: 1.0.1
       resolve-from: 4.0.0
-    dev: true
-
-  /import-meta-resolve@3.0.0:
-    resolution: {integrity: sha512-4IwhLhNNA8yy445rPjD/lWh++7hMDOml2eHtd58eG7h+qK3EryMuuRbsHGPikCoAgIkkDnckKfWSk2iDla/ejg==}
     dev: true
 
   /import-meta-resolve@4.0.0:

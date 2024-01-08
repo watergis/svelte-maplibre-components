@@ -812,8 +812,8 @@ importers:
   packages/tour:
     dependencies:
       '@sjmc11/tourguidejs':
-        specifier: ^0.0.11
-        version: 0.0.11
+        specifier: ^0.0.12
+        version: 0.0.12
       maplibre-gl:
         specifier: ^3.2.1
         version: 3.2.1
@@ -940,8 +940,8 @@ importers:
   sites/svelte.water-gis.com:
     dependencies:
       '@sjmc11/tourguidejs':
-        specifier: ^0.0.11
-        version: 0.0.11
+        specifier: ^0.0.12
+        version: 0.0.12
       '@watergis/maplibre-center-icon':
         specifier: workspace:^
         version: link:../../packages/center
@@ -1737,8 +1737,8 @@ packages:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
     dev: false
 
-  /@sjmc11/tourguidejs@0.0.11:
-    resolution: {integrity: sha512-swebKbE6DOslhUCAe7EragVUIWE89NqoKZvXpvkRhqCZdtsC/HkgB2xoj92/spXwWTUbWmfulaCDpc6Pe/5FmQ==}
+  /@sjmc11/tourguidejs@0.0.12:
+    resolution: {integrity: sha512-uCET1cfH43sXB0ruF7gMbmIKqtB08KJ9GuS9SaR01p6WEFls/XyzP8jNC1AYMAH0W3P77exLHMPS9A4mAorZuA==}
     dependencies:
       '@floating-ui/dom': 1.5.1
       sass: 1.66.1

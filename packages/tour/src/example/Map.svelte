@@ -4,12 +4,16 @@
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import * as pmtiles from 'pmtiles';
 	import '@sjmc11/tourguidejs/dist/css/tour.min.css';
-	import '$lib/maplibre-tour-control.css'
+	import '$lib/maplibre-tour-control.css';
 
 	let protocol = new pmtiles.Protocol();
 	maplibregl.addProtocol('pmtiles', protocol.tile);
 
-	import { MaplibreTourControl, type TourGuideOptions, type MaplibreTourControlOptions } from '$lib';
+	import {
+		MaplibreTourControl,
+		type TourGuideOptions,
+		type MaplibreTourControlOptions
+	} from '$lib';
 
 	let tourOptions: TourGuideOptions = { rememberStep: true };
 
@@ -25,46 +29,46 @@
 		map.addControl(new NavigationControl());
 
 		const steps = [
-				{
-					title: 'Welcome to svelte maplibre tour!',
-					content: `This tutorial is going to take you around the main features of the application. <br> Let's begin!`,
-					target: document.body,
-					order: 1
-				},
-				{
-					title: 'Sidemenu button',
-					content: `Side menu can be opened or closed by clicking this button`,
-					target: '.maplibregl-ctrl-menu',
-					order: 2
-				},
-				{
-					title: 'Header 1',
-					content: `This is header 1.`,
-					target: '.one',
-					order: 3
-				},
-				{
-					title: 'Header 2',
-					content: `This is header 2.`,
-					target: '.two',
-					order: 4
-				},
-				{
-					title: 'Header 3',
-					content: `This is header 3.`,
-					target: '.three',
-					order: 5
-				}
-			];
-
-			tourOptions.steps = steps;
-
-			const controlOption: MaplibreTourControlOptions = {
-				localStorageKey: new Date().toDateString,
-				showTourAsDefault: true, 
+			{
+				title: 'Welcome to svelte maplibre tour!',
+				content: `This tutorial is going to take you around the main features of the application. <br> Let's begin!`,
+				target: document.body,
+				order: 1
+			},
+			{
+				title: 'Sidemenu button',
+				content: `Side menu can be opened or closed by clicking this button`,
+				target: '.maplibregl-ctrl-menu',
+				order: 2
+			},
+			{
+				title: 'Header 1',
+				content: `This is header 1.`,
+				target: '.one',
+				order: 3
+			},
+			{
+				title: 'Header 2',
+				content: `This is header 2.`,
+				target: '.two',
+				order: 4
+			},
+			{
+				title: 'Header 3',
+				content: `This is header 3.`,
+				target: '.three',
+				order: 5
 			}
+		];
 
-			map.addControl(new MaplibreTourControl(tourOptions, controlOption), 'top-right')
+		tourOptions.steps = steps;
+
+		const controlOption: MaplibreTourControlOptions = {
+			localStorageKey: new Date().toDateString,
+			showTourAsDefault: true
+		};
+
+		map.addControl(new MaplibreTourControl(tourOptions, controlOption), 'top-right');
 	});
 </script>
 

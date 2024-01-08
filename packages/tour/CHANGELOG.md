@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-tour
 
+## 1.0.3
+
+### Patch Changes
+
+- cd3865f: chore: migrated sveltekit to v2
+
 ## 1.0.2
 
 ### Patch Changes

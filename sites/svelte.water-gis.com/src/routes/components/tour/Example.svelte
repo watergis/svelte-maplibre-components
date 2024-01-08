@@ -1,12 +1,7 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import maplibregl, { Map, NavigationControl } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
-
-	import * as pmtiles from 'pmtiles';
-
-	let protocol = new pmtiles.Protocol();
-	maplibregl.addProtocol('pmtiles', protocol.tile);
+	import { Map, NavigationControl } from 'maplibre-gl';
+	import { onMount } from 'svelte';
 
 	let isMenuShown = true;
 
@@ -18,8 +13,8 @@
 	$: menuHeight = innerHeight * 0.8;
 	$: menuWidth = innerWidth * 0.95;
 
-	import { MaplibreTourControl, type TourGuideOptions } from '@watergis/maplibre-gl-tour';
 	import '@sjmc11/tourguidejs/dist/css/tour.min.css';
+	import { MaplibreTourControl, type TourGuideOptions } from '@watergis/maplibre-gl-tour';
 	import '@watergis/maplibre-gl-tour/dist/maplibre-tour-control.css';
 
 	let tourOptions: TourGuideOptions;
@@ -68,7 +63,7 @@
 
 		tourOptions = { steps, rememberStep: true };
 
-		map.addControl(new MaplibreTourControl(tourOptions), 'top-right');
+		map.addControl(new MaplibreTourControl(tourOptions, {}), 'top-right');
 	});
 </script>
 

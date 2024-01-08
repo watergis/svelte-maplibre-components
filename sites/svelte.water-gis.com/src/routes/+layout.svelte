@@ -1,5 +1,8 @@
 <script lang="ts">
 	import 'github-markdown-css/github-markdown-light.css';
+	import maplibregl from 'maplibre-gl';
+	import * as pmtiles from 'pmtiles';
+	import { onMount } from 'svelte';
 
 	let isMenuOpened = false;
 
@@ -21,6 +24,11 @@
 
 	let description =
 		'Documentation for svelte-maplibre-components packages powered by GIS for Water';
+
+	onMount(() => {
+		let protocol = new pmtiles.Protocol();
+		maplibregl.addProtocol('pmtiles', protocol.tile);
+	});
 </script>
 
 <svelte:head>

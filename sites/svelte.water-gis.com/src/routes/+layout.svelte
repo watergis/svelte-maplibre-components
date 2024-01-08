@@ -1,5 +1,8 @@
 <script lang="ts">
 	import 'github-markdown-css/github-markdown-light.css';
+	import maplibregl from 'maplibre-gl';
+	import * as pmtiles from 'pmtiles';
+	import { onMount } from 'svelte';
 
 	let isMenuOpened = false;
 
@@ -21,6 +24,11 @@
 
 	let description =
 		'Documentation for svelte-maplibre-components packages powered by GIS for Water';
+
+	onMount(() => {
+		let protocol = new pmtiles.Protocol();
+		maplibregl.addProtocol('pmtiles', protocol.tile);
+	});
 </script>
 
 <svelte:head>
@@ -100,7 +108,7 @@
 	@import 'bulma/bulma.sass';
 	@import 'prismjs/themes/prism-dark.min.css';
 	@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css';
-	
+
 	.main-content {
 		margin: 1rem;
 	}

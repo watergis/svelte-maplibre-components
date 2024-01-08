@@ -1,12 +1,7 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import maplibregl, { Map, NavigationControl } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
-	
-	import * as pmtiles from 'pmtiles';
-
-	let protocol = new pmtiles.Protocol();
-	maplibregl.addProtocol('pmtiles', protocol.tile);
+	import { Map, NavigationControl } from 'maplibre-gl';
+	import { onMount } from 'svelte';
 
 	let isMenuShown = true;
 
@@ -18,9 +13,9 @@
 	$: menuHeight = innerHeight * 0.8;
 	$: menuWidth = innerWidth * 0.95;
 
-	import { MaplibreTourControl, type TourGuideOptions } from '@watergis/maplibre-gl-tour';
 	import '@sjmc11/tourguidejs/dist/css/tour.min.css';
-	import '@watergis/maplibre-gl-tour/dist/maplibre-tour-control.css'
+	import { MaplibreTourControl, type TourGuideOptions } from '@watergis/maplibre-gl-tour';
+	import '@watergis/maplibre-gl-tour/dist/maplibre-tour-control.css';
 
 	let tourOptions: TourGuideOptions;
 
@@ -34,41 +29,41 @@
 		map.touchPitch.enable();
 
 		const steps = [
-				{
-					title: 'Welcome to svelte maplibre tour!',
-					content: `This tutorial is going to take you around the main features of the application. <br> Let's begin!`,
-					target: document.body,
-					order: 1
-				},
-				{
-					title: 'Sidemenu button',
-					content: `Side menu can be opened or closed by clicking this button`,
-					target: '.maplibregl-ctrl-menu',
-					order: 2
-				},
-				{
-					title: 'Header 1',
-					content: `This is header 1.`,
-					target: '.one',
-					order: 3
-				},
-				{
-					title: 'Header 2',
-					content: `This is header 2.`,
-					target: '.two',
-					order: 4
-				},
-				{
-					title: 'Header 3',
-					content: `This is header 3.`,
-					target: '.three',
-					order: 5
-				}
-			];
+			{
+				title: 'Welcome to svelte maplibre tour!',
+				content: `This tutorial is going to take you around the main features of the application. <br> Let's begin!`,
+				target: document.body,
+				order: 1
+			},
+			{
+				title: 'Sidemenu button',
+				content: `Side menu can be opened or closed by clicking this button`,
+				target: '.maplibregl-ctrl-menu',
+				order: 2
+			},
+			{
+				title: 'Header 1',
+				content: `This is header 1.`,
+				target: '.one',
+				order: 3
+			},
+			{
+				title: 'Header 2',
+				content: `This is header 2.`,
+				target: '.two',
+				order: 4
+			},
+			{
+				title: 'Header 3',
+				content: `This is header 3.`,
+				target: '.three',
+				order: 5
+			}
+		];
 
-			tourOptions = { steps, rememberStep: true };
+		tourOptions = { steps, rememberStep: true };
 
-			map.addControl(new MaplibreTourControl(tourOptions), 'top-right')
+		map.addControl(new MaplibreTourControl(tourOptions, {}), 'top-right');
 	});
 </script>
 

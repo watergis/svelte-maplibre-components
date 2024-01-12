@@ -58,7 +58,7 @@
 		"@fortawesome/free-solid-svg-icons": "^6.4.0",
 		"maplibre-gl": "^3.2.1",
 		"svelte-copy": "^1.4.1",
-		"svelte-fa": "^3.0.4"
+		"svelte-fa": "^4.0.0"
 	},
 	"peerDependencies": {
 		"svelte": "^4.0.0"

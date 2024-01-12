@@ -61,7 +61,7 @@
 		"@neodrag/svelte": "^2.0.3",
 		"jspdf": "^2.5.1",
 		"maplibre-gl": "^3.2.1",
-		"svelte-fa": "^3.0.4"
+		"svelte-fa": "^4.0.0"
 	},
 	"peerDependencies": {
 		"svelte": "^4.0.0"

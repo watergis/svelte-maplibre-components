@@ -73,6 +73,6 @@
 	"type": "module",
 	"dependencies": {
 		"@sjmc11/tourguidejs": "^0.0.12",
-		"maplibre-gl": "^3.6.2"
+		"maplibre-gl": "^4.0.0"
 	}
 }

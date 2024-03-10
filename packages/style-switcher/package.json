@@ -59,7 +59,7 @@
 	"type": "module",
 	"dependencies": {
 		"debounce": "^1.2.1",
-		"maplibre-gl": "^3.2.1"
+		"maplibre-gl": "^4.0.0"
 	},
 	"peerDependencies": {
 		"svelte": "^4.0.0"

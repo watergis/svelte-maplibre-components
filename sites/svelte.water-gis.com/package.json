@@ -16,8 +16,8 @@
 		"@sveltejs/adapter-auto": "^3.1.1",
 		"@sveltejs/kit": "^2.5.4",
 		"@sveltejs/vite-plugin-svelte": "^3.0.2",
-		"@typescript-eslint/eslint-plugin": "^6.21.0",
-		"@typescript-eslint/parser": "^6.21.0",
+		"@typescript-eslint/eslint-plugin": "^7.2.0",
+		"@typescript-eslint/parser": "^7.2.0",
 		"eslint": "^8.57.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.35.1",
@@ -37,7 +37,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@sjmc11/tourguidejs": "^0.0.12",
+		"@sjmc11/tourguidejs": "^0.0.16",
 		"@watergis/maplibre-center-icon": "workspace:^",
 		"@watergis/maplibre-gl-tour": "workspace:^",
 		"@watergis/svelte-collapsible-panel": "workspace:^",
@@ -54,8 +54,8 @@
 		"buffer": "^6.0.3",
 		"bulma": "^0.9.4",
 		"github-markdown-css": "^5.5.1",
-		"maplibre-gl": "^3.6.2",
-		"pmtiles": "^3.0.0",
+		"maplibre-gl": "^4.1.0",
+		"pmtiles": "^3.0.5",
 		"prismjs": "^1.29.0"
 	}
 }

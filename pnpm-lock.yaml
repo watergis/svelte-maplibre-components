@@ -91,24 +91,27 @@ importers:
         specifier: workspace:^
         version: link:../menu
       maplibre-gl:
-        specifier: ^3.6.2
-        version: 3.6.2
+        specifier: ^4.1.0
+        version: 4.1.0
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^2.1.1
-        version: 2.1.1(@sveltejs/kit@1.30.4)
+        specifier: ^3.1.1
+        version: 3.1.1(@sveltejs/kit@2.5.4)
       '@sveltejs/kit':
-        specifier: ^1.30.4
-        version: 1.30.4(svelte@4.2.12)(vite@4.5.2)
+        specifier: ^2.5.4
+        version: 2.5.4(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6)
       '@sveltejs/package':
         specifier: ^2.3.0
         version: 2.3.0(svelte@4.2.12)(typescript@5.4.2)
+      '@sveltejs/vite-plugin-svelte':
+        specifier: ^3.0.2
+        version: 3.0.2(svelte@4.2.12)(vite@5.1.6)
       '@typescript-eslint/eslint-plugin':
-        specifier: ^6.21.0
-        version: 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)(typescript@5.4.2)
+        specifier: ^7.2.0
+        version: 7.2.0(@typescript-eslint/parser@7.2.0)(eslint@8.57.0)(typescript@5.4.2)
       '@typescript-eslint/parser':
-        specifier: ^6.21.0
-        version: 6.21.0(eslint@8.57.0)(typescript@5.4.2)
+        specifier: ^7.2.0
+        version: 7.2.0(eslint@8.57.0)(typescript@5.4.2)
       bulma:
         specifier: ^0.9.4
         version: 0.9.4
@@ -121,6 +124,9 @@ importers:
       eslint-plugin-svelte:
         specifier: ^2.35.1
         version: 2.35.1(eslint@8.57.0)(svelte@4.2.12)
+      pmtiles:
+        specifier: ^3.0.5
+        version: 3.0.5
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
@@ -146,8 +152,8 @@ importers:
         specifier: ^5.4.2
         version: 5.4.2
       vite:
-        specifier: ^4.5.2
-        version: 4.5.2(sass@1.72.0)
+        specifier: ^5.1.6
+        version: 5.1.6(sass@1.72.0)
 
   packages/center:
     dependencies:
@@ -559,24 +565,27 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1
       maplibre-gl:
-        specifier: ^3.6.2
-        version: 3.6.2
+        specifier: ^4.1.0
+        version: 4.1.0
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^2.1.1
-        version: 2.1.1(@sveltejs/kit@1.30.4)
+        specifier: ^3.1.1
+        version: 3.1.1(@sveltejs/kit@2.5.4)
       '@sveltejs/kit':
-        specifier: ^1.30.4
-        version: 1.30.4(svelte@4.2.12)(vite@4.5.2)
+        specifier: ^2.5.4
+        version: 2.5.4(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6)
       '@sveltejs/package':
         specifier: ^2.3.0
         version: 2.3.0(svelte@4.2.12)(typescript@5.4.2)
+      '@sveltejs/vite-plugin-svelte':
+        specifier: ^3.0.2
+        version: 3.0.2(svelte@4.2.12)(vite@5.1.6)
       '@typescript-eslint/eslint-plugin':
-        specifier: ^6.21.0
-        version: 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)(typescript@5.4.2)
+        specifier: ^7.2.0
+        version: 7.2.0(@typescript-eslint/parser@7.2.0)(eslint@8.57.0)(typescript@5.4.2)
       '@typescript-eslint/parser':
-        specifier: ^6.21.0
-        version: 6.21.0(eslint@8.57.0)(typescript@5.4.2)
+        specifier: ^7.2.0
+        version: 7.2.0(eslint@8.57.0)(typescript@5.4.2)
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -586,6 +595,9 @@ importers:
       eslint-plugin-svelte:
         specifier: ^2.35.1
         version: 2.35.1(eslint@8.57.0)(svelte@4.2.12)
+      pmtiles:
+        specifier: ^3.0.5
+        version: 3.0.5
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
@@ -608,8 +620,8 @@ importers:
         specifier: ^5.4.2
         version: 5.4.2
       vite:
-        specifier: ^4.5.2
-        version: 4.5.2(sass@1.72.0)
+        specifier: ^5.1.6
+        version: 5.1.6(sass@1.72.0)
 
   packages/search:
     dependencies:
@@ -2294,7 +2306,6 @@ packages:
 
   /@types/geojson@7946.0.14:
     resolution: {integrity: sha512-WCfD5Ht3ZesJUsONdhvm84dmzWOiOzOAqOncN0++w0lBw1o8OuDNJF2McvvCef/yBqb/HYRahp1BYtODFQ8bRg==}
-    dev: false
 
   /@types/hast@3.0.4:
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
@@ -2308,6 +2319,12 @@ packages:
 
   /@types/json-schema@7.0.15:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+    dev: true
+
+  /@types/leaflet@1.9.8:
+    resolution: {integrity: sha512-EXdsL4EhoUtGm2GC2ZYtXn+Fzc6pluVgagvo2VC1RHWToLGlTRwVYoDpqS/7QXa01rmDyBjJk3Catpf60VMkwg==}
+    dependencies:
+      '@types/geojson': 7946.0.14
     dev: true
 
   /@types/lodash-es@4.17.12:
@@ -4945,6 +4962,13 @@ packages:
     resolution: {integrity: sha512-dU9SzzaqmCGpdEuTnIba6bDHT6j09ZJFIXxwGpvkiEnce3ZnBB1VKt6+EOmJGueriweaZLAMTUmKVElU2CBe0g==}
     dependencies:
       fflate: 0.8.2
+
+  /pmtiles@3.0.5:
+    resolution: {integrity: sha512-K6NxVvW/vXE3052VZKF2ppyjdyhLx41FidR5yV8L/+El+lcMJpXS0vHBSPFmjdag5zkYv2XGDdq+3VjB2K7l6w==}
+    dependencies:
+      '@types/leaflet': 1.9.8
+      fflate: 0.8.2
+    dev: true
 
   /possible-typed-array-names@1.0.0:
     resolution: {integrity: sha512-d7Uw+eZoloe0EHDIYoe+bQ5WXnGMOpmiZFTuMWCwpjzzkL2nTjcKiAk4hh8TjnGye2TwWOk3UXucZ+3rbmBa8Q==}

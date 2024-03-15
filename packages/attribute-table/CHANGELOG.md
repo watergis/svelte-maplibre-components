@@ -1,5 +1,16 @@
 # @watergis/svelte-maplibre-attribute-table
 
+## 2.0.0
+
+### Major Changes
+
+- 91a4fa0: feat: upgrade sveltekit to v2, upgrade maplibre to v4
+
+### Patch Changes
+
+- Updated dependencies [91a4fa0]
+  - @watergis/svelte-maplibre-menu@3.0.0
+
 ## 1.1.2
 
 ### Patch Changes

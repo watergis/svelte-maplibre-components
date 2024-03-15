@@ -1,5 +1,11 @@
 # @watergis/svelte-collapsible-panel
 
+## 2.0.0
+
+### Major Changes
+
+- 91a4fa0: feat: upgrade sveltekit to v2, upgrade maplibre to v4
+
 ## 1.0.1
 
 ### Patch Changes

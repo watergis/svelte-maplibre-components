@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { Map } from 'maplibre-gl';
-	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import { MeasurePanel, type MeasureOption } from '$lib';
+	import { MenuControl } from '@watergis/svelte-maplibre-menu';
+	import { Map } from 'maplibre-gl';
+	import { onMount } from 'svelte';
 
 	let isMenuShown = true;
 
@@ -20,12 +20,20 @@
 	};
 
 	onMount(async () => {
+		window.global = window;
+		const Buffer = await (await import('buffer')).Buffer;
+		window.Buffer = Buffer;
+
 		map = new Map({
 			container: mapContainer,
 			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
 		});
 	});
 </script>
+
+<sveltekit:head>
+	<title>Svelte maplibre measure example</title>
+</sveltekit:head>
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
 	<div slot="sidebar" class="primary-container">

@@ -516,27 +516,30 @@ importers:
         specifier: ^1.1.12
         version: 1.1.12
       maplibre-gl:
-        specifier: ^3.6.2
-        version: 3.6.2
+        specifier: ^4.1.0
+        version: 4.1.0
       svelte-fa:
-        specifier: ^3.0.4
-        version: 3.0.4
+        specifier: ^4.0.2
+        version: 4.0.2(svelte@4.2.12)
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^2.1.1
-        version: 2.1.1(@sveltejs/kit@1.30.4)
+        specifier: ^3.1.1
+        version: 3.1.1(@sveltejs/kit@2.5.4)
       '@sveltejs/kit':
-        specifier: ^1.30.4
-        version: 1.30.4(svelte@4.2.12)(vite@4.5.2)
+        specifier: ^2.5.4
+        version: 2.5.4(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6)
       '@sveltejs/package':
         specifier: ^2.3.0
         version: 2.3.0(svelte@4.2.12)(typescript@5.4.2)
+      '@sveltejs/vite-plugin-svelte':
+        specifier: ^3.0.2
+        version: 3.0.2(svelte@4.2.12)(vite@5.1.6)
       '@typescript-eslint/eslint-plugin':
-        specifier: ^6.21.0
-        version: 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)(typescript@5.4.2)
+        specifier: ^7.2.0
+        version: 7.2.0(@typescript-eslint/parser@7.2.0)(eslint@8.57.0)(typescript@5.4.2)
       '@typescript-eslint/parser':
-        specifier: ^6.21.0
-        version: 6.21.0(eslint@8.57.0)(typescript@5.4.2)
+        specifier: ^7.2.0
+        version: 7.2.0(eslint@8.57.0)(typescript@5.4.2)
       '@watergis/svelte-maplibre-menu':
         specifier: workspace:^
         version: link:../menu
@@ -552,6 +555,9 @@ importers:
       eslint-plugin-svelte:
         specifier: ^2.35.1
         version: 2.35.1(eslint@8.57.0)(svelte@4.2.12)
+      pmtiles:
+        specifier: ^3.0.5
+        version: 3.0.5
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
@@ -574,8 +580,8 @@ importers:
         specifier: ^5.4.2
         version: 5.4.2
       vite:
-        specifier: ^4.5.2
-        version: 4.5.2(sass@1.72.0)
+        specifier: ^5.1.6
+        version: 5.1.6(sass@1.72.0)
 
   packages/menu:
     dependencies:

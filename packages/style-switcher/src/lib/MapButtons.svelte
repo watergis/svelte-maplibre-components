@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 
+	import debounce from 'debounce';
 	import type { Map } from 'maplibre-gl';
-	import type { Position, StyleSwitcherOption } from './types';
 	import MiniMapButton from './MiniMapButton.svelte';
-	import { debounce } from 'debounce';
+	import type { Position, StyleSwitcherOption } from './types';
 
 	export let styles: StyleSwitcherOption[];
 	export let map: Map;

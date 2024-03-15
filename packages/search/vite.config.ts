@@ -8,7 +8,8 @@ const config: UserConfig = {
 		alias: {
 			$example: resolve('./src/example')
 		}
-	}
+	},
+	ssr: { noExternal: ['maplibre-gl'] }
 };
 
 export default config;

@@ -105,7 +105,13 @@
 			color: #fff;
 			cursor: pointer;
 			display: inline-flex;
-			font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica, Arial,
+			font-family:
+				system-ui,
+				-apple-system,
+				system-ui,
+				'Helvetica Neue',
+				Helvetica,
+				Arial,
 				sans-serif;
 			font-size: 16px;
 			font-weight: 600;
@@ -154,7 +160,13 @@
 			color: rgba(0, 0, 0, 0.85);
 			cursor: pointer;
 			display: inline-flex;
-			font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica, Arial,
+			font-family:
+				system-ui,
+				-apple-system,
+				system-ui,
+				'Helvetica Neue',
+				Helvetica,
+				Arial,
 				sans-serif;
 			font-size: 16px;
 			font-weight: 600;

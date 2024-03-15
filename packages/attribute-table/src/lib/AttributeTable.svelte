@@ -170,9 +170,12 @@
 			});
 		} else if (type === 'linestring') {
 			const coordinates = geometry.coordinates;
-			const bounds = coordinates.reduce(function (bounds, coord) {
-				return bounds.extend(coord);
-			}, new LngLatBounds(coordinates[0], coordinates[0]));
+			const bounds = coordinates.reduce(
+				function (bounds, coord) {
+					return bounds.extend(coord);
+				},
+				new LngLatBounds(coordinates[0], coordinates[0])
+			);
 
 			if (!isPan) {
 				map.fitBounds(bounds, {
@@ -190,9 +193,12 @@
 			}
 		} else if (type === 'polygon') {
 			const coordinates = geometry.coordinates[0];
-			const bounds = coordinates.reduce(function (bounds, coord) {
-				return bounds.extend(coord);
-			}, new LngLatBounds(coordinates[0], coordinates[0]));
+			const bounds = coordinates.reduce(
+				function (bounds, coord) {
+					return bounds.extend(coord);
+				},
+				new LngLatBounds(coordinates[0], coordinates[0])
+			);
 
 			if (!isPan) {
 				map.fitBounds(bounds, {
@@ -233,7 +239,7 @@
 			on:click={handleReload}
 			disabled={selectedSourceLayerId && !mapChanged}
 		>
-		<i class="fa-solid fa-rotate"></i>
+			<i class="fa-solid fa-rotate"></i>
 		</button>
 	</header>
 
@@ -273,7 +279,7 @@
 													zoomToFeature(feature);
 												}}
 											>
-											<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+												<i class="fa-solid fa-magnifying-glass fa-lg"></i>
 											</button>
 											<button
 												class="operation-button"
@@ -281,7 +287,7 @@
 													zoomToFeature(feature, true);
 												}}
 											>
-											<i class="fa-solid fa-up-down-left-right fa-lg"></i>
+												<i class="fa-solid fa-up-down-left-right fa-lg"></i>
 											</button>
 										</div>
 									</td>

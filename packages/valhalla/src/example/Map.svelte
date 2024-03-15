@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { Map } from 'maplibre-gl';
-	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import {
 		ValhallaIsochronePanel,
 		ValhallaRoutingPanel,
 		type ValhallaIsochroneOptions,
 		type ValhallaRoutingOptions
 	} from '$lib';
+	import { MenuControl } from '@watergis/svelte-maplibre-menu';
+	import { Map } from 'maplibre-gl';
+	import { onMount } from 'svelte';
 
 	let isMenuShown = true;
 
@@ -64,6 +64,10 @@
 	});
 </script>
 
+<sveltekit:head>
+	<title>Svelte maplibre valhalla example</title>
+</sveltekit:head>
+
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
 	<div slot="sidebar" class="primary-container">
 		<h3>Isochrone tool</h3>
@@ -84,7 +88,7 @@
 <style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 	@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css';
-	
+
 	.map {
 		position: absolute;
 		top: 0;

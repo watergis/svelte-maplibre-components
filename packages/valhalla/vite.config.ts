@@ -14,6 +14,9 @@ const config: UserConfig = {
 			// Allow serving files from one level up to the project root
 			allow: ['..']
 		}
+	},
+	ssr: {
+		noExternal: ['maplibre-gl']
 	}
 };
 

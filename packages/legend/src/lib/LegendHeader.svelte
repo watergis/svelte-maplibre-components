@@ -84,7 +84,13 @@
 			text-align: center;
 			font-weight: bold;
 			transition: all 0.2s ease;
-			font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica, Arial,
+			font-family:
+				system-ui,
+				-apple-system,
+				system-ui,
+				'Helvetica Neue',
+				Helvetica,
+				Arial,
 				sans-serif;
 			font-size: 15px;
 			font-weight: 600;

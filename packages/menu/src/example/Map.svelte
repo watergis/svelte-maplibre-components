@@ -1,12 +1,15 @@
 <script lang="ts">
 	import { MenuControl } from '$lib';
-	import { Map } from 'maplibre-gl';
+	import { addProtocol, Map } from 'maplibre-gl';
+	import { Protocol } from 'pmtiles';
 	import { onMount } from 'svelte';
 
 	let mapContainer: HTMLDivElement;
 	let map: Map;
 
 	onMount(async () => {
+		const protocol = new Protocol();
+		addProtocol('pmtiles', protocol.tile);
 		map = new Map({
 			container: mapContainer,
 			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'

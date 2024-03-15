@@ -55,7 +55,7 @@
 		"bulma": "^0.9.4",
 		"github-markdown-css": "^5.5.1",
 		"maplibre-gl": "^3.6.2",
-		"pmtiles": "^2.11.0",
+		"pmtiles": "^3.0.0",
 		"prismjs": "^1.29.0"
 	}
 }

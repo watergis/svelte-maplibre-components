@@ -882,8 +882,8 @@ importers:
         specifier: ^2.35.1
         version: 2.35.1(eslint@8.57.0)(svelte@4.2.12)
       pmtiles:
-        specifier: ^2.11.0
-        version: 2.11.0
+        specifier: ^3.0.0
+        version: 3.0.5
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
@@ -1030,8 +1030,8 @@ importers:
         specifier: ^3.6.2
         version: 3.6.2
       pmtiles:
-        specifier: ^2.11.0
-        version: 2.11.0
+        specifier: ^3.0.0
+        version: 3.0.5
       prismjs:
         specifier: ^1.29.0
         version: 1.29.0
@@ -2343,7 +2343,6 @@ packages:
     resolution: {integrity: sha512-EXdsL4EhoUtGm2GC2ZYtXn+Fzc6pluVgagvo2VC1RHWToLGlTRwVYoDpqS/7QXa01rmDyBjJk3Catpf60VMkwg==}
     dependencies:
       '@types/geojson': 7946.0.14
-    dev: true
 
   /@types/lodash-es@4.17.12:
     resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==}
@@ -4976,17 +4975,11 @@ packages:
       find-up: 4.1.0
     dev: true
 
-  /pmtiles@2.11.0:
-    resolution: {integrity: sha512-dU9SzzaqmCGpdEuTnIba6bDHT6j09ZJFIXxwGpvkiEnce3ZnBB1VKt6+EOmJGueriweaZLAMTUmKVElU2CBe0g==}
-    dependencies:
-      fflate: 0.8.2
-
   /pmtiles@3.0.5:
     resolution: {integrity: sha512-K6NxVvW/vXE3052VZKF2ppyjdyhLx41FidR5yV8L/+El+lcMJpXS0vHBSPFmjdag5zkYv2XGDdq+3VjB2K7l6w==}
     dependencies:
       '@types/leaflet': 1.9.8
       fflate: 0.8.2
-    dev: true
 
   /possible-typed-array-names@1.0.0:
     resolution: {integrity: sha512-d7Uw+eZoloe0EHDIYoe+bQ5WXnGMOpmiZFTuMWCwpjzzkL2nTjcKiAk4hh8TjnGye2TwWOk3UXucZ+3rbmBa8Q==}

@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-style-switcher
 
+## 3.0.1
+
+### Patch Changes
+
+- 48d56cc: fix: fixed index.ts to export StyleSwitcherOption
+
 ## 3.0.0
 
 ### Major Changes

@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-style-switcher
 
+## 3.0.2
+
+### Patch Changes
+
+- 601ce19: refactor: refactored style-switcher code
+
 ## 3.0.1
 
 ### Patch Changes

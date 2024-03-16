@@ -1,13 +1,12 @@
 <script lang="ts">
+	import type { ControlPosition, Map } from 'maplibre-gl';
 	import { onMount } from 'svelte';
-	import type { Map } from 'maplibre-gl';
-	import type { Position, StyleSwitcherOption } from './types';
 	import MapButtons from './MapButtons.svelte';
-	import { StyleUrl } from '$lib/style-url';
+	import { StyleUrl, type StyleSwitcherOption } from './StyleSwitcher.svelte';
 
 	export let styles: StyleSwitcherOption[];
 	export let map: Map;
-	export let position: Position = 'bottom-left';
+	export let position: ControlPosition = 'bottom-left';
 	export let selectedStyle: StyleSwitcherOption;
 
 	let styleSwitcherDiv: HTMLDivElement;

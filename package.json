@@ -25,7 +25,7 @@
     "lefthook": "^1.6.7",
     "turbo": "^1.12.5"
   },
-  "packageManager": "pnpm@8.15.4",
+  "packageManager": "pnpm@8.15.5",
   "engines": {
     "pnpm": "^8.0.0"
   },

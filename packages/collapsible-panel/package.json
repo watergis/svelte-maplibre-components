@@ -58,7 +58,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fortawesome/free-solid-svg-icons": "^6.5.1",
-		"bulma": "^0.9.4",
+		"bulma": "^1.0.0",
 		"svelte-fa": "^4.0.2"
 	},
 	"peerDependencies": {

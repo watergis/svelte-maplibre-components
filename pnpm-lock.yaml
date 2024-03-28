@@ -113,8 +113,8 @@ importers:
         specifier: ^7.2.0
         version: 7.3.1(eslint@8.57.0)(typescript@5.4.3)
       bulma:
-        specifier: ^0.9.4
-        version: 0.9.4
+        specifier: ^1.0.0
+        version: 1.0.0
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -222,8 +222,8 @@ importers:
         specifier: ^6.5.1
         version: 6.5.1
       bulma:
-        specifier: ^0.9.4
-        version: 0.9.4
+        specifier: ^1.0.0
+        version: 1.0.0
       svelte-fa:
         specifier: ^4.0.2
         version: 4.0.2(svelte@4.2.12)
@@ -326,8 +326,8 @@ importers:
         specifier: ^7.2.0
         version: 7.3.1(eslint@8.57.0)(typescript@5.4.3)
       bulma:
-        specifier: ^0.9.4
-        version: 0.9.4
+        specifier: ^1.0.0
+        version: 1.0.0
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -459,8 +459,8 @@ importers:
         specifier: workspace:^
         version: link:../style-switcher
       bulma:
-        specifier: ^0.9.4
-        version: 0.9.4
+        specifier: ^1.0.0
+        version: 1.0.0
       bulma-switch:
         specifier: ^2.0.4
         version: 2.0.4
@@ -745,8 +745,8 @@ importers:
         specifier: ^7.2.0
         version: 7.3.1(eslint@8.57.0)(typescript@5.4.3)
       bulma:
-        specifier: ^0.9.4
-        version: 0.9.4
+        specifier: ^1.0.0
+        version: 1.0.0
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -1051,8 +1051,8 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3
       bulma:
-        specifier: ^0.9.4
-        version: 0.9.4
+        specifier: ^1.0.0
+        version: 1.0.0
       github-markdown-css:
         specifier: ^5.5.1
         version: 5.5.1
@@ -2536,8 +2536,10 @@ packages:
     resolution: {integrity: sha512-kMu4H0Pr0VjvfsnT6viRDCgptUq0Rvy7y7PX6q+IHg1xUynsjszPjhAdal5ysAlCG5HNO+5YXxeiu92qYGQolw==}
     dev: true
 
-  /bulma@0.9.4:
-    resolution: {integrity: sha512-86FlT5+1GrsgKbPLRRY7cGDg8fsJiP/jzTqXXVqiUZZ2aZT8uemEOHlU1CDU+TxklPEZ11HZNNWclRBBecP4CQ==}
+  /bulma@1.0.0:
+    resolution: {integrity: sha512-7n49v/gdHXaHcU9fVobqGXO2OguiCoMh6CLbeX7jq00XrZ5vOSE4LNS0S/0Q6rlBbckY6kk6W7LwqxS0nu4bug==}
+    dependencies:
+      sass: 1.72.0
 
   /bytewise-core@1.2.3:
     resolution: {integrity: sha512-nZD//kc78OOxeYtRlVk8/zXqTB4gf/nlguL1ggWA8FuchMyOxcyHR4QPQZMUmA7czC+YnaBrPUCubqAWe50DaA==}

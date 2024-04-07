@@ -112,9 +112,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^7.2.0
         version: 7.3.1(eslint@8.57.0)(typescript@5.4.3)
-      bulma:
-        specifier: ^1.0.0
-        version: 1.0.0
       eslint:
         specifier: ^8.57.0
         version: 8.57.0

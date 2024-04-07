@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Fa from 'svelte-fa';
 	import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+	import Fa from 'svelte-fa';
 
 	export let title: string;
 
@@ -46,7 +46,7 @@
 </nav>
 
 <style lang="scss">
-	@import 'bulma/bulma.sass';
+	@import 'bulma/css/bulma.css';
 
 	.header-menu {
 		cursor: pointer;

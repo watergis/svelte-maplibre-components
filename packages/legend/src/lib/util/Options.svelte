@@ -4,7 +4,7 @@
 	export let selectedValue: string | string[] | number | number[];
 </script>
 
-<p class="buttons">
+<p class="field has-addons">
 	{#key selectedValue}
 		{#each options as option}
 			<p class="control">
@@ -26,5 +26,5 @@
 </p>
 
 <style lang="scss">
-	@import 'bulma/bulma.sass';
+	@import 'bulma/css/bulma.css';
 </style>

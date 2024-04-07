@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { copy } from 'svelte-copy';
+	import { faCopy, faXmark } from '@fortawesome/free-solid-svg-icons';
 	import type { Map } from 'maplibre-gl';
 	import { onMount } from 'svelte';
+	import { copy } from 'svelte-copy';
 	import Fa from 'svelte-fa';
-	import { faCopy, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 	export let map: Map;
 	export let isShareModalShown: boolean;
@@ -81,11 +81,7 @@
 					on:click={handleCopy}
 					readonly
 				/>
-				<button
-					class="button is-success is-small pm-0 ml-1"
-					use:copy={urlText}
-					on:click={handleCopy}
-				>
+				<button class="button is-success is-small pm-0" use:copy={urlText} on:click={handleCopy}>
 					<span class="icon">
 						<Fa icon={faCopy} />
 					</span>
@@ -94,7 +90,7 @@
 			</div>
 		</section>
 		<footer class="modal-card-foot">
-			<button class="button is-small pm-0" on:click={handleClose}>
+			<button class="button" on:click={handleClose}>
 				<span class="icon">
 					<Fa icon={faXmark} />
 				</span>
@@ -105,7 +101,7 @@
 </div>
 
 <style lang="scss">
-	@import 'bulma/bulma.sass';
+	@import 'bulma/css/bulma.css';
 	.copy-control {
 		display: flex;
 	}

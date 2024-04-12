@@ -710,18 +710,12 @@ importers:
 
   packages/share:
     dependencies:
-      '@fortawesome/free-solid-svg-icons':
-        specifier: ^6.5.1
-        version: 6.5.1
+      '@undp-data/svelte-copy-to-clipboard':
+        specifier: ^1.0.0
+        version: 1.0.0(svelte@4.2.12)
       maplibre-gl:
         specifier: ^4.1.0
         version: 4.1.1
-      svelte-copy:
-        specifier: ^1.4.1
-        version: 1.4.1(svelte@4.2.12)
-      svelte-fa:
-        specifier: ^4.0.2
-        version: 4.0.2(svelte@4.2.12)
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^3.1.1
@@ -2283,6 +2277,15 @@ packages:
       '@typescript-eslint/types': 7.3.1
       eslint-visitor-keys: 3.4.3
     dev: true
+
+  /@undp-data/svelte-copy-to-clipboard@1.0.0(svelte@4.2.12):
+    resolution: {integrity: sha512-6zQMe2OTktihft0RgcFsc8cauIXvS3hmgsvAmjDq18Wk8Pfm3f6bGfviDrp9/HsHpMWk7QigweY+jpmX+nPkYA==}
+    peerDependencies:
+      svelte: ^4.0.0
+    dependencies:
+      svelte: 4.2.12
+      svelte-copy: 1.4.1(svelte@4.2.12)
+    dev: false
 
   /@ungap/structured-clone@1.2.0:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}

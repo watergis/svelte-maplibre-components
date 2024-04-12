@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { Map, NavigationControl } from 'maplibre-gl';
 	import { ShareURLControl } from '@watergis/svelte-maplibre-share';
+	import { Map, NavigationControl } from 'maplibre-gl';
+	import { onMount } from 'svelte';
 
 	let mapContainer: HTMLDivElement;
 	let map: Map;
@@ -34,11 +34,8 @@
 	$height: calc(60vh);
 
 	.container {
-		text-align: center;
-
 		.map {
 			display: inline-block;
-			text-align: left;
 			width: 95%;
 			height: $height;
 			z-index: 1;

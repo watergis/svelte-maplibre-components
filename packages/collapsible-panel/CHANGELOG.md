@@ -1,5 +1,11 @@
 # @watergis/svelte-collapsible-panel
 
+## 3.0.0
+
+### Major Changes
+
+- dc7eb67: feat: upgrade bulma to v1
+
 ## 2.0.0
 
 ### Major Changes

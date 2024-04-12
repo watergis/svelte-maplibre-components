@@ -171,20 +171,17 @@
 
 {#if isExportContainerShown}
 	<nav class="export-container" use:draggable={dragOptions}>
-		<div class="heading-control py-2">
-			<span class="has-text-weight-bold">Export tool</span>
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<span
-				class="icon close-icon"
-				role="button"
-				tabindex="0"
-				on:click={() => {
-					isExportContainerShown = !isExportContainerShown;
-				}}
-			>
-				<Fa icon={faXmark} />
-			</span>
-		</div>
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<span
+			class="icon close-icon"
+			role="button"
+			tabindex="0"
+			on:click={() => {
+				isExportContainerShown = !isExportContainerShown;
+			}}
+		>
+			<Fa icon={faXmark} />
+		</span>
 		<div class="field">
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label class="label is-small">Paper Size</label>
@@ -294,15 +291,11 @@
 		z-index: 10;
 		cursor: grab;
 		width: 260px;
-	}
-
-	.heading-control {
-		position: relative;
 
 		.close-icon {
 			position: absolute;
-			top: 10px;
-			right: 10px;
+			top: 5px;
+			right: 5px;
 			cursor: pointer;
 		}
 	}

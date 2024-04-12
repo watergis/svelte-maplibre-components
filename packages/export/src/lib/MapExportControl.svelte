@@ -7,10 +7,8 @@
 		faDownload,
 		faFile,
 		faFilePdf,
-		faGear,
 		faLeftRight,
 		faUpDown,
-		faUpDownLeftRight,
 		faXmark
 	} from '@fortawesome/free-solid-svg-icons';
 	import type { DragOptions } from '@neodrag/svelte';
@@ -35,7 +33,6 @@
 	export let dpi = DPI[96];
 	export let format = Format.PNG;
 	export let orientation = PageOrientation.Landscape;
-	export let isShownSetting = true;
 
 	$: paperSize, updatePrintableArea();
 	$: orientation, updatePrintableArea();
@@ -173,12 +170,9 @@
 />
 
 {#if isExportContainerShown}
-	<nav class="panel is-success export-container" use:draggable={dragOptions}>
-		<div class="panel-heading heading-control py-2">
-			<span class="icon drag-icon">
-				<Fa icon={faUpDownLeftRight} />
-			</span>
-			Export tool
+	<nav class="export-container" use:draggable={dragOptions}>
+		<div class="heading-control py-2">
+			<span class="has-text-weight-bold">Export tool</span>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<span
 				class="icon close-icon"
@@ -191,99 +185,86 @@
 				<Fa icon={faXmark} />
 			</span>
 		</div>
-		{#if isShownSetting}
-			<div class="field">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label class="label is-small">Paper Size</label>
-				<div class="control has-icons-left">
-					<div class="select is-small is-fullwidth">
-						<select bind:value={paperSize}>
-							{#each Object.keys(Size) as key}
-								<option value={Size[key]}>{key}</option>
-							{/each}
-						</select>
-					</div>
-					<span class="icon is-small is-left">
-						<Fa icon={faFile} />
-					</span>
+		<div class="field">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label class="label is-small">Paper Size</label>
+			<div class="control has-icons-left">
+				<div class="select is-small is-fullwidth">
+					<select bind:value={paperSize}>
+						{#each Object.keys(Size) as key}
+							<option value={Size[key]}>{key}</option>
+						{/each}
+					</select>
 				</div>
+				<span class="icon is-small is-left">
+					<Fa icon={faFile} />
+				</span>
 			</div>
-			<div class="field">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label class="label is-small">Page Orientation</label>
-				<div class="control">
-					{#each Object.keys(PageOrientation) as key}
-						<label class="radio" style="color:black">
-							<input
-								type="radio"
-								name="orientation"
-								on:click={() => {
-									orientation = PageOrientation[key];
-								}}
-								checked={orientation === PageOrientation[key]}
-							/>
-							<span class="icon">
-								<Fa
-									icon={PageOrientation[key] === PageOrientation.Landscape ? faLeftRight : faUpDown}
-									size="sm"
-								/>
-							</span>
-							{key}
-						</label>
-					{/each}
-				</div>
-			</div>
-			<div class="field">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label class="label is-small">Format</label>
-				<div class="control has-icons-left">
-					<div class="select is-small is-fullwidth">
-						<select bind:value={format}>
-							{#each Object.keys(Format) as key}
-								<option value={Format[key]}>{key}</option>
-							{/each}
-						</select>
-					</div>
-					<span class="icon is-small is-left">
-						<Fa icon={faFilePdf} />
-					</span>
-				</div>
-			</div>
-			<div class="field">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label class="label is-small">DPI</label>
-				<div class="control has-icons-left">
-					<div class="select is-small is-fullwidth">
-						<select bind:value={dpi}>
-							{#each Object.keys(DPI) as key}
-								<option value={DPI[key]}>{key}</option>
-							{/each}
-						</select>
-					</div>
-					<span class="icon is-small is-left">
-						<Fa icon={faBraille} />
-					</span>
-				</div>
-			</div>
-		{/if}
-
-		<div class="field has-addons">
-			<p class="control">
-				<button class="button is-success" on:click={exportMap}>
-					<span class="icon">
-						<Fa icon={faDownload} />
-					</span>
-					<span>Export</span>
-				</button>
-			</p>
-			<p class="control">
-				<button class="button is-light" on:click={() => (isShownSetting = !isShownSetting)}>
-					<span class="icon">
-						<Fa icon={faGear} />
-					</span>
-				</button>
-			</p>
 		</div>
+		<div class="field">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label class="label is-small">Page Orientation</label>
+			<div class="control">
+				{#each Object.keys(PageOrientation) as key}
+					<label class="radio" style="color:black">
+						<input
+							type="radio"
+							name="orientation"
+							on:click={() => {
+								orientation = PageOrientation[key];
+							}}
+							checked={orientation === PageOrientation[key]}
+						/>
+						<span class="icon">
+							<Fa
+								icon={PageOrientation[key] === PageOrientation.Landscape ? faLeftRight : faUpDown}
+								size="sm"
+							/>
+						</span>
+						{key}
+					</label>
+				{/each}
+			</div>
+		</div>
+		<div class="field">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label class="label is-small">Format</label>
+			<div class="control has-icons-left">
+				<div class="select is-small is-fullwidth">
+					<select bind:value={format}>
+						{#each Object.keys(Format) as key}
+							<option value={Format[key]}>{key}</option>
+						{/each}
+					</select>
+				</div>
+				<span class="icon is-small is-left">
+					<Fa icon={faFilePdf} />
+				</span>
+			</div>
+		</div>
+		<div class="field">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label class="label is-small">DPI</label>
+			<div class="control has-icons-left">
+				<div class="select is-small is-fullwidth">
+					<select bind:value={dpi}>
+						{#each Object.keys(DPI) as key}
+							<option value={DPI[key]}>{key}</option>
+						{/each}
+					</select>
+				</div>
+				<span class="icon is-small is-left">
+					<Fa icon={faBraille} />
+				</span>
+			</div>
+		</div>
+
+		<button class="button is-success is-fullwidth" on:click={exportMap}>
+			<span class="icon">
+				<Fa icon={faDownload} />
+			</span>
+			<span>Export</span>
+		</button>
 	</nav>
 {/if}
 

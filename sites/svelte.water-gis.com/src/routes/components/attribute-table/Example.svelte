@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { Map, NavigationControl } from 'maplibre-gl';
 	import AttributeTableControl from '@watergis/svelte-maplibre-attribute-table';
+	import { Map, NavigationControl } from 'maplibre-gl';
+	import { onMount } from 'svelte';
 
 	let mapContainer: HTMLDivElement;
 	let map: Map;
@@ -23,13 +23,13 @@
 
 <svelte:window bind:innerWidth={width} bind:innerHeight={height} />
 
-<div class="container" style="width: {width * 0.95}px">
+<div class="container" style="width: {width * 0.9}px">
 	<AttributeTableControl
 		bind:map
 		position="top-right"
 		rowsPerPage={50}
 		minZoom={14}
-		width={width * 0.95}
+		width={width * 0.9}
 		height={height * 0.6}
 	>
 		<div class="map" bind:this={mapContainer} />
@@ -44,7 +44,6 @@
 
 	.container {
 		margin: auto;
-		width: 95%;
 
 		.map {
 			display: inline-block;

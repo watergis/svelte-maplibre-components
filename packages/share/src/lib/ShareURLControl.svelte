@@ -1,16 +1,14 @@
 <script lang="ts">
-	import type { Map } from 'maplibre-gl';
+	import type { ControlPosition, Map } from 'maplibre-gl';
 	import { onMount } from 'svelte';
 	import ShareUrlModal from './ShareURLModal.svelte';
-	import Fa from 'svelte-fa';
-	import { faShareNodes } from '@fortawesome/free-solid-svg-icons';
 
 	export let map: Map;
 
 	let shareButton: HTMLButtonElement;
 	let isShareModalShown = false;
 
-	export let position: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' = 'top-right';
+	export let position: ControlPosition = 'top-right';
 
 	export let customiseUrl = (url: string): string => {
 		return url;
@@ -55,7 +53,7 @@
 		}
 	}
 
-	onMount(async () => {
+	onMount(() => {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		shareUrlControl = new ShareUrlControl();
@@ -63,7 +61,9 @@
 </script>
 
 <button bind:this={shareButton}>
-	<Fa icon={faShareNodes} />
+	<span class="icon is-small">
+		<i class="fas fa-share-nodes" />
+	</span>
 </button>
 
 <ShareUrlModal bind:map bind:isShareModalShown bind:customiseUrl />

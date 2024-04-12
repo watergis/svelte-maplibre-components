@@ -105,7 +105,7 @@
 </footer>
 
 <style lang="scss">
-	@import 'bulma/bulma.sass';
+	@import 'bulma/css/bulma.css';
 	@import 'prismjs/themes/prism-dark.min.css';
 	@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css';
 

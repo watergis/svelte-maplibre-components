@@ -1,23 +1,21 @@
 <script lang="ts">
-	import type { Map } from 'maplibre-gl';
-	import { onMount } from 'svelte';
-	import { draggable } from '@neodrag/svelte';
-	import type { DragOptions } from '@neodrag/svelte';
-	import Fa from 'svelte-fa';
+	import CrosshairManager from '$lib/utils/crosshair-manager';
+	import MapGenerator, { DPI, Format, PageOrientation, Size, Unit } from '$lib/utils/map-generator';
+	import PrintableAreaManager from '$lib/utils/printable-area-manager';
 	import {
-		faUpDownLeftRight,
-		faXmark,
-		faFile,
-		faLeftRight,
-		faUpDown,
-		faFilePdf,
 		faBraille,
 		faDownload,
-		faGear
+		faFile,
+		faFilePdf,
+		faLeftRight,
+		faUpDown,
+		faXmark
 	} from '@fortawesome/free-solid-svg-icons';
-	import MapGenerator, { PageOrientation, Size, DPI, Format, Unit } from '$lib/utils/map-generator';
-	import PrintableAreaManager from '$lib/utils/printable-area-manager';
-	import CrosshairManager from '$lib/utils/crosshair-manager';
+	import type { DragOptions } from '@neodrag/svelte';
+	import { draggable } from '@neodrag/svelte';
+	import type { Map } from 'maplibre-gl';
+	import { onMount } from 'svelte';
+	import Fa from 'svelte-fa';
 
 	export let map: Map;
 
@@ -35,7 +33,6 @@
 	export let dpi = DPI[96];
 	export let format = Format.PNG;
 	export let orientation = PageOrientation.Landscape;
-	export let isShownSetting = true;
 
 	$: paperSize, updatePrintableArea();
 	$: orientation, updatePrintableArea();
@@ -167,140 +164,122 @@
 	};
 </script>
 
-<button class="maplibregl-ctrl-export maplibre-ctrl-export-icon" bind:this={printButton} />
+<button
+	class="maplibregl-ctrl-export maplibre-ctrl-export-icon {isExportContainerShown ? 'active' : ''}"
+	bind:this={printButton}
+/>
 
 {#if isExportContainerShown}
-	<nav class="panel is-success export-container" use:draggable={dragOptions}>
-		<div class="panel-heading heading-control">
-			<span class="icon drag-icon">
-				<Fa icon={faUpDownLeftRight} />
-			</span>
-			Export tool
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<span
-				class="icon close-icon"
-				role="button"
-				tabindex="0"
-				on:click={() => {
-					isExportContainerShown = !isExportContainerShown;
-				}}
-			>
-				<Fa icon={faXmark} />
-			</span>
-		</div>
-		{#if isShownSetting}
-			<div class="field">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label class="label is-small">Paper Size</label>
-				<div class="control has-icons-left">
-					<div class="select is-small is-fullwidth">
-						<select bind:value={paperSize}>
-							{#each Object.keys(Size) as key}
-								<option value={Size[key]}>{key}</option>
-							{/each}
-						</select>
-					</div>
-					<span class="icon is-small is-left">
-						<Fa icon={faFile} />
-					</span>
+	<nav class="export-container" use:draggable={dragOptions}>
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<span
+			class="icon close-icon"
+			role="button"
+			tabindex="0"
+			on:click={() => {
+				isExportContainerShown = !isExportContainerShown;
+			}}
+		>
+			<Fa icon={faXmark} />
+		</span>
+		<div class="field">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label class="label is-small">Paper Size</label>
+			<div class="control has-icons-left">
+				<div class="select is-small is-fullwidth">
+					<select bind:value={paperSize}>
+						{#each Object.keys(Size) as key}
+							<option value={Size[key]}>{key}</option>
+						{/each}
+					</select>
 				</div>
+				<span class="icon is-small is-left">
+					<Fa icon={faFile} />
+				</span>
 			</div>
-			<div class="field">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label class="label is-small">Page Orientation</label>
-				<div class="control">
-					{#each Object.keys(PageOrientation) as key}
-						<label class="radio" style="color:black">
-							<input
-								type="radio"
-								name="orientation"
-								on:click={() => {
-									orientation = PageOrientation[key];
-								}}
-								checked={orientation === PageOrientation[key]}
+		</div>
+		<div class="field">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label class="label is-small">Page Orientation</label>
+			<div class="control">
+				{#each Object.keys(PageOrientation) as key}
+					<label class="radio" style="color:black">
+						<input
+							type="radio"
+							name="orientation"
+							on:click={() => {
+								orientation = PageOrientation[key];
+							}}
+							checked={orientation === PageOrientation[key]}
+						/>
+						<span class="icon">
+							<Fa
+								icon={PageOrientation[key] === PageOrientation.Landscape ? faLeftRight : faUpDown}
+								size="sm"
 							/>
-							<span class="icon">
-								<Fa
-									icon={PageOrientation[key] === PageOrientation.Landscape ? faLeftRight : faUpDown}
-									size="sm"
-								/>
-							</span>
-							{key}
-						</label>
-					{/each}
-				</div>
-			</div>
-			<div class="field">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label class="label is-small">Format</label>
-				<div class="control has-icons-left">
-					<div class="select is-small is-fullwidth">
-						<select bind:value={format}>
-							{#each Object.keys(Format) as key}
-								<option value={Format[key]}>{key}</option>
-							{/each}
-						</select>
-					</div>
-					<span class="icon is-small is-left">
-						<Fa icon={faFilePdf} />
-					</span>
-				</div>
-			</div>
-			<div class="field">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label class="label is-small">DPI</label>
-				<div class="control has-icons-left">
-					<div class="select is-small is-fullwidth">
-						<select bind:value={dpi}>
-							{#each Object.keys(DPI) as key}
-								<option value={DPI[key]}>{key}</option>
-							{/each}
-						</select>
-					</div>
-					<span class="icon is-small is-left">
-						<Fa icon={faBraille} />
-					</span>
-				</div>
-			</div>
-		{/if}
-		<div class="columns m-1 is-mobile">
-			<div class="column is-10 p-0 m-0">
-				<button class="button is-fullwidth is-small is-success p-0 m-0" on:click={exportMap}>
-					<span class="icon">
-						<Fa icon={faDownload} size="sm" />
-					</span>
-					<span>Export</span>
-				</button>
-			</div>
-			<div class="column is-2 p-0 m-0">
-				<button
-					class="button is-fullwidth is-small is-light p-0 m-0"
-					on:click={() => (isShownSetting = !isShownSetting)}
-				>
-					<span class="icon">
-						<Fa icon={faGear} size="sm" />
-					</span>
-				</button>
+						</span>
+						{key}
+					</label>
+				{/each}
 			</div>
 		</div>
+		<div class="field">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label class="label is-small">Format</label>
+			<div class="control has-icons-left">
+				<div class="select is-small is-fullwidth">
+					<select bind:value={format}>
+						{#each Object.keys(Format) as key}
+							<option value={Format[key]}>{key}</option>
+						{/each}
+					</select>
+				</div>
+				<span class="icon is-small is-left">
+					<Fa icon={faFilePdf} />
+				</span>
+			</div>
+		</div>
+		<div class="field">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label class="label is-small">DPI</label>
+			<div class="control has-icons-left">
+				<div class="select is-small is-fullwidth">
+					<select bind:value={dpi}>
+						{#each Object.keys(DPI) as key}
+							<option value={DPI[key]}>{key}</option>
+						{/each}
+					</select>
+				</div>
+				<span class="icon is-small is-left">
+					<Fa icon={faBraille} />
+				</span>
+			</div>
+		</div>
+
+		<button class="button is-success is-fullwidth" on:click={exportMap}>
+			<span class="icon">
+				<Fa icon={faDownload} />
+			</span>
+			<span>Export</span>
+		</button>
 	</nav>
 {/if}
 
 <style lang="scss">
-	@import 'bulma/bulma.sass';
+	@import 'bulma/css/bulma.css';
 
 	.maplibre-ctrl-export-icon {
 		background: url('data:image/svg+xml;charset=UTF-8,<svg id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><g><path d="m422.5 99v-24c0-41.355-33.645-75-75-75h-184c-41.355 0-75 33.645-75 75v24z"/><path d="m118.5 319v122 26 15c0 16.568 13.431 30 30 30h214c16.569 0 30-13.432 30-30v-15-26-122zm177 128h-80c-8.284 0-15-6.716-15-15s6.716-15 15-15h80c8.284 0 15 6.716 15 15s-6.716 15-15 15zm0-64h-80c-8.284 0-15-6.716-15-15s6.716-15 15-15h80c8.284 0 15 6.716 15 15s-6.716 15-15 15z"/><path d="m436.5 129h-361c-41.355 0-75 33.645-75 75v120c0 41.355 33.645 75 75 75h13v-80h-9c-8.284 0-15-6.716-15-15s6.716-15 15-15h24 304 24c8.284 0 15 6.716 15 15s-6.716 15-15 15h-9v80h14c41.355 0 75-33.645 75-75v-120c0-41.355-33.645-75-75-75zm-309 94h-48c-8.284 0-15-6.716-15-15s6.716-15 15-15h48c8.284 0 15 6.716 15 15s-6.716 15-15 15z"/></g></svg>');
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: 70%;
-	}
 
-	.maplibre-ctrl-export-icon-active {
-		background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg>');
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: 40%;
+		&.active {
+			background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg>');
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 40%;
+		}
 	}
 
 	.export-container {
@@ -312,15 +291,11 @@
 		z-index: 10;
 		cursor: grab;
 		width: 260px;
-	}
-
-	.heading-control {
-		position: relative;
 
 		.close-icon {
 			position: absolute;
-			top: 15px;
-			right: 10px;
+			top: 5px;
+			right: 5px;
 			cursor: pointer;
 		}
 	}

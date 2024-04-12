@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { copy } from 'svelte-copy';
+	import { CopyToClipboard } from '@undp-data/svelte-copy-to-clipboard';
 	import type { Map } from 'maplibre-gl';
 	import { onMount } from 'svelte';
-	import Fa from 'svelte-fa';
-	import { faCopy, faXmark } from '@fortawesome/free-solid-svg-icons';
+	import { fade } from 'svelte/transition';
 
 	export let map: Map;
 	export let isShareModalShown: boolean;
@@ -11,18 +10,9 @@
 	let url: URL;
 	let urlText = '';
 
-	let textCopyButton = 'Copy';
-
 	onMount(() => {
 		url = new URL(window.location.href);
 	});
-
-	const handleCopy = () => {
-		textCopyButton = 'copied';
-		setTimeout(() => {
-			textCopyButton = 'Copy';
-		}, 2000);
-	};
 
 	$: if (isShareModalShown === true) {
 		setPageUrl();
@@ -56,57 +46,45 @@
 	};
 </script>
 
-<div class="modal {`${isShareModalShown ? 'is-active' : ''}`}">
-	<div
-		class="modal-background"
-		role="button"
-		tabindex="-1"
-		on:click={handleClose}
-		on:keydown={handleEnterKey}
-	/>
+<div class="modal {isShareModalShown ? 'is-active' : ''}" transition:fade|global>
+	<div class="modal-background" role="none" on:click={handleClose} on:keydown={handleEnterKey} />
+
 	<div class="modal-card">
-		<header class="modal-card-head">
-			<p class="modal-card-title">URL to share</p>
-			<button class="delete" aria-label="close" on:click={handleClose} />
-		</header>
 		<section class="modal-card-body">
-			<div class="copy-control">
-				<input
-					class="input is-success is-small pm-0"
-					type="text"
-					placeholder="URL to share"
-					style="cursor:pointer;"
-					bind:value={urlText}
-					use:copy={urlText}
-					on:click={handleCopy}
-					readonly
-				/>
-				<button
-					class="button is-success is-small pm-0 ml-1"
-					use:copy={urlText}
-					on:click={handleCopy}
-				>
-					<span class="icon">
-						<Fa icon={faCopy} />
-					</span>
-					<span>{textCopyButton}</span>
-				</button>
-			</div>
+			<button class="delete is-large" aria-label="close" title="Close" on:click={handleClose} />
+			<p class="title is-5">URL to share</p>
+
+			<CopyToClipboard
+				bind:value={urlText}
+				placeholder="Copy to clipboard"
+				textCopy="Copy"
+				textCopied="Copied"
+				width="100%"
+				timeout={5000}
+				isMultiline={false}
+			/>
 		</section>
-		<footer class="modal-card-foot">
-			<button class="button is-small pm-0" on:click={handleClose}>
-				<span class="icon">
-					<Fa icon={faXmark} />
-				</span>
-				<span>Cancel</span>
-			</button>
-		</footer>
 	</div>
 </div>
 
 <style lang="scss">
-	@import 'bulma/bulma.sass';
-	.copy-control {
-		display: flex;
+	@import 'bulma/css/bulma.css';
+
+	.modal {
+		z-index: 99;
+
+		.modal-background {
+			cursor: pointer;
+		}
+
+		.modal-card {
+			.modal-card-body {
+				.delete {
+					position: absolute;
+					top: 1rem;
+					right: 1rem;
+				}
+			}
+		}
 	}
 </style>

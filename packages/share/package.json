@@ -40,7 +40,7 @@
 		"@sveltejs/vite-plugin-svelte": "^3.0.2",
 		"@typescript-eslint/eslint-plugin": "^7.2.0",
 		"@typescript-eslint/parser": "^7.2.0",
-		"bulma": "^0.9.4",
+		"bulma": "^1.0.0",
 		"eslint": "^8.57.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.35.1",
@@ -57,10 +57,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@fortawesome/free-solid-svg-icons": "^6.5.1",
-		"maplibre-gl": "^4.1.0",
-		"svelte-copy": "^1.4.1",
-		"svelte-fa": "^4.0.2"
+		"@undp-data/svelte-copy-to-clipboard": "^1.0.0",
+		"maplibre-gl": "^4.1.0"
 	},
 	"peerDependencies": {
 		"svelte": "^4.0.0"

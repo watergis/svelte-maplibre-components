@@ -1,18 +1,18 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
-	import type { Map } from 'maplibre-gl';
-	import Fa from 'svelte-fa';
-	import {
-		faFile,
-		faLeftRight,
-		faUpDown,
-		faFilePdf,
-		faBraille,
-		faDownload
-	} from '@fortawesome/free-solid-svg-icons';
-	import MapGenerator, { PageOrientation, Size, DPI, Format, Unit } from '$lib/utils/map-generator';
-	import PrintableAreaManager from '$lib/utils/printable-area-manager';
 	import CrosshairManager from '$lib/utils/crosshair-manager';
+	import MapGenerator, { DPI, Format, PageOrientation, Size, Unit } from '$lib/utils/map-generator';
+	import PrintableAreaManager from '$lib/utils/printable-area-manager';
+	import {
+		faBraille,
+		faDownload,
+		faFile,
+		faFilePdf,
+		faLeftRight,
+		faUpDown
+	} from '@fortawesome/free-solid-svg-icons';
+	import type { Map } from 'maplibre-gl';
+	import { onDestroy, onMount } from 'svelte';
+	import Fa from 'svelte-fa';
 
 	export let map: Map;
 	export let showPrintableArea = true;
@@ -184,20 +184,16 @@
 		</div>
 	</div>
 
-	<div class="columns m-1 is-mobile">
-		<div class="column is-12 p-0 m-0">
-			<button class="button is-fullwidth is-small is-success p-0 m-0" on:click={exportMap}>
-				<span class="icon">
-					<Fa icon={faDownload} size="sm" />
-				</span>
-				<span>Export</span>
-			</button>
-		</div>
-	</div>
+	<button class="button is-fullwidth is-success" on:click={exportMap}>
+		<span class="icon is-small">
+			<Fa icon={faDownload} size="sm" />
+		</span>
+		<span>Export</span>
+	</button>
 </div>
 
 <style lang="scss">
-	@import 'bulma/bulma.sass';
+	@import 'bulma/css/bulma.css';
 
 	.export-container {
 		background-color: white;

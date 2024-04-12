@@ -20,7 +20,7 @@
 </script>
 
 <div class="field">
-	<div class="label is-normal">
+	<div class="label">
 		{title}
 		{#if help}
 			<Help bind:type={help.type} bind:layerType={help.layerType} bind:property={help.property} />
@@ -32,7 +32,7 @@
 </div>
 
 <style lang="scss">
-	@import 'bulma/bulma.sass';
+	@import 'bulma/css/bulma.css';
 
 	.label {
 		display: flex;

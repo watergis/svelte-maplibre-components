@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-legend
 
+## 4.0.0
+
+### Major Changes
+
+- dc7eb67: feat: upgrade bulma to v1
+
 ## 3.0.0
 
 ### Major Changes

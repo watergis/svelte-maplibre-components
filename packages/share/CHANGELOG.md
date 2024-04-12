@@ -1,5 +1,15 @@
 # @watergis/svelte-maplibre-share
 
+## 4.0.0
+
+### Major Changes
+
+- dc7eb67: feat: upgrade bulma to v1
+
+### Patch Changes
+
+- dc7eb67: fix: Use @undp-data/svelte-copy-to-clipboard and fontawesome CDN instead
+
 ## 3.0.0
 
 ### Major Changes

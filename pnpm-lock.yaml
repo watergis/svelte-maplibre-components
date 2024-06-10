@@ -711,8 +711,8 @@ importers:
   packages/share:
     dependencies:
       '@undp-data/svelte-copy-to-clipboard':
-        specifier: ^1.0.0
-        version: 1.0.0(svelte@4.2.18)
+        specifier: ^2.0.0
+        version: 2.0.0(svelte@4.2.18)
       maplibre-gl:
         specifier: ^4.1.0
         version: 4.3.2
@@ -2305,8 +2305,8 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: true
 
-  /@undp-data/svelte-copy-to-clipboard@1.0.0(svelte@4.2.18):
-    resolution: {integrity: sha512-6zQMe2OTktihft0RgcFsc8cauIXvS3hmgsvAmjDq18Wk8Pfm3f6bGfviDrp9/HsHpMWk7QigweY+jpmX+nPkYA==}
+  /@undp-data/svelte-copy-to-clipboard@2.0.0(svelte@4.2.18):
+    resolution: {integrity: sha512-XDlc/bsw3v7u92jceSTK7v+1wN/YHZ12eJiImXx6VwfRt0z4VB2jXgiOk2rv7iyCnSRiK8MYrCq2rirCyki/vw==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:

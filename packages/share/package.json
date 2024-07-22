@@ -57,7 +57,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@undp-data/svelte-copy-to-clipboard": "^1.0.0",
+		"@undp-data/svelte-copy-to-clipboard": "^2.0.0",
 		"maplibre-gl": "^4.1.0"
 	},
 	"peerDependencies": {

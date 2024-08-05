@@ -51,7 +51,7 @@
 		"@watergis/svelte-maplibre-style-switcher": "workspace:^",
 		"bulma": "^1.0.0",
 		"bulma-switch": "^2.0.4",
-		"eslint": "^8.57.0",
+		"eslint": "^9.0.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.35.1",
 		"pmtiles": "^3.0.5",

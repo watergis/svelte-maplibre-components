@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "This repository to manage packages of svelte maplibre components for water application.",
   "scripts": {
-    "lint": "turbo run lint",
-    "format": "turbo run format",
-    "build": "turbo run build",
-    "precommit": "turbo run precommit",
+    "lint": "pnpm -r lint",
+    "format": "pnpm -r format",
+    "build": "pnpm -r build",
     "release": "changeset publish"
   },
   "repository": {
@@ -21,13 +20,12 @@
   },
   "homepage": "https://github.com/watergis/svelte-maplibre-components#readme",
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
-    "lefthook": "^1.6.7",
-    "turbo": "^1.12.5"
+    "@changesets/cli": "^2.27.7",
+    "lefthook": "^1.7.14"
   },
-  "packageManager": "pnpm@8.15.9",
+  "packageManager": "pnpm@9.8.0",
   "engines": {
-    "pnpm": "^8.0.0"
+    "pnpm": "^9.0.0"
   },
   "type": "module"
 }

@@ -40,7 +40,6 @@
 	let isExportContainerShown = false;
 	let dragOptions: DragOptions = {};
 
-	// eslint-disable-next-line
 	function MapExportControl() {}
 
 	MapExportControl.prototype.onAdd = function (map: Map) {

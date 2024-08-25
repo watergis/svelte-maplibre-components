@@ -10,10 +10,6 @@ on:
   pull_request:
 
 env:
-  # To use Turborepo Remote Caching, set the following environment variables for the job.
-  # https://turbo.build/repo/docs/ci/github-actions
-  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
   CI: true
   PNPM_CACHE_FOLDER: .pnpm-store
 

@@ -5,8 +5,10 @@
 pre-commit:
   parallel: true
   commands:
-    lint+format:
-      run: pnpm precommit
+    lint:
+      run: |
+        pnpm lint
+        pnpm format
 
 pre-push:
   parallel: true

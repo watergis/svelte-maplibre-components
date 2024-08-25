@@ -14,7 +14,6 @@
 		return url;
 	};
 
-	// eslint-disable-next-line
 	function ShareUrlControl() {}
 
 	ShareUrlControl.prototype.onAdd = function (map: Map) {

@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-legend
 
+## 4.0.1
+
+### Patch Changes
+
+- f15cf03: chore: updated all dependencies
+
 ## 4.0.0
 
 ### Major Changes

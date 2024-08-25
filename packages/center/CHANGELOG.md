@@ -1,5 +1,11 @@
 # @watergis/maplibre-center-icon
 
+## 3.0.1
+
+### Patch Changes
+
+- f15cf03: chore: updated all dependencies
+
 ## 3.0.0
 
 ### Major Changes

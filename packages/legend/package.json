@@ -34,7 +34,6 @@
 	},
 	"homepage": "https://github.com/watergis/svelte-maplibre-components/tree/main/packages/legend#readme",
 	"devDependencies": {
-		"@arkweid/lefthook": "^0.7.7",
 		"@creativebulma/bulma-tooltip": "^1.2.0",
 		"@geoffcox/svelte-splitter": "^1.0.1",
 		"@sveltejs/adapter-auto": "^3.2.4",

@@ -401,14 +401,14 @@ importers:
   packages/legend:
     dependencies:
       '@fortawesome/free-solid-svg-icons':
-        specifier: ^6.5.1
+        specifier: ^6.6.0
         version: 6.6.0
       '@watergis/legend-symbol':
         specifier: ^0.2.3
         version: 0.2.3
       chroma-js:
-        specifier: ^2.4.2
-        version: 2.6.0
+        specifier: ^3.0.0
+        version: 3.0.0
       detect-touch-device:
         specifier: ^1.1.6
         version: 1.1.6
@@ -419,17 +419,17 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       maplibre-gl:
-        specifier: ^4.1.0
-        version: 4.5.2
+        specifier: ^4.6.0
+        version: 4.6.0
       svelte-awesome-color-picker:
-        specifier: ^2.4.8
-        version: 2.4.8
+        specifier: ^3.1.4
+        version: 3.1.4(svelte@4.2.19)
       svelte-fa:
         specifier: ^4.0.2
-        version: 4.0.2(svelte@4.2.18)
+        version: 4.0.2(svelte@4.2.19)
       svelte-popperjs:
         specifier: ^1.3.2
-        version: 1.3.2(@popperjs/core@2.11.8)(svelte@4.2.18)
+        version: 1.3.2(@popperjs/core@2.11.8)(svelte@4.2.19)
       svelte-range-slider-pips:
         specifier: ^2.3.1
         version: 2.3.1
@@ -453,17 +453,17 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1
       '@sveltejs/adapter-auto':
-        specifier: ^3.1.1
-        version: 3.2.3(@sveltejs/kit@2.5.21(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))
+        specifier: ^3.2.4
+        version: 3.2.4(@sveltejs/kit@2.5.24(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))
       '@sveltejs/kit':
-        specifier: ^2.5.4
-        version: 2.5.21(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))(svelte@4.2.18)(vite@5.4.0(sass@1.77.8))
+        specifier: ^2.5.24
+        version: 2.5.24(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))(svelte@4.2.19)(vite@5.4.2(sass@1.77.8))
       '@sveltejs/package':
-        specifier: ^2.3.0
-        version: 2.3.3(svelte@4.2.18)(typescript@5.5.4)
+        specifier: ^2.3.4
+        version: 2.3.4(svelte@4.2.19)(typescript@5.5.4)
       '@sveltejs/vite-plugin-svelte':
-        specifier: ^3.0.2
-        version: 3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8))
+        specifier: ^3.1.2
+        version: 3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8))
       '@types/chroma-js':
         specifier: ^2.4.4
         version: 2.4.4
@@ -477,11 +477,11 @@ importers:
         specifier: ^2.0.4
         version: 2.0.4
       '@typescript-eslint/eslint-plugin':
-        specifier: ^7.2.0
-        version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
+        specifier: ^8.2.0
+        version: 8.2.0(@typescript-eslint/parser@8.2.0(eslint@9.9.1)(typescript@5.5.4))(eslint@9.9.1)(typescript@5.5.4)
       '@typescript-eslint/parser':
-        specifier: ^7.2.0
-        version: 7.18.0(eslint@8.57.0)(typescript@5.5.4)
+        specifier: ^8.2.0
+        version: 8.2.0(eslint@9.9.1)(typescript@5.5.4)
       '@watergis/svelte-maplibre-menu':
         specifier: workspace:^
         version: link:../menu
@@ -489,87 +489,93 @@ importers:
         specifier: workspace:^
         version: link:../style-switcher
       bulma:
-        specifier: ^1.0.0
+        specifier: ^1.0.2
         version: 1.0.2
       bulma-switch:
         specifier: ^2.0.4
         version: 2.0.4
       eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
+        specifier: ^9.9.1
+        version: 9.9.1
       eslint-config-prettier:
         specifier: ^9.1.0
-        version: 9.1.0(eslint@8.57.0)
+        version: 9.1.0(eslint@9.9.1)
       eslint-plugin-svelte:
-        specifier: ^2.35.1
-        version: 2.43.0(eslint@8.57.0)(svelte@4.2.18)
+        specifier: ^2.43.0
+        version: 2.43.0(eslint@9.9.1)(svelte@4.2.19)
+      globals:
+        specifier: ^15.9.0
+        version: 15.9.0
       pmtiles:
-        specifier: ^3.0.5
+        specifier: ^3.0.7
         version: 3.0.7
       prettier:
-        specifier: ^3.2.5
+        specifier: ^3.3.3
         version: 3.3.3
       prettier-plugin-svelte:
-        specifier: ^3.2.2
-        version: 3.2.6(prettier@3.3.3)(svelte@4.2.18)
+        specifier: ^3.2.6
+        version: 3.2.6(prettier@3.3.3)(svelte@4.2.19)
       sass:
-        specifier: ^1.72.0
+        specifier: ^1.77.8
         version: 1.77.8
       svelte:
-        specifier: ^4.2.12
-        version: 4.2.18
+        specifier: ^4.2.19
+        version: 4.2.19
       svelte-check:
-        specifier: ^3.6.7
-        version: 3.8.5(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.18)
+        specifier: ^3.8.6
+        version: 3.8.6(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.19)
       svelte-preprocess:
-        specifier: ^5.1.3
-        version: 5.1.4(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.18)(typescript@5.5.4)
+        specifier: ^6.0.2
+        version: 6.0.2(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.19)(typescript@5.5.4)
       tslib:
-        specifier: ^2.6.2
-        version: 2.6.3
+        specifier: ^2.7.0
+        version: 2.7.0
       typescript:
-        specifier: ^5.4.2
+        specifier: ^5.5.4
         version: 5.5.4
+      typescript-eslint:
+        specifier: ^8.2.0
+        version: 8.2.0(eslint@9.9.1)(typescript@5.5.4)
       vite:
-        specifier: ^5.1.6
-        version: 5.4.0(sass@1.77.8)
+        specifier: ^5.4.2
+        version: 5.4.2(sass@1.77.8)
 
   packages/measure:
     dependencies:
       '@fortawesome/free-solid-svg-icons':
-        specifier: ^6.5.1
+        specifier: ^6.6.0
         version: 6.6.0
       '@turf/distance':
-        specifier: ^6.5.0
-        version: 6.5.0
+        specifier: ^7.1.0
+        version: 7.1.0
       '@watergis/terrain-rgb':
-        specifier: ^1.1.12
+        specifier: ^1.2.0
         version: 1.2.0
       maplibre-gl:
-        specifier: ^4.1.0
-        version: 4.5.2
+        specifier: ^4.6.0
+        version: 4.6.0
       svelte-fa:
         specifier: ^4.0.2
-        version: 4.0.2(svelte@4.2.18)
+        version: 4.0.2(svelte@4.2.19)
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^3.1.1
-        version: 3.2.3(@sveltejs/kit@2.5.21(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))
+        specifier: ^3.2.4
+        version: 3.2.4(@sveltejs/kit@2.5.24(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))
       '@sveltejs/kit':
-        specifier: ^2.5.4
-        version: 2.5.21(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))(svelte@4.2.18)(vite@5.4.0(sass@1.77.8))
+        specifier: ^2.5.24
+        version: 2.5.24(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))(svelte@4.2.19)(vite@5.4.2(sass@1.77.8))
       '@sveltejs/package':
-        specifier: ^2.3.0
-        version: 2.3.3(svelte@4.2.18)(typescript@5.5.4)
+        specifier: ^2.3.4
+        version: 2.3.4(svelte@4.2.19)(typescript@5.5.4)
       '@sveltejs/vite-plugin-svelte':
-        specifier: ^3.0.2
-        version: 3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8))
+        specifier: ^3.1.2
+        version: 3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8))
       '@typescript-eslint/eslint-plugin':
-        specifier: ^7.2.0
-        version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
+        specifier: ^8.2.0
+        version: 8.2.0(@typescript-eslint/parser@8.2.0(eslint@9.9.1)(typescript@5.5.4))(eslint@9.9.1)(typescript@5.5.4)
       '@typescript-eslint/parser':
-        specifier: ^7.2.0
-        version: 7.18.0(eslint@8.57.0)(typescript@5.5.4)
+        specifier: ^8.2.0
+        version: 8.2.0(eslint@9.9.1)(typescript@5.5.4)
       '@watergis/svelte-maplibre-menu':
         specifier: workspace:^
         version: link:../menu
@@ -577,105 +583,117 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3
       eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
+        specifier: ^9.9.1
+        version: 9.9.1
       eslint-config-prettier:
         specifier: ^9.1.0
-        version: 9.1.0(eslint@8.57.0)
+        version: 9.1.0(eslint@9.9.1)
       eslint-plugin-svelte:
-        specifier: ^2.35.1
-        version: 2.43.0(eslint@8.57.0)(svelte@4.2.18)
+        specifier: ^2.43.0
+        version: 2.43.0(eslint@9.9.1)(svelte@4.2.19)
+      globals:
+        specifier: ^15.9.0
+        version: 15.9.0
       pmtiles:
-        specifier: ^3.0.5
+        specifier: ^3.0.7
         version: 3.0.7
       prettier:
-        specifier: ^3.2.5
+        specifier: ^3.3.3
         version: 3.3.3
       prettier-plugin-svelte:
-        specifier: ^3.2.2
-        version: 3.2.6(prettier@3.3.3)(svelte@4.2.18)
+        specifier: ^3.2.6
+        version: 3.2.6(prettier@3.3.3)(svelte@4.2.19)
       svelte:
-        specifier: ^4.2.12
-        version: 4.2.18
+        specifier: ^4.2.19
+        version: 4.2.19
       svelte-check:
-        specifier: ^3.6.7
-        version: 3.8.5(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.18)
+        specifier: ^3.8.6
+        version: 3.8.6(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.19)
       svelte-preprocess:
-        specifier: ^5.1.3
-        version: 5.1.4(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.18)(typescript@5.5.4)
+        specifier: ^6.0.2
+        version: 6.0.2(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.19)(typescript@5.5.4)
       tslib:
-        specifier: ^2.6.2
-        version: 2.6.3
+        specifier: ^2.7.0
+        version: 2.7.0
       typescript:
-        specifier: ^5.4.2
+        specifier: ^5.5.4
         version: 5.5.4
+      typescript-eslint:
+        specifier: ^8.2.0
+        version: 8.2.0(eslint@9.9.1)(typescript@5.5.4)
       vite:
-        specifier: ^5.1.6
-        version: 5.4.0(sass@1.77.8)
+        specifier: ^5.4.2
+        version: 5.4.2(sass@1.77.8)
 
   packages/menu:
     dependencies:
-      '@geoffcox/svelte-splitter':
-        specifier: ^1.0.1
-        version: 1.0.1
+      '@watergis/svelte-splitter':
+        specifier: ^2.0.0
+        version: 2.0.0(svelte@4.2.19)
       maplibre-gl:
-        specifier: ^4.1.0
-        version: 4.5.2
+        specifier: ^4.6.0
+        version: 4.6.0
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^3.1.1
-        version: 3.2.3(@sveltejs/kit@2.5.21(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))
+        specifier: ^3.2.4
+        version: 3.2.4(@sveltejs/kit@2.5.24(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))
       '@sveltejs/kit':
-        specifier: ^2.5.4
-        version: 2.5.21(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))(svelte@4.2.18)(vite@5.4.0(sass@1.77.8))
+        specifier: ^2.5.24
+        version: 2.5.24(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))(svelte@4.2.19)(vite@5.4.2(sass@1.77.8))
       '@sveltejs/package':
-        specifier: ^2.3.0
-        version: 2.3.3(svelte@4.2.18)(typescript@5.5.4)
+        specifier: ^2.3.4
+        version: 2.3.4(svelte@4.2.19)(typescript@5.5.4)
       '@sveltejs/vite-plugin-svelte':
-        specifier: ^3.0.2
-        version: 3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8))
+        specifier: ^3.1.2
+        version: 3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8))
       '@typescript-eslint/eslint-plugin':
-        specifier: ^7.2.0
-        version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
+        specifier: ^8.2.0
+        version: 8.2.0(@typescript-eslint/parser@8.2.0(eslint@9.9.1)(typescript@5.5.4))(eslint@9.9.1)(typescript@5.5.4)
       '@typescript-eslint/parser':
-        specifier: ^7.2.0
-        version: 7.18.0(eslint@8.57.0)(typescript@5.5.4)
+        specifier: ^8.2.0
+        version: 8.2.0(eslint@9.9.1)(typescript@5.5.4)
       eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
+        specifier: ^9.9.1
+        version: 9.9.1
       eslint-config-prettier:
         specifier: ^9.1.0
-        version: 9.1.0(eslint@8.57.0)
+        version: 9.1.0(eslint@9.9.1)
       eslint-plugin-svelte:
-        specifier: ^2.35.1
-        version: 2.43.0(eslint@8.57.0)(svelte@4.2.18)
+        specifier: ^2.43.0
+        version: 2.43.0(eslint@9.9.1)(svelte@4.2.19)
+      globals:
+        specifier: ^15.9.0
+        version: 15.9.0
       pmtiles:
-        specifier: ^3.0.5
+        specifier: ^3.0.7
         version: 3.0.7
       prettier:
-        specifier: ^3.2.5
+        specifier: ^3.3.3
         version: 3.3.3
       prettier-plugin-svelte:
-        specifier: ^3.2.2
-        version: 3.2.6(prettier@3.3.3)(svelte@4.2.18)
+        specifier: ^3.2.6
+        version: 3.2.6(prettier@3.3.3)(svelte@4.2.19)
       svelte:
-        specifier: ^4.2.12
-        version: 4.2.18
+        specifier: ^4.2.19
+        version: 4.2.19
       svelte-check:
-        specifier: ^3.6.7
-        version: 3.8.5(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.18)
+        specifier: ^3.8.6
+        version: 3.8.6(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.19)
       svelte-preprocess:
-        specifier: ^5.1.3
-        version: 5.1.4(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.18)(typescript@5.5.4)
+        specifier: ^6.0.2
+        version: 6.0.2(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.19)(typescript@5.5.4)
       tslib:
-        specifier: ^2.6.2
-        version: 2.6.3
+        specifier: ^2.7.0
+        version: 2.7.0
       typescript:
-        specifier: ^5.4.2
+        specifier: ^5.5.4
         version: 5.5.4
+      typescript-eslint:
+        specifier: ^8.2.0
+        version: 8.2.0(eslint@9.9.1)(typescript@5.5.4)
       vite:
-        specifier: ^5.1.6
-        version: 5.4.0(sass@1.77.8)
+        specifier: ^5.4.2
+        version: 5.4.2(sass@1.77.8)
 
   packages/search:
     dependencies:
@@ -713,6 +731,9 @@ importers:
       eslint-plugin-svelte:
         specifier: ^2.35.1
         version: 2.43.0(eslint@8.57.0)(svelte@4.2.18)
+      globals:
+        specifier: ^15.9.0
+        version: 15.9.0
       pmtiles:
         specifier: ^3.0.5
         version: 3.0.7
@@ -737,6 +758,9 @@ importers:
       typescript:
         specifier: ^5.4.2
         version: 5.5.4
+      typescript-eslint:
+        specifier: ^8.2.0
+        version: 8.2.0(eslint@8.57.0)(typescript@5.5.4)
       vite:
         specifier: ^5.1.6
         version: 5.4.0(sass@1.77.8)
@@ -744,97 +768,103 @@ importers:
   packages/share:
     dependencies:
       '@undp-data/svelte-copy-to-clipboard':
-        specifier: ^1.0.0
-        version: 1.0.0(svelte@4.2.18)
+        specifier: ^2.0.1
+        version: 2.0.1(svelte@4.2.19)
       maplibre-gl:
-        specifier: ^4.1.0
-        version: 4.5.2
+        specifier: ^4.6.0
+        version: 4.6.0
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^3.1.1
-        version: 3.2.3(@sveltejs/kit@2.5.21(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))
+        specifier: ^3.2.4
+        version: 3.2.4(@sveltejs/kit@2.5.24(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))
       '@sveltejs/kit':
-        specifier: ^2.5.4
-        version: 2.5.21(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))(svelte@4.2.18)(vite@5.4.0(sass@1.77.8))
+        specifier: ^2.5.24
+        version: 2.5.24(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))(svelte@4.2.19)(vite@5.4.2(sass@1.77.8))
       '@sveltejs/package':
-        specifier: ^2.3.0
-        version: 2.3.3(svelte@4.2.18)(typescript@5.5.4)
+        specifier: ^2.3.4
+        version: 2.3.4(svelte@4.2.19)(typescript@5.5.4)
       '@sveltejs/vite-plugin-svelte':
-        specifier: ^3.0.2
-        version: 3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8))
+        specifier: ^3.1.2
+        version: 3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8))
       '@typescript-eslint/eslint-plugin':
-        specifier: ^7.2.0
-        version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
+        specifier: ^8.2.0
+        version: 8.2.0(@typescript-eslint/parser@8.2.0(eslint@9.9.1)(typescript@5.5.4))(eslint@9.9.1)(typescript@5.5.4)
       '@typescript-eslint/parser':
-        specifier: ^7.2.0
-        version: 7.18.0(eslint@8.57.0)(typescript@5.5.4)
+        specifier: ^8.2.0
+        version: 8.2.0(eslint@9.9.1)(typescript@5.5.4)
       bulma:
-        specifier: ^1.0.0
+        specifier: ^1.0.2
         version: 1.0.2
       eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
+        specifier: ^9.9.1
+        version: 9.9.1
       eslint-config-prettier:
         specifier: ^9.1.0
-        version: 9.1.0(eslint@8.57.0)
+        version: 9.1.0(eslint@9.9.1)
       eslint-plugin-svelte:
-        specifier: ^2.35.1
-        version: 2.43.0(eslint@8.57.0)(svelte@4.2.18)
+        specifier: ^2.43.0
+        version: 2.43.0(eslint@9.9.1)(svelte@4.2.19)
+      globals:
+        specifier: ^15.9.0
+        version: 15.9.0
       pmtiles:
-        specifier: ^3.0.5
+        specifier: ^3.0.7
         version: 3.0.7
       prettier:
-        specifier: ^3.2.5
+        specifier: ^3.3.3
         version: 3.3.3
       prettier-plugin-svelte:
-        specifier: ^3.2.2
-        version: 3.2.6(prettier@3.3.3)(svelte@4.2.18)
+        specifier: ^3.2.6
+        version: 3.2.6(prettier@3.3.3)(svelte@4.2.19)
       sass:
-        specifier: ^1.72.0
+        specifier: ^1.77.8
         version: 1.77.8
       svelte:
-        specifier: ^4.2.12
-        version: 4.2.18
+        specifier: ^4.2.19
+        version: 4.2.19
       svelte-check:
-        specifier: ^3.6.7
-        version: 3.8.5(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.18)
+        specifier: ^3.8.6
+        version: 3.8.6(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.19)
       svelte-preprocess:
-        specifier: ^5.1.3
-        version: 5.1.4(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.18)(typescript@5.5.4)
+        specifier: ^6.0.2
+        version: 6.0.2(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.19)(typescript@5.5.4)
       tslib:
-        specifier: ^2.6.2
-        version: 2.6.3
+        specifier: ^2.7.0
+        version: 2.7.0
       typescript:
-        specifier: ^5.4.2
+        specifier: ^5.5.4
         version: 5.5.4
+      typescript-eslint:
+        specifier: ^8.2.0
+        version: 8.2.0(eslint@9.9.1)(typescript@5.5.4)
       vite:
-        specifier: ^5.1.6
-        version: 5.4.0(sass@1.77.8)
+        specifier: ^5.4.2
+        version: 5.4.2(sass@1.77.8)
 
   packages/style-switcher:
     dependencies:
       debounce:
-        specifier: ^2.0.0
+        specifier: ^2.1.0
         version: 2.1.0
       maplibre-gl:
-        specifier: ^4.1.0
-        version: 4.5.2
+        specifier: ^4.6.0
+        version: 4.6.0
     devDependencies:
       '@creativebulma/bulma-tooltip':
         specifier: ^1.2.0
         version: 1.2.0
       '@sveltejs/adapter-auto':
-        specifier: ^3.1.1
-        version: 3.2.3(@sveltejs/kit@2.5.21(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))
+        specifier: ^3.2.4
+        version: 3.2.4(@sveltejs/kit@2.5.24(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))
       '@sveltejs/kit':
-        specifier: ^2.5.4
-        version: 2.5.21(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))(svelte@4.2.18)(vite@5.4.0(sass@1.77.8))
+        specifier: ^2.5.24
+        version: 2.5.24(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))(svelte@4.2.19)(vite@5.4.2(sass@1.77.8))
       '@sveltejs/package':
-        specifier: ^2.3.0
-        version: 2.3.3(svelte@4.2.18)(typescript@5.5.4)
+        specifier: ^2.3.4
+        version: 2.3.4(svelte@4.2.19)(typescript@5.5.4)
       '@sveltejs/vite-plugin-svelte':
-        specifier: ^3.0.2
-        version: 3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8))
+        specifier: ^3.1.2
+        version: 3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8))
       '@types/debounce':
         specifier: ^1.2.4
         version: 1.2.4
@@ -842,53 +872,59 @@ importers:
         specifier: ^4.17.12
         version: 4.17.12
       '@typescript-eslint/eslint-plugin':
-        specifier: ^7.2.0
-        version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
+        specifier: ^8.2.0
+        version: 8.2.0(@typescript-eslint/parser@8.2.0(eslint@9.9.1)(typescript@5.5.4))(eslint@9.9.1)(typescript@5.5.4)
       '@typescript-eslint/parser':
-        specifier: ^7.2.0
-        version: 7.18.0(eslint@8.57.0)(typescript@5.5.4)
+        specifier: ^8.2.0
+        version: 8.2.0(eslint@9.9.1)(typescript@5.5.4)
       '@watergis/svelte-maplibre-menu':
         specifier: workspace:^
         version: link:../menu
       eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
+        specifier: ^9.9.1
+        version: 9.9.1
       eslint-config-prettier:
         specifier: ^9.1.0
-        version: 9.1.0(eslint@8.57.0)
+        version: 9.1.0(eslint@9.9.1)
       eslint-plugin-svelte:
-        specifier: ^2.35.1
-        version: 2.43.0(eslint@8.57.0)(svelte@4.2.18)
+        specifier: ^2.43.0
+        version: 2.43.0(eslint@9.9.1)(svelte@4.2.19)
+      globals:
+        specifier: ^15.9.0
+        version: 15.9.0
       pmtiles:
-        specifier: ^3.0.5
+        specifier: ^3.0.7
         version: 3.0.7
       prettier:
-        specifier: ^3.2.5
+        specifier: ^3.3.3
         version: 3.3.3
       prettier-plugin-svelte:
-        specifier: ^3.2.2
-        version: 3.2.6(prettier@3.3.3)(svelte@4.2.18)
+        specifier: ^3.2.6
+        version: 3.2.6(prettier@3.3.3)(svelte@4.2.19)
       sass:
-        specifier: ^1.72.0
+        specifier: ^1.77.8
         version: 1.77.8
       svelte:
-        specifier: ^4.2.12
-        version: 4.2.18
+        specifier: ^4.2.19
+        version: 4.2.19
       svelte-check:
-        specifier: ^3.6.7
-        version: 3.8.5(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.18)
+        specifier: ^3.8.6
+        version: 3.8.6(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.19)
       svelte-preprocess:
-        specifier: ^5.1.3
-        version: 5.1.4(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.18)(typescript@5.5.4)
+        specifier: ^6.0.2
+        version: 6.0.2(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.19)(typescript@5.5.4)
       tslib:
-        specifier: ^2.6.2
-        version: 2.6.3
+        specifier: ^2.7.0
+        version: 2.7.0
       typescript:
-        specifier: ^5.4.2
+        specifier: ^5.5.4
         version: 5.5.4
+      typescript-eslint:
+        specifier: ^8.2.0
+        version: 8.2.0(eslint@9.9.1)(typescript@5.5.4)
       vite:
-        specifier: ^5.1.6
-        version: 5.4.0(sass@1.77.8)
+        specifier: ^5.4.2
+        version: 5.4.2(sass@1.77.8)
 
   packages/tour:
     dependencies:
@@ -896,136 +932,148 @@ importers:
         specifier: ^0.0.16
         version: 0.0.16
       maplibre-gl:
-        specifier: ^4.1.0
-        version: 4.5.2
+        specifier: ^4.6.0
+        version: 4.6.0
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^3.1.1
-        version: 3.2.3(@sveltejs/kit@2.5.21(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))
+        specifier: ^3.2.4
+        version: 3.2.4(@sveltejs/kit@2.5.24(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))
       '@sveltejs/kit':
-        specifier: ^2.5.4
-        version: 2.5.21(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))(svelte@4.2.18)(vite@5.4.0(sass@1.77.8))
+        specifier: ^2.5.24
+        version: 2.5.24(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))(svelte@4.2.19)(vite@5.4.2(sass@1.77.8))
       '@sveltejs/package':
-        specifier: ^2.3.0
-        version: 2.3.3(svelte@4.2.18)(typescript@5.5.4)
+        specifier: ^2.3.4
+        version: 2.3.4(svelte@4.2.19)(typescript@5.5.4)
       '@sveltejs/vite-plugin-svelte':
-        specifier: ^3.0.2
-        version: 3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8))
+        specifier: ^3.1.2
+        version: 3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8))
       '@typescript-eslint/eslint-plugin':
-        specifier: ^7.2.0
-        version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
+        specifier: ^8.2.0
+        version: 8.2.0(@typescript-eslint/parser@8.2.0(eslint@9.9.1)(typescript@5.5.4))(eslint@9.9.1)(typescript@5.5.4)
       '@typescript-eslint/parser':
-        specifier: ^7.2.0
-        version: 7.18.0(eslint@8.57.0)(typescript@5.5.4)
+        specifier: ^8.2.0
+        version: 8.2.0(eslint@9.9.1)(typescript@5.5.4)
       '@watergis/svelte-maplibre-menu':
         specifier: workspace:^
         version: link:../menu
       eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
+        specifier: ^9.9.1
+        version: 9.9.1
       eslint-config-prettier:
         specifier: ^9.1.0
-        version: 9.1.0(eslint@8.57.0)
+        version: 9.1.0(eslint@9.9.1)
       eslint-plugin-svelte:
-        specifier: ^2.35.1
-        version: 2.43.0(eslint@8.57.0)(svelte@4.2.18)
+        specifier: ^2.43.0
+        version: 2.43.0(eslint@9.9.1)(svelte@4.2.19)
+      globals:
+        specifier: ^15.9.0
+        version: 15.9.0
       pmtiles:
-        specifier: ^3.0.5
+        specifier: ^3.0.7
         version: 3.0.7
       prettier:
-        specifier: ^3.2.5
+        specifier: ^3.3.3
         version: 3.3.3
       prettier-plugin-svelte:
-        specifier: ^3.2.2
-        version: 3.2.6(prettier@3.3.3)(svelte@4.2.18)
+        specifier: ^3.2.6
+        version: 3.2.6(prettier@3.3.3)(svelte@4.2.19)
       publint:
-        specifier: ^0.2.7
-        version: 0.2.9
+        specifier: ^0.2.10
+        version: 0.2.10
       svelte:
-        specifier: ^4.2.12
-        version: 4.2.18
+        specifier: ^4.2.19
+        version: 4.2.19
       svelte-check:
-        specifier: ^3.6.7
-        version: 3.8.5(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.18)
+        specifier: ^3.8.6
+        version: 3.8.6(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.19)
       tslib:
-        specifier: ^2.6.2
-        version: 2.6.3
+        specifier: ^2.7.0
+        version: 2.7.0
       typescript:
-        specifier: ^5.4.2
+        specifier: ^5.5.4
         version: 5.5.4
+      typescript-eslint:
+        specifier: ^8.2.0
+        version: 8.2.0(eslint@9.9.1)(typescript@5.5.4)
       vite:
-        specifier: ^5.1.6
-        version: 5.4.0(sass@1.77.8)
+        specifier: ^5.4.2
+        version: 5.4.2(sass@1.77.8)
 
   packages/valhalla:
     dependencies:
       '@fortawesome/free-solid-svg-icons':
-        specifier: ^6.5.1
+        specifier: ^6.6.0
         version: 6.6.0
       maplibre-gl:
-        specifier: ^4.1.0
-        version: 4.5.2
+        specifier: ^4.6.0
+        version: 4.6.0
       svelte-fa:
         specifier: ^4.0.2
-        version: 4.0.2(svelte@4.2.18)
+        version: 4.0.2(svelte@4.2.19)
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^3.1.1
-        version: 3.2.3(@sveltejs/kit@2.5.21(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))
+        specifier: ^3.2.4
+        version: 3.2.4(@sveltejs/kit@2.5.24(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))
       '@sveltejs/kit':
-        specifier: ^2.5.4
-        version: 2.5.21(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8)))(svelte@4.2.18)(vite@5.4.0(sass@1.77.8))
+        specifier: ^2.5.24
+        version: 2.5.24(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))(svelte@4.2.19)(vite@5.4.2(sass@1.77.8))
       '@sveltejs/package':
-        specifier: ^2.3.0
-        version: 2.3.3(svelte@4.2.18)(typescript@5.5.4)
+        specifier: ^2.3.4
+        version: 2.3.4(svelte@4.2.19)(typescript@5.5.4)
       '@sveltejs/vite-plugin-svelte':
-        specifier: ^3.0.2
-        version: 3.1.1(svelte@4.2.18)(vite@5.4.0(sass@1.77.8))
+        specifier: ^3.1.2
+        version: 3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8))
       '@typescript-eslint/eslint-plugin':
-        specifier: ^7.2.0
-        version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
+        specifier: ^8.2.0
+        version: 8.2.0(@typescript-eslint/parser@8.2.0(eslint@9.9.1)(typescript@5.5.4))(eslint@9.9.1)(typescript@5.5.4)
       '@typescript-eslint/parser':
-        specifier: ^7.2.0
-        version: 7.18.0(eslint@8.57.0)(typescript@5.5.4)
+        specifier: ^8.2.0
+        version: 8.2.0(eslint@9.9.1)(typescript@5.5.4)
       '@watergis/svelte-maplibre-menu':
         specifier: workspace:^
         version: link:../menu
       eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
+        specifier: ^9.9.1
+        version: 9.9.1
       eslint-config-prettier:
         specifier: ^9.1.0
-        version: 9.1.0(eslint@8.57.0)
+        version: 9.1.0(eslint@9.9.1)
       eslint-plugin-svelte:
-        specifier: ^2.35.1
-        version: 2.43.0(eslint@8.57.0)(svelte@4.2.18)
+        specifier: ^2.43.0
+        version: 2.43.0(eslint@9.9.1)(svelte@4.2.19)
+      globals:
+        specifier: ^15.9.0
+        version: 15.9.0
       pmtiles:
-        specifier: ^3.0.5
+        specifier: ^3.0.7
         version: 3.0.7
       prettier:
-        specifier: ^3.2.5
+        specifier: ^3.3.3
         version: 3.3.3
       prettier-plugin-svelte:
-        specifier: ^3.2.2
-        version: 3.2.6(prettier@3.3.3)(svelte@4.2.18)
+        specifier: ^3.2.6
+        version: 3.2.6(prettier@3.3.3)(svelte@4.2.19)
       svelte:
-        specifier: ^4.2.12
-        version: 4.2.18
+        specifier: ^4.2.19
+        version: 4.2.19
       svelte-check:
-        specifier: ^3.6.7
-        version: 3.8.5(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.18)
+        specifier: ^3.8.6
+        version: 3.8.6(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.19)
       svelte-preprocess:
-        specifier: ^5.1.3
-        version: 5.1.4(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.18)(typescript@5.5.4)
+        specifier: ^6.0.2
+        version: 6.0.2(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.19)(typescript@5.5.4)
       tslib:
-        specifier: ^2.6.2
-        version: 2.6.3
+        specifier: ^2.7.0
+        version: 2.7.0
       typescript:
-        specifier: ^5.4.2
+        specifier: ^5.5.4
         version: 5.5.4
+      typescript-eslint:
+        specifier: ^8.2.0
+        version: 8.2.0(eslint@9.9.1)(typescript@5.5.4)
       vite:
-        specifier: ^5.1.6
-        version: 5.4.0(sass@1.77.8)
+        specifier: ^5.4.2
+        version: 5.4.2(sass@1.77.8)
 
   sites/svelte.water-gis.com:
     dependencies:
@@ -1672,14 +1720,14 @@ packages:
       svelte: ^4.0.0 || ^5.0.0-next.0
       vite: ^5.0.0
 
-  '@turf/distance@6.5.0':
-    resolution: {integrity: sha512-xzykSLfoURec5qvQJcfifw/1mJa+5UwByZZ5TZ8iaqjGYN0vomhV9aiSLeYdUGtYRESZ+DYC/OzY+4RclZYgMg==}
+  '@turf/distance@7.1.0':
+    resolution: {integrity: sha512-hhNHhxCHB3ddzAGCNY4BtE29OZh+DAJPvUapQz+wOjISnlwvMcwLKvslgHWSYF536QDVe/93FEU2q67+CsZTPA==}
 
-  '@turf/helpers@6.5.0':
-    resolution: {integrity: sha512-VbI1dV5bLFzohYYdgqwikdMVpe7pJ9X3E+dlr425wa2/sMJqYDhTO++ec38/pcPvPE6oD9WEEeU3Xu3gza+VPw==}
+  '@turf/helpers@7.1.0':
+    resolution: {integrity: sha512-dTeILEUVeNbaEeoZUOhxH5auv7WWlOShbx7QSd4s0T4Z0/iz90z9yaVCtZOLbU89umKotwKaJQltBNO9CzVgaQ==}
 
-  '@turf/invariant@6.5.0':
-    resolution: {integrity: sha512-Wv8PRNCtPD31UVbdJE/KVAWKe7l6US+lJItRR/HOEW3eh+U/JwRCSUl/KZ7bmjM/C+zLNoreM2TU6OoLACs4eg==}
+  '@turf/invariant@7.1.0':
+    resolution: {integrity: sha512-OCLNqkItBYIP1nE9lJGuIUatWGtQ4rhBKAyTfFu0z8npVzGEYzvguEeof8/6LkKmTTEHW53tCjoEhSSzdRh08Q==}
 
   '@types/chroma-js@2.4.4':
     resolution: {integrity: sha512-/DTccpHTaKomqussrn+ciEvfW4k6NAHzNzs/sts1TCqg333qNxOhy8TNIoQCmbGG3Tl8KdEhkGAssb1n3mTXiQ==}
@@ -1868,8 +1916,8 @@ packages:
     resolution: {integrity: sha512-sbgsPMW9yLvS7IhCi8IpuK1oBmtbWUNP+hBdwl/I9nzqVsszGnNGti5r9dUtF5RLivHUFFIdRvLiTsPhzSyJ3Q==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@undp-data/svelte-copy-to-clipboard@1.0.0':
-    resolution: {integrity: sha512-6zQMe2OTktihft0RgcFsc8cauIXvS3hmgsvAmjDq18Wk8Pfm3f6bGfviDrp9/HsHpMWk7QigweY+jpmX+nPkYA==}
+  '@undp-data/svelte-copy-to-clipboard@2.0.1':
+    resolution: {integrity: sha512-1zCniqV0l4JUIvqMinfwzisfyEc1sKYuLgeKQxOKLS9+la+29Aa/jpPFraMuXPEG72h6Ytoiw/gHAuDdgceZIw==}
     peerDependencies:
       svelte: ^4.0.0
 
@@ -1883,6 +1931,12 @@ packages:
 
   '@watergis/legend-symbol@0.2.3':
     resolution: {integrity: sha512-bxW2nGUvL80/iLTAstvP0QRcpprKKyTOLFueDW+dD0g9PDIFYx4De6MrKp4QJPx9SmrlidPxslOB0mXZrENmUg==}
+
+  '@watergis/svelte-splitter@2.0.0':
+    resolution: {integrity: sha512-EcHai7HdzvtOQ7EfTPscZ/cER4oSEiqORUVnYsOCfhOsu3a9Sh0fILc6sowXEa7MXJ7YkFYzDX6vKl+G+ybQpQ==}
+    engines: {pnpm: ^9.0.0}
+    peerDependencies:
+      svelte: ^4.0.0
 
   '@watergis/terrain-rgb@1.2.0':
     resolution: {integrity: sha512-hlytzzrVcBJTcZYXxCZqPGgyKyxiykhYXFnjPBKyFBwPbsbUncK0WqWZU087h5sD2zrpfe2EL+KLyMHFH5lxVQ==}
@@ -2031,8 +2085,8 @@ packages:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
 
-  chroma-js@2.6.0:
-    resolution: {integrity: sha512-BLHvCB9s8Z1EV4ethr6xnkl/P2YRFOGqfgvuMG/MyCbZPrTA+NeiByY6XvgF0zP4/2deU2CXnWyMa3zu1LqQ3A==}
+  chroma-js@3.0.0:
+    resolution: {integrity: sha512-ZFn4qxtZTvRJ7XatOLgaHGJYN10LoS6T0EMsu7IVayFG5+b6Yw8wCGQL5qLgo4B+wrRZ9niCrozOQ4a584bvaA==}
 
   ci-info@3.9.0:
     resolution: {integrity: sha512-NIxF55hv4nSqQswkAeiOi1r83xy8JldOFDTWiug55KBu9Jnblncd2U6ViHmYgHf01TPZS77NJBhBMKdWj9HQMQ==}
@@ -2944,11 +2998,6 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  publint@0.2.9:
-    resolution: {integrity: sha512-nITKS1NSwD68PQlts0ntryhxrWObep6P0CCycwi1lgXI+K7uKyacMYRRCQi7hTae8imkI3FCi0FlgnwLxjM8yA==}
-    engines: {node: '>=16'}
-    hasBin: true
-
   punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
@@ -3158,8 +3207,15 @@ packages:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
     engines: {node: '>=8'}
 
-  svelte-awesome-color-picker@2.4.8:
-    resolution: {integrity: sha512-p6yzMMeo/IjqKMYb8oXa2vGbbRvtEDvi8LejGpY8AsZsjNwXSR0WKxQplaz67u1eqZFIRLPX0+IknQrhT5gI+g==}
+  svelte-awesome-color-picker@3.1.4:
+    resolution: {integrity: sha512-tiFakxvSpCwodOSFW6CflnLVSldSlDY77rDipHfW7hvB+4gTP3y6uO+Dm9O9e7P5N7K+CNyNjjdjbZOHYkMyNQ==}
+    peerDependencies:
+      svelte: ^3.55.1 || ^4.0.0 || ^5.0.0
+
+  svelte-awesome-slider@1.1.2:
+    resolution: {integrity: sha512-HFIWwq6rtX6aXyc6ns2R0P6pDLYIr6nRjTPyAddAiTAgZqsohAoEfOEwKKqMmZ6Q+CH48zzcFdyo6lFkBJvyQw==}
+    peerDependencies:
+      svelte: ^3.54.0 || ^4.0.0 || ^5.0.0
 
   svelte-check@3.8.5:
     resolution: {integrity: sha512-3OGGgr9+bJ/+1nbPgsvulkLC48xBsqsgtc8Wam281H4G9F5v3mYGa2bHRsPuwHC5brKl4AxJH95QF73kmfihGQ==}
@@ -4186,16 +4242,23 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@turf/distance@6.5.0':
+  '@turf/distance@7.1.0':
     dependencies:
-      '@turf/helpers': 6.5.0
-      '@turf/invariant': 6.5.0
+      '@turf/helpers': 7.1.0
+      '@turf/invariant': 7.1.0
+      '@types/geojson': 7946.0.14
+      tslib: 2.7.0
 
-  '@turf/helpers@6.5.0': {}
-
-  '@turf/invariant@6.5.0':
+  '@turf/helpers@7.1.0':
     dependencies:
-      '@turf/helpers': 6.5.0
+      '@types/geojson': 7946.0.14
+      tslib: 2.7.0
+
+  '@turf/invariant@7.1.0':
+    dependencies:
+      '@turf/helpers': 7.1.0
+      '@types/geojson': 7946.0.14
+      tslib: 2.7.0
 
   '@types/chroma-js@2.4.4': {}
 
@@ -4280,6 +4343,24 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@typescript-eslint/eslint-plugin@8.2.0(@typescript-eslint/parser@8.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)':
+    dependencies:
+      '@eslint-community/regexpp': 4.11.0
+      '@typescript-eslint/parser': 8.2.0(eslint@8.57.0)(typescript@5.5.4)
+      '@typescript-eslint/scope-manager': 8.2.0
+      '@typescript-eslint/type-utils': 8.2.0(eslint@8.57.0)(typescript@5.5.4)
+      '@typescript-eslint/utils': 8.2.0(eslint@8.57.0)(typescript@5.5.4)
+      '@typescript-eslint/visitor-keys': 8.2.0
+      eslint: 8.57.0
+      graphemer: 1.4.0
+      ignore: 5.3.1
+      natural-compare: 1.4.0
+      ts-api-utils: 1.3.0(typescript@5.5.4)
+    optionalDependencies:
+      typescript: 5.5.4
+    transitivePeerDependencies:
+      - supports-color
+
   '@typescript-eslint/eslint-plugin@8.2.0(@typescript-eslint/parser@8.2.0(eslint@9.9.1)(typescript@5.5.4))(eslint@9.9.1)(typescript@5.5.4)':
     dependencies:
       '@eslint-community/regexpp': 4.11.0
@@ -4304,6 +4385,19 @@ snapshots:
       '@typescript-eslint/types': 7.18.0
       '@typescript-eslint/typescript-estree': 7.18.0(typescript@5.5.4)
       '@typescript-eslint/visitor-keys': 7.18.0
+      debug: 4.3.6
+      eslint: 8.57.0
+    optionalDependencies:
+      typescript: 5.5.4
+    transitivePeerDependencies:
+      - supports-color
+
+  '@typescript-eslint/parser@8.2.0(eslint@8.57.0)(typescript@5.5.4)':
+    dependencies:
+      '@typescript-eslint/scope-manager': 8.2.0
+      '@typescript-eslint/types': 8.2.0
+      '@typescript-eslint/typescript-estree': 8.2.0(typescript@5.5.4)
+      '@typescript-eslint/visitor-keys': 8.2.0
       debug: 4.3.6
       eslint: 8.57.0
     optionalDependencies:
@@ -4344,6 +4438,18 @@ snapshots:
     optionalDependencies:
       typescript: 5.5.4
     transitivePeerDependencies:
+      - supports-color
+
+  '@typescript-eslint/type-utils@8.2.0(eslint@8.57.0)(typescript@5.5.4)':
+    dependencies:
+      '@typescript-eslint/typescript-estree': 8.2.0(typescript@5.5.4)
+      '@typescript-eslint/utils': 8.2.0(eslint@8.57.0)(typescript@5.5.4)
+      debug: 4.3.6
+      ts-api-utils: 1.3.0(typescript@5.5.4)
+    optionalDependencies:
+      typescript: 5.5.4
+    transitivePeerDependencies:
+      - eslint
       - supports-color
 
   '@typescript-eslint/type-utils@8.2.0(eslint@9.9.1)(typescript@5.5.4)':
@@ -4403,6 +4509,17 @@ snapshots:
       - supports-color
       - typescript
 
+  '@typescript-eslint/utils@8.2.0(eslint@8.57.0)(typescript@5.5.4)':
+    dependencies:
+      '@eslint-community/eslint-utils': 4.4.0(eslint@8.57.0)
+      '@typescript-eslint/scope-manager': 8.2.0
+      '@typescript-eslint/types': 8.2.0
+      '@typescript-eslint/typescript-estree': 8.2.0(typescript@5.5.4)
+      eslint: 8.57.0
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+
   '@typescript-eslint/utils@8.2.0(eslint@9.9.1)(typescript@5.5.4)':
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@9.9.1)
@@ -4424,10 +4541,10 @@ snapshots:
       '@typescript-eslint/types': 8.2.0
       eslint-visitor-keys: 3.4.3
 
-  '@undp-data/svelte-copy-to-clipboard@1.0.0(svelte@4.2.18)':
+  '@undp-data/svelte-copy-to-clipboard@2.0.1(svelte@4.2.19)':
     dependencies:
-      svelte: 4.2.18
-      svelte-copy: 1.4.2(svelte@4.2.18)
+      svelte: 4.2.19
+      svelte-copy: 1.4.2(svelte@4.2.19)
 
   '@ungap/structured-clone@1.2.0': {}
 
@@ -4438,6 +4555,10 @@ snapshots:
   '@watergis/legend-symbol@0.2.3':
     dependencies:
       '@mapbox/mapbox-gl-style-spec': 13.28.0
+
+  '@watergis/svelte-splitter@2.0.0(svelte@4.2.19)':
+    dependencies:
+      svelte: 4.2.19
 
   '@watergis/terrain-rgb@1.2.0':
     dependencies:
@@ -4594,7 +4715,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  chroma-js@2.6.0: {}
+  chroma-js@3.0.0: {}
 
   ci-info@3.9.0: {}
 
@@ -5593,12 +5714,6 @@ snapshots:
       picocolors: 1.0.1
       sade: 1.8.1
 
-  publint@0.2.9:
-    dependencies:
-      npm-packlist: 5.1.3
-      picocolors: 1.0.1
-      sade: 1.8.1
-
   punycode@2.3.1: {}
 
   queue-microtask@1.2.3: {}
@@ -5821,9 +5936,15 @@ snapshots:
     dependencies:
       has-flag: 4.0.0
 
-  svelte-awesome-color-picker@2.4.8:
+  svelte-awesome-color-picker@3.1.4(svelte@4.2.19):
     dependencies:
       colord: 2.9.3
+      svelte: 4.2.19
+      svelte-awesome-slider: 1.1.2(svelte@4.2.19)
+
+  svelte-awesome-slider@1.1.2(svelte@4.2.19):
+    dependencies:
+      svelte: 4.2.19
 
   svelte-check@3.8.5(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.18):
     dependencies:
@@ -5865,9 +5986,9 @@ snapshots:
       - stylus
       - sugarss
 
-  svelte-copy@1.4.2(svelte@4.2.18):
+  svelte-copy@1.4.2(svelte@4.2.19):
     dependencies:
-      svelte: 4.2.18
+      svelte: 4.2.19
 
   svelte-eslint-parser@0.41.0(svelte@4.2.18):
     dependencies:
@@ -5889,10 +6010,6 @@ snapshots:
     optionalDependencies:
       svelte: 4.2.19
 
-  svelte-fa@4.0.2(svelte@4.2.18):
-    dependencies:
-      svelte: 4.2.18
-
   svelte-fa@4.0.2(svelte@4.2.19):
     dependencies:
       svelte: 4.2.19
@@ -5905,10 +6022,10 @@ snapshots:
     dependencies:
       svelte: 4.2.19
 
-  svelte-popperjs@1.3.2(@popperjs/core@2.11.8)(svelte@4.2.18):
+  svelte-popperjs@1.3.2(@popperjs/core@2.11.8)(svelte@4.2.19):
     dependencies:
       '@popperjs/core': 2.11.8
-      svelte: 4.2.18
+      svelte: 4.2.19
 
   svelte-preprocess@5.1.4(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.18)(typescript@5.5.4):
     dependencies:
@@ -6082,6 +6199,17 @@ snapshots:
       prelude-ls: 1.2.1
 
   type-fest@0.20.2: {}
+
+  typescript-eslint@8.2.0(eslint@8.57.0)(typescript@5.5.4):
+    dependencies:
+      '@typescript-eslint/eslint-plugin': 8.2.0(@typescript-eslint/parser@8.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
+      '@typescript-eslint/parser': 8.2.0(eslint@8.57.0)(typescript@5.5.4)
+      '@typescript-eslint/utils': 8.2.0(eslint@8.57.0)(typescript@5.5.4)
+    optionalDependencies:
+      typescript: 5.5.4
+    transitivePeerDependencies:
+      - eslint
+      - supports-color
 
   typescript-eslint@8.2.0(eslint@9.9.1)(typescript@5.5.4):
     dependencies:

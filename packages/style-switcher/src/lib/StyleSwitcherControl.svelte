@@ -11,7 +11,6 @@
 
 	let styleSwitcherDiv: HTMLDivElement;
 
-	// eslint-disable-next-line
 	function StyleSwitcherControl() {}
 
 	StyleSwitcherControl.prototype.onAdd = function (map: Map) {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Split } from '@geoffcox/svelte-splitter';
+	import { Split } from '@watergis/svelte-splitter';
 	import type { Map } from 'maplibre-gl';
 	import { createEventDispatcher, onDestroy, onMount } from 'svelte';
 
@@ -37,7 +37,6 @@
 
 	export let position: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' = 'top-left';
 
-	// eslint-disable-next-line
 	function MapMenuControl() {}
 
 	MapMenuControl.prototype.onAdd = function (map: Map) {

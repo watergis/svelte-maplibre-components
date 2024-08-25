@@ -1,3 +1,3 @@
-import { default as SearchControl } from './SearchControl.svelte';
+import { default as SearchControl } from "./SearchControl.svelte";
 export default SearchControl;
-export * from './types';
+export * from "./types";

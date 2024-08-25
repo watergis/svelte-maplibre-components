@@ -21,9 +21,6 @@ importers:
         specifier: ^4.6.0
         version: 4.6.0
     devDependencies:
-      '@arkweid/lefthook':
-        specifier: ^0.7.7
-        version: 0.7.7
       '@sveltejs/adapter-auto':
         specifier: ^3.2.4
         version: 3.2.4(@sveltejs/kit@2.5.24(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))(svelte@4.2.19)(vite@5.4.2(sass@1.77.8)))
@@ -440,9 +437,6 @@ importers:
         specifier: ^6.3.7
         version: 6.3.7
     devDependencies:
-      '@arkweid/lefthook':
-        specifier: ^0.7.7
-        version: 0.7.7
       '@creativebulma/bulma-tooltip':
         specifier: ^1.2.0
         version: 1.2.0
@@ -1210,13 +1204,6 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
-
-  '@arkweid/lefthook@0.7.7':
-    resolution: {integrity: sha512-Eq30OXKmjxIAIsTtbX2fcF3SNZIXS8yry1u8yty7PQFYRctx04rVlhOJCEB2UmfTh8T2vrOMC9IHHUvvo5zbaQ==}
-    cpu: [x64, arm64, ia32]
-    os: [darwin, linux, win32]
-    deprecated: '@arkweid/lefthook has been renamed to @evilmartians/lefthook, please upgrade to it. You also can use @evilmartians/lefthook-installer'
-    hasBin: true
 
   '@babel/runtime@7.25.0':
     resolution: {integrity: sha512-7dRy4DwXwtzBrPbZflqxnvfxLF8kdZXPkhymtDeFoFqE6ldzjQFgYTtYIFARcLEYDrqfBfYcZt1WqFxRoyC9Rw==}
@@ -3579,8 +3566,6 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
-
-  '@arkweid/lefthook@0.7.7': {}
 
   '@babel/runtime@7.25.0':
     dependencies:

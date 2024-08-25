@@ -1,5 +1,13 @@
 # @watergis/svelte-maplibre-attribute-table
 
+## 3.0.1
+
+### Patch Changes
+
+- f15cf03: chore: updated all dependencies
+- Updated dependencies [f15cf03]
+  - @watergis/svelte-maplibre-menu@3.0.1
+
 ## 3.0.0
 
 ### Major Changes

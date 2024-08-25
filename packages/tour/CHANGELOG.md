@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-tour
 
+## 1.0.5
+
+### Patch Changes
+
+- f15cf03: chore: updated all dependencies
+
 ## 1.0.4
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-menu
 
+## 3.0.1
+
+### Patch Changes
+
+- f15cf03: chore: updated all dependencies
+
 ## 3.0.0
 
 ### Major Changes
@@ -124,10 +130,10 @@
 
   ```svelte
   <MenuControl bind:map position={'top-left'} isMenuShown={false} sidebarOnLeft={true}>
-      <div slot="sidebar">content</div>
-      <div slot="map">
-          <div class="map" bind:this={mapContainer} />
-      </div>
+  	<div slot="sidebar">content</div>
+  	<div slot="map">
+  		<div class="map" bind:this={mapContainer} />
+  	</div>
   </MenuControl>
   ```
 

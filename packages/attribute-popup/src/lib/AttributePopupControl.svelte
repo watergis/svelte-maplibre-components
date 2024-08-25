@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { Popup, type Map, type MapGeoJSONFeature, type MapMouseEvent } from 'maplibre-gl';
 	import { onMount } from 'svelte';
-	import { Popup, type MapGeoJSONFeature, type Map, type MapMouseEvent } from 'maplibre-gl';
 
 	export let map: Map;
 	export let targetLayers: string[] = [];
@@ -10,7 +10,6 @@
 	$: onlyOneFeature = queriedFeatures.length === 1;
 	let selectedFeature: MapGeoJSONFeature | undefined;
 
-	// eslint-disable-next-line
 	function AttributionPopupControl() {}
 
 	AttributionPopupControl.prototype.onAdd = function (map: Map) {

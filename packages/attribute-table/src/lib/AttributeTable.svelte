@@ -1,25 +1,26 @@
 <script lang="ts">
-	import { writable } from 'svelte/store';
+	import { DataHandler, Datatable, Th, ThFilter } from '@vincjo/datatables';
 	import {
 		LngLatBounds,
 		Marker,
 		type FillLayerSpecification,
 		type HeatmapLayerSpecification,
 		type LineLayerSpecification,
+		type LngLatLike,
 		type Map,
 		type MapGeoJSONFeature,
 		type SymbolLayerSpecification,
-		type VectorSourceSpecification,
-		type LngLatLike
+		type VectorSourceSpecification
 	} from 'maplibre-gl';
+	import { onMount } from 'svelte';
+	import { writable } from 'svelte/store';
 	import { distinct } from './util';
-	import { Datatable, DataHandler, Th, ThFilter } from '@vincjo/datatables';
 
 	export let map: Map;
 	export let rowsPerPage = 50;
 	export let minZoom = 14;
 	let layers: string[];
-	let selectedSourceLayerId: string;
+	let selectedSourceLayerId = writable('');
 
 	let containerHeight = 0;
 	let headerHeight = 0;
@@ -81,8 +82,6 @@
 		layers = ids.map((id) => id).filter(distinct);
 	};
 
-	$: selectedSourceLayerId, updateTable();
-
 	const getLayerIdsBySourceLayer = (sourceLayerId: string) => {
 		const style = map.getStyle();
 		const layers = style.layers.filter((l) => l['source-layer'] === sourceLayerId);
@@ -91,12 +90,12 @@
 	};
 
 	const updateTable = () => {
-		if (!selectedSourceLayerId) return;
+		if (!$selectedSourceLayerId) return;
 		if (!map) return;
 
 		mapChanged = false;
 
-		const ids = getLayerIdsBySourceLayer(selectedSourceLayerId);
+		const ids = getLayerIdsBySourceLayer($selectedSourceLayerId);
 		if (ids.length > 0) {
 			features = map.queryRenderedFeatures(undefined, { layers: ids });
 			data = [];
@@ -221,11 +220,15 @@
 		}
 		zoomedMarker = new Marker().setLngLat(center).addTo(map);
 	};
+
+	onMount(() => {
+		selectedSourceLayerId.subscribe(updateTable);
+	});
 </script>
 
 <div class="attribute-table-container" bind:clientHeight={containerHeight}>
 	<header class="header" bind:clientHeight={headerHeight}>
-		<select class="layer-select" bind:value={selectedSourceLayerId}>
+		<select class="layer-select" bind:value={$selectedSourceLayerId}>
 			<option>Select a layer</option>
 			{#if layers && layers.length > 0}
 				{#each layers as id}
@@ -237,7 +240,7 @@
 		<button
 			class="reload-button"
 			on:click={handleReload}
-			disabled={selectedSourceLayerId && !mapChanged}
+			disabled={$selectedSourceLayerId && !mapChanged}
 		>
 			<i class="fa-solid fa-rotate"></i>
 		</button>

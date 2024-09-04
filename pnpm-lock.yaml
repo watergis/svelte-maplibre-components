@@ -425,8 +425,8 @@ importers:
         specifier: ^1.3.2
         version: 1.3.2(@popperjs/core@2.11.8)(svelte@4.2.19)
       svelte-range-slider-pips:
-        specifier: ^2.3.1
-        version: 2.3.1
+        specifier: ^3.0.0
+        version: 3.1.1(svelte@4.2.19)
       svelte-tippy:
         specifier: ^1.3.2
         version: 1.3.2
@@ -3184,8 +3184,10 @@ packages:
       typescript:
         optional: true
 
-  svelte-range-slider-pips@2.3.1:
-    resolution: {integrity: sha512-P29PNqHld+SiaDuHzf98rLvhSYWXb3TVL9p7U5RG9UX8emUgypZgp9zuIIwpmIXysGQC6JG8duMc5FuaPnSVdg==}
+  svelte-range-slider-pips@3.1.1:
+    resolution: {integrity: sha512-CaBczr0/egEr3ShYyFo3gDObZiYDEc7YBC35rQr8D2kWvisxCftE/+Znryk8YXva86Fq77tzQ4JeOfB+iUMjrg==}
+    peerDependencies:
+      svelte: ^4.0.0
 
   svelte-tippy@1.3.2:
     resolution: {integrity: sha512-41f+85hwhKBRqX0UNYrgFsi34Kk/KDvUkIZXYANxkWoA2NTVTCZbUC2J8hRNZ4TRVxObTshoZRjK2co5+i6LMw==}
@@ -5424,7 +5426,9 @@ snapshots:
       sass: 1.77.8
       typescript: 5.5.4
 
-  svelte-range-slider-pips@2.3.1: {}
+  svelte-range-slider-pips@3.1.1(svelte@4.2.19):
+    dependencies:
+      svelte: 4.2.19
 
   svelte-tippy@1.3.2:
     dependencies:

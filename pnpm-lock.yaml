@@ -88,8 +88,8 @@ importers:
   packages/attribute-table:
     dependencies:
       '@vincjo/datatables':
-        specifier: ^1.14.10
-        version: 1.14.10(svelte@4.2.19)
+        specifier: ^2.0.0
+        version: 2.0.5(svelte@4.2.19)
       '@watergis/svelte-maplibre-menu':
         specifier: workspace:^
         version: link:../menu
@@ -1909,10 +1909,10 @@ packages:
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
 
-  '@vincjo/datatables@1.14.10':
-    resolution: {integrity: sha512-gtojSC/LKDHbh2ZGZeaAQ+lLltcmcSDDLkecgb9WpG7lHmd4b/1HUTtFWAJt43TnaK8SrciGugh9VRRZN53bpw==}
+  '@vincjo/datatables@2.0.5':
+    resolution: {integrity: sha512-ZD5Y5Tp1jlVSJhKEZqwhaUTUpTi+voz2Hx+Yr2HQ1JoCisYKk4T+MbJNmB6fN/Mra/hjrlEm5j/Ap5Ud0qydLw==}
     peerDependencies:
-      svelte: ^3.56.0 || ^4.0.0 || ^5.0.0-next.120
+      svelte: ^5.0.0
 
   '@watergis/legend-symbol@0.2.3':
     resolution: {integrity: sha512-bxW2nGUvL80/iLTAstvP0QRcpprKKyTOLFueDW+dD0g9PDIFYx4De6MrKp4QJPx9SmrlidPxslOB0mXZrENmUg==}
@@ -4141,7 +4141,7 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@vincjo/datatables@1.14.10(svelte@4.2.19)':
+  '@vincjo/datatables@2.0.5(svelte@4.2.19)':
     dependencies:
       svelte: 4.2.19
 

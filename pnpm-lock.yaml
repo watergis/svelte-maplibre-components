@@ -52,8 +52,8 @@ importers:
         specifier: ^15.9.0
         version: 15.12.0
       pmtiles:
-        specifier: ^3.0.5
-        version: 3.2.1
+        specifier: ^4.0.0
+        version: 4.0.1
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -128,8 +128,8 @@ importers:
         specifier: ^15.9.0
         version: 15.12.0
       pmtiles:
-        specifier: ^3.0.7
-        version: 3.2.1
+        specifier: ^4.0.0
+        version: 4.0.1
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -198,8 +198,8 @@ importers:
         specifier: ^15.9.0
         version: 15.12.0
       pmtiles:
-        specifier: ^3.0.7
-        version: 3.2.1
+        specifier: ^4.0.0
+        version: 4.0.1
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -359,8 +359,8 @@ importers:
         specifier: ^15.9.0
         version: 15.12.0
       pmtiles:
-        specifier: ^3.0.7
-        version: 3.2.1
+        specifier: ^4.0.0
+        version: 4.0.1
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -498,8 +498,8 @@ importers:
         specifier: ^15.9.0
         version: 15.12.0
       pmtiles:
-        specifier: ^3.0.7
-        version: 3.2.1
+        specifier: ^4.0.0
+        version: 4.0.1
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -586,8 +586,8 @@ importers:
         specifier: ^15.9.0
         version: 15.12.0
       pmtiles:
-        specifier: ^3.0.7
-        version: 3.2.1
+        specifier: ^4.0.0
+        version: 4.0.1
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -656,8 +656,8 @@ importers:
         specifier: ^15.9.0
         version: 15.12.0
       pmtiles:
-        specifier: ^3.0.7
-        version: 3.2.1
+        specifier: ^4.0.0
+        version: 4.0.1
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -726,8 +726,8 @@ importers:
         specifier: ^15.9.0
         version: 15.12.0
       pmtiles:
-        specifier: ^3.0.5
-        version: 3.2.1
+        specifier: ^4.0.0
+        version: 4.0.1
       prettier:
         specifier: ^3.2.5
         version: 3.3.3
@@ -799,8 +799,8 @@ importers:
         specifier: ^15.9.0
         version: 15.12.0
       pmtiles:
-        specifier: ^3.0.7
-        version: 3.2.1
+        specifier: ^4.0.0
+        version: 4.0.1
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -884,8 +884,8 @@ importers:
         specifier: ^15.9.0
         version: 15.12.0
       pmtiles:
-        specifier: ^3.0.7
-        version: 3.2.1
+        specifier: ^4.0.0
+        version: 4.0.1
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -960,8 +960,8 @@ importers:
         specifier: ^15.9.0
         version: 15.12.0
       pmtiles:
-        specifier: ^3.0.7
-        version: 3.2.1
+        specifier: ^4.0.0
+        version: 4.0.1
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -1036,8 +1036,8 @@ importers:
         specifier: ^15.9.0
         version: 15.12.0
       pmtiles:
-        specifier: ^3.0.7
-        version: 3.2.1
+        specifier: ^4.0.0
+        version: 4.0.1
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -1123,8 +1123,8 @@ importers:
         specifier: ^4.6.0
         version: 4.7.1
       pmtiles:
-        specifier: ^3.0.7
-        version: 3.2.1
+        specifier: ^4.0.0
+        version: 4.0.1
       prismjs:
         specifier: ^1.29.0
         version: 1.29.0
@@ -1814,9 +1814,6 @@ packages:
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
-
-  '@types/leaflet@1.9.14':
-    resolution: {integrity: sha512-sx2q6MDJaajwhKeVgPSvqXd8rhNJSTA3tMidQGduZn9S6WBYxDkCpSpV5xXEmSg7Cgdk/5vJGhVF1kMYLzauBg==}
 
   '@types/lodash-es@4.17.12':
     resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==}
@@ -2825,8 +2822,8 @@ packages:
     resolution: {integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==}
     engines: {node: '>=6'}
 
-  pmtiles@3.2.1:
-    resolution: {integrity: sha512-3R4fBwwoli5mw7a6t1IGwOtfmcSAODq6Okz0zkXhS1zi9sz1ssjjIfslwPvcWw5TNhdjNBUg9fgfPLeqZlH6ng==}
+  pmtiles@4.0.1:
+    resolution: {integrity: sha512-YS4uj/v179kA6tDd2E8d7ikOIEHy8ahtXN+u4joZYGkG2EwTkC2DUwgNmYLipyl60Vzf3FnIccIuDZB6bmdKmg==}
 
   postcss-load-config@3.1.4:
     resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
@@ -4031,10 +4028,6 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/leaflet@1.9.14':
-    dependencies:
-      '@types/geojson': 7946.0.14
-
   '@types/lodash-es@4.17.12':
     dependencies:
       '@types/lodash': 4.17.13
@@ -5071,9 +5064,8 @@ snapshots:
 
   pify@4.0.1: {}
 
-  pmtiles@3.2.1:
+  pmtiles@4.0.1:
     dependencies:
-      '@types/leaflet': 1.9.14
       fflate: 0.8.2
 
   postcss-load-config@3.1.4(postcss@8.4.48):

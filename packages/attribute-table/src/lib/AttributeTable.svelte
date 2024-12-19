@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { DataHandler, Datatable, Th, ThFilter } from '@vincjo/datatables';
+	import { Datatable, TableHandler, ThFilter, ThSort } from '@vincjo/datatables';
 	import {
 		LngLatBounds,
 		Marker,
@@ -14,40 +14,34 @@
 	} from 'maplibre-gl';
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
-	import { distinct } from './util';
+	import { distinct } from './util/index.js';
 
-	export let map: Map;
-	export let rowsPerPage = 50;
-	export let minZoom = 14;
-	let layers: string[];
+	interface Props {
+		map: Map;
+		rowsPerPage?: number;
+		minZoom?: number;
+	}
+
+	let {
+		map = $bindable(undefined),
+		rowsPerPage = $bindable(50),
+		minZoom = $bindable(14)
+	}: Props = $props();
+	let layers: string[] = $state();
 	let selectedSourceLayerId = writable('');
 
-	let containerHeight = 0;
-	let headerHeight = 0;
+	let containerHeight = $state(0);
+	let headerHeight = $state(0);
 
-	let features: MapGeoJSONFeature[] = [];
-	let data: { [key: string]: string }[] = [];
+	let features: MapGeoJSONFeature[] = $state([]);
+	let data: { [key: string]: string }[] = $state([]);
 
-	const handler = new DataHandler(data, { rowsPerPage });
-	let rows = writable<{ [key: string]: string }[]>([]);
-	let columns: { id: string; label: string }[] = [];
+	// svelte-ignore state_referenced_locally
+	const table = new TableHandler(data, { rowsPerPage });
+	let columns: { id: string; label: string }[] = $state([]);
 
 	let zoomedMarker: Marker;
-	let mapChanged = false;
-
-	$: if (map) {
-		map.on('sourcedata', (e) => {
-			if (e.isSourceLoaded) {
-				getLayerList();
-			}
-		});
-		map.on('zoomend', () => {
-			mapChanged = true;
-		});
-		map.on('moveend', () => {
-			mapChanged = true;
-		});
-	}
+	let mapChanged = $state(false);
 
 	export const getLayerList = () => {
 		const ids: string[] = [];
@@ -133,9 +127,7 @@
 						label: text
 					};
 				});
-
-				handler.setRows(data);
-				rows = handler.getRows();
+				table.setRows(data);
 				return;
 			}
 		}
@@ -147,7 +139,8 @@
 		mapChanged = false;
 	};
 
-	const zoomToFeature = (feature?: MapGeoJSONFeature, isPan = false) => {
+	const zoomToFeature = (props?: { [key: string]: string }, isPan = false) => {
+		const feature = features.find((f) => JSON.stringify(f.properties) === JSON.stringify(props));
 		if (!feature) return;
 		const geometry = feature.geometry;
 
@@ -224,6 +217,21 @@
 	onMount(() => {
 		selectedSourceLayerId.subscribe(updateTable);
 	});
+	$effect(() => {
+		if (map) {
+			map.on('sourcedata', (e) => {
+				if (e.isSourceLoaded) {
+					getLayerList();
+				}
+			});
+			map.on('zoomend', () => {
+				mapChanged = true;
+			});
+			map.on('moveend', () => {
+				mapChanged = true;
+			});
+		}
+	});
 </script>
 
 <div class="attribute-table-container" bind:clientHeight={containerHeight}>
@@ -239,8 +247,9 @@
 
 		<button
 			class="reload-button"
-			on:click={handleReload}
+			onclick={handleReload}
 			disabled={$selectedSourceLayerId && !mapChanged}
+			aria-label="reload"
 		>
 			<i class="fa-solid fa-rotate"></i>
 		</button>
@@ -254,41 +263,42 @@
 			</p>
 		{:else}
 			{#key data}
-				<Datatable {handler}>
+				<Datatable basic {table}>
 					<table>
 						<thead>
 							<tr>
-								<Th {handler}>Operation</Th>
+								<th>Operation</th>
 								{#each columns as col}
-									<Th {handler} orderBy={col.id}>{col.label}</Th>
+									<ThSort {table} field={col.id}>{col.label}</ThSort>
 								{/each}
 							</tr>
 							<tr>
-								<Th {handler} />
+								<th></th>
 								{#each columns as col}
-									<ThFilter {handler} filterBy={col.id} />
+									<ThFilter {table} field={col.id}></ThFilter>
 								{/each}
 							</tr>
 						</thead>
 						<tbody>
-							{#each $rows as row}
-								{@const feature = features.find((f) => f.properties === row)}
+							{#each table.rows as row}
 								<tr>
 									<td>
 										<div class="ope-col">
 											<button
 												class="operation-button"
-												on:click={() => {
-													zoomToFeature(feature);
+												onclick={() => {
+													zoomToFeature(row);
 												}}
+												aria-label="zoom"
 											>
 												<i class="fa-solid fa-magnifying-glass fa-lg"></i>
 											</button>
 											<button
 												class="operation-button"
-												on:click={() => {
-													zoomToFeature(feature, true);
+												onclick={() => {
+													zoomToFeature(row, true);
 												}}
+												aria-label="pan"
 											>
 												<i class="fa-solid fa-up-down-left-right fa-lg"></i>
 											</button>
@@ -387,14 +397,6 @@
 		}
 
 		.attribute-table {
-			header {
-				height: 48px;
-				padding: 0 16px;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-			}
-
 			thead {
 				background: #fff;
 			}

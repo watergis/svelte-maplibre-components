@@ -164,69 +164,69 @@ importers:
   packages/center:
     dependencies:
       maplibre-gl:
-        specifier: ^4.6.0
+        specifier: ^4.7.1
         version: 4.7.1
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^3.2.4
-        version: 3.3.1(@sveltejs/kit@2.8.0(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.10(sass@1.83.0)))(svelte@4.2.19)(vite@5.4.10(sass@1.83.0)))
+        specifier: ^3.3.1
+        version: 3.3.1(@sveltejs/kit@2.12.2(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.14.4)(vite@6.0.3(sass@1.83.0)))(svelte@5.14.4)(vite@6.0.3(sass@1.83.0)))
       '@sveltejs/kit':
-        specifier: ^2.5.24
-        version: 2.8.0(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.10(sass@1.83.0)))(svelte@4.2.19)(vite@5.4.10(sass@1.83.0))
+        specifier: ^2.12.2
+        version: 2.12.2(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.14.4)(vite@6.0.3(sass@1.83.0)))(svelte@5.14.4)(vite@6.0.3(sass@1.83.0))
       '@sveltejs/package':
-        specifier: ^2.3.4
-        version: 2.3.7(svelte@4.2.19)(typescript@5.6.3)
+        specifier: ^2.3.7
+        version: 2.3.7(svelte@5.14.4)(typescript@5.7.2)
       '@sveltejs/vite-plugin-svelte':
-        specifier: ^3.1.2
-        version: 3.1.2(svelte@4.2.19)(vite@5.4.10(sass@1.83.0))
+        specifier: ^5.0.3
+        version: 5.0.3(svelte@5.14.4)(vite@6.0.3(sass@1.83.0))
       '@typescript-eslint/eslint-plugin':
-        specifier: ^8.2.0
-        version: 8.13.0(@typescript-eslint/parser@8.13.0(eslint@9.14.0)(typescript@5.6.3))(eslint@9.14.0)(typescript@5.6.3)
+        specifier: ^8.18.1
+        version: 8.18.1(@typescript-eslint/parser@8.18.1(eslint@9.17.0)(typescript@5.7.2))(eslint@9.17.0)(typescript@5.7.2)
       '@typescript-eslint/parser':
-        specifier: ^8.2.0
-        version: 8.13.0(eslint@9.14.0)(typescript@5.6.3)
+        specifier: ^8.18.1
+        version: 8.18.1(eslint@9.17.0)(typescript@5.7.2)
       eslint:
-        specifier: ^9.9.1
-        version: 9.14.0
+        specifier: ^9.17.0
+        version: 9.17.0
       eslint-config-prettier:
         specifier: ^9.1.0
-        version: 9.1.0(eslint@9.14.0)
+        version: 9.1.0(eslint@9.17.0)
       eslint-plugin-svelte:
-        specifier: ^2.43.0
-        version: 2.46.0(eslint@9.14.0)(svelte@4.2.19)
+        specifier: ^2.46.1
+        version: 2.46.1(eslint@9.17.0)(svelte@5.14.4)
       globals:
-        specifier: ^15.9.0
-        version: 15.12.0
+        specifier: ^15.14.0
+        version: 15.14.0
       pmtiles:
-        specifier: ^3.0.7
-        version: 3.2.1
+        specifier: ^4.1.0
+        version: 4.1.0
       prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
+        specifier: ^3.4.2
+        version: 3.4.2
       prettier-plugin-svelte:
-        specifier: ^3.2.6
-        version: 3.2.7(prettier@3.3.3)(svelte@4.2.19)
+        specifier: ^3.3.2
+        version: 3.3.2(prettier@3.4.2)(svelte@5.14.4)
       svelte:
-        specifier: ^4.2.19
-        version: 4.2.19
+        specifier: ^5.14.4
+        version: 5.14.4
       svelte-check:
-        specifier: ^3.8.6
-        version: 3.8.6(postcss-load-config@3.1.4(postcss@8.4.48))(postcss@8.4.48)(sass@1.83.0)(svelte@4.2.19)
+        specifier: ^4.1.1
+        version: 4.1.1(svelte@5.14.4)(typescript@5.7.2)
       svelte-preprocess:
-        specifier: ^6.0.2
-        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.4.48))(postcss@8.4.48)(sass@1.83.0)(svelte@4.2.19)(typescript@5.6.3)
+        specifier: ^6.0.3
+        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.4.49))(postcss@8.4.49)(sass@1.83.0)(svelte@5.14.4)(typescript@5.7.2)
       tslib:
-        specifier: ^2.7.0
+        specifier: ^2.8.1
         version: 2.8.1
       typescript:
-        specifier: ^5.5.4
-        version: 5.6.3
+        specifier: ^5.7.2
+        version: 5.7.2
       typescript-eslint:
-        specifier: ^8.2.0
-        version: 8.13.0(eslint@9.14.0)(typescript@5.6.3)
+        specifier: ^8.18.1
+        version: 8.18.1(eslint@9.17.0)(typescript@5.7.2)
       vite:
-        specifier: ^5.4.2
-        version: 5.4.10(sass@1.83.0)
+        specifier: ^6.0.3
+        version: 6.0.3(sass@1.83.0)
 
   packages/collapsible-panel:
     dependencies:
@@ -284,10 +284,10 @@ importers:
         version: 4.2.19
       svelte-check:
         specifier: ^3.8.6
-        version: 3.8.6(postcss-load-config@3.1.4(postcss@8.4.49))(postcss@8.4.49)(sass@1.80.6)(svelte@4.2.19)
+        version: 3.8.6(postcss-load-config@3.1.4(postcss@8.4.48))(postcss@8.4.48)(sass@1.80.6)(svelte@4.2.19)
       svelte-preprocess:
         specifier: ^6.0.2
-        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.4.49))(postcss@8.4.49)(sass@1.80.6)(svelte@4.2.19)(typescript@5.6.3)
+        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.4.48))(postcss@8.4.48)(sass@1.80.6)(svelte@4.2.19)(typescript@5.6.3)
       tslib:
         specifier: ^2.7.0
         version: 2.8.1
@@ -6547,14 +6547,14 @@ snapshots:
     dependencies:
       svelte: 4.2.19
 
-  svelte-check@3.8.6(postcss-load-config@3.1.4(postcss@8.4.48))(postcss@8.4.48)(sass@1.83.0)(svelte@4.2.19):
+  svelte-check@3.8.6(postcss-load-config@3.1.4(postcss@8.4.48))(postcss@8.4.48)(sass@1.80.6)(svelte@4.2.19):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       chokidar: 3.6.0
       picocolors: 1.1.1
       sade: 1.8.1
       svelte: 4.2.19
-      svelte-preprocess: 5.1.4(postcss-load-config@3.1.4(postcss@8.4.48))(postcss@8.4.48)(sass@1.83.0)(svelte@4.2.19)(typescript@5.6.3)
+      svelte-preprocess: 5.1.4(postcss-load-config@3.1.4(postcss@8.4.48))(postcss@8.4.48)(sass@1.80.6)(svelte@4.2.19)(typescript@5.6.3)
       typescript: 5.6.3
     transitivePeerDependencies:
       - '@babel/core'
@@ -6656,7 +6656,7 @@ snapshots:
       '@popperjs/core': 2.11.8
       svelte: 4.2.19
 
-  svelte-preprocess@5.1.4(postcss-load-config@3.1.4(postcss@8.4.48))(postcss@8.4.48)(sass@1.83.0)(svelte@4.2.19)(typescript@5.6.3):
+  svelte-preprocess@5.1.4(postcss-load-config@3.1.4(postcss@8.4.48))(postcss@8.4.48)(sass@1.80.6)(svelte@4.2.19)(typescript@5.6.3):
     dependencies:
       '@types/pug': 2.0.10
       detect-indent: 6.1.0
@@ -6667,7 +6667,7 @@ snapshots:
     optionalDependencies:
       postcss: 8.4.48
       postcss-load-config: 3.1.4(postcss@8.4.48)
-      sass: 1.83.0
+      sass: 1.80.6
       typescript: 5.6.3
 
   svelte-preprocess@5.1.4(postcss-load-config@3.1.4(postcss@8.4.49))(postcss@8.4.49)(sass@1.80.6)(svelte@4.2.19)(typescript@5.6.3):
@@ -6698,13 +6698,13 @@ snapshots:
       sass: 1.83.0
       typescript: 5.6.3
 
-  svelte-preprocess@6.0.3(postcss-load-config@3.1.4(postcss@8.4.48))(postcss@8.4.48)(sass@1.83.0)(svelte@4.2.19)(typescript@5.6.3):
+  svelte-preprocess@6.0.3(postcss-load-config@3.1.4(postcss@8.4.48))(postcss@8.4.48)(sass@1.80.6)(svelte@4.2.19)(typescript@5.6.3):
     dependencies:
       svelte: 4.2.19
     optionalDependencies:
       postcss: 8.4.48
       postcss-load-config: 3.1.4(postcss@8.4.48)
-      sass: 1.83.0
+      sass: 1.80.6
       typescript: 5.6.3
 
   svelte-preprocess@6.0.3(postcss-load-config@3.1.4(postcss@8.4.49))(postcss@8.4.49)(sass@1.80.6)(svelte@4.2.19)(typescript@5.6.3):

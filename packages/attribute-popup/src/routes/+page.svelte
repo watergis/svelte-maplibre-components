@@ -4,8 +4,8 @@
 	import { Protocol } from 'pmtiles';
 	import { onMount } from 'svelte';
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
+	let mapContainer: HTMLDivElement = $state();
+	let map: Map = $state();
 
 	let targetLayers = [
 		'meter',
@@ -40,7 +40,7 @@
 	<title>Svelte maplibre legend example</title>
 </sveltekit:head>
 
-<div class="map" bind:this={mapContainer} />
+<div class="map" bind:this={mapContainer}></div>
 <AttributePopupControl bind:map {targetLayers} />
 
 <style>

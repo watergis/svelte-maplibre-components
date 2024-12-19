@@ -55,7 +55,7 @@
 	<div slot="sidebar" class="contents">
 		<StyleSwitcher bind:map bind:styles bind:selectedStyle />
 	</div>
-	<div slot="map">
+	<div slot="mapControl">
 		<div class="map" bind:this={mapContainer}>
 			<StyleSwitcherControl bind:map bind:styles bind:selectedStyle position="top-left" />
 		</div>

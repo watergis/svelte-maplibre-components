@@ -35,7 +35,7 @@
 	<div slot="sidebar" class="primary-container">
 		<AttributeTable bind:map bind:rowsPerPage bind:minZoom bind:getLayerList />
 	</div>
-	<div slot="map" class="secondary-container">
+	<div slot="mapControl" class="secondary-container">
 		<slot />
 	</div>
 </MenuControl>

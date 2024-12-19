@@ -33,7 +33,7 @@
 	showMenuButtonOnMap={true}
 >
 	<div slot="sidebar">content</div>
-	<div slot="map">
+	<div slot="mapControl">
 		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>

@@ -207,13 +207,13 @@
 				</span>
 				<slot name="sidebar" />
 			{:else}
-				<slot name="map" />
+				<slot name="mapControl" />
 			{/if}
 		</div>
 
 		<div slot="secondary" class="secondary-content">
 			{#if sidebarOnLeft}
-				<slot name="map" />
+				<slot name="mapControl" />
 			{:else}
 				<span
 					class="span close-icon"

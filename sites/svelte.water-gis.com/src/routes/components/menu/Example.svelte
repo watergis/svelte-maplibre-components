@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { Map, NavigationControl } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
+	import { Map, NavigationControl } from 'maplibre-gl';
+	import { onMount } from 'svelte';
 
 	let isMenuShown = true;
 
@@ -38,7 +38,7 @@
 	<div slot="sidebar" class="primary-container">
 		<h4>Contents</h4>
 	</div>
-	<div slot="map">
+	<div slot="mapControl">
 		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>

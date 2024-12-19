@@ -70,7 +70,7 @@ Use this package, importing fontawesome css is mandetory like
 	<div slot="sidebar" class="primary-container">
 		<h4>Contents</h4>
 	</div>
-	<div slot="map">
+	<div slot="mapControl">
 		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>

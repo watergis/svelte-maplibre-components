@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { Map, NavigationControl } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import {
 		ValhallaIsochronePanel,
@@ -8,6 +6,8 @@
 		type ValhallaIsochroneOptions,
 		type ValhallaRoutingOptions
 	} from '@watergis/svelte-maplibre-valhalla';
+	import { Map, NavigationControl } from 'maplibre-gl';
+	import { onMount } from 'svelte';
 
 	let isMenuShown = true;
 
@@ -87,7 +87,7 @@
 		<h3>Routing tool</h3>
 		<ValhallaRoutingPanel bind:map bind:url={valhallaUrl} bind:options={valhallaRoutingOptions} />
 	</div>
-	<div slot="map">
+	<div slot="mapControl">
 		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>

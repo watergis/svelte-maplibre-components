@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { Map, NavigationControl } from 'maplibre-gl';
-	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import { MeasurePanel, type MeasureOption } from '@watergis/svelte-maplibre-measure';
+	import { MenuControl } from '@watergis/svelte-maplibre-menu';
+	import { Map, NavigationControl } from 'maplibre-gl';
+	import { onMount } from 'svelte';
 
 	let isMenuShown = true;
 
@@ -46,7 +46,7 @@
 		<h4>Measure tool with elevation enquiry</h4>
 		<MeasurePanel bind:map bind:measureOption bind:terrainRgbUrl />
 	</div>
-	<div slot="map">
+	<div slot="mapControl">
 		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>

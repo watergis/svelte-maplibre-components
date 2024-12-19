@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { Map, NavigationControl } from 'maplibre-gl';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import {
 		StyleSwitcher,
@@ -8,6 +6,8 @@
 		StyleUrl,
 		type StyleSwitcherOption
 	} from '@watergis/svelte-maplibre-style-switcher';
+	import { Map, NavigationControl } from 'maplibre-gl';
+	import { onMount } from 'svelte';
 
 	let isMenuShown = true;
 
@@ -52,7 +52,7 @@
 		<h4>Style switch control</h4>
 		<StyleSwitcher bind:map bind:styles bind:selectedStyle />
 	</div>
-	<div slot="map">
+	<div slot="mapControl">
 		<div class="map" bind:this={mapContainer} />
 		<StyleSwitcherControl bind:map bind:styles bind:selectedStyle position="top-left" />
 	</div>

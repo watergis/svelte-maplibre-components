@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { CopyToClipboard } from '@undp-data/svelte-copy-to-clipboard';
 	import type { Map } from 'maplibre-gl';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import CopyToClipboard from './CopyToClipboard.svelte';
 
 	export let map: Map;
 	export let isShareModalShown: boolean;

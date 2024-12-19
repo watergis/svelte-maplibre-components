@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { Map, NavigationControl } from 'maplibre-gl';
+	import { LegendHeader, LegendPanel } from '@watergis/svelte-maplibre-legend';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
-	import { LegendPanel, LegendHeader } from '@watergis/svelte-maplibre-legend';
+	import { Map, NavigationControl } from 'maplibre-gl';
+	import { onMount } from 'svelte';
 
 	let mapContainer: HTMLDivElement;
 	let map: Map;
@@ -83,7 +83,7 @@
 			/>
 		</div>
 	</div>
-	<div slot="map">
+	<div slot="mapControl">
 		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>

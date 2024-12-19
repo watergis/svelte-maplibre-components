@@ -3,11 +3,11 @@
 	import { Map, NavigationControl } from 'maplibre-gl';
 	import { onMount } from 'svelte';
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
+	let mapContainer: HTMLDivElement = $state();
+	let map: Map = $state();
 
-	let width: number;
-	let height: number;
+	let width: number = $state();
+	let height: number = $state();
 
 	onMount(() => {
 		map = new Map({
@@ -23,18 +23,16 @@
 
 <svelte:window bind:innerWidth={width} bind:innerHeight={height} />
 
-<div class="container" style="width: {width * 0.9}px">
-	<AttributeTableControl
-		bind:map
-		position="top-right"
-		rowsPerPage={50}
-		minZoom={14}
-		width={width * 0.9}
-		height={height * 0.6}
-	>
-		<div class="map" bind:this={mapContainer} />
-	</AttributeTableControl>
-</div>
+<AttributeTableControl
+	bind:map
+	position="top-right"
+	rowsPerPage={50}
+	minZoom={14}
+	width={width * 0.95}
+	height={height * 0.6}
+>
+	<div class="map" bind:this={mapContainer}></div>
+</AttributeTableControl>
 
 <style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';
@@ -42,15 +40,11 @@
 
 	$height: calc(60vh);
 
-	.container {
-		margin: auto;
-
-		.map {
-			display: inline-block;
-			text-align: left;
-			width: 100%;
-			height: $height;
-			z-index: 1;
-		}
+	.map {
+		display: inline-block;
+		text-align: left;
+		width: 100%;
+		height: $height;
+		z-index: 1;
 	}
 </style>

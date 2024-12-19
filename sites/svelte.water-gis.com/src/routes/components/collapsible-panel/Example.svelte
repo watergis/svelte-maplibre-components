@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { CollapsiblePanel } from '@watergis/svelte-collapsible-panel';
-	let isPanelOpen1 = true;
-	let isPanelOpen2 = false;
-	let isPanelOpen3 = false;
+	let isPanelOpen1 = $state(true);
+	let isPanelOpen2 = $state(false);
+	let isPanelOpen3 = $state(false);
 </script>
 
 <div class="panel-container">

@@ -4,25 +4,25 @@
 	import { Map, NavigationControl } from 'maplibre-gl';
 	import { onMount } from 'svelte';
 
-	let isMenuShown = true;
+	let isMenuShown = $state(true);
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
-	let innerHeight = 0;
-	let innerWidth = 0;
+	let mapContainer: HTMLDivElement = $state();
+	let map: Map = $state();
+	let innerHeight = $state(0);
+	let innerWidth = $state(0);
 
-	$: menuHeight = innerHeight * 0.6;
-	$: menuWidth = innerWidth * 0.95;
+	let menuHeight = $derived(innerHeight * 0.6);
+	let menuWidth = $derived(innerWidth * 0.95);
 
-	let terrainRgbUrl = 'https://narwassco.github.io/narok-terrain/tiles/{z}/{x}/{y}.png';
-	let measureOption: MeasureOption = {
+	let terrainRgbUrl = $state('https://narwassco.github.io/narok-terrain/tiles/{z}/{x}/{y}.png');
+	let measureOption: MeasureOption = $state({
 		tileSize: 512,
 		font: ['Roboto Medium'],
 		fontSize: 12,
 		fontHalo: 1,
 		mainColor: '#263238',
 		haloColor: '#fff'
-	};
+	});
 
 	onMount(async () => {
 		window.global = window;
@@ -42,13 +42,17 @@
 <svelte:window bind:innerWidth bind:innerHeight />
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown width={menuWidth} height={menuHeight}>
-	<div slot="sidebar" class="primary-container">
-		<h4>Measure tool with elevation enquiry</h4>
-		<MeasurePanel bind:map bind:measureOption bind:terrainRgbUrl />
-	</div>
-	<div slot="mapControl">
-		<div class="map" bind:this={mapContainer} />
-	</div>
+	{#snippet sidebar()}
+		<div class="primary-container">
+			<h4>Measure tool with elevation enquiry</h4>
+			<MeasurePanel bind:map bind:measureOption bind:terrainRgbUrl />
+		</div>
+	{/snippet}
+	{#snippet mapControl()}
+		<div>
+			<div class="map" bind:this={mapContainer}></div>
+		</div>
+	{/snippet}
 </MenuControl>
 
 <style lang="scss">

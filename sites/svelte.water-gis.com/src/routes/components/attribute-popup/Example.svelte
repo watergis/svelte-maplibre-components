@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { Map, NavigationControl } from 'maplibre-gl';
 	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
+	import { Map, NavigationControl } from 'maplibre-gl';
+	import { onMount } from 'svelte';
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
+	let mapContainer: HTMLDivElement = $state();
+	let map: Map = $state();
 
 	let targetLayers = [
 		'meter',
@@ -24,7 +24,7 @@
 		'manhole'
 	];
 
-	onMount(async () => {
+	onMount(() => {
 		map = new Map({
 			container: mapContainer,
 			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
@@ -35,25 +35,19 @@
 	});
 </script>
 
-<div class="container">
-	<div class="map" bind:this={mapContainer} />
-	<AttributePopupControl bind:map {targetLayers} />
-</div>
+<div class="map" bind:this={mapContainer}></div>
+<AttributePopupControl bind:map {targetLayers} />
 
 <style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 
 	$height: calc(60vh);
 
-	.container {
-		text-align: center;
-
-		.map {
-			display: inline-block;
-			text-align: left;
-			width: 95%;
-			height: $height;
-			z-index: 1;
-		}
+	.map {
+		display: inline-block;
+		text-align: left;
+		width: 100%;
+		height: $height;
+		z-index: 1;
 	}
 </style>

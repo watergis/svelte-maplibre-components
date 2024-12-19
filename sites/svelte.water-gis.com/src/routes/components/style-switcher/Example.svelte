@@ -9,17 +9,17 @@
 	import { Map, NavigationControl } from 'maplibre-gl';
 	import { onMount } from 'svelte';
 
-	let isMenuShown = true;
+	let isMenuShown = $state(true);
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
-	let innerHeight = 0;
-	let innerWidth = 0;
+	let mapContainer: HTMLDivElement = $state();
+	let map: Map = $state();
+	let innerHeight = $state(0);
+	let innerWidth = $state(0);
 
-	$: menuHeight = innerHeight * 0.6;
-	$: menuWidth = innerWidth * 0.95;
+	let menuHeight = $derived(innerHeight * 0.6);
+	let menuWidth = $derived(innerWidth * 0.95);
 
-	let styles: StyleSwitcherOption[] = [
+	let styles: StyleSwitcherOption[] = $state([
 		{
 			title: 'UNVT Water (OSM)',
 			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style.json`
@@ -28,10 +28,10 @@
 			title: 'Satellite Water',
 			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style-aerial.json`
 		}
-	];
-	let selectedStyle: StyleSwitcherOption = styles[0];
+	]);
+	let selectedStyle: StyleSwitcherOption = $state('');
 
-	onMount(async () => {
+	onMount(() => {
 		const styleUrlObj = new StyleUrl();
 		selectedStyle = styleUrlObj.getInitialStyle(styles);
 
@@ -48,14 +48,18 @@
 <svelte:window bind:innerWidth bind:innerHeight />
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown width={menuWidth} height={menuHeight}>
-	<div slot="sidebar" class="primary-container">
-		<h4>Style switch control</h4>
-		<StyleSwitcher bind:map bind:styles bind:selectedStyle />
-	</div>
-	<div slot="mapControl">
-		<div class="map" bind:this={mapContainer} />
-		<StyleSwitcherControl bind:map bind:styles bind:selectedStyle position="top-left" />
-	</div>
+	{#snippet sidebar()}
+		<div class="primary-container">
+			<h4>Style switch control</h4>
+			<StyleSwitcher bind:map bind:styles bind:selectedStyle />
+		</div>
+	{/snippet}
+	{#snippet mapControl()}
+		<div>
+			<div class="map" bind:this={mapContainer}></div>
+			<StyleSwitcherControl bind:map bind:styles bind:selectedStyle position="top-left" />
+		</div>
+	{/snippet}
 </MenuControl>
 
 <style lang="scss">

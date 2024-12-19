@@ -9,19 +9,19 @@
 	import { Map, NavigationControl } from 'maplibre-gl';
 	import { onMount } from 'svelte';
 
-	let isMenuShown = true;
+	let isMenuShown = $state(true);
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
-	let innerHeight = 0;
-	let innerWidth = 0;
+	let mapContainer: HTMLDivElement = $state();
+	let map: Map = $state();
+	let innerHeight = $state(0);
+	let innerWidth = $state(0);
 
-	$: menuHeight = innerHeight * 0.8;
-	$: menuWidth = innerWidth * 0.95;
+	let menuHeight = $derived(innerHeight * 0.8);
+	let menuWidth = $derived(innerWidth * 0.95);
 
-	let valhallaUrl = 'https://valhalla.water-gis.com';
+	let valhallaUrl = $state('https://valhalla.water-gis.com');
 	// set options for valhalla
-	let valhallaIsochroneOptions: ValhallaIsochroneOptions = {
+	let valhallaIsochroneOptions: ValhallaIsochroneOptions = $state({
 		Contours: [
 			{
 				time: 3,
@@ -51,8 +51,8 @@
 			fontColor: '#000000',
 			fontHaloColor: '#fff'
 		}
-	};
-	let valhallaRoutingOptions: ValhallaRoutingOptions = {
+	});
+	let valhallaRoutingOptions: ValhallaRoutingOptions = $state({
 		font: ['Roboto Medium'],
 		fontSize: 14,
 		fontHalo: 3,
@@ -60,9 +60,9 @@
 		fontHaloColor: '#fff',
 		iconImage: 'marker',
 		iconSize: 1
-	};
+	});
 
-	onMount(async () => {
+	onMount(() => {
 		map = new Map({
 			container: mapContainer,
 			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
@@ -76,20 +76,24 @@
 <svelte:window bind:innerWidth bind:innerHeight />
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown width={menuWidth} height={menuHeight}>
-	<div slot="sidebar" class="primary-container" style="height:{menuHeight - 50}px;">
-		<h3>Isochrone tool</h3>
-		<ValhallaIsochronePanel
-			bind:map
-			bind:url={valhallaUrl}
-			bind:options={valhallaIsochroneOptions}
-		/>
-		<hr />
-		<h3>Routing tool</h3>
-		<ValhallaRoutingPanel bind:map bind:url={valhallaUrl} bind:options={valhallaRoutingOptions} />
-	</div>
-	<div slot="mapControl">
-		<div class="map" bind:this={mapContainer} />
-	</div>
+	{#snippet sidebar()}
+		<div class="primary-container" style="height:{menuHeight - 50}px;">
+			<h3>Isochrone tool</h3>
+			<ValhallaIsochronePanel
+				bind:map
+				bind:url={valhallaUrl}
+				bind:options={valhallaIsochroneOptions}
+			/>
+			<hr />
+			<h3>Routing tool</h3>
+			<ValhallaRoutingPanel bind:map bind:url={valhallaUrl} bind:options={valhallaRoutingOptions} />
+		</div>
+	{/snippet}
+	{#snippet mapControl()}
+		<div>
+			<div class="map" bind:this={mapContainer}></div>
+		</div>
+	{/snippet}
 </MenuControl>
 
 <style lang="scss">

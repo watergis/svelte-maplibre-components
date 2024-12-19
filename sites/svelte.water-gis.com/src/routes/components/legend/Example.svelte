@@ -4,20 +4,20 @@
 	import { Map, NavigationControl } from 'maplibre-gl';
 	import { onMount } from 'svelte';
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
-	let innerHeight = 0;
-	let innerWidth = 0;
+	let mapContainer: HTMLDivElement = $state();
+	let map: Map = $state();
+	let innerHeight = $state(0);
+	let innerWidth = $state(0);
 
-	$: menuHeight = innerHeight * 0.6;
-	$: menuWidth = innerWidth * 0.95;
+	let menuHeight = $derived(innerHeight * 0.6);
+	let menuWidth = $derived(innerWidth * 0.95);
 
-	let isMenuShown = true;
+	let isMenuShown = $state(true);
 
-	let onlyRendered = true;
-	let onlyRelative = true;
-	let enableLayerOrder = false;
-	let relativeLayers: { [key: string]: string } = {
+	let onlyRendered = $state(true);
+	let onlyRelative = $state(true);
+	let enableLayerOrder = $state(false);
+	let relativeLayers: { [key: string]: string } = $state({
 		pipeline: 'Pipeline',
 		pipeline_annotation: 'Pipeline Label',
 		meter: 'Water Meter',
@@ -47,9 +47,9 @@
 		manhole: 'Manhole',
 		sewer_pipeline: 'Sewer pipeline',
 		sewer_treatment_plant: 'Wastewater treatment plant'
-	};
+	});
 
-	onMount(async () => {
+	onMount(() => {
 		map = new Map({
 			container: mapContainer,
 			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
@@ -63,29 +63,33 @@
 <svelte:window bind:innerWidth bind:innerHeight />
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown width={menuWidth} height={menuHeight}>
-	<div slot="sidebar" class="primary-container">
-		<div class="legend-header">
-			<LegendHeader
-				bind:onlyRendered
-				bind:onlyRelative
-				bind:enableLayerOrder
-				isLayerOrderShown={true}
-			/>
+	{#snippet sidebar()}
+		<div class="primary-container">
+			<div class="legend-header">
+				<LegendHeader
+					bind:onlyRendered
+					bind:onlyRelative
+					bind:enableLayerOrder
+					isLayerOrderShown={true}
+				/>
+			</div>
+			<div class="legend-content" style="height:{menuHeight - 56}px">
+				<LegendPanel
+					bind:map
+					bind:onlyRendered
+					bind:onlyRelative
+					bind:relativeLayers
+					bind:enableLayerOrder
+					disableVisibleButton={false}
+				/>
+			</div>
 		</div>
-		<div class="legend-content" style="height:{menuHeight - 56}px">
-			<LegendPanel
-				bind:map
-				bind:onlyRendered
-				bind:onlyRelative
-				{relativeLayers}
-				bind:enableLayerOrder
-				disableVisibleButton={false}
-			/>
+	{/snippet}
+	{#snippet mapControl()}
+		<div>
+			<div class="map" bind:this={mapContainer}></div>
 		</div>
-	</div>
-	<div slot="mapControl">
-		<div class="map" bind:this={mapContainer} />
-	</div>
+	{/snippet}
 </MenuControl>
 
 <style lang="scss">

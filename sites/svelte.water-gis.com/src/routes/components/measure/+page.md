@@ -95,7 +95,7 @@ onMount(async () => {
 		<h4>Measure tool with elevation enquiry</h4>
 		<MeasurePanel bind:map bind:measureOption bind:terrainRgbUrl />
 	</div>
-	<div slot="map">
+	<div slot="mapControl">
 		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>

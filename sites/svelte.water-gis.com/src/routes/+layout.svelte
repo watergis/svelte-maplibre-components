@@ -3,8 +3,13 @@
 	import { addProtocol } from 'maplibre-gl';
 	import { Protocol } from 'pmtiles';
 	import { onMount } from 'svelte';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
 
-	let isMenuOpened = false;
+	let { children }: Props = $props();
+
+	let isMenuOpened = $state(false);
 
 	let components = [
 		{ name: 'attribute-popup', title: 'svelte-maplbre-attribute-popup' },
@@ -47,26 +52,26 @@
 			<img src="https://raw.githubusercontent.com/watergis/logo/main/logo.svg" alt="logo" />
 		</a>
 
-		<!-- svelte-ignore a11y-missing-attribute -->
-		<!-- svelte-ignore a11y-interactive-supports-focus -->
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<!-- svelte-ignore a11y_missing_attribute -->
+		<!-- svelte-ignore a11y_interactive_supports_focus -->
+		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<a
 			role="button"
 			class="navbar-burger {`${isMenuOpened ? 'is-active' : ''}`}"
 			aria-label="menu"
 			aria-expanded="false"
 			data-target="navbar"
-			on:click={() => (isMenuOpened = !isMenuOpened)}
+			onclick={() => (isMenuOpened = !isMenuOpened)}
 		>
-			<span aria-hidden="true" />
-			<span aria-hidden="true" />
-			<span aria-hidden="true" />
+			<span aria-hidden="true"></span>
+			<span aria-hidden="true"></span>
+			<span aria-hidden="true"></span>
 		</a>
 	</div>
 
 	<div id="navbar" class="navbar-menu {`${isMenuOpened ? 'is-active' : ''}`}">
 		<div class="navbar-start">
-			<a class="navbar-item" href="/" on:click={() => (isMenuOpened = false)}> Getting started </a>
+			<a class="navbar-item" href="/" onclick={() => (isMenuOpened = false)}> Getting started </a>
 
 			<div class="navbar-item has-dropdown is-hoverable">
 				<a class="navbar-link" href="/"> Components </a>
@@ -76,7 +81,7 @@
 						<a
 							class="navbar-item"
 							href="/components/{component.name}"
-							on:click={() => (isMenuOpened = false)}
+							onclick={() => (isMenuOpened = false)}
 						>
 							{component.title}
 						</a>
@@ -88,7 +93,7 @@
 </nav>
 
 <main class="markdown-body main-content">
-	<slot />
+	{@render children?.()}
 </main>
 
 <footer class="footer">

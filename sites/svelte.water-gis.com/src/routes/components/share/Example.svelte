@@ -3,10 +3,10 @@
 	import { Map, NavigationControl } from 'maplibre-gl';
 	import { onMount } from 'svelte';
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
+	let mapContainer: HTMLDivElement = $state();
+	let map: Map = $state();
 
-	onMount(async () => {
+	onMount(() => {
 		map = new Map({
 			container: mapContainer,
 			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
@@ -16,29 +16,26 @@
 		map.touchPitch.enable();
 	});
 
-	let customiseUrl = (url: string): string => {
+	let customiseUrl = $state((url: string): string => {
 		const _url = new URL(url);
 		_url.searchParams.set('customise', 'true');
 		return _url.toString();
-	};
+	});
 </script>
 
-<div class="container">
-	<div class="map" bind:this={mapContainer} />
-	<ShareURLControl bind:map bind:customiseUrl />
-</div>
+<div class="map" bind:this={mapContainer}></div>
+<ShareURLControl bind:map bind:customiseUrl />
 
 <style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 
 	$height: calc(60vh);
 
-	.container {
-		.map {
-			display: inline-block;
-			width: 95%;
-			height: $height;
-			z-index: 1;
-		}
+	.map {
+		display: inline-block;
+		text-align: left;
+		width: 100%;
+		height: $height;
+		z-index: 1;
 	}
 </style>

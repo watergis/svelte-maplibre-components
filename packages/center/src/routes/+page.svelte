@@ -4,12 +4,12 @@
 	import { Protocol } from 'pmtiles';
 	import { onMount } from 'svelte';
 
-	let mapContainer: HTMLDivElement;
+	let mapContainer: HTMLDivElement = $state();
 	let centerIconManager: CenterIconManager;
 
 	let map: Map;
 
-	onMount(async () => {
+	onMount(() => {
 		const protocol = new Protocol();
 		addProtocol('pmtiles', protocol.tile);
 		map = new Map({
@@ -26,7 +26,7 @@
 	<title>Svelte maplibre center icon example</title>
 </sveltekit:head>
 
-<div class="map" bind:this={mapContainer} />
+<div class="map" bind:this={mapContainer}></div>
 
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';

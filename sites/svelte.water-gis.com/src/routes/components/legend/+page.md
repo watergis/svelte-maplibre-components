@@ -121,7 +121,7 @@ pnpm i @watergis/svelte-maplibre-legend
 			/>
 		</div>
 	</div>
-	<div slot="map">
+	<div slot="mapControl">
 		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>

@@ -124,7 +124,7 @@ pnpm i @watergis/svelte-maplibre-valhalla
 		<h3>Routing tool</h3>
 		<ValhallaRoutingPanel bind:map bind:url={valhallaUrl} bind:options={valhallaRoutingOptions} />
 	</div>
-	<div slot="map">
+	<div slot="mapControl">
 		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>

@@ -16,7 +16,7 @@
 	$: selectedObject, zoomToSearchedObject();
 
 	let searchContainer: HTMLDivElement;
-	// eslint-disable-next-line
+	 
 	function SearchControl() {}
 
 	SearchControl.prototype.onAdd = function (map: Map) {

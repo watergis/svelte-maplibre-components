@@ -133,9 +133,11 @@
 	{#if selectedFeature}
 		<div class="popup-table">
 			<table>
-				{#each Object.keys(selectedFeature.properties) as key}
-					<tr><th>{key}</th><td>{selectedFeature.properties[key]}</td></tr>
-				{/each}
+				<tbody>
+					{#each Object.keys(selectedFeature.properties) as key}
+						<tr><th>{key}</th><td>{selectedFeature.properties[key]}</td></tr>
+					{/each}
+				</tbody>
 			</table>
 		</div>
 	{/if}

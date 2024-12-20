@@ -4,10 +4,10 @@
 	import { Protocol } from 'pmtiles';
 	import { onMount } from 'svelte';
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
+	let mapContainer: HTMLDivElement = $state();
+	let map: Map = $state();
 
-	onMount(async () => {
+	onMount(() => {
 		const protocol = new Protocol();
 		addProtocol('pmtiles', protocol.tile);
 		map = new Map({

@@ -14,38 +14,48 @@
 	import { onDestroy, onMount } from 'svelte';
 	import Fa from 'svelte-fa';
 
-	export let map: Map;
-	export let showPrintableArea = true;
-	export let showCrosshair = true;
-
 	let isShownPanel = false;
 
 	let mapGenerator: MapGenerator;
 	let printableArea: PrintableAreaManager | undefined;
 	let crosshairManager: CrosshairManager | undefined;
 
-	export let paperSize = Size.A4;
-	export let dpi = DPI[96];
-	export let format = Format.PNG;
-	export let orientation = PageOrientation.Landscape;
+	interface Props {
+		map: Map | undefined;
+		showPrintableArea?: boolean;
+		showCrosshair?: boolean;
+		paperSize?: any;
+		dpi?: any;
+		format?: any;
+		orientation?: any;
+	}
 
-	$: paperSize, updatePrintableArea();
-	$: orientation, updatePrintableArea();
+	let {
+		map = $bindable(undefined),
+		showPrintableArea = $bindable(true),
+		showCrosshair = $bindable(true),
+		paperSize = $bindable(Size.A4),
+		dpi = $bindable(DPI[96]),
+		format = $bindable(Format.PNG),
+		orientation = $bindable(PageOrientation.Landscape)
+	}: Props = $props();
 
-	onMount(async () => {
-		const { default: MapGenerator } = await import('./utils/map-generator');
-		mapGenerator = new MapGenerator();
-		isShownPanel = true;
-		if (!showPrintableArea) {
-			togglePrintableArea(false);
-		} else {
-			togglePrintableArea(isShownPanel);
-		}
-		if (!showCrosshair) {
-			toggleCrosshair(false);
-		} else {
-			toggleCrosshair(isShownPanel);
-		}
+	onMount(() => {
+		async () => {
+			const { default: MapGenerator } = await import('./utils/map-generator');
+			mapGenerator = new MapGenerator();
+			isShownPanel = true;
+			if (!showPrintableArea) {
+				togglePrintableArea(false);
+			} else {
+				togglePrintableArea(isShownPanel);
+			}
+			if (!showCrosshair) {
+				toggleCrosshair(false);
+			} else {
+				toggleCrosshair(isShownPanel);
+			}
+		};
 	});
 
 	onDestroy(() => {
@@ -55,6 +65,7 @@
 	});
 
 	const exportMap = () => {
+		if (!map) return;
 		const actualPaperSize = getActualPaperSize();
 		mapGenerator.generate(
 			map,
@@ -111,11 +122,11 @@
 
 <div class="export-container">
 	<div class="field">
-		<!-- svelte-ignore a11y-label-has-associated-control -->
+		<!-- svelte-ignore a11y_label_has_associated_control -->
 		<label class="label">Paper Size</label>
 		<div class="control has-icons-left">
 			<div class="select is-small is-fullwidth">
-				<select bind:value={paperSize}>
+				<select bind:value={paperSize} onchange={updatePrintableArea}>
 					{#each Object.keys(Size) as key}
 						<option value={Size[key]}>{key}</option>
 					{/each}
@@ -127,7 +138,7 @@
 		</div>
 	</div>
 	<div class="field">
-		<!-- svelte-ignore a11y-label-has-associated-control -->
+		<!-- svelte-ignore a11y_label_has_associated_control -->
 		<label class="label">Page Orientation</label>
 		<div class="control">
 			{#each Object.keys(PageOrientation) as key}
@@ -135,8 +146,9 @@
 					<input
 						type="radio"
 						name="orientation"
-						on:click={() => {
+						onclick={() => {
 							orientation = PageOrientation[key];
+							updatePrintableArea();
 						}}
 						checked={orientation === PageOrientation[key]}
 					/>
@@ -152,7 +164,7 @@
 		</div>
 	</div>
 	<div class="field">
-		<!-- svelte-ignore a11y-label-has-associated-control -->
+		<!-- svelte-ignore a11y_label_has_associated_control -->
 		<label class="label">Format</label>
 		<div class="control has-icons-left">
 			<div class="select is-small is-fullwidth">
@@ -168,7 +180,7 @@
 		</div>
 	</div>
 	<div class="field">
-		<!-- svelte-ignore a11y-label-has-associated-control -->
+		<!-- svelte-ignore a11y_label_has_associated_control -->
 		<label class="label">DPI</label>
 		<div class="control has-icons-left">
 			<div class="select is-small is-fullwidth">
@@ -184,7 +196,7 @@
 		</div>
 	</div>
 
-	<button class="button is-fullwidth is-success" on:click={exportMap}>
+	<button class="button is-fullwidth is-success" onclick={exportMap}>
 		<span class="icon is-small">
 			<Fa icon={faDownload} size="sm" />
 		</span>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { CollapsiblePanel } from '$lib';
 
-	let isPanelOpen = true;
+	let isPanelOpen = $state(true);
 </script>
 
 <sveltekit:head>

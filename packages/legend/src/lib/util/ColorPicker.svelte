@@ -1,15 +1,23 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-	import ColorPicker, { type RgbaColor, ChromeVariant } from 'svelte-awesome-color-picker';
 	import chroma from 'chroma-js';
+	import { createEventDispatcher, untrack } from 'svelte';
+	import ColorPicker, { type RgbaColor, ChromeVariant } from 'svelte-awesome-color-picker';
 	import { createPopperActions } from 'svelte-popperjs';
 	import { clickOutside } from 'svelte-use-click-outside';
 
-	export let color: string;
-	export let label = 'Choose a color';
-	export let hideLabel = false;
-	let rgba: RgbaColor;
-	let showTooltip = false;
+	interface Props {
+		color: string;
+		label?: string;
+		hideLabel?: boolean;
+	}
+
+	let {
+		color = $bindable(),
+		label = $bindable('Choose a color'),
+		hideLabel = $bindable(false)
+	}: Props = $props();
+	let rgba: RgbaColor | undefined = $state();
+	let showTooltip = $state(false);
 
 	const dispatch = createEventDispatcher();
 	const [popperRef, popperContent] = createPopperActions({
@@ -33,7 +41,6 @@
 		]
 	};
 
-	$: color, setPickerColor();
 	const setPickerColor = () => {
 		// if (!color) return;
 		const c = chroma(color);
@@ -41,7 +48,6 @@
 		rgba = { r: rgb[0], g: rgb[1], b: rgb[2], a: c.alpha() };
 	};
 
-	$: rgba, setMaplibreColor();
 	const setMaplibreColor = () => {
 		if (!rgba) return;
 		color = chroma([rgba.r, rgba.g, rgba.b, rgba.a]).css();
@@ -55,33 +61,51 @@
 			showTooltip = !showTooltip;
 		}
 	};
+	$effect(() => {
+		if (color) {
+			untrack(() => {
+				setPickerColor();
+			});
+		}
+	});
+	$effect(() => {
+		if (rgba) {
+			untrack(() => {
+				setMaplibreColor();
+			});
+		}
+	});
 </script>
 
 <span
 	class="paletter-control"
 	role="button"
 	tabindex="0"
-	on:click={() => (showTooltip = !showTooltip)}
-	on:keydown={handleKeydown}
+	onclick={() => (showTooltip = !showTooltip)}
+	onkeydown={handleKeydown}
 	use:popperRef
 >
-	<div class="color-palette" title={color} style="background: {color};" />
+	<div class="color-palette" title={color} style="background: {color};"></div>
 	{#if !hideLabel}
 		<p class="label">{label}</p>
 	{/if}
 </span>
 
 {#if showTooltip}
-	<div id="tooltip" use:popperContent={extraOpts} use:clickOutside={() => (showTooltip = false)}>
+	<div
+		id="tooltip"
+		class="default-color-picker-container"
+		use:popperContent={extraOpts}
+		use:clickOutside={() => (showTooltip = false)}
+	>
 		<ColorPicker
 			bind:rgb={rgba}
 			components={ChromeVariant}
-			isPopup={true}
-			isInput={false}
+			isDialog={false}
 			isTextInput={false}
 			isAlpha={true}
-			toRight={true}
 			isOpen={true}
+			sliderDirection="horizontal"
 		/>
 	</div>
 {/if}
@@ -125,11 +149,17 @@
 		border-radius: 7.5px;
 		border: 1px solid #ccc;
 		box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
-		height: 270px;
 		padding: 0;
-		width: 280px;
 		position: relative;
 		z-index: 10;
+	}
+
+	.default-color-picker-container {
+		position: relative;
+
+		:global(.wrapper) {
+			margin: 0;
+		}
 
 		:global(.picker) {
 			cursor: pointer;

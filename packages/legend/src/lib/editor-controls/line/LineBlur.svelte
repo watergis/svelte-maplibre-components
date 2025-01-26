@@ -15,13 +15,11 @@
 		return value as number;
 	};
 
-	let value = getValue();
-
-	$: value, setValue();
+	let value = $state(getValue());
 
 	const setValue = () => {
 		map.setPaintProperty(layerId, 'line-blur', value);
 	};
 </script>
 
-<Slider bind:value min={0} max={20} step={1} unit="px" />
+<Slider bind:value min={0} max={20} step={1} unit="px" onchange={setValue} />

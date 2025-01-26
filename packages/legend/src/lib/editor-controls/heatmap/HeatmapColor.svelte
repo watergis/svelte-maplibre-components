@@ -4,14 +4,15 @@
 	import ColorPicker from '$lib/util/ColorPicker.svelte';
 	import chroma from 'chroma-js';
 	import { debounce } from 'lodash-es';
+	import { untrack } from 'svelte';
 
 	const map = getMapContext();
 	let layerId: string = getLayerIdContext();
 
 	type InterpolateType = number | string[] | string;
 
-	let heatmapProperty: string;
-	let colorRows: { color: string; value: string }[] = [];
+	let heatmapProperty: string = $state();
+	let colorRows: { color: string; value: string }[] = $state([]);
 	const START_POSITION = 3;
 
 	const getValue = () => {
@@ -59,9 +60,7 @@
 		return value as InterpolateType[];
 	};
 
-	let value = getValue();
-
-	$: value, setValue();
+	let value = $state(getValue());
 
 	const setValue = () => {
 		map.setPaintProperty(layerId, 'heatmap-color', value);
@@ -71,6 +70,13 @@
 		const row = colorRows[index];
 		value[START_POSITION + (index + 1) * 2 - 1] = row.color;
 	}, 100);
+	$effect(() => {
+		if (value) {
+			untrack(() => {
+				setValue();
+			});
+		}
+	});
 </script>
 
 <p class="description">Rendered by {heatmapProperty}</p>

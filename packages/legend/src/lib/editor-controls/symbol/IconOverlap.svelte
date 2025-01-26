@@ -7,7 +7,7 @@
 	const map = getMapContext();
 	let layerId: string = getLayerIdContext();
 
-	let options: Option[] = [
+	let options: Option[] = $state([
 		{
 			title: 'Never',
 			value: 'never'
@@ -20,7 +20,7 @@
 			title: 'Cooperative',
 			value: 'cooperative'
 		}
-	];
+	]);
 
 	const getValue = () => {
 		let value = $map.getLayoutProperty(layerId, 'icon-overlap');
@@ -31,13 +31,11 @@
 		return value as number[];
 	};
 
-	let value: number[] = getValue();
-
-	$: value, setValue();
+	let value: number[] = $state(getValue());
 
 	const setValue = () => {
 		map.setLayoutProperty(layerId, 'icon-overlap', value);
 	};
 </script>
 
-<Options bind:options bind:selectedValue={value} />
+<Options bind:options bind:selectedValue={value} onchange={setValue} />

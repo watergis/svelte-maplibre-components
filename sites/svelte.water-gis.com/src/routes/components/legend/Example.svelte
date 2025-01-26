@@ -74,14 +74,16 @@
 				/>
 			</div>
 			<div class="legend-content" style="height:{menuHeight - 56}px">
-				<LegendPanel
-					bind:map
-					bind:onlyRendered
-					bind:onlyRelative
-					bind:relativeLayers
-					bind:enableLayerOrder
-					disableVisibleButton={false}
-				/>
+				{#if map}
+					<LegendPanel
+						bind:map
+						bind:onlyRendered
+						bind:onlyRelative
+						bind:relativeLayers
+						bind:enableLayerOrder
+						disableVisibleButton={false}
+					/>
+				{/if}
 			</div>
 		</div>
 	{/snippet}

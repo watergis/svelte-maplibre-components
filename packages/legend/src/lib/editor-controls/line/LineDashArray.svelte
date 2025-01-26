@@ -7,7 +7,7 @@
 	const map = getMapContext();
 	let layerId: string = getLayerIdContext();
 
-	let options: Option[] = [
+	let options: Option[] = $state([
 		{
 			title: 'Solid',
 			value: ''
@@ -24,7 +24,7 @@
 			title: ' dot',
 			value: [1, 1]
 		}
-	];
+	]);
 
 	const getValue = () => {
 		let value = $map.getPaintProperty(layerId, 'line-dasharray');
@@ -35,9 +35,7 @@
 		return value as number[];
 	};
 
-	let value: number[] = getValue();
-
-	$: value, setValue();
+	let value: number[] = $state(getValue());
 
 	const setValue = () => {
 		if (value) {
@@ -48,4 +46,4 @@
 	};
 </script>
 
-<Options bind:options bind:selectedValue={value} />
+<Options bind:options bind:selectedValue={value} onchange={setValue} />

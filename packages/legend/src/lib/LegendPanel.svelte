@@ -1,6 +1,6 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import { createMapStore } from '$lib/stores';
-	import { getContext, setContext } from 'svelte';
+	import { getContext, onMount, setContext, untrack } from 'svelte';
 
 	const MAP_CONTEXT_KEY = 'maplibre-legend-map';
 
@@ -23,46 +23,35 @@
 	import SpriteLoader from './sprite';
 	import { distinct } from './util/distinct';
 
-	export let map: Map;
-	export let onlyRendered = true;
-	export let onlyRelative = true;
-	export let enableLayerOrder = false;
-	export let disableVisibleButton = false;
-	export let enableEditing = true;
-
 	const mapStore = setMapContext();
 	const invisibleLayerMap = writable<{ [key: string]: LayerSpecification }>({});
 
-	let style: StyleSpecification;
-	let spriteLoader: SpriteLoader | undefined;
-	let hovering: boolean | number | undefined = false;
-	export let defaultEditorFormat: 'yaml' | 'json' = 'yaml';
-	$: isShowLastDropArea = hovering === getLastVisibleIndex();
+	let style: StyleSpecification = $state();
+	let spriteLoader: SpriteLoader | undefined = $state();
+	let hovering: boolean | number | undefined = $state(false);
 
-	$: allLayers = style ? style.layers : [];
 	let visibleLayerMap: { [key: string]: LayerSpecification } = {};
-	export let relativeLayers: { [key: string]: string } = {};
-
-	$: {
-		if (map) {
-			mapStore.set(map);
-
-			$mapStore.on('moveend', updateLayers);
-			$mapStore.on('styledata', updateLayers);
-			$mapStore.on('load', () => {
-				style = map.getStyle();
-			});
-			$mapStore.on('style:change', handleStyleChanged);
-		}
-
-		if (relativeLayers && Object.keys(relativeLayers).length === 0) {
-			onlyRelative = false;
-		}
+	interface Props {
+		map: Map;
+		onlyRendered?: boolean;
+		onlyRelative?: boolean;
+		enableLayerOrder?: boolean;
+		disableVisibleButton?: boolean;
+		enableEditing?: boolean;
+		defaultEditorFormat?: 'yaml' | 'json';
+		relativeLayers?: { [key: string]: string };
 	}
 
-	$: onlyRendered, updateLayers();
-	$: onlyRelative, updateLayers();
-	$: style, handleStyleChanged();
+	let {
+		map = $bindable(),
+		onlyRendered = $bindable(true),
+		onlyRelative = $bindable(true),
+		enableLayerOrder = $bindable(false),
+		disableVisibleButton = $bindable(false),
+		enableEditing = $bindable(true),
+		defaultEditorFormat = $bindable('yaml'),
+		relativeLayers = $bindable({})
+	}: Props = $props();
 
 	const handleStyleChanged = (isLoadSprite = true) => {
 		if (!$mapStore) return;
@@ -140,9 +129,11 @@
 		target: number,
 		layer?: LayerSpecification
 	) => {
+		event.preventDefault();
 		event.dataTransfer.dropEffect = 'move';
 		const start = parseInt(event.dataTransfer.getData('text/plain'));
-		const newTracklist = allLayers;
+
+		const newTracklist = JSON.parse(JSON.stringify(allLayers));
 
 		if (start <= target) {
 			newTracklist.splice(target + 1, 0, newTracklist[start]);
@@ -240,6 +231,39 @@
 		}
 		return isShow;
 	};
+	let isShowLastDropArea = $derived(hovering === getLastVisibleIndex());
+	onMount(() => {
+		if (map) {
+			mapStore.set(map);
+
+			$mapStore.on('moveend', updateLayers);
+			$mapStore.on('styledata', updateLayers);
+			$mapStore.on('load', () => {
+				style = map.getStyle();
+			});
+			$mapStore.on('style:change', handleStyleChanged);
+		}
+	});
+	let allLayers = $derived(style ? style.layers : []);
+
+	$effect(() => {
+		if (onlyRendered !== undefined || onlyRelative !== undefined) {
+			untrack(() => {
+				updateLayers();
+			});
+		}
+		if (relativeLayers && Object.keys(relativeLayers).length === 0) {
+			onlyRelative = false;
+		}
+	});
+
+	$effect(() => {
+		if (style) {
+			untrack(() => {
+				handleStyleChanged();
+			});
+		}
+	});
 </script>
 
 <ul class="legend-panel">
@@ -251,19 +275,19 @@
 						class="list-item"
 						role="listitem"
 						draggable={enableLayerOrder}
-						on:dragstart={(event) => dragstart(event, index)}
-						on:drop|preventDefault={(event) => drop(event, index, layer)}
-						on:dragover={(event) => dragover(event)}
-						on:dragenter={() => {
+						ondragstart={(event) => dragstart(event, index)}
+						ondrop={(event) => drop(event, index, layer)}
+						ondragover={(event) => dragover(event)}
+						ondragenter={() => {
 							hovering = index;
 						}}
 						class:is-active={hovering === index}
 					>
 						<li class="legend-panel-block">
 							<Layer
-								{layer}
-								{spriteLoader}
-								{relativeLayers}
+								bind:layer={allLayers[index]}
+								bind:spriteLoader
+								bind:relativeLayers
 								bind:enableLayerOrder
 								bind:disableVisibleButton
 								bind:enableEditing
@@ -281,9 +305,9 @@
 					role="listitem"
 					style="height: 40px;"
 					draggable={false}
-					on:drop|preventDefault={(event) => drop(event, getLastVisibleIndex())}
-					on:dragover={(event) => dragover(event)}
-					on:dragenter={() => {
+					ondrop={(event) => drop(event, getLastVisibleIndex())}
+					ondragover={(event) => dragover(event)}
+					ondragenter={() => {
 						hovering = getLastVisibleIndex();
 					}}
 					class:is-active={hovering === getLastVisibleIndex()}
@@ -337,10 +361,6 @@
 			margin: 0;
 			padding: 0.2rem;
 			border-bottom: 0.1rem solid rgb(197, 197, 197);
-		}
-
-		.legend-panel-block li {
-			display: block;
 		}
 
 		.legend-panel-block:hover {

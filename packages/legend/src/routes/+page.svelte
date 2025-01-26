@@ -13,12 +13,12 @@
 	let protocol = new pmtiles.Protocol();
 	maplibregl.addProtocol('pmtiles', protocol.tile);
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
+	let mapContainer: HTMLDivElement = $state();
+	let map: Map = $state();
 
-	let isMenuShown = true;
+	let isMenuShown = $state(true);
 
-	let styles = [
+	let styles = $state([
 		{
 			title: 'UNVT Water (OSM)',
 			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style.json`
@@ -39,15 +39,18 @@
 			title: 'Satellite Sewer',
 			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style-aerial-sewer.json`
 		}
-	];
+	]);
 
 	const styleUrlObj = new StyleUrl();
-	let selectedStyle: StyleSwitcherOption = styleUrlObj.getInitialStyle(styles);
+	const getDefaultStyle = () => {
+		return styleUrlObj.getInitialStyle(styles);
+	};
+	let selectedStyle: StyleSwitcherOption = $state(getDefaultStyle());
 
-	let onlyRendered = true;
-	let onlyRelative = true;
-	let enableLayerOrder = false;
-	let enableEditing = true;
+	let onlyRendered = $state(true);
+	let onlyRelative = $state(true);
+	let enableLayerOrder = $state(false);
+	let enableEditing = $state(true);
 
 	let relativeLayers: { [key: string]: string } = {
 		pipeline: 'Pipeline',
@@ -102,33 +105,39 @@
 </sveltekit:head>
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
-	<div slot="sidebar" class="primary-container">
-		<div class="style-header">
-			<StyleSwitcher bind:map bind:selectedStyle bind:styles on:change={onStyleChange} />
+	{#snippet sidebar()}
+		<div class="primary-container">
+			<div class="style-header">
+				<StyleSwitcher bind:map bind:selectedStyle bind:styles on:change={onStyleChange} />
+			</div>
+			<div class="legend-header">
+				<LegendHeader
+					bind:onlyRendered
+					bind:onlyRelative
+					bind:enableLayerOrder
+					isLayerOrderShown={true}
+				/>
+			</div>
+			<div class="legend-content">
+				{#if map}
+					<LegendPanel
+						bind:map
+						bind:onlyRendered
+						bind:onlyRelative
+						bind:enableLayerOrder
+						bind:enableEditing
+						{relativeLayers}
+						disableVisibleButton={false}
+					/>
+				{/if}
+			</div>
 		</div>
-		<div class="legend-header">
-			<LegendHeader
-				bind:onlyRendered
-				bind:onlyRelative
-				bind:enableLayerOrder
-				isLayerOrderShown={true}
-			/>
+	{/snippet}
+	{#snippet mapControl()}
+		<div>
+			<div class="map" bind:this={mapContainer}></div>
 		</div>
-		<div class="legend-content">
-			<LegendPanel
-				bind:map
-				bind:onlyRendered
-				bind:onlyRelative
-				bind:enableLayerOrder
-				bind:enableEditing
-				{relativeLayers}
-				disableVisibleButton={false}
-			/>
-		</div>
-	</div>
-	<div slot="mapControl">
-		<div class="map" bind:this={mapContainer} />
-	</div>
+	{/snippet}
 </MenuControl>
 
 <style lang="scss">

@@ -15,12 +15,11 @@
 		return value as number;
 	};
 
-	let value = getValue();
-	$: value, setValue();
+	let value = $state(getValue());
 
 	const setValue = () => {
 		map.setPaintProperty(layerId, 'hillshade-exaggeration', value);
 	};
 </script>
 
-<Slider bind:value min={0} max={100} step={1} unit="%" />
+<Slider bind:value min={0} max={100} step={1} unit="%" onchange={setValue} />

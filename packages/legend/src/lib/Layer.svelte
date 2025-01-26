@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import { getContext, setContext } from 'svelte';
 
 	const LAYERID_CONTEXT_KEY = 'maplibre-legend-layer-id';
@@ -33,24 +33,32 @@
 
 	const dispatch = createEventDispatcher();
 
-	export let layer: LayerSpecification;
-	export let spriteLoader: SpriteLoader;
-	export let relativeLayers: { [key: string]: string } = {};
-	export let enableLayerOrder = false;
-	export let disableVisibleButton = false;
-	export let enableEditing = true;
-	export let selectedFormat: 'yaml' | 'json';
+	interface Props {
+		layer: LayerSpecification;
+		spriteLoader: SpriteLoader;
+		relativeLayers?: { [key: string]: string };
+		enableLayerOrder?: boolean;
+		disableVisibleButton?: boolean;
+		enableEditing?: boolean;
+		selectedFormat: 'yaml' | 'json';
+	}
+
+	let {
+		layer = $bindable(),
+		spriteLoader = $bindable(),
+		relativeLayers = $bindable({}),
+		enableLayerOrder = $bindable(false),
+		disableVisibleButton = $bindable(false),
+		enableEditing = $bindable(true),
+		selectedFormat = $bindable()
+	}: Props = $props();
 
 	const mapStore = getMapContext();
 	setLayerIdContext(layer.id);
 
 	let visibility = $mapStore?.getLayer(layer.id).visibility;
 
-	let checked = visibility === 'none' ? false : true;
-	$: checked, setVisibility();
-
-	$: layerTitle =
-		relativeLayers && relativeLayers[layer.id] ? relativeLayers[layer.id] : clean(layer.id);
+	let checked = $state(visibility === 'none' ? false : true);
 
 	const setVisibility = () => {
 		const visibility = checked === true ? 'visible' : 'none';
@@ -88,8 +96,8 @@
 		return index === layers.length - 1;
 	};
 
-	let isFirstLater = checkIsFirstLayer();
-	let isLastLayer = checkIsLastLayer();
+	let isFirstLater = $state(checkIsFirstLayer());
+	let isLastLayer = $state(checkIsLastLayer());
 
 	const moveBefore = () => {
 		const currentIndex = getLayerIndex();
@@ -122,6 +130,10 @@
 			moveAfter();
 		}
 	};
+
+	let layerTitle = $derived(
+		relativeLayers && relativeLayers[layer.id] ? relativeLayers[layer.id] : clean(layer.id)
+	);
 </script>
 
 <div class="layer-container" style="cursor:{enableLayerOrder ? 'grab' : 'default'};">
@@ -140,8 +152,11 @@
 				role="button"
 				class="visible-button has-tooltip-right has-tooltip-arrow"
 				data-tooltip="{checked ? 'Hide' : 'Show'} layer"
-				on:click={() => (checked = !checked)}
-				on:keydown={handleKeydownVisibility}
+				onclick={() => {
+					checked = !checked;
+					setVisibility();
+				}}
+				onkeydown={handleKeydownVisibility}
 			>
 				{#if checked}
 					<Fa icon={faEye} />
@@ -153,7 +168,7 @@
 	{/if}
 	<div class="legend">
 		{#if $mapStore}
-			<Legend {spriteLoader} />
+			<Legend bind:spriteLoader />
 		{/if}
 	</div>
 	<div class="layer-name">
@@ -170,8 +185,8 @@
 					role="button"
 					class="sort-button has-tooltip-left has-tooltip-arrow"
 					data-tooltip="Bring backward in map"
-					on:click={moveBefore}
-					on:keydown={handleKeydownMoveBefore}
+					onclick={moveBefore}
+					onkeydown={handleKeydownMoveBefore}
 				>
 					<Fa icon={faSortUp} size="lg" />
 				</span>
@@ -182,8 +197,8 @@
 					role="button"
 					class="sort-button has-tooltip-left has-tooltip-arrow"
 					data-tooltip="Bring forward in map"
-					on:click={moveAfter}
-					on:keydown={handleKeydownmoveAfter}
+					onclick={moveAfter}
+					onkeydown={handleKeydownmoveAfter}
 				>
 					<Fa icon={faSortDown} size="lg" />
 				</span>

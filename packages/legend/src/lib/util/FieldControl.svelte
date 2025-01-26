@@ -1,33 +1,38 @@
 <script lang="ts">
 	import Help from '$lib/util/Help.svelte';
-	export let title: string;
-	export let help:
-		| {
-				type?: 'paint' | 'layout';
-				layerType:
-					| 'background'
-					| 'fill'
-					| 'line'
-					| 'symbol'
-					| 'raster'
-					| 'circle'
-					| 'fill-extrusion'
-					| 'heatmap'
-					| 'hillshade';
-				property?: string;
-		  }
-		| undefined = undefined;
+	interface Props {
+		title: string;
+		help?:
+			| {
+					type?: 'paint' | 'layout';
+					layerType:
+						| 'background'
+						| 'fill'
+						| 'line'
+						| 'symbol'
+						| 'raster'
+						| 'circle'
+						| 'fill-extrusion'
+						| 'heatmap'
+						| 'hillshade';
+					property?: string;
+			  }
+			| undefined;
+		children?: import('svelte').Snippet;
+	}
+
+	let { title = $bindable(), help = $bindable(), children }: Props = $props();
 </script>
 
 <div class="field">
 	<div class="label">
 		{title}
 		{#if help}
-			<Help bind:type={help.type} bind:layerType={help.layerType} bind:property={help.property} />
+			<Help type={help.type} layerType={help.layerType} property={help.property} />
 		{/if}
 	</div>
 	<div class="control">
-		<slot />
+		{@render children?.()}
 	</div>
 </div>
 

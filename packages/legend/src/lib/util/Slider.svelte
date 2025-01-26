@@ -1,22 +1,34 @@
 <script lang="ts">
+	import { debounce } from 'lodash-es';
 	import RangeSlider from 'svelte-range-slider-pips';
 
-	export let value: number;
-	export let min: number;
-	export let max: number;
-	export let unit: string;
-	export let step = 1;
-	let rangeSliderValues = unit === '%' ? [value * 100] : [value];
+	interface Props {
+		value: number;
+		min: number;
+		max: number;
+		unit: string;
+		step?: number;
+		onchange?: (value: number) => void;
+	}
 
-	$: rangeSliderValues, setValue();
+	let {
+		value = $bindable(),
+		min = $bindable(),
+		max = $bindable(),
+		unit = $bindable(),
+		step = $bindable(1),
+		onchange = () => {}
+	}: Props = $props();
+	let rangeSliderValues = $state(unit === '%' ? [value * 100] : [value]);
 
-	const setValue = () => {
+	const setValue = debounce(() => {
 		if (unit === '%') {
 			value = rangeSliderValues[0] / 100;
 		} else {
 			value = rangeSliderValues[0];
 		}
-	};
+		if (onchange) onchange(value);
+	}, 300);
 </script>
 
 <div class="range-slider">
@@ -31,6 +43,7 @@
 		last="label"
 		rest={false}
 		suffix={unit}
+		on:change={setValue}
 	/>
 </div>
 

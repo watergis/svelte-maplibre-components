@@ -15,7 +15,7 @@
 		.getStyle()
 		.layers.find((l: LayerSpecification) => l.id === layerId) as LayerSpecification;
 
-	let formatOptions: Option[] = [
+	let formatOptions: Option[] = $state([
 		{
 			title: 'YAML',
 			value: 'yaml'
@@ -24,13 +24,15 @@
 			title: 'JSON',
 			value: 'json'
 		}
-	];
-	export let selectedFormat: 'yaml' | 'json';
+	]);
+	interface Props {
+		selectedFormat: 'yaml' | 'json';
+	}
 
-	$: selectedFormat, handleFormat();
+	let { selectedFormat = $bindable() }: Props = $props();
 
-	let layerLayoutStyle = '';
-	let layerPaintStyle = '';
+	let layerLayoutStyle = $state('');
+	let layerPaintStyle = $state('');
 
 	onMount(() => {
 		layerLayoutStyle = initialise('layout');
@@ -114,22 +116,26 @@
 		tabindex="0"
 		class="menu-button has-tooltip-bottom has-tooltip-arrow"
 		data-tooltip="Apply to map"
-		on:click={handleSave}
-		on:keydown={handleEnterKey}
+		onclick={handleSave}
+		onkeydown={handleEnterKey}
 	>
 		<Fa icon={faFloppyDisk} size="2x" />
 	</span>
 
-	<Options bind:options={formatOptions} bind:selectedValue={selectedFormat} />
+	<Options
+		bind:options={formatOptions}
+		bind:selectedValue={selectedFormat}
+		onchange={handleFormat}
+	/>
 </div>
 
 <p class="editor-title">Paint editor</p>
 
-<textarea class="manual-editor" bind:value={layerPaintStyle} />
+<textarea class="manual-editor" bind:value={layerPaintStyle}></textarea>
 
 <p class="editor-title">Layout editor</p>
 
-<textarea class="manual-editor" bind:value={layerLayoutStyle} />
+<textarea class="manual-editor" bind:value={layerLayoutStyle}></textarea>
 
 <style lang="scss">
 	@use '@creativebulma/bulma-tooltip/dist/bulma-tooltip.min.css';

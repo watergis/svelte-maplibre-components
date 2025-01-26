@@ -28,10 +28,10 @@
 		showPrintableArea?: boolean;
 		showCrosshair?: boolean;
 		position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
-		paperSize?: any;
-		dpi?: any;
-		format?: any;
-		orientation?: any;
+		paperSize?: typeof Size;
+		dpi?: number;
+		format?: string;
+		orientation?: string;
 	}
 
 	let {
@@ -39,7 +39,7 @@
 		showPrintableArea = $bindable(true),
 		showCrosshair = $bindable(true),
 		position = $bindable('top-right'),
-		paperSize = $bindable(Size.A4),
+		paperSize = $bindable(Size.A4 as unknown as typeof Size),
 		dpi = $bindable(DPI[96]),
 		format = $bindable(Format.PNG),
 		orientation = $bindable(PageOrientation.Landscape)

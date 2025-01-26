@@ -24,17 +24,17 @@
 		map: Map | undefined;
 		showPrintableArea?: boolean;
 		showCrosshair?: boolean;
-		paperSize?: any;
-		dpi?: any;
-		format?: any;
-		orientation?: any;
+		paperSize?: typeof Size;
+		dpi?: number;
+		format?: string;
+		orientation?: string;
 	}
 
 	let {
 		map = $bindable(undefined),
 		showPrintableArea = $bindable(true),
 		showCrosshair = $bindable(true),
-		paperSize = $bindable(Size.A4),
+		paperSize = $bindable(Size.A4 as unknown as typeof Size),
 		dpi = $bindable(DPI[96]),
 		format = $bindable(Format.PNG),
 		orientation = $bindable(PageOrientation.Landscape)

@@ -17,6 +17,9 @@ const config: UserConfig = {
 	},
 	ssr: {
 		noExternal: ['maplibre-gl']
+	},
+	define: {
+		global: 'window'
 	}
 };
 

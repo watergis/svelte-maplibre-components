@@ -10,7 +10,7 @@
 	let mapContainer: HTMLDivElement;
 	let map: Map;
 
-	let terrainRgbUrl = 'https://narwassco.github.io/narok-terrain/tiles/{z}/{x}/{y}.png';
+	let terrainRgbUrl = 'https://wasac.github.io/rw-terrain-webp/tiles/{z}/{x}/{y}.webp';
 	let measureOption: MeasureOption = {
 		tileSize: 512,
 		font: ['Roboto Medium'],
@@ -30,7 +30,7 @@
 
 		map = new Map({
 			container: mapContainer,
-			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
+			style: 'https://wasac.github.io/mapbox-stylefiles/unvt/style.json'
 		});
 	});
 </script>

@@ -45,7 +45,7 @@
 	{#snippet sidebar()}
 		<div class="primary-container">
 			<h4>Measure tool with elevation enquiry</h4>
-			<MeasurePanel bind:map bind:measureOption bind:terrainRgbUrl />
+			<MeasurePanel bind:map {measureOption} {terrainRgbUrl} />
 		</div>
 	{/snippet}
 	{#snippet mapControl()}

@@ -70,7 +70,7 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-		"@vincjo/datatables": "^1.14.10",
+		"@vincjo/datatables": "^2.0.0",
 		"@watergis/svelte-maplibre-menu": "workspace:^",
 		"maplibre-gl": "^4.6.0"
 	}

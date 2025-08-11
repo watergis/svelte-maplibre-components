@@ -1,26 +1,29 @@
 <script lang="ts">
 	import type { Map } from 'maplibre-gl';
-	import { onMount } from 'svelte';
+	import { onMount, untrack } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import CopyToClipboard from './CopyToClipboard.svelte';
 
-	export let map: Map;
-	export let isShareModalShown: boolean;
-
 	let url: URL;
-	let urlText = '';
+	let urlText = $state('');
 
 	onMount(() => {
 		url = new URL(window.location.href);
 	});
 
-	$: if (isShareModalShown === true) {
-		setPageUrl();
+	interface Props {
+		map: Map;
+		isShareModalShown: boolean;
+		customiseUrl?: (url: string) => string;
 	}
 
-	export let customiseUrl = (url: string): string => {
-		return url;
-	};
+	let {
+		map = $bindable(),
+		isShareModalShown = $bindable(),
+		customiseUrl = (url: string): string => {
+			return url;
+		}
+	}: Props = $props();
 
 	const setPageUrl = () => {
 		if (!map || !url) return '';
@@ -44,14 +47,22 @@
 			e.target.click();
 		}
 	};
+	$effect(() => {
+		if (isShareModalShown === true) {
+			untrack(() => {
+				setPageUrl();
+			});
+		}
+	});
 </script>
 
 <div class="modal {isShareModalShown ? 'is-active' : ''}" transition:fade|global>
-	<div class="modal-background" role="none" on:click={handleClose} on:keydown={handleEnterKey} />
+	<div class="modal-background" role="none" onclick={handleClose} onkeydown={handleEnterKey}></div>
 
 	<div class="modal-card">
 		<section class="modal-card-body">
-			<button class="delete is-large" aria-label="close" title="Close" on:click={handleClose} />
+			<button class="delete is-large" aria-label="close" title="Close" onclick={handleClose}
+			></button>
 			<p class="title is-5">URL to share</p>
 
 			<CopyToClipboard

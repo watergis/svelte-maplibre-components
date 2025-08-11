@@ -3,10 +3,11 @@
 	import { Map, NavigationControl } from 'maplibre-gl';
 	import { onMount } from 'svelte';
 
-	let mapContainer: HTMLDivElement = $state();
-	let map: Map = $state();
+	let mapContainer: HTMLDivElement | undefined = $state();
+	let map: Map | undefined = $state();
 
 	onMount(() => {
+		if (!mapContainer) return;
 		map = new Map({
 			container: mapContainer,
 			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
@@ -24,7 +25,9 @@
 </script>
 
 <div class="map" bind:this={mapContainer}></div>
-<ShareURLControl bind:map bind:customiseUrl />
+{#if map}
+	<ShareURLControl bind:map {customiseUrl} />
+{/if}
 
 <style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';

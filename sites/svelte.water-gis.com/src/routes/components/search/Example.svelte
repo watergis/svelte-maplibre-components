@@ -3,8 +3,8 @@
 	import { Map, NavigationControl } from 'maplibre-gl';
 	import { onMount } from 'svelte';
 
-	let mapContainer: HTMLDivElement = $state();
-	let map: Map = $state();
+	let mapContainer: HTMLDivElement | undefined = $state();
+	let map: Map | undefined = $state();
 
 	let searchOption: SearchOption = {
 		url: 'https://narwassco.github.io/vt/meter.geojson',
@@ -23,6 +23,7 @@
 	};
 
 	onMount(() => {
+		if (!mapContainer) return;
 		map = new Map({
 			container: mapContainer,
 			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
@@ -34,7 +35,9 @@
 </script>
 
 <div class="map" bind:this={mapContainer}></div>
-<SearchControl bind:map {searchOption} position="top-left" />
+{#if map}
+	<SearchControl bind:map {searchOption} position="top-left" />
+{/if}
 
 <style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';

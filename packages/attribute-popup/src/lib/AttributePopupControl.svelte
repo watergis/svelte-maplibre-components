@@ -117,13 +117,13 @@
 		<div class="popup-select">
 			{#if onlyOneFeature}
 				<select bind:value={selectedFeature} class="is-focused" disabled>
-					{#each queriedFeatures as feature}
+					{#each queriedFeatures as feature, index (index)}
 						<option value={feature}>{`${feature.sourceLayer} (${feature.source})`}</option>
 					{/each}
 				</select>
 			{:else}
 				<select bind:value={selectedFeature} class="is-focused">
-					{#each queriedFeatures as feature}
+					{#each queriedFeatures as feature, index (index)}
 						<option value={feature}>{`${feature.sourceLayer} (${feature.source})`}</option>
 					{/each}
 				</select>
@@ -134,7 +134,7 @@
 		<div class="popup-table">
 			<table>
 				<tbody>
-					{#each Object.keys(selectedFeature.properties) as key}
+					{#each Object.keys(selectedFeature.properties) as key (key)}
 						<tr><th>{key}</th><td>{selectedFeature.properties[key]}</td></tr>
 					{/each}
 				</tbody>

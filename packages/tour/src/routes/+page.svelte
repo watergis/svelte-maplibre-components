@@ -85,14 +85,14 @@
 	isHorizontal={false}
 >
 	{#snippet sidebar()}
-		<div  class="container">
+		<div class="container">
 			<h1 class="one">content 1</h1>
 			<h2 class="two">content 2</h2>
 			<h3 class="three">content 3</h3>
 		</div>
 	{/snippet}
 	{#snippet mapControl()}
-		<div >
+		<div>
 			<div class="map" bind:this={mapContainer}></div>
 		</div>
 	{/snippet}

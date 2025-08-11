@@ -34,6 +34,7 @@
 	},
 	"homepage": "https://github.com/watergis/svelte-maplibre-components/tree/main/packages/export#readme",
 	"devDependencies": {
+		"@eslint/js": "^9.33.0",
 		"@sveltejs/adapter-auto": "^3.3.1",
 		"@sveltejs/kit": "^2.13.0",
 		"@sveltejs/package": "^2.3.7",

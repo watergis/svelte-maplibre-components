@@ -2,7 +2,6 @@
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import {
 		StyleSwitcher,
-		StyleSwitcherControl,
 		StyleUrl,
 		type StyleSwitcherOption
 	} from '@watergis/svelte-maplibre-style-switcher';
@@ -11,8 +10,8 @@
 
 	let isMenuShown = $state(true);
 
-	let mapContainer: HTMLDivElement = $state();
-	let map: Map = $state();
+	let mapContainer: HTMLDivElement | undefined = $state();
+	let map: Map | undefined = $state();
 	let innerHeight = $state(0);
 	let innerWidth = $state(0);
 
@@ -29,9 +28,10 @@
 			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style-aerial.json`
 		}
 	]);
-	let selectedStyle: StyleSwitcherOption = $state('');
+	let selectedStyle: StyleSwitcherOption | undefined = $state();
 
 	onMount(() => {
+		if (!mapContainer) return;
 		const styleUrlObj = new StyleUrl();
 		selectedStyle = styleUrlObj.getInitialStyle(styles);
 
@@ -51,13 +51,12 @@
 	{#snippet sidebar()}
 		<div class="primary-container">
 			<h4>Style switch control</h4>
-			<StyleSwitcher bind:map bind:styles bind:selectedStyle />
+			<StyleSwitcher bind:map {styles} bind:selectedStyle />
 		</div>
 	{/snippet}
 	{#snippet mapControl()}
 		<div>
 			<div class="map" bind:this={mapContainer}></div>
-			<StyleSwitcherControl bind:map bind:styles bind:selectedStyle position="top-left" />
 		</div>
 	{/snippet}
 </MenuControl>

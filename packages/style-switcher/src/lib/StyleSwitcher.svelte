@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	export type StyleSwitcherOption = {
 		title: string;
 		uri: string;
@@ -79,16 +79,18 @@
 
 <script lang="ts">
 	import type { Map } from 'maplibre-gl';
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, untrack } from 'svelte';
 
-	export let map: Map;
-	export let styles: StyleSwitcherOption[];
-	export let selectedStyle: StyleSwitcherOption;
+	interface Props {
+		map: Map;
+		styles: StyleSwitcherOption[];
+		selectedStyle: StyleSwitcherOption;
+	}
+
+	let { map = $bindable(), styles, selectedStyle = $bindable() }: Props = $props();
 
 	const dispatch = createEventDispatcher();
-	let styleUrl = selectedStyle.uri;
-	$: styleUrl, setStyle();
-	$: selectedStyle, updateStyleSelect();
+	let styleUrl = $derived(selectedStyle?.uri ?? '');
 
 	const setStyle = () => {
 		if (!map) return;
@@ -111,9 +113,17 @@
 		if (styleUrl === selectedStyle.uri) return;
 		styleUrl = selectedStyle.uri;
 	};
+
+	$effect(() => {
+		if (selectedStyle !== undefined) {
+			untrack(() => {
+				updateStyleSelect();
+			});
+		}
+	});
 </script>
 
-<select class="style-select" bind:value={styleUrl}>
+<select class="style-select" bind:value={styleUrl} onchange={setStyle}>
 	{#each styles as style}
 		<option value={style.uri}>{style.title}</option>
 	{/each}

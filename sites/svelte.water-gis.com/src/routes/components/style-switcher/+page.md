@@ -49,7 +49,6 @@ pnpm i @watergis/svelte-maplibre-style-switcher
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import {
 		StyleSwitcher,
-		StyleSwitcherControl,
 		StyleUrl,
 		type StyleSwitcherOption
 	} from '@watergis/svelte-maplibre-style-switcher';
@@ -89,8 +88,6 @@ pnpm i @watergis/svelte-maplibre-style-switcher
 	</div>
 	<div slot="mapControl">
 		<div class="map" bind:this={mapContainer} />
-		<!-- maplibre control to select map styles with a preview -->
-		<StyleSwitcherControl bind:map bind:styles bind:selectedStyle position="top-left" />
 	</div>
 </MenuControl>
 

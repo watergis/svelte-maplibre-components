@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { StyleSwitcher, StyleSwitcherControl, StyleUrl, type StyleSwitcherOption } from '$lib';
+	import { StyleSwitcher, StyleUrl, type StyleSwitcherOption } from '$lib';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import { Map, addProtocol } from 'maplibre-gl';
 	import { Protocol } from 'pmtiles';
 	import { onMount } from 'svelte';
 
-	let isMenuShown = true;
-	let mapContainer: HTMLDivElement;
-	let map: Map;
+	let isMenuShown = $state(true);
+	let mapContainer: HTMLDivElement = $state();
+	let map: Map = $state();
 
-	let styles: StyleSwitcherOption[] = [
+	let styles: StyleSwitcherOption[] = $state([
 		{
 			title: 'UNVT Water (OSM)',
 			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style.json`
@@ -30,8 +30,8 @@
 			title: 'Satellite Sewer',
 			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style-aerial-sewer.json`
 		}
-	];
-	let selectedStyle: StyleSwitcherOption = styles[0];
+	]);
+	let selectedStyle: StyleSwitcherOption = $state();
 
 	onMount(() => {
 		const protocol = new Protocol();
@@ -52,14 +52,16 @@
 </sveltekit:head>
 
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
-	<div slot="sidebar" class="contents">
-		<StyleSwitcher bind:map bind:styles bind:selectedStyle />
-	</div>
-	<div slot="mapControl">
-		<div class="map" bind:this={mapContainer}>
-			<StyleSwitcherControl bind:map bind:styles bind:selectedStyle position="top-left" />
+	{#snippet sidebar()}
+		<div class="contents">
+			<StyleSwitcher bind:map bind:styles bind:selectedStyle />
 		</div>
-	</div>
+	{/snippet}
+	{#snippet mapControl()}
+		<div>
+			<div class="map" bind:this={mapContainer}></div>
+		</div>
+	{/snippet}
 </MenuControl>
 
 <style lang="scss">

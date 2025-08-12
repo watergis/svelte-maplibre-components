@@ -235,7 +235,7 @@
 		<select class="layer-select" bind:value={$selectedSourceLayerId}>
 			<option>Select a layer</option>
 			{#if layers && layers.length > 0}
-				{#each layers as id}
+				{#each layers as id (id)}
 					<option value={id}>{id}</option>
 				{/each}
 			{/if}
@@ -264,19 +264,19 @@
 						<thead>
 							<tr>
 								<th>Operation</th>
-								{#each columns as col}
+								{#each columns as col (col.id)}
 									<ThSort {table} field={col.id}>{col.label}</ThSort>
 								{/each}
 							</tr>
 							<tr>
 								<th></th>
-								{#each columns as col}
+								{#each columns as col (col.id)}
 									<ThFilter {table} field={col.id}></ThFilter>
 								{/each}
 							</tr>
 						</thead>
 						<tbody>
-							{#each table.rows as row}
+							{#each table.rows as row, index (index)}
 								<tr>
 									<td>
 										<div class="ope-col">
@@ -300,7 +300,7 @@
 											</button>
 										</div>
 									</td>
-									{#each columns as col}
+									{#each columns as col (col.id)}
 										<td>
 											{#if row[col.id]}
 												{row[col.id]}

@@ -274,8 +274,8 @@ importers:
         specifier: ^9.17.0
         version: 9.17.0
       eslint-config-prettier:
-        specifier: ^9.1.0
-        version: 9.1.0(eslint@9.17.0)
+        specifier: ^10.0.0
+        version: 10.1.8(eslint@9.17.0)
       eslint-plugin-svelte:
         specifier: ^2.46.1
         version: 2.46.1(eslint@9.17.0)(svelte@5.15.0)
@@ -299,7 +299,7 @@ importers:
         version: 4.1.1(picomatch@4.0.3)(svelte@5.15.0)(typescript@5.7.2)
       svelte-preprocess:
         specifier: ^6.0.3
-        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.6))(postcss@8.5.6)(sass@1.83.0)(svelte@5.15.0)(typescript@5.7.2)
+        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.1))(postcss@8.5.1)(sass@1.83.0)(svelte@5.15.0)(typescript@5.7.2)
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
@@ -365,8 +365,8 @@ importers:
         specifier: ^9.17.0
         version: 9.17.0
       eslint-config-prettier:
-        specifier: ^9.1.0
-        version: 9.1.0(eslint@9.17.0)
+        specifier: ^10.0.0
+        version: 10.1.8(eslint@9.17.0)
       eslint-plugin-svelte:
         specifier: ^2.46.1
         version: 2.46.1(eslint@9.17.0)(svelte@5.15.0)
@@ -393,7 +393,7 @@ importers:
         version: 4.1.1(picomatch@4.0.3)(svelte@5.15.0)(typescript@5.7.2)
       svelte-preprocess:
         specifier: ^6.0.3
-        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.1))(postcss@8.5.1)(sass@1.83.0)(svelte@5.15.0)(typescript@5.7.2)
+        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.6))(postcss@8.5.6)(sass@1.83.0)(svelte@5.15.0)(typescript@5.7.2)
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
@@ -598,8 +598,8 @@ importers:
         specifier: ^9.9.1
         version: 9.14.0
       eslint-config-prettier:
-        specifier: ^9.1.0
-        version: 9.1.0(eslint@9.14.0)
+        specifier: ^10.0.0
+        version: 10.1.8(eslint@9.14.0)
       eslint-plugin-svelte:
         specifier: ^2.45.1
         version: 2.46.1(eslint@9.14.0)(svelte@5.19.3)
@@ -3335,12 +3335,6 @@ packages:
 
   eslint-config-prettier@10.1.8:
     resolution: {integrity: sha512-82GZUjRS0p/jganf6q1rEO25VSoHH0hKPCTrgillPjdI/3bgBhAE1QzHrHTizjpRvy6pGAvKjDJtk2pF9NDq8w==}
-    hasBin: true
-    peerDependencies:
-      eslint: '>=7.0.0'
-
-  eslint-config-prettier@9.1.0:
-    resolution: {integrity: sha512-NSWl5BFQWEPi1j4TjVNItzYV7dZXZ+wP6I6ZhrBGpChQhZRUaElihE9uRRkcbRnNb76UMKDF3r+WTmNcGPKsqw==}
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
@@ -7041,17 +7035,17 @@ snapshots:
     dependencies:
       eslint: 9.19.0
 
-  eslint-config-prettier@10.1.8(eslint@9.33.0):
-    dependencies:
-      eslint: 9.33.0
-
-  eslint-config-prettier@9.1.0(eslint@9.14.0):
+  eslint-config-prettier@10.1.8(eslint@9.14.0):
     dependencies:
       eslint: 9.14.0
 
-  eslint-config-prettier@9.1.0(eslint@9.17.0):
+  eslint-config-prettier@10.1.8(eslint@9.17.0):
     dependencies:
       eslint: 9.17.0
+
+  eslint-config-prettier@10.1.8(eslint@9.33.0):
+    dependencies:
+      eslint: 9.33.0
 
   eslint-plugin-svelte@2.46.1(eslint@9.14.0)(svelte@5.19.3):
     dependencies:

@@ -79,14 +79,10 @@
 	{#snippet sidebar()}
 		<div class="primary-container" style="height:{menuHeight - 50}px;">
 			<h3>Isochrone tool</h3>
-			<ValhallaIsochronePanel
-				bind:map
-				bind:url={valhallaUrl}
-				bind:options={valhallaIsochroneOptions}
-			/>
+			<ValhallaIsochronePanel bind:map url={valhallaUrl} options={valhallaIsochroneOptions} />
 			<hr />
 			<h3>Routing tool</h3>
-			<ValhallaRoutingPanel bind:map bind:url={valhallaUrl} bind:options={valhallaRoutingOptions} />
+			<ValhallaRoutingPanel bind:map url={valhallaUrl} options={valhallaRoutingOptions} />
 		</div>
 	{/snippet}
 	{#snippet mapControl()}

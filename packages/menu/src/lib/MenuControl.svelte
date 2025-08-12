@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { Split } from '@watergis/svelte-splitter';
 	import type { Map } from 'maplibre-gl';
-	import {  onDestroy, onMount, untrack } from 'svelte';
-
-	
+	import { onDestroy, onMount, untrack } from 'svelte';
 
 	interface ChangeEventDetail {
 		percent: number;
@@ -34,7 +32,7 @@
 	}
 
 	let {
-		map=$bindable(),
+		map = $bindable(),
 		isMenuShown = $bindable(false),
 		initialSidebarWidth = 380,
 		minSidebarWidth = '300px',
@@ -87,7 +85,6 @@
 	onMount(() => {
 		initControl();
 	});
-
 
 	const initControl = () => {
 		if (map) {
@@ -160,13 +157,12 @@
 		setSplitControl();
 	};
 
-
 	const splitterChanged = (event) => {
 		resizeMap();
 
 		const { percent, primarySize, splitterSize, secondarySize, dragging } = event.detail;
 
-		onchange( {
+		onchange({
 			percent,
 			primarySize,
 			splitterSize,
@@ -190,7 +186,7 @@
 	$effect(() => {
 		if (isMobile !== undefined) {
 			untrack(() => {
-				setSplitControl()
+				setSplitControl();
 			});
 		}
 	});
@@ -199,26 +195,25 @@
 
 	$effect(() => {
 		if (map && menuButton) {
-			untrack(()=>{
+			untrack(() => {
 				initControl();
-			})
+			});
 		}
 	});
 	$effect(() => {
-		if (isMenuShown !== undefined){
+		if (isMenuShown !== undefined) {
 			untrack(() => {
 				opened();
 			});
 		}
 	});
 	$effect(() => {
-		if (splitControl){
+		if (splitControl) {
 			untrack(() => {
 				opened();
 			});
 		}
 	});
-
 </script>
 
 <svelte:window bind:innerWidth bind:innerHeight />
@@ -247,7 +242,7 @@
 		bind:this={splitControl}
 	>
 		{#snippet primary()}
-				<div  class="primary-content">
+			<div class="primary-content">
 				{#if sidebarOnLeft}
 					<span
 						class="span close-icon"
@@ -263,10 +258,10 @@
 					{@render mapControl?.()}
 				{/if}
 			</div>
-			{/snippet}
+		{/snippet}
 
 		{#snippet secondary()}
-				<div  class="secondary-content">
+			<div class="secondary-content">
 				{#if sidebarOnLeft}
 					{@render mapControl?.()}
 				{:else}
@@ -282,7 +277,7 @@
 					{@render sidebar?.()}
 				{/if}
 			</div>
-			{/snippet}
+		{/snippet}
 	</Split>
 </div>
 

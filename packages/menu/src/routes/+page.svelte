@@ -7,7 +7,7 @@
 	let mapContainer: HTMLDivElement = $state();
 	let map: Map = $state();
 
-	onMount( () => {
+	onMount(() => {
 		const protocol = new Protocol();
 		addProtocol('pmtiles', protocol.tile);
 		map = new Map({
@@ -27,7 +27,7 @@
 
 <MenuControl
 	bind:map
-	position='top-left'
+	position="top-left"
 	isMenuShown={false}
 	sidebarOnLeft={false}
 	isHorizontal={false}
@@ -37,10 +37,10 @@
 	showMenuButtonOnMap={true}
 >
 	{#snippet sidebar()}
-		<div >content</div>
+		<div>content</div>
 	{/snippet}
 	{#snippet mapControl()}
-		<div >
+		<div>
 			<div class="map" bind:this={mapContainer}></div>
 		</div>
 	{/snippet}

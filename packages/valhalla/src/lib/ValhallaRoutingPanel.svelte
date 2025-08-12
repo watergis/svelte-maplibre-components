@@ -1,65 +1,31 @@
 <script lang="ts">
-	import { onDestroy } from 'svelte';
-	import type { Map, LngLat } from 'maplibre-gl';
+	import { costingOptions } from '$lib/constants';
 	import { valhallaRoutingData } from '$lib/stores';
+	import { faRoute, faStop, faTrash } from '@fortawesome/free-solid-svg-icons';
+	import type { LngLat, Map } from 'maplibre-gl';
+	import { onDestroy, untrack } from 'svelte';
+	import Fa from 'svelte-fa';
 	import {
 		ValhallaRouting,
 		type ValhallaRoutingOptions,
 		type ValhallaTripSummary
 	} from './ValhallaRouting';
-	import { costingOptions } from '$lib/constants';
-	import Fa from 'svelte-fa';
-	import { faStop, faRoute, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-	export let map: Map;
-	export let url: string;
-	export let options: ValhallaRoutingOptions;
-
-	let isRouting = false;
-
-	let meansOfTransport = costingOptions[0].value;
-	let tripSummary: ValhallaTripSummary | undefined;
-	let tripData: LngLat[] = [];
-	$: hasData = tripData && tripData.length > 0;
-
-	let errorMessage = '';
-
-	$: {
-		if (map) {
-			if (!$valhallaRoutingData) {
-				valhallaRoutingData.update(() => undefined);
-			}
-			if (!$valhallaRoutingData) {
-				$valhallaRoutingData = new ValhallaRouting(map, url, options);
-			}
-
-			map.on('routing.on', () => {
-				isRouting = true;
-			});
-			map.on('routing.off', () => {
-				isRouting = false;
-				if (!$valhallaRoutingData) return;
-				tripSummary = $valhallaRoutingData.getTripSummary();
-				tripData = $valhallaRoutingData.getTripData();
-			});
-			map.on('routing.point.added', () => {
-				if (!$valhallaRoutingData) return;
-				tripData = $valhallaRoutingData.getTripData();
-			});
-			map.on('routing.calc.done', () => {
-				if (!$valhallaRoutingData) return;
-				tripSummary = $valhallaRoutingData.getTripSummary();
-			});
-			map.on('routing.clear', () => {
-				if (!$valhallaRoutingData) return;
-				tripSummary = $valhallaRoutingData.getTripSummary();
-				tripData = $valhallaRoutingData.getTripData();
-			});
-			map.on('routing.error', (e) => {
-				errorMessage = e.message;
-			});
-		}
+	interface Props {
+		map: Map;
+		url: string;
+		options: ValhallaRoutingOptions;
 	}
+
+	let { map = $bindable(), url, options }: Props = $props();
+
+	let isRouting = $state(false);
+
+	let meansOfTransport = $state(costingOptions[0].value);
+	let tripSummary: ValhallaTripSummary | undefined = $state();
+	let tripData: LngLat[] = $state([]);
+
+	let errorMessage = $state('');
 
 	onDestroy(() => {
 		if (!$valhallaRoutingData) return;
@@ -77,9 +43,6 @@
 		}
 	};
 
-	$: tripData, calcRoute();
-	$: meansOfTransport, calcRoute();
-
 	const calcRoute = () => {
 		if (!$valhallaRoutingData) return;
 		$valhallaRoutingData.calcRoute(meansOfTransport);
@@ -89,17 +52,70 @@
 		if (!$valhallaRoutingData) return;
 		$valhallaRoutingData.clearFeatures();
 	};
+	$effect(() => {
+		if (map) {
+			untrack(() => {
+				if (!$valhallaRoutingData) {
+					valhallaRoutingData.update(() => undefined);
+				}
+				if (!$valhallaRoutingData) {
+					$valhallaRoutingData = new ValhallaRouting(map, url, options);
+				}
+
+				map.on('routing.on', () => {
+					isRouting = true;
+				});
+				map.on('routing.off', () => {
+					isRouting = false;
+					if (!$valhallaRoutingData) return;
+					tripSummary = $valhallaRoutingData.getTripSummary();
+					tripData = $valhallaRoutingData.getTripData();
+				});
+				map.on('routing.point.added', () => {
+					if (!$valhallaRoutingData) return;
+					tripData = $valhallaRoutingData.getTripData();
+				});
+				map.on('routing.calc.done', () => {
+					if (!$valhallaRoutingData) return;
+					tripSummary = $valhallaRoutingData.getTripSummary();
+				});
+				map.on('routing.clear', () => {
+					if (!$valhallaRoutingData) return;
+					tripSummary = $valhallaRoutingData.getTripSummary();
+					tripData = $valhallaRoutingData.getTripData();
+				});
+				map.on('routing.error', (e) => {
+					errorMessage = e.message;
+				});
+			});
+		}
+	});
+	let hasData = $derived(tripData && tripData.length > 0);
+	$effect(() => {
+		if (tripData !== undefined) {
+			untrack(() => {
+				calcRoute();
+			});
+		}
+	});
+	$effect(() => {
+		if (meansOfTransport !== undefined) {
+			untrack(() => {
+				calcRoute();
+			});
+		}
+	});
 </script>
 
-<!-- svelte-ignore a11y-label-has-associated-control -->
+<!-- svelte-ignore a11y_label_has_associated_control -->
 <label class="control-label">Means of Transport</label>
 <div class="transport-select-container">
-	{#each costingOptions as item}
+	{#each costingOptions as item (item.value)}
 		<label class="radio-transport" style="color:black">
 			<input
 				type="radio"
 				name="transport-routing"
-				on:click={() => {
+				onclick={() => {
 					meansOfTransport = item.value;
 				}}
 				checked={meansOfTransport === item.value}
@@ -113,7 +129,7 @@
 </div>
 
 <div class="valhalla-container">
-	<button class="control-button" on:click={handleAddPoint}>
+	<button class="control-button" onclick={handleAddPoint}>
 		<span class="control-icon">
 			{#if isRouting}
 				<Fa icon={faStop} />
@@ -129,7 +145,7 @@
 			{/if}
 		</span>
 	</button>
-	<button class="setting-button" disabled={!hasData} on:click={clearFeatures}>
+	<button class="setting-button" disabled={!hasData} onclick={clearFeatures}>
 		<span>
 			<Fa icon={faTrash} />
 		</span>
@@ -137,7 +153,7 @@
 </div>
 
 {#if tripData && tripData.length > 0}
-	<!-- svelte-ignore a11y-label-has-associated-control -->
+	<!-- svelte-ignore a11y_label_has_associated_control -->
 	<label class="control-label">From</label>
 	<div class="flex-container">
 		<input
@@ -158,7 +174,7 @@
 		/>
 	</div>
 	{#if tripData.length > 1}
-		<!-- svelte-ignore a11y-label-has-associated-control -->
+		<!-- svelte-ignore a11y_label_has_associated_control -->
 		<label class="control-label">To</label>
 		<div class="flex-container">
 			<input
@@ -183,12 +199,12 @@
 	{#if tripSummary}
 		<div class="flex-container">
 			<div class="flex-vertical-container" style="width:50%;">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
+				<!-- svelte-ignore a11y_label_has_associated_control -->
 				<label class="control-label">Length</label>
 				<input class="input-text" type="text" value={`${tripSummary.length} km`} readonly />
 			</div>
 			<div class="flex-vertical-container" style="width:50%;">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
+				<!-- svelte-ignore a11y_label_has_associated_control -->
 				<label class="control-label">Time</label>
 				<input class="input-text" type="text" value={`${tripSummary.time} min`} readonly />
 			</div>

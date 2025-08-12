@@ -1,40 +1,46 @@
 <script lang="ts">
-	import { onDestroy } from 'svelte';
+	import { faDownload, faRuler, faStop, faTrash } from '@fortawesome/free-solid-svg-icons';
 	import type { Map } from 'maplibre-gl';
+	import { onDestroy } from 'svelte';
 	import Fa from 'svelte-fa';
-	import { faStop, faRuler, faTrash, faDownload } from '@fortawesome/free-solid-svg-icons';
+	import MeasureManager from './MeasureManager';
 	import { measureManager } from './stores';
 	import type { MeasureOption } from './types';
-	import MeasureManager from './MeasureManager';
 
-	export let map: Map;
-	export let terrainRgbUrl: string | undefined = undefined;
-	export let measureOption: MeasureOption;
-
-	let isQuery: boolean;
-	let hasData = false;
-
-	$: if (map) {
-		if (!$measureManager) {
-			$measureManager = new MeasureManager(map, terrainRgbUrl, measureOption);
-		}
-
-		map.on('measure.on', () => {
-			isQuery = true;
-		});
-
-		map.on('measure.off', () => {
-			isQuery = false;
-		});
-
-		map.on('measure.add', () => {
-			hasData = $measureManager.hasData();
-		});
-
-		map.on('measure.clear', () => {
-			hasData = false;
-		});
+	interface Props {
+		map: Map;
+		terrainRgbUrl?: string | undefined;
+		measureOption: MeasureOption | undefined;
 	}
+
+	let { map = $bindable(), terrainRgbUrl = undefined, measureOption = undefined }: Props = $props();
+
+	let isQuery: boolean = $state(false);
+	let hasData = $state(false);
+
+	$effect(() => {
+		if (map) {
+			if (!$measureManager) {
+				$measureManager = new MeasureManager(map, terrainRgbUrl, measureOption);
+			}
+
+			map.on('measure.on', () => {
+				isQuery = true;
+			});
+
+			map.on('measure.off', () => {
+				isQuery = false;
+			});
+
+			map.on('measure.add', () => {
+				hasData = $measureManager.hasData();
+			});
+
+			map.on('measure.clear', () => {
+				hasData = false;
+			});
+		}
+	});
 
 	onDestroy(() => {
 		if (isQuery === true) {
@@ -53,7 +59,7 @@
 
 {#if map}
 	<div class="measure-container">
-		<button class="control-button" on:click={() => measureStart()}>
+		<button class="control-button" onclick={() => measureStart()}>
 			<span class="control-icon">
 				{#if isQuery}
 					<Fa icon={faStop} />
@@ -72,7 +78,7 @@
 		<button
 			class="setting-button"
 			disabled={!hasData}
-			on:click={() => $measureManager.clearFeatures()}
+			onclick={() => $measureManager.clearFeatures()}
 		>
 			<span>
 				<Fa icon={faTrash} />
@@ -81,7 +87,7 @@
 		<button
 			class="setting-button"
 			disabled={!hasData}
-			on:click={() => $measureManager.downloadGeoJSON()}
+			onclick={() => $measureManager.downloadGeoJSON()}
 		>
 			<span>
 				<Fa icon={faDownload} />

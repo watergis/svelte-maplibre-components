@@ -22,7 +22,11 @@
 	let layer: SymbolLayerSpecification = $map.getStyle().layers.find((l: LayerSpecification) => {
 		l.id === layerId;
 	}) as SymbolLayerSpecification;
-	export let spriteLoader: SpriteLoader;
+	interface Props {
+		spriteLoader: SpriteLoader;
+	}
+
+	let { spriteLoader = $bindable() }: Props = $props();
 
 	let iconImage = $map.getLayoutProperty(layerId, 'icon-image');
 	let textField = $map.getLayoutProperty(layerId, 'text-field');

@@ -3,16 +3,22 @@
 	import { onMount } from 'svelte';
 	import ShareUrlModal from './ShareURLModal.svelte';
 
-	export let map: Map;
+	let shareButton: HTMLButtonElement | undefined = $state();
+	let isShareModalShown = $state(false);
 
-	let shareButton: HTMLButtonElement;
-	let isShareModalShown = false;
+	interface Props {
+		map: Map;
+		position?: ControlPosition;
+		customiseUrl?: (url: string) => string;
+	}
 
-	export let position: ControlPosition = 'top-right';
-
-	export let customiseUrl = (url: string): string => {
-		return url;
-	};
+	let {
+		map = $bindable(),
+		position = 'top-right',
+		customiseUrl = (url: string): string => {
+			return url;
+		}
+	}: Props = $props();
 
 	function ShareUrlControl() {}
 
@@ -21,11 +27,14 @@
 
 		this.controlContainer = document.createElement('div');
 		this.controlContainer.className = 'maplibregl-ctrl maplibregl-ctrl-group';
-		shareButton.className = 'maplibregl-ctrl-share';
-		shareButton.addEventListener('click', () => {
-			isShareModalShown = !isShareModalShown;
-		});
-		this.controlContainer.appendChild(shareButton);
+		if (shareButton) {
+			shareButton.className = 'maplibregl-ctrl-share';
+			shareButton.addEventListener('click', () => {
+				isShareModalShown = !isShareModalShown;
+			});
+			this.controlContainer.appendChild(shareButton);
+		}
+
 		return this.controlContainer;
 	};
 
@@ -42,27 +51,25 @@
 	/*eslint no-undef: "error"*/
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
-	let shareUrlControl: ShareUrlControl = null;
-
-	$: {
-		if (map) {
-			if (shareUrlControl !== null && map.hasControl(shareUrlControl) === false) {
-				map.addControl(shareUrlControl, position);
-			}
-		}
-	}
+	let shareUrlControl: ShareUrlControl = $state(null);
 
 	onMount(() => {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		shareUrlControl = new ShareUrlControl();
+
+		if (map) {
+			if (shareUrlControl !== null && map.hasControl(shareUrlControl) === false) {
+				map.addControl(shareUrlControl, position);
+			}
+		}
 	});
 </script>
 
-<button bind:this={shareButton}>
+<button bind:this={shareButton} aria-label="Share map URL">
 	<span class="icon is-small">
-		<i class="fas fa-share-nodes" />
+		<i class="fas fa-share-nodes"></i>
 	</span>
 </button>
 
-<ShareUrlModal bind:map bind:isShareModalShown bind:customiseUrl />
+<ShareUrlModal bind:map bind:isShareModalShown {customiseUrl} />

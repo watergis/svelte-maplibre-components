@@ -4,10 +4,10 @@
 	import { Protocol } from 'pmtiles';
 	import { onMount } from 'svelte';
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
+	let mapContainer: HTMLDivElement = $state();
+	let map: Map = $state();
 
-	onMount(async () => {
+	onMount(() => {
 		const protocol = new Protocol();
 		addProtocol('pmtiles', protocol.tile);
 		map = new Map({
@@ -26,7 +26,7 @@
 		<MapExportPanel bind:map showPrintableArea={false} showCrosshair={false} />
 	</div>
 </div>
-<MapExportControl bind:map showPrintableArea={true} showCrosshair={true} isShownSetting={true} />
+<MapExportControl bind:map showPrintableArea={true} showCrosshair={true} />
 
 <style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';

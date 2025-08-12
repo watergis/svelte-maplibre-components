@@ -10,13 +10,13 @@
 	import { Protocol } from 'pmtiles';
 	import { onMount } from 'svelte';
 
-	let isMenuShown = true;
+	let isMenuShown = $state(true);
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
+	let mapContainer: HTMLDivElement = $state();
+	let map: Map = $state();
 
-	let valhallaUrl = 'https://valhalla.water-gis.com';
-	let valhallaIsochroneOptions: ValhallaIsochroneOptions = {
+	let valhallaUrl = $state('https://valhalla.water-gis.com');
+	let valhallaIsochroneOptions: ValhallaIsochroneOptions = $state({
 		Contours: [
 			{
 				time: 3,
@@ -46,8 +46,8 @@
 			fontColor: '#000000',
 			fontHaloColor: '#fff'
 		}
-	};
-	let valhallaRoutingOptions: ValhallaRoutingOptions = {
+	});
+	let valhallaRoutingOptions: ValhallaRoutingOptions = $state({
 		font: ['Roboto Medium'],
 		fontSize: 14,
 		fontHalo: 3,
@@ -55,7 +55,7 @@
 		fontHaloColor: '#fff',
 		iconImage: 'marker',
 		iconSize: 1
-	};
+	});
 
 	onMount(() => {
 		const protocol = new Protocol();
@@ -72,21 +72,21 @@
 	<title>Svelte maplibre valhalla example</title>
 </sveltekit:head>
 
-<MenuControl bind:map position={'top-right'} bind:isMenuShown>
-	<div slot="sidebar" class="primary-container">
-		<h3>Isochrone tool</h3>
-		<ValhallaIsochronePanel
-			bind:map
-			bind:url={valhallaUrl}
-			bind:options={valhallaIsochroneOptions}
-		/>
-		<hr />
-		<h3>Routing tool</h3>
-		<ValhallaRoutingPanel bind:map bind:url={valhallaUrl} bind:options={valhallaRoutingOptions} />
-	</div>
-	<div slot="map">
-		<div class="map" bind:this={mapContainer} />
-	</div>
+<MenuControl bind:map position="top-right" bind:isMenuShown>
+	{#snippet sidebar()}
+		<div class="primary-container">
+			<h3>Isochrone tool</h3>
+			<ValhallaIsochronePanel bind:map url={valhallaUrl} options={valhallaIsochroneOptions} />
+			<hr />
+			<h3>Routing tool</h3>
+			<ValhallaRoutingPanel bind:map url={valhallaUrl} options={valhallaRoutingOptions} />
+		</div>
+	{/snippet}
+	{#snippet mapControl()}
+		<div>
+			<div class="map" bind:this={mapContainer}></div>
+		</div>
+	{/snippet}
 </MenuControl>
 
 <style lang="scss">

@@ -1,13 +1,22 @@
 <script lang="ts">
-	import Fa from 'svelte-fa';
 	import { faArrowDownUpAcrossLine, faArrowDownUpLock } from '@fortawesome/free-solid-svg-icons';
+	import Fa from 'svelte-fa';
 
-	export let onlyRendered = true;
-	export let onlyRelative = true;
-	export let enableLayerOrder = false;
-	export let isLayerOrderShown = false;
+	interface Props {
+		onlyRendered?: boolean;
+		onlyRelative?: boolean;
+		enableLayerOrder?: boolean;
+		isLayerOrderShown?: boolean;
+	}
 
-	let layerOrderTabWidth = 0;
+	let {
+		onlyRendered = $bindable(true),
+		onlyRelative = $bindable(true),
+		enableLayerOrder = $bindable(false),
+		isLayerOrderShown = $bindable(false)
+	}: Props = $props();
+
+	let layerOrderTabWidth = $state(0);
 </script>
 
 <div class="tabs">
@@ -16,7 +25,7 @@
 		type="checkbox"
 		name="rendered_tab"
 		checked={onlyRendered}
-		on:click={() => (onlyRendered = !onlyRendered)}
+		onclick={() => (onlyRendered = !onlyRendered)}
 	/>
 	<label
 		class="tab_item"
@@ -28,7 +37,7 @@
 		type="checkbox"
 		name="relative_tab"
 		checked={onlyRelative}
-		on:click={() => (onlyRelative = !onlyRelative)}
+		onclick={() => (onlyRelative = !onlyRelative)}
 	/>
 	<label
 		class="tab_item"
@@ -45,7 +54,7 @@
 				type="checkbox"
 				name="relative_tab"
 				checked={enableLayerOrder}
-				on:click={() => (enableLayerOrder = !enableLayerOrder)}
+				onclick={() => (enableLayerOrder = !enableLayerOrder)}
 			/>
 			<label
 				class="tab_item layer-order-tab"

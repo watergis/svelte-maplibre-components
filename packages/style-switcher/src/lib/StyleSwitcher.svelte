@@ -1,4 +1,6 @@
-<script context="module" lang="ts">
+<script module lang="ts">
+	import { SvelteURL } from 'svelte/reactivity';
+
 	export type StyleSwitcherOption = {
 		title: string;
 		uri: string;
@@ -9,12 +11,12 @@
 
 		private getUrl() {
 			const location = window.location;
-			const url = new URL(location.href);
+			const url = new SvelteURL(location.href);
 			url.hash = location.hash;
 			return url;
 		}
 
-		private updateUrl(url: URL) {
+		private updateUrl(url: SvelteURL) {
 			history.replaceState('', '', url.toString());
 		}
 
@@ -79,42 +81,44 @@
 
 <script lang="ts">
 	import type { Map } from 'maplibre-gl';
-	import { createEventDispatcher } from 'svelte';
 
-	export let map: Map;
-	export let styles: StyleSwitcherOption[];
-	export let selectedStyle: StyleSwitcherOption;
+	interface Props {
+		map: Map;
+		styles: StyleSwitcherOption[];
+		selectedStyle: StyleSwitcherOption;
+		onchange?: (selectedStyle: StyleSwitcherOption | undefined) => void;
+	}
 
-	const dispatch = createEventDispatcher();
-	let styleUrl = selectedStyle.uri;
-	$: styleUrl, setStyle();
-	$: selectedStyle, updateStyleSelect();
+	let {
+		map = $bindable(),
+		styles,
+		selectedStyle = $bindable(),
+		onchange = () => {}
+	}: Props = $props();
 
-	const setStyle = () => {
+	let styleUrl = $derived(selectedStyle?.uri ?? '');
+
+	const setStyle = (e) => {
+		const newUrl = e.target.value;
 		if (!map) return;
-		if (styleUrl === selectedStyle.uri) return;
-		map.setStyle(styleUrl);
+		if (styleUrl === newUrl) return;
+		map.setStyle(newUrl);
 		map.on('styledata', () => {
 			const styleUrlObj = new StyleUrl();
-			const _style = styleUrlObj.getMatchedStyleByUrl(styles, styleUrl);
+			const _style = styleUrlObj.getMatchedStyleByUrl(styles, newUrl);
 			if (_style) {
 				styleUrlObj.set(_style.title);
 				selectedStyle = _style;
 			} else {
 				styleUrlObj.delete();
 			}
-			dispatch('change');
+			onchange(_style);
 		});
-	};
-
-	const updateStyleSelect = () => {
-		if (styleUrl === selectedStyle.uri) return;
-		styleUrl = selectedStyle.uri;
 	};
 </script>
 
-<select class="style-select" bind:value={styleUrl}>
-	{#each styles as style}
+<select class="style-select" value={styleUrl} onchange={setStyle}>
+	{#each styles as style (style.title)}
 		<option value={style.uri}>{style.title}</option>
 	{/each}
 </select>

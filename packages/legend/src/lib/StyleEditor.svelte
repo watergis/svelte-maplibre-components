@@ -27,22 +27,31 @@
 	const mapStore = getMapContext();
 	const layerId = getLayerIdContext();
 
-	let layer: LayerSpecification = $mapStore
-		.getStyle()
-		.layers.find((l: LayerSpecification) => l.id === layerId);
-	export let spriteLoader: SpriteLoader;
-	export let relativeLayers: { [key: string]: string };
-	let showManualEditor = false;
-	export let selectedFormat: 'yaml' | 'json';
-	$: layerTitle =
-		relativeLayers && relativeLayers[layer.id] ? relativeLayers[layer.id] : clean(layer.id);
+	let layer: LayerSpecification = $state(
+		$mapStore.getStyle().layers.find((l: LayerSpecification) => l.id === layerId)
+	);
+	let showManualEditor = $state(false);
+	interface Props {
+		spriteLoader: SpriteLoader;
+		relativeLayers: { [key: string]: string };
+		selectedFormat: 'yaml' | 'json';
+	}
+
+	let {
+		spriteLoader = $bindable(),
+		relativeLayers = $bindable(),
+		selectedFormat = $bindable()
+	}: Props = $props();
+	let layerTitle = $derived(
+		relativeLayers && relativeLayers[layer.id] ? relativeLayers[layer.id] : clean(layer.id)
+	);
 
 	const tippy = initTippy({
 		placement: 'left',
 		trigger: 'click',
 		appendTo: document.body
 	});
-	let tooltipContent: HTMLElement;
+	let tooltipContent: HTMLElement | undefined = $state();
 
 	const handleEnterKey = (e: KeyboardEvent) => {
 		if (e.key === 'Enter') {
@@ -79,14 +88,14 @@
 			tabindex="0"
 			class="manual-edit-button has-tooltip-right has-tooltip-arrow"
 			data-tooltip="Manual editor"
-			on:click={() => (showManualEditor = !showManualEditor)}
-			on:keydown={handleEnterKey}
+			onclick={() => (showManualEditor = !showManualEditor)}
+			onkeydown={handleEnterKey}
 		>
 			<Fa icon={faPenToSquare} size="lg" />
 		</span>
 
 		<div class="help-button">
-			<Help size="lg" bind:layerType={layer.type} />
+			<Help size="lg" layerType={layer.type} />
 		</div>
 
 		<div
@@ -121,7 +130,7 @@
 			<HeatmapEditor />
 		{/if}
 	</div>
-	<div id="arrow" data-popper-arrow />
+	<div id="arrow" data-popper-arrow></div>
 </div>
 
 <style lang="scss">

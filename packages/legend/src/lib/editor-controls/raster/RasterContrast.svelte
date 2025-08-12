@@ -15,13 +15,11 @@
 		return value as number;
 	};
 
-	let value = getValue();
-
-	$: value, setValue();
+	let value = $state(getValue());
 
 	const setValue = () => {
 		map.setPaintProperty(layerId, 'raster-contrast', value);
 	};
 </script>
 
-<Slider bind:value min={-1} max={1} step={0.1} unit="" />
+<Slider bind:value min={-1} max={1} step={0.1} unit="" onchange={setValue} />

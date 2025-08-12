@@ -1,27 +1,36 @@
 <script lang="ts">
-	import Fa from 'svelte-fa';
 	import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
+	import Fa from 'svelte-fa';
 
-	const MAPLIBRE_STYLE_LAYER_URL = 'https://maplibre.org/maplibre-gl-js-docs/style-spec/layers/';
+	const MAPLIBRE_STYLE_LAYER_URL = 'https://maplibre.org/maplibre-style-spec/layers/';
 
-	export let type: 'paint' | 'layout' | undefined = undefined;
-	export let layerType:
-		| 'background'
-		| 'fill'
-		| 'line'
-		| 'symbol'
-		| 'raster'
-		| 'circle'
-		| 'fill-extrusion'
-		| 'heatmap'
-		| 'hillshade';
-	export let property: string | undefined = undefined;
-	// svelte-fa size. https://cweili.github.io/svelte-fa/
-	export let size: 'xs' | 'sm' | 'lg' | '2x' | '2.5x' | '5x' | '7x' | '10x' = 'sm';
+	interface Props {
+		type?: 'paint' | 'layout' | undefined;
+		layerType:
+			| 'background'
+			| 'fill'
+			| 'line'
+			| 'symbol'
+			| 'raster'
+			| 'circle'
+			| 'fill-extrusion'
+			| 'heatmap'
+			| 'hillshade';
+		property?: string | undefined;
+		// svelte-fa size. https://cweili.github.io/svelte-fa/
+		size?: 'xs' | 'sm' | 'lg' | '2x' | '2.5x' | '5x' | '7x' | '10x';
+	}
 
-	let url: string;
+	let {
+		type = $bindable(),
+		layerType = $bindable(),
+		property = $bindable(),
+		size = $bindable('sm')
+	}: Props = $props();
 
-	$: {
+	let url: string = $state('');
+
+	$effect(() => {
 		if (type && layerType && property) {
 			url = `${MAPLIBRE_STYLE_LAYER_URL}#${type}-${layerType}-${property}`;
 		} else if (layerType && !type && !property) {
@@ -29,7 +38,7 @@
 		} else {
 			url = MAPLIBRE_STYLE_LAYER_URL;
 		}
-	}
+	});
 </script>
 
 <a class="help" href={url} target="_blank" rel="noreferrer" role="button">

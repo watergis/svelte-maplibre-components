@@ -15,12 +15,11 @@
 		return value as number;
 	};
 
-	let value = getValue();
-	$: value, setValue();
+	let value = $state(getValue());
 
 	const setValue = () => {
 		map.setPaintProperty(layerId, 'hillshade-illumination-direction', value);
 	};
 </script>
 
-<Slider bind:value min={0} max={359} step={1} unit="°" />
+<Slider bind:value min={0} max={359} step={1} unit="°" onchange={setValue} />

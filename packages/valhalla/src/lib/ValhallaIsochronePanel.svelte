@@ -1,25 +1,30 @@
 <script lang="ts">
-	import type { Map } from 'maplibre-gl';
-	import { valhallaControlData } from './stores';
 	import {
 		ContourType,
 		ValhallaIsochrone,
 		type ValhallaIsochroneOptions
 	} from '$lib/ValhallaIsochrone';
-	import { costingOptions } from './constants';
-	import Fa from 'svelte-fa';
 	import { faClock, faRuler, faTrash } from '@fortawesome/free-solid-svg-icons';
+	import type { Map } from 'maplibre-gl';
+	import { untrack } from 'svelte';
+	import Fa from 'svelte-fa';
+	import { costingOptions } from './constants';
+	import { valhallaControlData } from './stores';
 
-	export let map: Map;
-	export let url: string;
-	export let options: ValhallaIsochroneOptions;
+	interface Props {
+		map: Map;
+		url: string;
+		options: ValhallaIsochroneOptions;
+	}
 
-	let contourType: ContourType = ContourType.Time;
-	let longitude: number;
-	let latitude: number;
-	let contours = options.Contours;
-	if (!contours) {
-		contours = [
+	let { map = $bindable(), url, options }: Props = $props();
+
+	let contourType: ContourType = $state(ContourType.Time);
+	let longitude: number = $state(0);
+	let latitude: number = $state(0);
+
+	if (!options.Contours) {
+		options.Contours = [
 			{
 				time: 3,
 				distance: 1,
@@ -43,24 +48,28 @@
 		];
 	}
 
-	let meansOfTransport = costingOptions[0].value;
+	let contours = $state(options.Contours);
 
-	$: {
+	let meansOfTransport = $state(costingOptions[0].value);
+
+	$effect(() => {
 		if (map) {
-			if (!$valhallaControlData) {
-				valhallaControlData.update(() => undefined);
-			}
-			if (!$valhallaControlData) {
-				$valhallaControlData = new ValhallaIsochrone(map, url);
-			}
-			longitude = map.getCenter().lng;
-			latitude = map.getCenter().lat;
-			map.on('moveend', () => {
+			untrack(() => {
+				if (!$valhallaControlData) {
+					valhallaControlData.update(() => undefined);
+				}
+				if (!$valhallaControlData) {
+					$valhallaControlData = new ValhallaIsochrone(map, url);
+				}
 				longitude = map.getCenter().lng;
 				latitude = map.getCenter().lat;
+				map.on('moveend', () => {
+					longitude = map.getCenter().lng;
+					latitude = map.getCenter().lat;
+				});
 			});
 		}
-	}
+	});
 	const calc = (contourType: ContourType) => {
 		$valhallaControlData?.getIsochrone(
 			Number(longitude),
@@ -75,14 +84,14 @@
 	};
 </script>
 
-<!-- svelte-ignore a11y-label-has-associated-control -->
+<!-- svelte-ignore a11y_label_has_associated_control -->
 <label class="control-label">Type of Isochrone</label>
 <div class="transport-select-container">
 	<label class="radio-transport" style="color:black">
 		<input
 			type="radio"
 			name="isochrone-{ContourType.Time}"
-			on:click={() => {
+			onclick={() => {
 				contourType = ContourType.Time;
 			}}
 			checked={contourType === ContourType.Time}
@@ -90,13 +99,13 @@
 		<div class="icon is-small is-left pl-3 pr-3">
 			<Fa icon={faClock} />
 		</div>
-		{'Time'}
+		Time
 	</label>
 	<label class="radio-transport" style="color:black">
 		<input
 			type="radio"
 			name="isochrone-{ContourType.Distance}"
-			on:click={() => {
+			onclick={() => {
 				contourType = ContourType.Distance;
 			}}
 			checked={contourType === ContourType.Distance}
@@ -104,19 +113,19 @@
 		<div class="icon is-small is-left pl-3 pr-3">
 			<Fa icon={faRuler} />
 		</div>
-		{'Distance'}
+		Distance
 	</label>
 </div>
 
-<!-- svelte-ignore a11y-label-has-associated-control -->
+<!-- svelte-ignore a11y_label_has_associated_control -->
 <label class="control-label">Means of Transport</label>
 <div class="transport-select-container">
-	{#each costingOptions as item}
+	{#each costingOptions as item (item.value)}
 		<label class="radio-transport" style="color:black">
 			<input
 				type="radio"
 				name="transport-isocrhone"
-				on:click={() => {
+				onclick={() => {
 					meansOfTransport = item.value;
 				}}
 				checked={meansOfTransport === item.value}
@@ -130,7 +139,7 @@
 </div>
 
 {#if longitude && latitude}
-	<!-- svelte-ignore a11y-label-has-associated-control -->
+	<!-- svelte-ignore a11y_label_has_associated_control -->
 	<label class="control-label">From</label>
 	<div class="flex-container">
 		<input
@@ -154,9 +163,9 @@
 
 {#if contours}
 	<div class="flex-container">
-		{#each contours as contour}
+		{#each contours as contour, index (index)}
 			<div class="flex-vertical-container" style="width:25%;">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
+				<!-- svelte-ignore a11y_label_has_associated_control -->
 				<label class="control-label">
 					{#if contourType === ContourType.Time}
 						{contour.time} min
@@ -175,7 +184,7 @@
 {/if}
 
 <div class="valhalla-container">
-	<button class="control-button" on:click={() => calc(contourType)}>
+	<button class="control-button" onclick={() => calc(contourType)}>
 		<span class="control-icon">
 			{#if contourType === ContourType.Time}
 				<Fa icon={faClock} />
@@ -185,7 +194,7 @@
 		</span>
 		<span> Calculate </span>
 	</button>
-	<button class="setting-button" on:click={clear}>
+	<button class="setting-button" onclick={clear}>
 		<span>
 			<Fa icon={faTrash} />
 		</span>

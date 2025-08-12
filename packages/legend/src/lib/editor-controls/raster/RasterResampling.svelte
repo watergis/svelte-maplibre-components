@@ -7,7 +7,7 @@
 	const map = getMapContext();
 	let layerId: string = getLayerIdContext();
 
-	let options: Option[] = [
+	let options: Option[] = $state([
 		{
 			title: 'linear',
 			value: 'linear'
@@ -16,7 +16,7 @@
 			title: 'nearest',
 			value: 'nearest'
 		}
-	];
+	]);
 
 	const getValue = () => {
 		let value = $map.getPaintProperty(layerId, 'raster-resampling');
@@ -27,13 +27,11 @@
 		return value as string;
 	};
 
-	let value: string = getValue();
-
-	$: value, setValue();
+	let value: string = $state(getValue());
 
 	const setValue = () => {
 		map.setPaintProperty(layerId, 'raster-resampling', value);
 	};
 </script>
 
-<Options bind:options bind:selectedValue={value} />
+<Options bind:options bind:selectedValue={value} onchange={setValue} />

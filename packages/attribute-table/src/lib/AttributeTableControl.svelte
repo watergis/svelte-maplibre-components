@@ -3,25 +3,39 @@
 	import type { ControlPosition, Map } from 'maplibre-gl';
 	import AttributeTable from './AttributeTable.svelte';
 
-	export let map: Map;
-	export let position: ControlPosition = 'top-right';
-	export let rowsPerPage = 50;
-	export let minZoom = 14;
-	export let width = 0;
-	export let height = 0;
-
-	let showAttributeTable = false;
-
-	$: if (showAttributeTable) {
-		getLayerList();
+	interface Props {
+		map: Map;
+		position?: ControlPosition;
+		rowsPerPage?: number;
+		minZoom?: number;
+		width?: number;
+		height?: number;
+		children?: import('svelte').Snippet;
 	}
 
-	let getLayerList: () => void;
+	let {
+		map = $bindable(),
+		position = $bindable('top-right'),
+		rowsPerPage = $bindable(50),
+		minZoom = $bindable(14),
+		width = $bindable(0),
+		height = $bindable(0),
+		children
+	}: Props = $props();
+
+	let attributeTable: AttributeTable | undefined = $state(undefined);
+	let showAttributeTable = $state(false);
+
+	$effect(() => {
+		if (showAttributeTable) {
+			attributeTable?.getLayerList();
+		}
+	});
 </script>
 
 <MenuControl
 	bind:map
-	bind:position
+	{position}
 	bind:isMenuShown={showAttributeTable}
 	isHorizontal={true}
 	sidebarOnLeft={false}
@@ -32,12 +46,16 @@
 	bind:width
 	bind:height
 >
-	<div slot="sidebar" class="primary-container">
-		<AttributeTable bind:map bind:rowsPerPage bind:minZoom bind:getLayerList />
-	</div>
-	<div slot="map" class="secondary-container">
-		<slot />
-	</div>
+	{#snippet sidebar()}
+		<div class="primary-container">
+			<AttributeTable bind:map bind:rowsPerPage bind:minZoom bind:this={attributeTable} />
+		</div>
+	{/snippet}
+	{#snippet mapControl()}
+		<div class="secondary-container">
+			{@render children?.()}
+		</div>
+	{/snippet}
 </MenuControl>
 
 <style lang="scss">

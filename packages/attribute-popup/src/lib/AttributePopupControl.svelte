@@ -1,14 +1,17 @@
 <script lang="ts">
 	import { Popup, type Map, type MapGeoJSONFeature, type MapMouseEvent } from 'maplibre-gl';
-	import { onMount } from 'svelte';
 
-	export let map: Map;
-	export let targetLayers: string[] = [];
+	interface Props {
+		map: Map;
+		targetLayers?: string[];
+	}
+
+	let { map = $bindable(undefined), targetLayers = [] }: Props = $props();
 	let popup: Popup | undefined;
-	let popupContainer: HTMLDivElement;
-	let queriedFeatures: MapGeoJSONFeature[] = [];
-	$: onlyOneFeature = queriedFeatures.length === 1;
-	let selectedFeature: MapGeoJSONFeature | undefined;
+	let popupContainer: HTMLDivElement = $state();
+	let queriedFeatures: MapGeoJSONFeature[] = $state([]);
+	let onlyOneFeature = $derived(queriedFeatures.length === 1);
+	let selectedFeature: MapGeoJSONFeature | undefined = $state();
 
 	function AttributionPopupControl() {}
 
@@ -92,20 +95,20 @@
 	/*eslint no-undef: "error"*/
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
-	let attributionPopupControl: AttributionPopupControl = null;
+	let attributionPopupControl: AttributionPopupControl = $state(null);
 
-	$: {
+	$effect(() => {
 		if (map) {
+			if (!attributionPopupControl) {
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				attributionPopupControl = new AttributionPopupControl();
+			}
+
 			if (attributionPopupControl !== null && map.hasControl(attributionPopupControl) === false) {
 				map.addControl(attributionPopupControl, 'top-right');
 			}
 		}
-	}
-
-	onMount(async () => {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		attributionPopupControl = new AttributionPopupControl();
 	});
 </script>
 
@@ -114,13 +117,13 @@
 		<div class="popup-select">
 			{#if onlyOneFeature}
 				<select bind:value={selectedFeature} class="is-focused" disabled>
-					{#each queriedFeatures as feature}
+					{#each queriedFeatures as feature, index (index)}
 						<option value={feature}>{`${feature.sourceLayer} (${feature.source})`}</option>
 					{/each}
 				</select>
 			{:else}
 				<select bind:value={selectedFeature} class="is-focused">
-					{#each queriedFeatures as feature}
+					{#each queriedFeatures as feature, index (index)}
 						<option value={feature}>{`${feature.sourceLayer} (${feature.source})`}</option>
 					{/each}
 				</select>
@@ -130,9 +133,11 @@
 	{#if selectedFeature}
 		<div class="popup-table">
 			<table>
-				{#each Object.keys(selectedFeature.properties) as key}
-					<tr><th>{key}</th><td>{selectedFeature.properties[key]}</td></tr>
-				{/each}
+				<tbody>
+					{#each Object.keys(selectedFeature.properties) as key (key)}
+						<tr><th>{key}</th><td>{selectedFeature.properties[key]}</td></tr>
+					{/each}
+				</tbody>
 			</table>
 		</div>
 	{/if}

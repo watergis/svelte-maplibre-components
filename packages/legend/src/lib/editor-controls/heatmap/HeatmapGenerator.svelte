@@ -6,22 +6,16 @@
 		LineLayerSpecification,
 		SymbolLayerSpecification
 	} from 'maplibre-gl';
+	import { untrack } from 'svelte';
 
 	const map = getMapContext();
 	let layerId: string = getLayerIdContext();
 
 	let heatmapLayerId = `${layerId} heatmap`;
-	let isHeatmapCreated = $map.getLayer(heatmapLayerId) ? true : false;
-
-	$: if (isHeatmapCreated === true) {
-		createHeatmap();
-	}
-
-	$: if (!isHeatmapCreated) {
-		deleteHeatmap();
-	}
+	let isHeatmapCreated = $state($map.getLayer(heatmapLayerId) ? true : false);
 
 	const createHeatmap = () => {
+		console.log(layerId);
 		if ($map.getLayer(heatmapLayerId)) return;
 		const layer = $map.getStyle().layers.find((l) => l.id === layerId);
 		const symbolLayer: SymbolLayerSpecification | LineLayerSpecification = layer as
@@ -60,6 +54,9 @@
 				'heatmap-weight': 1
 			}
 		};
+		if (symbolLayer.filter) {
+			heatmapLayer.filter = symbolLayer.filter;
+		}
 		heatmapLayer.minzoom = symbolLayer.maxzoom ?? 0;
 		heatmapLayer.maxzoom = symbolLayer.maxzoom ?? 24;
 
@@ -71,6 +68,20 @@
 			$map.removeLayer(heatmapLayerId);
 		}
 	};
+	$effect(() => {
+		if (isHeatmapCreated === true) {
+			untrack(() => {
+				createHeatmap();
+			});
+		}
+	});
+	$effect(() => {
+		if (!isHeatmapCreated) {
+			untrack(() => {
+				deleteHeatmap();
+			});
+		}
+	});
 </script>
 
 <div class="field">

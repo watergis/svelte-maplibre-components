@@ -18,8 +18,8 @@
 
 	let tourOptions: TourGuideOptions = { rememberStep: true };
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
+	let mapContainer: HTMLDivElement = $state();
+	let map: Map = $state();
 
 	onMount(async () => {
 		map = new Map({
@@ -79,19 +79,23 @@
 
 <MenuControl
 	bind:map
-	position={'top-left'}
+	position="top-left"
 	isMenuShown={true}
 	sidebarOnLeft={true}
 	isHorizontal={false}
 >
-	<div slot="sidebar" class="container">
-		<h1 class="one">content 1</h1>
-		<h2 class="two">content 2</h2>
-		<h3 class="three">content 3</h3>
-	</div>
-	<div slot="map">
-		<div class="map" bind:this={mapContainer} />
-	</div>
+	{#snippet sidebar()}
+		<div class="container">
+			<h1 class="one">content 1</h1>
+			<h2 class="two">content 2</h2>
+			<h3 class="three">content 3</h3>
+		</div>
+	{/snippet}
+	{#snippet mapControl()}
+		<div>
+			<div class="map" bind:this={mapContainer}></div>
+		</div>
+	{/snippet}
 </MenuControl>
 
 <style>

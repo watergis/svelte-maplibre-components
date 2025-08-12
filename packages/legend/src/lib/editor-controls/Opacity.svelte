@@ -46,8 +46,7 @@
 		return opacity as number;
 	};
 
-	let value = getOpacity();
-	$: value, setOpacity();
+	let value = $state(getOpacity());
 
 	const setOpacity = debounce(() => {
 		if (!value) return;
@@ -84,4 +83,4 @@
 	}, 100);
 </script>
 
-<Slider bind:value min={0} max={100} step={1} unit="%" />
+<Slider bind:value min={0} max={100} step={1} unit="%" onchange={setOpacity} />

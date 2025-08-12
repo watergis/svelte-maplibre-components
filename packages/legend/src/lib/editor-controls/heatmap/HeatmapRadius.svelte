@@ -15,13 +15,11 @@
 		return value as number;
 	};
 
-	let value = getValue();
-
-	$: value, setValue();
+	let value = $state(getValue());
 
 	const setValue = () => {
 		map.setPaintProperty(layerId, 'heatmap-radius', value);
 	};
 </script>
 
-<Slider bind:value min={1} max={100} step={1} unit="" />
+<Slider bind:value min={1} max={100} step={1} unit="" onchange={setValue} />

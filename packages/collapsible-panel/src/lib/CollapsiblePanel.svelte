@@ -2,17 +2,14 @@
 	import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 
-	export let title: string;
+	interface Props {
+		title: string;
+		isPanelOpen?: boolean;
+		color?: 'is-primary' | 'is-link' | 'is-info' | 'is-success' | 'is-warning' | 'is-danger' | '';
+		children?: import('svelte').Snippet;
+	}
 
-	export let isPanelOpen = false;
-	export let color:
-		| 'is-primary'
-		| 'is-link'
-		| 'is-info'
-		| 'is-success'
-		| 'is-warning'
-		| 'is-danger'
-		| '' = '';
+	let { title, isPanelOpen = $bindable(false), color = '', children }: Props = $props();
 
 	const handleEnterKey = (e: KeyboardEvent) => {
 		if (e.key === 'Enter') {
@@ -28,8 +25,8 @@
 		class="panel-heading p-2 header-menu"
 		role="button"
 		tabindex="0"
-		on:click={() => (isPanelOpen = !isPanelOpen)}
-		on:keydown={handleEnterKey}
+		onclick={() => (isPanelOpen = !isPanelOpen)}
+		onkeydown={handleEnterKey}
 	>
 		<span class="panel-icon mt-1">
 			{#if isPanelOpen}
@@ -41,7 +38,7 @@
 		{title}
 	</div>
 	<div class="container m-2" hidden={!isPanelOpen}>
-		<slot />
+		{@render children?.()}
 	</div>
 </nav>
 

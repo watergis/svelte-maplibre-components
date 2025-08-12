@@ -93,9 +93,9 @@ onMount(async () => {
 <MenuControl bind:map position={'top-right'} bind:isMenuShown>
 	<div slot="sidebar" class="primary-container">
 		<h4>Measure tool with elevation enquiry</h4>
-		<MeasurePanel bind:map bind:measureOption bind:terrainRgbUrl />
+		<MeasurePanel bind:map {measureOption} {terrainRgbUrl} />
 	</div>
-	<div slot="map">
+	<div slot="mapControl">
 		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>

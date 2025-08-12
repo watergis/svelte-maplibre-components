@@ -4,10 +4,11 @@
 	import { Protocol } from 'pmtiles';
 	import { onMount } from 'svelte';
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
+	let mapContainer: HTMLDivElement | undefined = $state();
+	let map: Map | undefined = $state();
 
 	onMount(() => {
+		if (!mapContainer) return;
 		const protocol = new Protocol();
 		addProtocol('pmtiles', protocol.tile);
 
@@ -18,11 +19,11 @@
 		});
 	});
 
-	let customiseUrl = (url: string): string => {
+	let customiseUrl = $state((url: string): string => {
 		const _url = new URL(url);
 		_url.searchParams.set('customise', 'true');
 		return _url.toString();
-	};
+	});
 </script>
 
 <sveltekit:head>
@@ -36,8 +37,10 @@
 	/>
 </sveltekit:head>
 
-<div class="map" bind:this={mapContainer} />
-<ShareUrlControl bind:map bind:customiseUrl />
+<div class="map" bind:this={mapContainer}></div>
+{#if map}
+	<ShareUrlControl bind:map {customiseUrl} />
+{/if}
 
 <style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';

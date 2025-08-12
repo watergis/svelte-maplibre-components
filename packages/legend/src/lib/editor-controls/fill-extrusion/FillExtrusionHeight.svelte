@@ -15,12 +15,11 @@
 		return value as number;
 	};
 
-	let value = getValue();
-	$: value, setValue();
+	let value = $state(getValue());
 
 	const setValue = () => {
 		map.setPaintProperty(layerId, 'fill-extrusion-height', value);
 	};
 </script>
 
-<Slider bind:value min={0} max={100} step={1} unit="m" />
+<Slider bind:value min={0} max={100} step={1} unit="m" onchange={setValue} />

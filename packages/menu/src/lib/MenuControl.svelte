@@ -1,41 +1,65 @@
 <script lang="ts">
 	import { Split } from '@watergis/svelte-splitter';
 	import type { Map } from 'maplibre-gl';
-	import { createEventDispatcher, onDestroy, onMount } from 'svelte';
+	import { onDestroy, onMount, untrack } from 'svelte';
 
-	const dispatch = createEventDispatcher();
+	interface ChangeEventDetail {
+		percent: number;
+		primarySize: string;
+		splitterSize: string;
+		secondarySize: string;
+		dragging: boolean;
+	}
 
-	export let map: Map;
-	export let isMenuShown = false;
-	export let initialSidebarWidth = 380;
-	export let minSidebarWidth = '300px';
-	export let minMapWidth = '50%';
-	export let height = 0;
-	export let width = 0;
-	export let sidebarOnLeft = true;
-	export let isHorizontal = false;
-	export let faIcon: string = 'fa-solid fa-bars';
-	export let faIconSize: '2xs' | 'xs' | 'sm' | 'lg' | 'xl' | '2xl' | '' = '';
-	export let controlName = 'menu';
-	export let showMenuButtonOnMap = true;
+	interface Props {
+		map: Map;
+		isMenuShown?: boolean;
+		initialSidebarWidth?: number;
+		minSidebarWidth?: string;
+		minMapWidth?: string;
+		height?: number;
+		width?: number;
+		sidebarOnLeft?: boolean;
+		isHorizontal?: boolean;
+		faIcon?: string;
+		faIconSize?: '2xs' | 'xs' | 'sm' | 'lg' | 'xl' | '2xl' | '';
+		controlName?: string;
+		showMenuButtonOnMap?: boolean;
+		position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+		sidebar?: import('svelte').Snippet;
+		mapControl?: import('svelte').Snippet;
+		onchange?: (e: ChangeEventDetail) => void;
+	}
 
-	let menuButton: HTMLDivElement;
+	let {
+		map = $bindable(),
+		isMenuShown = $bindable(false),
+		initialSidebarWidth = 380,
+		minSidebarWidth = '300px',
+		minMapWidth = '50%',
+		height = $bindable(0),
+		width = $bindable(0),
+		sidebarOnLeft = true,
+		isHorizontal = false,
+		faIcon = 'fa-solid fa-bars',
+		faIconSize = '',
+		controlName = 'menu',
+		showMenuButtonOnMap = true,
+		position = 'top-left',
+		sidebar,
+		mapControl,
+		onchange = () => {}
+	}: Props = $props();
 
-	let innerWidth = 0;
-	let innerHeight = 0;
-	$: isMobile = innerWidth < 768 ? true : false;
-	let splitControl: Split;
-	let splitterSize = '0px';
-	$: isMobile, setSplitControl();
-	$: menuHeight = height > 0 ? height : innerHeight;
-	$: menuWidth = width > 0 ? width : innerWidth;
-	$: innerHeight, () => (menuHeight = innerHeight);
-	$: innerWidth, () => (menuWidth = innerWidth);
+	let menuButton: HTMLDivElement = $state();
 
-	let minPrimaryWidth = sidebarOnLeft ? minSidebarWidth : minMapWidth;
-	let minSecondaryWidth = sidebarOnLeft ? minMapWidth : minSidebarWidth;
+	let innerWidth = $state(0);
+	let innerHeight = $state(0);
+	let splitControl: Split = $state();
+	let splitterSize = $state('0px');
 
-	export let position: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' = 'top-left';
+	let minPrimaryWidth = $state(sidebarOnLeft ? minSidebarWidth : minMapWidth);
+	let minSecondaryWidth = $state(sidebarOnLeft ? minMapWidth : minSidebarWidth);
 
 	function MapMenuControl() {}
 
@@ -61,10 +85,6 @@
 	onMount(() => {
 		initControl();
 	});
-
-	$: if (map && menuButton) {
-		initControl();
-	}
 
 	const initControl = () => {
 		if (map) {
@@ -133,21 +153,16 @@
 		resizeMap();
 	};
 
-	$: isMenuShown, opened();
 	const opened = () => {
 		setSplitControl();
 	};
-
-	$: if (splitControl) {
-		opened();
-	}
 
 	const splitterChanged = (event) => {
 		resizeMap();
 
 		const { percent, primarySize, splitterSize, secondarySize, dragging } = event.detail;
 
-		dispatch('changed', {
+		onchange({
 			percent,
 			primarySize,
 			splitterSize,
@@ -167,6 +182,38 @@
 			e.target.click();
 		}
 	};
+	let isMobile = $derived(innerWidth < 768 ? true : false);
+	$effect(() => {
+		if (isMobile !== undefined) {
+			untrack(() => {
+				setSplitControl();
+			});
+		}
+	});
+	let menuHeight = $derived(height > 0 ? height : innerHeight);
+	let menuWidth = $derived(width > 0 ? width : innerWidth);
+
+	$effect(() => {
+		if (map && menuButton) {
+			untrack(() => {
+				initControl();
+			});
+		}
+	});
+	$effect(() => {
+		if (isMenuShown !== undefined) {
+			untrack(() => {
+				opened();
+			});
+		}
+	});
+	$effect(() => {
+		if (splitControl) {
+			untrack(() => {
+				opened();
+			});
+		}
+	});
 </script>
 
 <svelte:window bind:innerWidth bind:innerHeight />
@@ -175,7 +222,7 @@
 	<div class="maplibregl-ctrl maplibregl-ctrl-group" bind:this={menuButton} hidden={isMenuShown}>
 		<button
 			class="maplibregl-ctrl-${controlName}"
-			on:click={() => {
+			onclick={() => {
 				isMenuShown = !isMenuShown;
 			}}
 		>
@@ -194,39 +241,43 @@
 		on:changed={splitterChanged}
 		bind:this={splitControl}
 	>
-		<div slot="primary" class="primary-content">
-			{#if sidebarOnLeft}
-				<span
-					class="span close-icon"
-					role="button"
-					tabindex="0"
-					on:click={handleClose}
-					on:keydown={handleEnterKey}
-				>
-					<i class="fa-solid fa-circle-xmark fa-xl" style="color: #1c1c1c"></i>
-				</span>
-				<slot name="sidebar" />
-			{:else}
-				<slot name="map" />
-			{/if}
-		</div>
+		{#snippet primary()}
+			<div class="primary-content">
+				{#if sidebarOnLeft}
+					<span
+						class="span close-icon"
+						role="button"
+						tabindex="0"
+						onclick={handleClose}
+						onkeydown={handleEnterKey}
+					>
+						<i class="fa-solid fa-circle-xmark fa-xl" style="color: #1c1c1c"></i>
+					</span>
+					{@render sidebar?.()}
+				{:else}
+					{@render mapControl?.()}
+				{/if}
+			</div>
+		{/snippet}
 
-		<div slot="secondary" class="secondary-content">
-			{#if sidebarOnLeft}
-				<slot name="map" />
-			{:else}
-				<span
-					class="span close-icon"
-					role="button"
-					tabindex="0"
-					on:click={handleClose}
-					on:keydown={handleEnterKey}
-				>
-					<i class="fa-solid fa-circle-xmark fa-xl" style="color: #1c1c1c"></i>
-				</span>
-				<slot name="sidebar" />
-			{/if}
-		</div>
+		{#snippet secondary()}
+			<div class="secondary-content">
+				{#if sidebarOnLeft}
+					{@render mapControl?.()}
+				{:else}
+					<span
+						class="span close-icon"
+						role="button"
+						tabindex="0"
+						onclick={handleClose}
+						onkeydown={handleEnterKey}
+					>
+						<i class="fa-solid fa-circle-xmark fa-xl" style="color: #1c1c1c"></i>
+					</span>
+					{@render sidebar?.()}
+				{/if}
+			</div>
+		{/snippet}
 	</Split>
 </div>
 

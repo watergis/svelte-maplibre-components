@@ -4,10 +4,11 @@
 	import { Protocol } from 'pmtiles';
 	import { onMount } from 'svelte';
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
+	let mapContainer: HTMLDivElement | undefined = $state();
+	let map: Map | undefined = $state();
 
 	onMount(() => {
+		if (!mapContainer) return;
 		const protocol = new Protocol();
 		addProtocol('pmtiles', protocol.tile);
 		map = new Map({
@@ -31,7 +32,7 @@
 </sveltekit:head>
 
 <AttributeTableControl bind:map position="top-right" rowsPerPage={50} minZoom={14}>
-	<div class="map" bind:this={mapContainer} />
+	<div class="map" bind:this={mapContainer}></div>
 </AttributeTableControl>
 
 <style>

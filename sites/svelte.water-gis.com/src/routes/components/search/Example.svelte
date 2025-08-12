@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { Map, NavigationControl } from 'maplibre-gl';
 	import SearchControl, { type SearchOption } from '@watergis/svelte-maplibre-search';
+	import { Map, NavigationControl } from 'maplibre-gl';
+	import { onMount } from 'svelte';
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
+	let mapContainer: HTMLDivElement | undefined = $state();
+	let map: Map | undefined = $state();
 
 	let searchOption: SearchOption = {
 		url: 'https://narwassco.github.io/vt/meter.geojson',
@@ -22,7 +22,8 @@
 		zoom: 17
 	};
 
-	onMount(async () => {
+	onMount(() => {
+		if (!mapContainer) return;
 		map = new Map({
 			container: mapContainer,
 			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
@@ -33,25 +34,21 @@
 	});
 </script>
 
-<div class="container">
-	<div class="map" bind:this={mapContainer} />
+<div class="map" bind:this={mapContainer}></div>
+{#if map}
 	<SearchControl bind:map {searchOption} position="top-left" />
-</div>
+{/if}
 
 <style lang="scss">
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 
 	$height: calc(60vh);
 
-	.container {
-		text-align: center;
-
-		.map {
-			display: inline-block;
-			text-align: left;
-			width: 95%;
-			height: $height;
-			z-index: 1;
-		}
+	.map {
+		display: inline-block;
+		text-align: left;
+		width: 100%;
+		height: $height;
+		z-index: 1;
 	}
 </style>

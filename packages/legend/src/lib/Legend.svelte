@@ -12,8 +12,12 @@
 	const mapStore = getMapContext();
 	const layerId = getLayerIdContext();
 
-	export let spriteLoader: SpriteLoader;
-	let container: HTMLElement = document.createElement('div');
+	interface Props {
+		spriteLoader: SpriteLoader;
+	}
+
+	let { spriteLoader = $bindable() }: Props = $props();
+	let container: HTMLElement | undefined = $state();
 
 	const createSvgIcon = (svgXmlString: string) => {
 		let blob = new Blob([svgXmlString], { type: 'image/svg+xml' });
@@ -27,13 +31,14 @@
 	};
 
 	const update = () => {
-		const layer: LayerSpecification = $mapStore
+		const layer: LayerSpecification | undefined = $mapStore
 			.getStyle()
 			.layers.find((l: LayerSpecification) => l.id === layerId);
 		if (!layer) return;
 
 		const zoom = $mapStore.getZoom();
 		const symbol = LegendSymbol({ zoom: zoom, layer: layer });
+		container = document.createElement('div');
 		container.innerText = '';
 
 		if (!symbol) {
@@ -147,7 +152,6 @@
 						svgIcon.appendChild(group);
 					});
 					container.appendChild(svgIcon);
-
 					break;
 				default:
 					console.log(symbol.element);
@@ -161,8 +165,10 @@
 	$mapStore.on('zoom', update);
 </script>
 
-<!-- eslint-disable svelte/no-at-html-tags -->
-<div class="legend">{@html container.innerHTML}</div>
+{#if container}
+	<!-- eslint-disable svelte/no-at-html-tags -->
+	<div class="legend">{@html container.innerHTML}</div>
+{/if}
 
 <style>
 	.legend {

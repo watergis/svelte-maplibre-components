@@ -15,9 +15,7 @@
 		return value as number;
 	};
 
-	let value = getValue();
-
-	$: value, setValue();
+	let value = $state(getValue());
 
 	const setValue = () => {
 		if (!value) return;
@@ -25,4 +23,4 @@
 	};
 </script>
 
-<Slider bind:value min={0} max={64} step={0.1} unit="px" />
+<Slider bind:value min={0} max={64} step={0.1} unit="px" onchange={setValue} />

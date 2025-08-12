@@ -5,20 +5,20 @@
 	import { Protocol } from 'pmtiles';
 	import { onMount } from 'svelte';
 
-	let isMenuShown = true;
+	let isMenuShown = $state(true);
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
+	let mapContainer: HTMLDivElement = $state();
+	let map: Map = $state();
 
-	let terrainRgbUrl = 'https://narwassco.github.io/narok-terrain/tiles/{z}/{x}/{y}.png';
-	let measureOption: MeasureOption = {
+	let terrainRgbUrl = $state('https://wasac.github.io/rw-terrain-webp/tiles/{z}/{x}/{y}.webp');
+	let measureOption: MeasureOption = $state({
 		tileSize: 512,
 		font: ['Roboto Medium'],
 		fontSize: 12,
 		fontHalo: 1,
 		mainColor: '#263238',
 		haloColor: '#fff'
-	};
+	});
 
 	onMount(async () => {
 		window.global = window;
@@ -30,7 +30,7 @@
 
 		map = new Map({
 			container: mapContainer,
-			style: 'https://narwassco.github.io/mapbox-stylefiles/unvt/style.json'
+			style: 'https://wasac.github.io/mapbox-stylefiles/unvt/style.json'
 		});
 	});
 </script>
@@ -39,14 +39,18 @@
 	<title>Svelte maplibre measure example</title>
 </sveltekit:head>
 
-<MenuControl bind:map position={'top-right'} bind:isMenuShown>
-	<div slot="sidebar" class="primary-container">
-		<h4>Measure tool with elevation enquiry</h4>
-		<MeasurePanel bind:map bind:measureOption bind:terrainRgbUrl />
-	</div>
-	<div slot="map">
-		<div class="map" bind:this={mapContainer} />
-	</div>
+<MenuControl bind:map position="top-right" bind:isMenuShown>
+	{#snippet sidebar()}
+		<div class="primary-container">
+			<h4>Measure tool with elevation enquiry</h4>
+			<MeasurePanel bind:map {measureOption} {terrainRgbUrl} />
+		</div>
+	{/snippet}
+	{#snippet mapControl()}
+		<div>
+			<div class="map" bind:this={mapContainer}></div>
+		</div>
+	{/snippet}
 </MenuControl>
 
 <style lang="scss">

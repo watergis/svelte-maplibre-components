@@ -17,28 +17,36 @@
 	import { onMount } from 'svelte';
 	import Fa from 'svelte-fa';
 
-	export let map: Map;
-
 	let printableArea: PrintableAreaManager | undefined;
 	let crosshairManager: CrosshairManager | undefined;
 
 	let mapGenerator: MapGenerator;
-	let printButton: HTMLButtonElement;
+	let printButton: HTMLButtonElement | undefined = $state();
 
-	export let showPrintableArea = true;
-	export let showCrosshair = true;
-	export let position: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' = 'top-right';
+	interface Props {
+		map: Map | undefined;
+		showPrintableArea?: boolean;
+		showCrosshair?: boolean;
+		position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+		paperSize?: typeof Size;
+		dpi?: number;
+		format?: string;
+		orientation?: string;
+	}
 
-	export let paperSize = Size.A4;
-	export let dpi = DPI[96];
-	export let format = Format.PNG;
-	export let orientation = PageOrientation.Landscape;
+	let {
+		map = $bindable(undefined),
+		showPrintableArea = $bindable(true),
+		showCrosshair = $bindable(true),
+		position = $bindable('top-right'),
+		paperSize = $bindable(Size.A4 as unknown as typeof Size),
+		dpi = $bindable(DPI[96]),
+		format = $bindable(Format.PNG),
+		orientation = $bindable(PageOrientation.Landscape)
+	}: Props = $props();
 
-	$: paperSize, updatePrintableArea();
-	$: orientation, updatePrintableArea();
-
-	let isExportContainerShown = false;
-	let dragOptions: DragOptions = {};
+	let isExportContainerShown = $state(false);
+	let dragOptions: DragOptions = $state({});
 
 	function MapExportControl() {}
 
@@ -49,6 +57,7 @@
 		this.controlContainer.className = 'maplibregl-ctrl maplibregl-ctrl-group';
 		printButton.addEventListener('click', () => {
 			isExportContainerShown = !isExportContainerShown;
+			toggleButton();
 		});
 		this.controlContainer.appendChild(printButton);
 		return this.controlContainer;
@@ -67,16 +76,7 @@
 	/*eslint no-undef: "error"*/
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
-	let mapExportControl: MapExportControl = null;
-
-	$: {
-		if (map) {
-			if (mapExportControl !== null && map.hasControl(mapExportControl) === false) {
-				map.addControl(mapExportControl, position);
-			}
-			dragOptions.bounds = map.getContainer();
-		}
-	}
+	let mapExportControl: MapExportControl = $state(null);
 
 	onMount(async () => {
 		const { default: MapGenerator } = await import('./utils/map-generator');
@@ -108,7 +108,6 @@
 		return actualPaperSize;
 	};
 
-	$: isExportContainerShown, toggleButton();
 	const toggleButton = () => {
 		if (!printButton) return;
 		if (isExportContainerShown) {
@@ -161,32 +160,42 @@
 			crosshairManager.create();
 		}
 	};
+	$effect(() => {
+		if (map) {
+			if (mapExportControl !== null && map.hasControl(mapExportControl) === false) {
+				map.addControl(mapExportControl, position);
+			}
+			dragOptions.bounds = map.getContainer();
+		}
+	});
 </script>
 
 <button
 	class="maplibregl-ctrl-export maplibre-ctrl-export-icon {isExportContainerShown ? 'active' : ''}"
+	aria-label="export"
 	bind:this={printButton}
-/>
+></button>
 
 {#if isExportContainerShown}
 	<nav class="export-container" use:draggable={dragOptions}>
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<span
 			class="icon close-icon"
 			role="button"
 			tabindex="0"
-			on:click={() => {
+			onclick={() => {
 				isExportContainerShown = !isExportContainerShown;
+				toggleButton();
 			}}
 		>
 			<Fa icon={faXmark} />
 		</span>
 		<div class="field">
-			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<!-- svelte-ignore a11y_label_has_associated_control -->
 			<label class="label is-small">Paper Size</label>
 			<div class="control has-icons-left">
 				<div class="select is-small is-fullwidth">
-					<select bind:value={paperSize}>
+					<select bind:value={paperSize} onchange={updatePrintableArea}>
 						{#each Object.keys(Size) as key}
 							<option value={Size[key]}>{key}</option>
 						{/each}
@@ -198,7 +207,7 @@
 			</div>
 		</div>
 		<div class="field">
-			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<!-- svelte-ignore a11y_label_has_associated_control -->
 			<label class="label is-small">Page Orientation</label>
 			<div class="control">
 				{#each Object.keys(PageOrientation) as key}
@@ -206,8 +215,9 @@
 						<input
 							type="radio"
 							name="orientation"
-							on:click={() => {
+							onclick={() => {
 								orientation = PageOrientation[key];
+								updatePrintableArea();
 							}}
 							checked={orientation === PageOrientation[key]}
 						/>
@@ -223,7 +233,7 @@
 			</div>
 		</div>
 		<div class="field">
-			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<!-- svelte-ignore a11y_label_has_associated_control -->
 			<label class="label is-small">Format</label>
 			<div class="control has-icons-left">
 				<div class="select is-small is-fullwidth">
@@ -239,7 +249,7 @@
 			</div>
 		</div>
 		<div class="field">
-			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<!-- svelte-ignore a11y_label_has_associated_control -->
 			<label class="label is-small">DPI</label>
 			<div class="control has-icons-left">
 				<div class="select is-small is-fullwidth">
@@ -255,7 +265,7 @@
 			</div>
 		</div>
 
-		<button class="button is-success is-fullwidth" on:click={exportMap}>
+		<button class="button is-success is-fullwidth" onclick={exportMap}>
 			<span class="icon">
 				<Fa icon={faDownload} />
 			</span>

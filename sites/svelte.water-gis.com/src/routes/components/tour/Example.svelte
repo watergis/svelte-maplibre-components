@@ -3,15 +3,15 @@
 	import { Map, NavigationControl } from 'maplibre-gl';
 	import { onMount } from 'svelte';
 
-	let isMenuShown = true;
+	let isMenuShown = $state(true);
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
-	let innerHeight = 0;
-	let innerWidth = 0;
+	let mapContainer: HTMLDivElement = $state();
+	let map: Map = $state();
+	let innerHeight = $state(0);
+	let innerWidth = $state(0);
 
-	$: menuHeight = innerHeight * 0.8;
-	$: menuWidth = innerWidth * 0.95;
+	let menuHeight = $derived(innerHeight * 0.8);
+	let menuWidth = $derived(innerWidth * 0.95);
 
 	import '@sjmc11/tourguidejs/dist/css/tour.min.css';
 	import { MaplibreTourControl, type TourGuideOptions } from '@watergis/maplibre-gl-tour';
@@ -69,15 +69,19 @@
 
 <svelte:window bind:innerWidth bind:innerHeight />
 
-<MenuControl bind:map position={'top-left'} bind:isMenuShown width={menuWidth} height={menuHeight}>
-	<div slot="sidebar" class="primary-container" style="height:{menuHeight - 50}px;">
-		<h1 class="one">content 1</h1>
-		<h2 class="two">content 2</h2>
-		<h3 class="three">content 3</h3>
-	</div>
-	<div slot="map">
-		<div class="map" bind:this={mapContainer} />
-	</div>
+<MenuControl bind:map position="top-left" bind:isMenuShown width={menuWidth} height={menuHeight}>
+	{#snippet sidebar()}
+		<div class="primary-container" style="height:{menuHeight - 50}px;">
+			<h1 class="one">content 1</h1>
+			<h2 class="two">content 2</h2>
+			<h3 class="three">content 3</h3>
+		</div>
+	{/snippet}
+	{#snippet mapControl()}
+		<div>
+			<div class="map" bind:this={mapContainer}></div>
+		</div>
+	{/snippet}
 </MenuControl>
 
 <style lang="scss">

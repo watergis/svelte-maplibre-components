@@ -131,7 +131,7 @@ pnpm i @watergis/maplibre-gl-tour
 		<h2 class="two">content 2</h2>
 		<h3 class="three">content 3</h3>
 	</div>
-	<div slot="map">
+	<div slot="mapControl">
 		<div class="map" bind:this={mapContainer} />
 	</div>
 </MenuControl>

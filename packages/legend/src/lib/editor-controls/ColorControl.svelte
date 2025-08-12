@@ -8,21 +8,25 @@
 	const map = getMapContext();
 	let layerId: string = getLayerIdContext();
 
-	export let propertyName:
-		| 'background-color'
-		| 'fill-color'
-		| 'fill-outline-color'
-		| 'line-color'
-		| 'icon-color'
-		| 'icon-halo-color'
-		| 'text-color'
-		| 'text-halo-color'
-		| 'circle-color'
-		| 'circle-stroke-color'
-		| 'fill-extrusion-color'
-		| 'hillshade-accent-color'
-		| 'hillshade-highlight-color'
-		| 'hillshade-shadow-color';
+	interface Props {
+		propertyName:
+			| 'background-color'
+			| 'fill-color'
+			| 'fill-outline-color'
+			| 'line-color'
+			| 'icon-color'
+			| 'icon-halo-color'
+			| 'text-color'
+			| 'text-halo-color'
+			| 'circle-color'
+			| 'circle-stroke-color'
+			| 'fill-extrusion-color'
+			| 'hillshade-accent-color'
+			| 'hillshade-highlight-color'
+			| 'hillshade-shadow-color';
+	}
+
+	let { propertyName = $bindable() }: Props = $props();
 
 	const getValue = () => {
 		let value = $map.getPaintProperty(layerId, propertyName);
@@ -46,7 +50,7 @@
 		return value as string;
 	};
 
-	let color: string | { base: number; stops: [number, string][] } = getValue();
+	let color: string | { base: number; stops: [number, string][] } = $state(getValue());
 
 	const handleColorChanged = debounce((e: { detail: { color: string } }) => {
 		if (typeof color === 'string') {

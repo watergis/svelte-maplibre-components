@@ -51,7 +51,7 @@
 	<title>Svelte maplibre style switcher example</title>
 </sveltekit:head>
 
-<MenuControl bind:map position={'top-right'} bind:isMenuShown>
+<MenuControl bind:map position="top-right" bind:isMenuShown>
 	{#snippet sidebar()}
 		<div class="contents">
 			<StyleSwitcher bind:map bind:styles bind:selectedStyle />

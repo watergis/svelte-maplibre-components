@@ -1,4 +1,6 @@
 <script module lang="ts">
+	import { SvelteURL } from 'svelte/reactivity';
+
 	export type StyleSwitcherOption = {
 		title: string;
 		uri: string;
@@ -9,12 +11,12 @@
 
 		private getUrl() {
 			const location = window.location;
-			const url = new URL(location.href);
+			const url = new SvelteURL(location.href);
 			url.hash = location.hash;
 			return url;
 		}
 
-		private updateUrl(url: URL) {
+		private updateUrl(url: SvelteURL) {
 			history.replaceState('', '', url.toString());
 		}
 
@@ -124,7 +126,7 @@
 </script>
 
 <select class="style-select" bind:value={styleUrl} onchange={setStyle}>
-	{#each styles as style}
+	{#each styles as style (style.title)}
 		<option value={style.uri}>{style.title}</option>
 	{/each}
 </select>

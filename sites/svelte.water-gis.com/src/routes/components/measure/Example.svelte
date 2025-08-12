@@ -41,7 +41,7 @@
 
 <svelte:window bind:innerWidth bind:innerHeight />
 
-<MenuControl bind:map position={'top-right'} bind:isMenuShown width={menuWidth} height={menuHeight}>
+<MenuControl bind:map position="top-right" bind:isMenuShown width={menuWidth} height={menuHeight}>
 	{#snippet sidebar()}
 		<div class="primary-container">
 			<h4>Measure tool with elevation enquiry</h4>

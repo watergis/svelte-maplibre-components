@@ -69,7 +69,7 @@
 
 <svelte:window bind:innerWidth bind:innerHeight />
 
-<MenuControl bind:map position={'top-left'} bind:isMenuShown width={menuWidth} height={menuHeight}>
+<MenuControl bind:map position="top-left" bind:isMenuShown width={menuWidth} height={menuHeight}>
 	{#snippet sidebar()}
 		<div class="primary-container" style="height:{menuHeight - 50}px;">
 			<h1 class="one">content 1</h1>

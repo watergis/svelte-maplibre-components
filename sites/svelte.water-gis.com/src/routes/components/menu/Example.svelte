@@ -28,7 +28,7 @@
 
 <MenuControl
 	bind:map
-	position={'top-right'}
+	position="top-right"
 	bind:isMenuShown
 	width={menuWidth}
 	height={menuHeight}

@@ -72,7 +72,7 @@
 	<title>Svelte maplibre valhalla example</title>
 </sveltekit:head>
 
-<MenuControl bind:map position={'top-right'} bind:isMenuShown>
+<MenuControl bind:map position="top-right" bind:isMenuShown>
 	{#snippet sidebar()}
 		<div class="primary-container">
 			<h3>Isochrone tool</h3>

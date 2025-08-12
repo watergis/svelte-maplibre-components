@@ -77,7 +77,7 @@
 				<a class="navbar-link" href="/"> Components </a>
 
 				<div class="navbar-dropdown">
-					{#each components as component}
+					{#each components as component (component.name)}
 						<a
 							class="navbar-item"
 							href="/components/{component.name}"

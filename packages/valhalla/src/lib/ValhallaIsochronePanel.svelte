@@ -99,7 +99,7 @@
 		<div class="icon is-small is-left pl-3 pr-3">
 			<Fa icon={faClock} />
 		</div>
-		{'Time'}
+		Time
 	</label>
 	<label class="radio-transport" style="color:black">
 		<input
@@ -113,14 +113,14 @@
 		<div class="icon is-small is-left pl-3 pr-3">
 			<Fa icon={faRuler} />
 		</div>
-		{'Distance'}
+		Distance
 	</label>
 </div>
 
 <!-- svelte-ignore a11y_label_has_associated_control -->
 <label class="control-label">Means of Transport</label>
 <div class="transport-select-container">
-	{#each costingOptions as item}
+	{#each costingOptions as item (item.value)}
 		<label class="radio-transport" style="color:black">
 			<input
 				type="radio"
@@ -163,7 +163,7 @@
 
 {#if contours}
 	<div class="flex-container">
-		{#each contours as contour}
+		{#each contours as contour, index (index)}
 			<div class="flex-vertical-container" style="width:25%;">
 				<!-- svelte-ignore a11y_label_has_associated_control -->
 				<label class="control-label">

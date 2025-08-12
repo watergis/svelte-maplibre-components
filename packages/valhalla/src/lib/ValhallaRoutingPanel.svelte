@@ -110,7 +110,7 @@
 <!-- svelte-ignore a11y_label_has_associated_control -->
 <label class="control-label">Means of Transport</label>
 <div class="transport-select-container">
-	{#each costingOptions as item}
+	{#each costingOptions as item (item.value)}
 		<label class="radio-transport" style="color:black">
 			<input
 				type="radio"

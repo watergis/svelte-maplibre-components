@@ -37,7 +37,7 @@
 	"homepage": "https://github.com/watergis/svelte-maplibre-components/tree/main/packages/collapsible-panel#readme",
 	"devDependencies": {
 		"@eslint/js": "^9.25.1",
-		"@sveltejs/adapter-auto": "^3.3.1",
+		"@sveltejs/adapter-auto": "^6.0.0",
 		"@sveltejs/kit": "^2.13.0",
 		"@sveltejs/package": "^2.3.7",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",

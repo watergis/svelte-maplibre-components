@@ -1,5 +1,11 @@
 # @watergis/svelte-maplibre-search
 
+## 4.0.0
+
+### Major Changes
+
+- efb4ec5: feat: upgrade svelte v4 to v5
+
 ## 3.0.1
 
 ### Patch Changes
@@ -17,6 +23,7 @@
 ### Patch Changes
 
 - cfd5091: Upgraded prettier and eslint versions
+
   - chore(deps): update typescript-eslint monorepo to v6 (major) (#284)
   - chore(deps): update dependency prettier-plugin-svelte to v3 (#289)
 

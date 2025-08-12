@@ -79,7 +79,7 @@
 
 <MenuControl
 	bind:map
-	position={'top-left'}
+	position="top-left"
 	isMenuShown={true}
 	sidebarOnLeft={true}
 	isHorizontal={false}

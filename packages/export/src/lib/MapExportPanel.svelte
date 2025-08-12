@@ -40,22 +40,20 @@
 		orientation = $bindable(PageOrientation.Landscape)
 	}: Props = $props();
 
-	onMount(() => {
-		async () => {
-			const { default: MapGenerator } = await import('./utils/map-generator');
-			mapGenerator = new MapGenerator();
-			isShownPanel = true;
-			if (!showPrintableArea) {
-				togglePrintableArea(false);
-			} else {
-				togglePrintableArea(isShownPanel);
-			}
-			if (!showCrosshair) {
-				toggleCrosshair(false);
-			} else {
-				toggleCrosshair(isShownPanel);
-			}
-		};
+	onMount(async () => {
+		const { default: MapGenerator } = await import('./utils/map-generator');
+		mapGenerator = new MapGenerator();
+		isShownPanel = true;
+		if (!showPrintableArea) {
+			togglePrintableArea(false);
+		} else {
+			togglePrintableArea(isShownPanel);
+		}
+		if (!showCrosshair) {
+			toggleCrosshair(false);
+		} else {
+			toggleCrosshair(isShownPanel);
+		}
 	});
 
 	onDestroy(() => {

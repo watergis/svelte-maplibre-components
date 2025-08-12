@@ -85,7 +85,7 @@
 		"tippy.js": "^6.3.7"
 	},
 	"peerDependencies": {
-		"svelte": "^4.0.0"
+		"svelte": "^5.0.0"
 	},
 	"exports": {
 		".": {

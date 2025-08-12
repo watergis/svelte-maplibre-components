@@ -64,7 +64,7 @@
     "simple-svelte-autocomplete": "^2.5.2"
   },
   "peerDependencies": {
-    "svelte": "^4.0.0"
+    "svelte": "^5.0.0"
   },
   "exports": {
     ".": {

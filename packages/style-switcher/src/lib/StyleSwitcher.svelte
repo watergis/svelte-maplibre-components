@@ -81,51 +81,43 @@
 
 <script lang="ts">
 	import type { Map } from 'maplibre-gl';
-	import { createEventDispatcher, untrack } from 'svelte';
 
 	interface Props {
 		map: Map;
 		styles: StyleSwitcherOption[];
 		selectedStyle: StyleSwitcherOption;
+		onchange?: (selectedStyle: StyleSwitcherOption | undefined) => void;
 	}
 
-	let { map = $bindable(), styles, selectedStyle = $bindable() }: Props = $props();
+	let {
+		map = $bindable(),
+		styles,
+		selectedStyle = $bindable(),
+		onchange = () => {}
+	}: Props = $props();
 
-	const dispatch = createEventDispatcher();
 	let styleUrl = $derived(selectedStyle?.uri ?? '');
 
-	const setStyle = () => {
+	const setStyle = (e) => {
+		const newUrl = e.target.value;
 		if (!map) return;
-		if (styleUrl === selectedStyle.uri) return;
-		map.setStyle(styleUrl);
+		if (styleUrl === newUrl) return;
+		map.setStyle(newUrl);
 		map.on('styledata', () => {
 			const styleUrlObj = new StyleUrl();
-			const _style = styleUrlObj.getMatchedStyleByUrl(styles, styleUrl);
+			const _style = styleUrlObj.getMatchedStyleByUrl(styles, newUrl);
 			if (_style) {
 				styleUrlObj.set(_style.title);
 				selectedStyle = _style;
 			} else {
 				styleUrlObj.delete();
 			}
-			dispatch('change');
+			onchange(_style);
 		});
 	};
-
-	const updateStyleSelect = () => {
-		if (styleUrl === selectedStyle.uri) return;
-		styleUrl = selectedStyle.uri;
-	};
-
-	$effect(() => {
-		if (selectedStyle !== undefined) {
-			untrack(() => {
-				updateStyleSelect();
-			});
-		}
-	});
 </script>
 
-<select class="style-select" bind:value={styleUrl} onchange={setStyle}>
+<select class="style-select" value={styleUrl} onchange={setStyle}>
 	{#each styles as style (style.title)}
 		<option value={style.uri}>{style.title}</option>
 	{/each}

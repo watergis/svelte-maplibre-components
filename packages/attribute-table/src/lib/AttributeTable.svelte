@@ -22,11 +22,7 @@
 		minZoom?: number;
 	}
 
-	let {
-		map = $bindable(undefined),
-		rowsPerPage = $bindable(50),
-		minZoom = $bindable(14)
-	}: Props = $props();
+	let { map = $bindable(), rowsPerPage = $bindable(50), minZoom = $bindable(14) }: Props = $props();
 	let layers: string[] = $state();
 	let selectedSourceLayerId = writable('');
 

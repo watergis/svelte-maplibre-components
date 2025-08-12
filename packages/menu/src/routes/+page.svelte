@@ -4,10 +4,10 @@
 	import { Protocol } from 'pmtiles';
 	import { onMount } from 'svelte';
 
-	let mapContainer: HTMLDivElement;
-	let map: Map;
+	let mapContainer: HTMLDivElement = $state();
+	let map: Map = $state();
 
-	onMount(async () => {
+	onMount( () => {
 		const protocol = new Protocol();
 		addProtocol('pmtiles', protocol.tile);
 		map = new Map({
@@ -17,7 +17,7 @@
 	});
 
 	const onChange = (e) => {
-		console.log(e.detail);
+		console.log(e);
 	};
 </script>
 
@@ -27,19 +27,23 @@
 
 <MenuControl
 	bind:map
-	position={'top-left'}
+	position='top-left'
 	isMenuShown={false}
 	sidebarOnLeft={false}
 	isHorizontal={false}
 	faIcon="fa-solid fa-bars"
 	faIconSize=""
-	on:changed={onChange}
+	onchange={onChange}
 	showMenuButtonOnMap={true}
 >
-	<div slot="sidebar">content</div>
-	<div slot="mapControl">
-		<div class="map" bind:this={mapContainer} />
-	</div>
+	{#snippet sidebar()}
+		<div >content</div>
+	{/snippet}
+	{#snippet mapControl()}
+		<div >
+			<div class="map" bind:this={mapContainer}></div>
+		</div>
+	{/snippet}
 </MenuControl>
 
 <style>

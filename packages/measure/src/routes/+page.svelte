@@ -39,7 +39,7 @@
 	<title>Svelte maplibre measure example</title>
 </sveltekit:head>
 
-<MenuControl bind:map position={'top-right'} bind:isMenuShown>
+<MenuControl bind:map position="top-right" bind:isMenuShown>
 	{#snippet sidebar()}
 		<div class="primary-container">
 			<h4>Measure tool with elevation enquiry</h4>

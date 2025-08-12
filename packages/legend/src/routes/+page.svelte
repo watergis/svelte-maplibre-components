@@ -104,11 +104,11 @@
 	<title>Svelte maplibre legend example</title>
 </sveltekit:head>
 
-<MenuControl bind:map position={'top-right'} bind:isMenuShown>
+<MenuControl bind:map position="top-right" bind:isMenuShown>
 	{#snippet sidebar()}
 		<div class="primary-container">
 			<div class="style-header">
-				<StyleSwitcher bind:map bind:selectedStyle bind:styles on:change={onStyleChange} />
+				<StyleSwitcher bind:map bind:selectedStyle {styles} onchange={onStyleChange} />
 			</div>
 			<div class="legend-header">
 				<LegendHeader

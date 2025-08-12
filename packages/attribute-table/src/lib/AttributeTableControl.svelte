@@ -35,7 +35,7 @@
 
 <MenuControl
 	bind:map
-	bind:position
+	{position}
 	bind:isMenuShown={showAttributeTable}
 	isHorizontal={true}
 	sidebarOnLeft={false}

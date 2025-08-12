@@ -64,7 +64,7 @@
 	"dependencies": {
 		"@fortawesome/free-solid-svg-icons": "^7.0.0",
 		"@neodrag/svelte": "^2.2.0",
-		"jspdf": "^2.5.2",
+		"jspdf": "^3.0.0",
 		"maplibre-gl": "^5.0.0",
 		"svelte-fa": "^4.0.3"
 	},

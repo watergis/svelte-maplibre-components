@@ -62,7 +62,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@fortawesome/free-solid-svg-icons": "^6.6.0",
+		"@fortawesome/free-solid-svg-icons": "^7.0.0",
 		"@turf/distance": "^7.1.0",
 		"@watergis/terrain-rgb": "^2.0.2",
 		"maplibre-gl": "^4.6.0",

@@ -60,7 +60,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@fortawesome/free-solid-svg-icons": "^6.7.2",
+		"@fortawesome/free-solid-svg-icons": "^7.0.0",
 		"bulma": "^1.0.2",
 		"svelte-fa": "^4.0.3"
 	},

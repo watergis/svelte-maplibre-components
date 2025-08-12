@@ -69,7 +69,7 @@
 		"svelte-fa": "^4.0.3"
 	},
 	"peerDependencies": {
-		"svelte": "^4.0.0"
+		"svelte": "^5.0.0"
 	},
 	"exports": {
 		".": {

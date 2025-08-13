@@ -48,7 +48,7 @@
 		"eslint": "^9.9.1",
 		"eslint-config-prettier": "^10.0.0",
 		"eslint-plugin-svelte": "^2.45.1",
-		"globals": "^15.9.0",
+		"globals": "^16.0.0",
 		"pmtiles": "^4.0.0",
 		"prettier": "^3.3.3",
 		"prettier-plugin-svelte": "^3.2.6",

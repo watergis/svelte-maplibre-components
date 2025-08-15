@@ -14,6 +14,8 @@
 	} from 'maplibre-gl';
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
+	import Pagination from './Pagination.svelte';
+	import RowCount from './RowCount.svelte';
 	import { distinct } from './util/index.js';
 
 	interface Props {
@@ -35,6 +37,7 @@
 	// svelte-ignore state_referenced_locally
 	const table = new TableHandler(data, { rowsPerPage });
 	let columns: { id: string; label: string }[] = $state([]);
+	const search = table.createSearch();
 
 	let zoomedMarker: Marker;
 	let mapChanged = $state(false);
@@ -249,6 +252,25 @@
 		>
 			<i class="fa-solid fa-rotate"></i>
 		</button>
+		{#if data.length > 0}
+			<input
+				class="search-text"
+				type="search"
+				placeholder="Type to search..."
+				bind:value={search.value}
+				oninput={() => search.set()}
+			/>
+
+			<div class="rows-per-page">
+				show
+				<select bind:value={table.rowsPerPage} onchange={() => table.setPage(1)}>
+					{#each [5, 10, 20, 50, 100] as option}
+						<option value={option}>{option}</option>
+					{/each}
+				</select>
+				rows
+			</div>
+		{/if}
 	</header>
 
 	<div class="attribute-table" style="height: {containerHeight - headerHeight - 20}px">
@@ -260,6 +282,13 @@
 		{:else}
 			{#key data}
 				<Datatable basic {table}>
+					{#snippet header()}
+						<!-- delete default controls of header -->
+					{/snippet}
+					{#snippet footer()}
+						<RowCount {table} />
+						<Pagination {table} />
+					{/snippet}
 					<table>
 						<thead>
 							<tr>
@@ -330,6 +359,14 @@
 			gap: 5px;
 			margin-left: 16px;
 
+			@media (max-width: 768px) {
+				flex-wrap: wrap;
+			}
+
+			@media (max-width: 480px) {
+				flex-wrap: wrap;
+			}
+
 			.layer-select {
 				width: 196px;
 				height: 26px;
@@ -337,26 +374,26 @@
 				border-color: #cccccc;
 				box-sizing: border-box;
 				font-size: 1em;
-			}
 
-			select {
-				width: 100%;
-				border-radius: 4px;
-				border-color: #cccccc;
-				box-sizing: border-box;
-				background: transparent;
-				-webkit-appearance: none;
-				cursor: pointer;
-				background: #fff
-					url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2211%22%20height%3D%2211%22%20viewBox%3D%220%200%2011%2011%22%3E%3Cpath%20d%3D%22M4.33%208.5L0%201L8.66%201z%22%20fill%3D%22%23666%22%2F%3E%3C%2Fsvg%3E')
-					right 0.3em center no-repeat;
-				padding-left: 0.5em;
-				color: #000;
+				select {
+					width: 100%;
+					border-radius: 4px;
+					border-color: #cccccc;
+					box-sizing: border-box;
+					background: transparent;
+					-webkit-appearance: none;
+					cursor: pointer;
+					background: #fff
+						url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2211%22%20height%3D%2211%22%20viewBox%3D%220%200%2011%2011%22%3E%3Cpath%20d%3D%22M4.33%208.5L0%201L8.66%201z%22%20fill%3D%22%23666%22%2F%3E%3C%2Fsvg%3E')
+						right 0.3em center no-repeat;
+					padding-left: 0.5em;
+					color: #000;
 
-				/* Firefox hide arrow */
-				-moz-appearance: none;
-				text-indent: 0.01px;
-				text-overflow: '';
+					/* Firefox hide arrow */
+					-moz-appearance: none;
+					text-indent: 0.01px;
+					text-overflow: '';
+				}
 			}
 
 			.reload-button {
@@ -385,6 +422,32 @@
 				font-variant: normal;
 				text-rendering: auto;
 				-webkit-font-smoothing: antialiased;
+			}
+
+			.search-text {
+				width: 200px;
+				height: 26px;
+				border-radius: 4px;
+				border-color: #cccccc;
+				box-sizing: border-box;
+				font-size: 1em;
+				padding-left: 0.5em;
+			}
+
+			.rows-per-page {
+				display: flex;
+				align-items: center;
+				gap: 5px;
+				font-size: 1em;
+
+				select {
+					width: fit-content;
+					height: 26px;
+					border-radius: 4px;
+					border-color: #cccccc;
+					box-sizing: border-box;
+					padding-left: 0.5em;
+				}
 			}
 		}
 

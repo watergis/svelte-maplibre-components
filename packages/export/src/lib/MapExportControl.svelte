@@ -196,7 +196,7 @@
 			<div class="control has-icons-left">
 				<div class="select is-small is-fullwidth">
 					<select bind:value={paperSize} onchange={updatePrintableArea}>
-						{#each Object.keys(Size) as key}
+						{#each Object.keys(Size) as key (key)}
 							<option value={Size[key]}>{key}</option>
 						{/each}
 					</select>
@@ -210,7 +210,7 @@
 			<!-- svelte-ignore a11y_label_has_associated_control -->
 			<label class="label is-small">Page Orientation</label>
 			<div class="control">
-				{#each Object.keys(PageOrientation) as key}
+				{#each Object.keys(PageOrientation) as key (key)}
 					<label class="radio" style="color:black">
 						<input
 							type="radio"
@@ -238,7 +238,7 @@
 			<div class="control has-icons-left">
 				<div class="select is-small is-fullwidth">
 					<select bind:value={format}>
-						{#each Object.keys(Format) as key}
+						{#each Object.keys(Format) as key (key)}
 							<option value={Format[key]}>{key}</option>
 						{/each}
 					</select>
@@ -254,7 +254,7 @@
 			<div class="control has-icons-left">
 				<div class="select is-small is-fullwidth">
 					<select bind:value={dpi}>
-						{#each Object.keys(DPI) as key}
+						{#each Object.keys(DPI) as key (key)}
 							<option value={DPI[key]}>{key}</option>
 						{/each}
 					</select>

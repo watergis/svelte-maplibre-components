@@ -65,7 +65,7 @@
 {#if typeof color === 'string'}
 	<ColorPicker bind:color on:change={handleColorChanged} />
 {:else if 'stops' in color}
-	{#each color.stops as stop}
+	{#each color.stops as stop, index (index)}
 		<div class="stop">
 			<p>{stop[0]}</p>
 			<ColorPicker bind:color={stop[1]} on:change={handleColorChanged} />

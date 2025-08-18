@@ -69,6 +69,7 @@
 	const handleColorChanged = debounce((index: number) => {
 		const row = colorRows[index];
 		value[START_POSITION + (index + 1) * 2 - 1] = row.color;
+		setValue();
 	}, 100);
 	$effect(() => {
 		if (value) {
@@ -82,7 +83,7 @@
 <p class="description">Rendered by {heatmapProperty}</p>
 
 <div class="color-table">
-	{#each colorRows as row, index}
+	{#each colorRows as row, index (index)}
 		<div class="row">
 			<ColorPicker
 				bind:color={row.color}

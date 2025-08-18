@@ -264,7 +264,7 @@
 			<div class="rows-per-page">
 				show
 				<select bind:value={table.rowsPerPage} onchange={() => table.setPage(1)}>
-					{#each [5, 10, 20, 50, 100] as option}
+					{#each [5, 10, 20, 50, 100] as option (option)}
 						<option value={option}>{option}</option>
 					{/each}
 				</select>

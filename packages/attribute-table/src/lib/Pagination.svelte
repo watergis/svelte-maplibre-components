@@ -1,7 +1,6 @@
 <script lang="ts">
-	import type { TableHandlerInterface } from '@vincjo/datatables';
-	type T = $$Generic<Row>;
-	let { table }: { table: TableHandlerInterface<T> } = $props();
+	import type { Row, TableHandlerInterface } from '@vincjo/datatables';
+	let { table }: { table: TableHandlerInterface<Row> } = $props();
 </script>
 
 <section>
@@ -66,9 +65,10 @@
 		class:disabled={table.currentPage === 1}
 		onclick={() => table.setPage('previous')}
 	>
+		<!-- eslint-disable svelte/no-at-html-tags -->
 		{@html table.i18n.previous}
 	</button>
-	{#each table.pagesWithEllipsis as page}
+	{#each table.pagesWithEllipsis as page (page)}
 		<button
 			type="button"
 			class="bg-darken-active"
@@ -84,6 +84,7 @@
 		class:disabled={table.currentPage === table.pageCount}
 		onclick={() => table.setPage('next')}
 	>
+		<!-- eslint-disable svelte/no-at-html-tags -->
 		{@html table.i18n.next}
 	</button>
 {/snippet}

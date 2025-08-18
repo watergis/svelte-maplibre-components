@@ -1,8 +1,7 @@
 <script lang="ts">
-	import type { TableHandlerInterface } from '@vincjo/datatables';
+	import type { Row, TableHandlerInterface } from '@vincjo/datatables';
 
-	type T = $$Generic<Row>;
-	let { table, selection = false }: { table: TableHandlerInterface<T>; selection?: boolean } =
+	let { table, selection = false }: { table: TableHandlerInterface<Row>; selection?: boolean } =
 		$props();
 
 	const { start, end, total, selected } = $derived(table.rowCount);
@@ -41,6 +40,7 @@
 
 {#snippet rowCount()}
 	{#if total > 0}
+		<!-- eslint-disable svelte/no-at-html-tags -->
 		{@html table.i18n.rowCount
 			.replace('{start}', `<b>${start}</b>`)
 			.replace('{end}', `<b>${end}</b>`)

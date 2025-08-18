@@ -11,7 +11,7 @@
 
 <div class="field has-addons">
 	{#key selectedValue}
-		{#each options as option}
+		{#each options as option, index (index)}
 			<div class="control">
 				<button
 					class="button is-small {`${

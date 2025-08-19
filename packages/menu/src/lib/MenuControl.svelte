@@ -221,7 +221,8 @@
 {#if showMenuButtonOnMap && map}
 	<div class="maplibregl-ctrl maplibregl-ctrl-group" bind:this={menuButton} hidden={isMenuShown}>
 		<button
-			class="maplibregl-ctrl-${controlName}"
+			aria-label="Toggle Menu"
+			class="maplibregl-ctrl-{controlName}"
 			onclick={() => {
 				isMenuShown = !isMenuShown;
 			}}

@@ -37,7 +37,7 @@
   "homepage": "https://github.com/watergis/svelte-maplibre-components/tree/main/packages/search#readme",
   "devDependencies": {
     "@eslint/js": "^9.33.0",
-    "@sveltejs/adapter-auto": "^6.0.2",
+    "@sveltejs/adapter-auto": "^7.0.0",
     "@sveltejs/kit": "^2.27.3",
     "@sveltejs/package": "^2.4.1",
     "@sveltejs/vite-plugin-svelte": "^6.1.1",

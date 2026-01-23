@@ -431,8 +431,8 @@ importers:
         specifier: ^5.6.2
         version: 5.6.2
       svelte-awesome-color-picker:
-        specifier: ^3.1.4
-        version: 3.1.4(svelte@5.38.3)
+        specifier: ^4.0.0
+        version: 4.1.1(svelte@5.38.3)
       svelte-fa:
         specifier: ^4.0.4
         version: 4.0.4(svelte@5.38.3)
@@ -2992,15 +2992,16 @@ packages:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
     engines: {node: '>=8'}
 
-  svelte-awesome-color-picker@3.1.4:
-    resolution: {integrity: sha512-tiFakxvSpCwodOSFW6CflnLVSldSlDY77rDipHfW7hvB+4gTP3y6uO+Dm9O9e7P5N7K+CNyNjjdjbZOHYkMyNQ==}
+  svelte-awesome-color-picker@4.1.1:
+    resolution: {integrity: sha512-k4APFGBFN8EpvUS0UJfdlqj8xDekMbqGBwnDYBK1QCY8kcTXSO8c7SitEk70MkiYOIByOgXlHcjaipy6H7dpAw==}
+    engines: {node: '>=24'}
     peerDependencies:
-      svelte: ^3.55.1 || ^4.0.0 || ^5.0.0
+      svelte: ^5.0.0
 
-  svelte-awesome-slider@1.1.2:
-    resolution: {integrity: sha512-HFIWwq6rtX6aXyc6ns2R0P6pDLYIr6nRjTPyAddAiTAgZqsohAoEfOEwKKqMmZ6Q+CH48zzcFdyo6lFkBJvyQw==}
+  svelte-awesome-slider@2.0.0:
+    resolution: {integrity: sha512-YBkOdYm1Feaqsn2JkJBRs+Kc/X3Qy/3GuVmI7GmoYDjBaHkjx9uH4khTuED22z57Hg3gGWeDhp/clIjWDdLNaw==}
     peerDependencies:
-      svelte: ^3.54.0 || ^4.0.0 || ^5.0.0
+      svelte: ^5.0.0
 
   svelte-check@4.3.1:
     resolution: {integrity: sha512-lkh8gff5gpHLjxIV+IaApMxQhTGnir2pNUAqcNgeKkvK5bT/30Ey/nzBxNLDlkztCH4dP7PixkMt9SWEKFPBWg==}
@@ -5009,13 +5010,13 @@ snapshots:
     dependencies:
       has-flag: 4.0.0
 
-  svelte-awesome-color-picker@3.1.4(svelte@5.38.3):
+  svelte-awesome-color-picker@4.1.1(svelte@5.38.3):
     dependencies:
       colord: 2.9.3
       svelte: 5.38.3
-      svelte-awesome-slider: 1.1.2(svelte@5.38.3)
+      svelte-awesome-slider: 2.0.0(svelte@5.38.3)
 
-  svelte-awesome-slider@1.1.2(svelte@5.38.3):
+  svelte-awesome-slider@2.0.0(svelte@5.38.3):
     dependencies:
       svelte: 5.38.3
 

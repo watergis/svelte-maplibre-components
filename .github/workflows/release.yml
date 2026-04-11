@@ -11,7 +11,9 @@ env:
   CI: true
   PNPM_CACHE_FOLDER: .pnpm-store
 
-permissions: {}
+permissions:
+  contents: write
+
 jobs:
   release:
     # prevents this action from running on forks
@@ -19,6 +21,7 @@ jobs:
     permissions:
       contents: write # to create release (changesets/action)
       pull-requests: write # to create pull request (changesets/action)
+      id-token: write # Required for OIDC
     name: Release
     runs-on: ubuntu-latest
     steps:
@@ -46,4 +49,3 @@ jobs:
           publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.npm_token }}

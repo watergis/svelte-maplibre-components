@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/watergis/svelte-maplibre-components#readme",
   "devDependencies": {
-    "@changesets/cli": "^2.27.7",
+    "@changesets/cli": "^3.0.0",
     "lefthook": "^1.7.14"
   },
   "packageManager": "pnpm@10.34.9",
